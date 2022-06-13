@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.edu.kanumovie.admin.command.Admin;
 import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.home.command.Home;
 
@@ -27,6 +28,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/home.do", new Home());
+		map.put("/admin.do", new Admin());
 	}
 
 	@Override
