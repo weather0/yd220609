@@ -25,5 +25,6 @@
   	<mapper resource="co/edu/kanumovie/movie/service/movie-map.xml"/>
     <mapper resource="org/mybatis/example/BlogMapper.xml"/>
     <mapper resource="co/edu/kanumovie/admin/service/admin-mapper.xml"/>
+    <mapper resource="co.edu.kanumovie.user.service.user-mapper.xml" />
   </mappers>
 </configuration>
