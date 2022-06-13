@@ -24,7 +24,7 @@
   <mappers>
   	<mapper resource="co/edu/kanumovie/movie/service/movie-map.xml"/>
     <mapper resource="co/edu/kanumovie/admin/service/admin-mapper.xml"/>
-    <mapper resource="co.edu.kanumovie.user.service.user-mapper.xml" />
+    <mapper resource="co/edu/kanumovie/user/service/user-mapper.xml" />
     <mapper resource="co/edu/kanumovie/comment/service/comment-map.xml"/>
   </mappers>
 </configuration>
