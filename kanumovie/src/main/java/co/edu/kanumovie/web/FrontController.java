@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.edu.kanumovie.admin.command.Admin;
+import co.edu.kanumovie.comment.command.Comment;
 import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.home.command.Home;
 import co.edu.kanumovie.movie.command.MovieSelectList;
 import co.edu.kanumovie.user.command.Login;
 import co.edu.kanumovie.user.command.LoginForm;
+
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -35,6 +37,7 @@ public class FrontController extends HttpServlet {
 		map.put("/admin.do", new Admin());
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
+		map.put("/comment.do", new Comment());
 	}
 
 	@Override
