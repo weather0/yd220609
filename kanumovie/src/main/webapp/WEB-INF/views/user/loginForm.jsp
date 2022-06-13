@@ -25,11 +25,11 @@
                     </td>
                 </tr>
             </table>
+                <input type="submit" value="로그인" >
             </form>
             <div>
-                <input type="submit" value="로그인" >
                 <input type="reset" value="취소" >
-                <input type="button" value="뒤로가기" onclick="location.href='home.do'">
+                <input type="button" value="뒤로가기" onclick="location.href='login.do'">
             </div>
         </div>
     </div>
