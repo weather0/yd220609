@@ -6,7 +6,9 @@
 
 	<select id="commentAllList"
 		resultType="co.edu.kanumovie.comment.vo.CommentVO">
-		SELECT * FROM K_COMMENT
+		SELECT c.C_COMMENT AS comments , c.C_DATE AS wdate , u.nick
+		FROM K_COMMENT c , k_users u
+		WHERE c.EMAIL = u.EMAIL
 	</select>
 
 	<!-- <insert id="commentInsert"
