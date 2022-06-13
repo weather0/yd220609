@@ -11,6 +11,7 @@
 		<result column="id" property="id"/>
 		<result column="original_language" property="originalLanguage"/>
 		<result column="original_title" property="originalTitle"/>
+		<result column="overview" property="overview"/>
 		<result column="popularity" property="popularity"/>
 		<result column="release_date" property="releaseDate"/>
 		<result column="title" property="title"/>
