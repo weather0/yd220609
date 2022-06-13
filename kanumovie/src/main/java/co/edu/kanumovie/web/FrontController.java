@@ -12,9 +12,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.edu.kanumovie.admin.command.Admin;
+import co.edu.kanumovie.comment.command.Comment;
 import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.home.command.Home;
 import co.edu.kanumovie.movie.command.MovieSelectList;
+import co.edu.kanumovie.user.command.Login;
+import co.edu.kanumovie.user.command.LoginForm;
+
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -29,6 +34,10 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/home.do", new Home());
 		map.put("/movieSelectList.do", new MovieSelectList());
+		map.put("/admin.do", new Admin());
+		map.put("/loginForm.do", new LoginForm());
+		map.put("/login.do", new Login());
+		map.put("/comment.do", new Comment());
 	}
 
 	@Override
