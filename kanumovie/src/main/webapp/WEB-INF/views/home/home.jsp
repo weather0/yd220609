@@ -27,6 +27,7 @@
 		<h1 align = "center">환영합니다</h1>
 		<h1 align = "center">dev</h1>
 		<a href="loginForm.do">로그인 하러 가쉴?</a>
+		<a href="comment.do">코멘트 사이트</a>
 	</div>
 </body>
 </html>
