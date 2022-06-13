@@ -15,12 +15,13 @@ public class MovieVO {
 	private int id;
 	private String originalLanguage;
 	private String originalTitle;
-	private int popularity;
+	private String overview;
+	private double popularity;
 	private String posterPath;
 	private Date releaseDate;
 	private String title;
 	private String video;
-	private int voteAverage;
+	private double voteAverage;
 	private int voteCount;
 
 }
