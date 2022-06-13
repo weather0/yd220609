@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.edu.kanumovie.user.service.UserMapper">
+    <select id="userListSelect" resultType="co.edu.kanumovie.user.vo.UserVO" >
+        SELECT * FROM K_USERS ORDER BY SIGNDATE
+    </select>
+    <!-- <select id="userSearchList" resultType="co.edu.kanumovie.user.vo.UserVO">
+    
+    </select> -->
+    <select id="userSelect" resultType="co.edu.kanumovie.user.vo.UserVO">
+        SELECT * FROM K_USERS WHERE EMAIL = #{email}
+    </select>
+    <insert id="userInsert" parameterType="co.edu.kanumovie.user.vo.UserVO">
+        INSERT INTO K_USERS VALUES(#{email},#{pw},#{signdate},#{nick},#{preference1},#{preference2},#{preference3},#{authority})
+    </insert>
+    <update id="userUpdate" parameterType="co.edu.kanumovie.user.vo.UserVO">
+        UPDATE K_USERS SET (NICK) = #{nick} WHERE EMAIL = #{email}
+    </update>
+    <delete id="userDelete" parameterType="co.edu.kanumovie.user.vo.UserVO">
+        DELETE FROM K_USERS WHERE EMAIL = #{email}
+    </delete>
+</mapper>
