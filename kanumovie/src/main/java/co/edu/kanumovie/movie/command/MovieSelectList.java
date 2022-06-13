@@ -19,7 +19,7 @@ public class MovieSelectList implements Command {
 		List<MovieVO> movielist = new ArrayList<MovieVO>();
 		movielist = dao.movieSelectList();
 		request.setAttribute("movielist", movielist);
-		return "movie/movieSelectList";
+		return "home/home";
 	}
 
 }
