@@ -20,6 +20,20 @@ public class Login implements Command {
 		vo.setPw(request.getParameter("pw"));
 		
 		vo = dao.userSelect(vo);
+		if(vo != null) {
+			session.setAttribute("vo", vo);
+			session.setAttribute("email", vo.getEmail()); 
+			session.setAttribute("pw", vo.getPw());    
+			session.setAttribute("signdate", vo.getSigndate());
+			session.setAttribute("nick", vo.getNick());
+			session.setAttribute("preference1", vo.getPreference1());
+			session.setAttribute("preference2", vo.getPreference2());
+			session.setAttribute("preference3", vo.getPreference3());
+			session.setAttribute("authority", vo.getAuthority());
+			request.setAttribute("message", vo.getNick()+"님 환영합니다!!!");
+		} else {
+			request.setAttribute("message", "아이디 혹은 비밀번호를 확인하세요!!!");
+		}
 		
 		return "home/home";
 	}
