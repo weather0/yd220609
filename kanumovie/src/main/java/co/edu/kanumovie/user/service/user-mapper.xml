@@ -11,10 +11,18 @@
         SELECT * FROM K_USERS WHERE EMAIL = #{email}
     </select>
     <insert id="userInsert" parameterType="co.edu.kanumovie.user.vo.UserVO">
-        INSERT INTO K_USERS VALUES(#{email},#{pw},#{signdate},#{nick},#{preference1},#{preference2},#{preference3},#{authority})
+        INSERT INTO K_USERS VALUES(#{email},#{pw},SYSDATE,#{nick},#{preference1},#{preference2},#{preference3},'USER','n','n')
     </insert>
     <update id="userUpdate" parameterType="co.edu.kanumovie.user.vo.UserVO">
-        UPDATE K_USERS SET (NICK) = #{nick} WHERE EMAIL = #{email}
+        UPDATE K_USERS 
+        <set>
+            <if test="nick != null"> NICK = #{nick},</if>
+            <if test="pw != null"> PW = #{pw},</if>
+            <if test="preference1 != null"> PREFERENCE1 = #{preference1},</if>
+            <if test="preference2 != null"> PREFERENCE2 = #{preference2},</if>
+            <if test="preference3 != null"> PREFERENCE3 = #{preference3},</if>
+        </set>
+        WHERE EMAIL = #{email}
     </update>
     <delete id="userDelete" parameterType="co.edu.kanumovie.user.vo.UserVO">
         DELETE FROM K_USERS WHERE EMAIL = #{email}

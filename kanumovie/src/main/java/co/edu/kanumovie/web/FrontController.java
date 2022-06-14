@@ -13,13 +13,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.edu.kanumovie.admin.command.Admin;
+import co.edu.kanumovie.admin.command.AdminMessage;
+import co.edu.kanumovie.admin.command.Analytics;
 import co.edu.kanumovie.comment.command.Comment;
+import co.edu.kanumovie.comment.command.CommentInsert;
 import co.edu.kanumovie.common.Command;
+import co.edu.kanumovie.genre.command.GenreSelectList;
 import co.edu.kanumovie.home.command.Home;
 import co.edu.kanumovie.movie.command.MovieInfo;
+import co.edu.kanumovie.movie.command.MovieSelectGenreList;
 import co.edu.kanumovie.movie.command.MovieSelectList;
+import co.edu.kanumovie.user.command.FindPw;
+import co.edu.kanumovie.user.command.FindPwForm;
 import co.edu.kanumovie.user.command.Login;
 import co.edu.kanumovie.user.command.LoginForm;
+import co.edu.kanumovie.user.command.Logout;
+import co.edu.kanumovie.user.command.SignUp;
+import co.edu.kanumovie.user.command.SignUpForm;
+import co.edu.kanumovie.user.command.UserManage;
+import co.edu.kanumovie.user.command.UserManageForm;
 
 
 @WebServlet("*.do")
@@ -36,10 +48,22 @@ public class FrontController extends HttpServlet {
 		map.put("/home.do", new Home());
 		map.put("/movieSelectList.do", new MovieSelectList());
 		map.put("/admin.do", new Admin());
+		map.put("/adminmessage.do", new AdminMessage());
+		map.put("/analytics.do", new Analytics());
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
+		map.put("/logout.do",new Logout());
+		map.put("/userManageForm.do", new UserManageForm());
+		map.put("/userManage.do", new UserManage());
+		map.put("/signUpForm.do", new SignUpForm());
+		map.put("/signUp.do", new SignUp());
+		map.put("/findPwForm.do", new FindPwForm());
+		map.put("/findPw.do", new FindPw());
 		map.put("/comment.do", new Comment());
-		map.put("/movieInfo.do", new MovieInfo());
+		map.put("/movieInfo.do", new MovieInfo());		
+		map.put("/commentInsert.do", new CommentInsert());
+		map.put("/genreSelectList.do", new GenreSelectList());
+		map.put("/movieSelectGenreList.do", new MovieSelectGenreList());
 	}
 
 	@Override

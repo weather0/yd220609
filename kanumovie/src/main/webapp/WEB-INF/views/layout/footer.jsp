@@ -12,7 +12,7 @@
         <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="salesrow">
             <div class="col-lg-3">
                 <div class="footer__logo">
                     <a href="./index.html"><img src="img/logo.png" alt=""></a>

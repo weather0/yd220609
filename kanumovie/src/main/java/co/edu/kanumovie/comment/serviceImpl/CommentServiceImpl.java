@@ -15,9 +15,9 @@ public class CommentServiceImpl implements CommentService {
 		// mybatis-config.xml에 있는 mapper들을 모두 가져온다.
 		private CommentMapper map = sqlSession.getMapper(CommentMapper.class);
 	@Override
-	public List<CommentVO> commentAllList() {
+	public List<CommentVO> commentAllList(CommentVO vo) {
 		// TODO Auto-generated method stub
-		return map.commentAllList();
+		return map.commentAllList(vo);
 	}
 
 	@Override

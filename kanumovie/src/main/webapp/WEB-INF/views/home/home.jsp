@@ -218,6 +218,16 @@
 							}
 						}
 					})
+				    let name = "<%= request.getAttribute("message") %>";
+				    if(name=='login') {
+					    alert('로그인되었습니다.')				    	
+				    } else if(name=='logout') {
+				    	alert('로그아웃되었습니다')
+				    }  else if(name=='login2') {
+                        alert('로그인 실패!!')
+                    } else if(name=='signup') {
+                        alert('회원가입 완료!!')
+                    }
 				</script>
 			</div>
 		</div>

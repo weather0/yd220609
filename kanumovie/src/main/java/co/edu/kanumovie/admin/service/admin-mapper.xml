@@ -3,8 +3,22 @@
 <mapper namespace="co.edu.kanumovie.admin.service.AdminMapper">
 
 
+ <select id="selectAllUserList" resultType="co.edu.kanumovie.user.vo.UserVO" >
+        SELECT * FROM K_USERS ORDER BY SIGNDATE
+ </select>
 
+<select id="todayUsersCount" resultType="int">
 
+SELECT COUNT(*) 
+FROM k_users WHERE 
+to_char(signdate, 'yy/mm/dd') = to_char(sysdate, 'yy/mm/dd')
+
+</select>
+
+<select id="selectAllUserCount" resultType="int">
+
+SELECT count(*) FROM k_users
+</select>
 
 
 </mapper>

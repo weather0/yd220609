@@ -36,3 +36,22 @@ for(i=0;i<linkCollapse.length;i++) {
         rotate.classList.toggle('rotate')
     });
 }
+
+
+const pathname = window.location.pathname.substring(11);
+let navlist = document.querySelector('.nav__list');
+
+if(pathname == 'admin.do') {
+console.log(navlist)
+navlist.children[0].className += ' active';	
+	
+} else if(pathname == 'adminmessage.do') {
+	navlist.children[1].className += ' active';	
+} else if(pathname == 'analytics.do') {
+	console.log('analytics')
+	navlist.children[3].className += ' active';
+}
+
+
+
+

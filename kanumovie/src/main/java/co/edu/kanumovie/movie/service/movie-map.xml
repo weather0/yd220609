@@ -26,4 +26,11 @@
 		${movie.releaseDate}, ${movie.title} , ${movie.video}, 
 		${movie.voteAverage}, ${movie.voteCount})
 	</insert>
+	<select id="movieSelectGenreList" parameterType="genre" resultMap="movieMap">
+		SELECT * FROM K_MOVIES 
+		WHERE 
+		GENRE_IDS LIKE '%'||#{id}||'%' OR
+		GENRE_IDS LIKE '%'||#{id}||']%' OR
+		GENRE_IDS LIKE '['||#{id}||'%'
+	</select>
 </mapper>
