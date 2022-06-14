@@ -18,6 +18,7 @@ public class FindPw implements Command {
 		vo.setEmail(request.getParameter("email"));
 		vo = dao.userSelect(vo);
 		
+		
 		request.setAttribute("pw", vo.getPw());
 		
 		return "user/findPw";
