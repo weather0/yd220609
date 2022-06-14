@@ -20,6 +20,7 @@ import co.edu.kanumovie.movie.command.MovieInfo;
 import co.edu.kanumovie.movie.command.MovieSelectList;
 import co.edu.kanumovie.user.command.Login;
 import co.edu.kanumovie.user.command.LoginForm;
+import co.edu.kanumovie.user.command.Logout;
 
 
 @WebServlet("*.do")
@@ -38,6 +39,7 @@ public class FrontController extends HttpServlet {
 		map.put("/admin.do", new Admin());
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
+		map.put("/logout.do",new Logout());
 		map.put("/comment.do", new Comment());
 		map.put("/movieInfo.do", new MovieInfo());
 	}
