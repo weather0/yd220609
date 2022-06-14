@@ -18,9 +18,15 @@ import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.home.command.Home;
 import co.edu.kanumovie.movie.command.MovieInfo;
 import co.edu.kanumovie.movie.command.MovieSelectList;
+import co.edu.kanumovie.user.command.FindPw;
+import co.edu.kanumovie.user.command.FindPwForm;
 import co.edu.kanumovie.user.command.Login;
 import co.edu.kanumovie.user.command.LoginForm;
 import co.edu.kanumovie.user.command.Logout;
+import co.edu.kanumovie.user.command.SignUp;
+import co.edu.kanumovie.user.command.SignUpForm;
+import co.edu.kanumovie.user.command.UserManage;
+import co.edu.kanumovie.user.command.UserManageForm;
 
 
 @WebServlet("*.do")
@@ -40,8 +46,15 @@ public class FrontController extends HttpServlet {
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
 		map.put("/logout.do",new Logout());
+		map.put("/userManageForm.do", new UserManageForm());
+		map.put("/userManage.do", new UserManage());
+		map.put("/signUpForm.do", new SignUpForm());
+		map.put("/signUp.do", new SignUp());
+		map.put("/findPwForm.do", new FindPwForm());
+		map.put("/findPw.do", new FindPw());
 		map.put("/comment.do", new Comment());
 		map.put("/movieInfo.do", new MovieInfo());
+		
 	}
 
 	@Override
