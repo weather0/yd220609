@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.edu.kanumovie.admin.command.Admin;
 import co.edu.kanumovie.comment.command.Comment;
+import co.edu.kanumovie.comment.command.CommentInsert;
 import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.home.command.Home;
 import co.edu.kanumovie.movie.command.MovieInfo;
@@ -42,6 +43,7 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do",new Logout());
 		map.put("/comment.do", new Comment());
 		map.put("/movieInfo.do", new MovieInfo());
+		map.put("/commentInsert.do", new CommentInsert());
 	}
 
 	@Override
