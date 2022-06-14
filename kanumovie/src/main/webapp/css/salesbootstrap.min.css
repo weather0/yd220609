@@ -7791,6 +7791,7 @@ fieldset:disabled .btn {
 }
 
 .mb-2 {
+  color: #b7b7b7;
   margin-bottom: .5rem !important
 }
 
@@ -8350,7 +8351,7 @@ fieldset:disabled .btn {
 }
 
 .bg-secondary {
-  background-color: #191C24 !important
+  background-color: #0d0d16 !important
 }
 
 .bg-success {

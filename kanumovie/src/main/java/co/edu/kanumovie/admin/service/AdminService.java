@@ -9,4 +9,6 @@ public interface AdminService {
 	public List<UserVO> selectAllUserList(); // 전체 유저 리스트.
 	
 	public int todayUsersCount();
+	
+	public int selectAllUserCount();
 }

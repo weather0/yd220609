@@ -15,5 +15,10 @@ to_char(signdate, 'yy/mm/dd') = to_char(sysdate, 'yy/mm/dd')
 
 </select>
 
+<select id="selectAllUserCount" resultType="int">
+
+SELECT count(*) FROM k_users
+</select>
+
 
 </mapper>

@@ -24,5 +24,11 @@ public class AdminServiceImpl implements AdminService {
 		return map.todayUsersCount();
 	}
 
+	@Override
+	public int selectAllUserCount() {
+		
+		return map.selectAllUserCount();
+	}
+
 
 }

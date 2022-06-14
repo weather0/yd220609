@@ -7,6 +7,8 @@
 <title>Insert title here</title>
  <!-- CSS -->
  <link rel="stylesheet" href="css/sidebarstyles.css">
+  <!-- IONICONS -->
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js" ></script>
 </head>
 <body>
 <!-- side bar  -->
@@ -15,16 +17,17 @@
     <div class="l-navbar" id="navbar">
         <nav class="nav">
             <div>
+            
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
                     <a href="home.do" class="nav__logo">Hello,Admin</a>
                 </div>
                 <div class="nav__list">
-                    <a href="admin.do" class="nav__link active">
+                    <a href="admin.do" class="nav__link">
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">Dashboard</span>
                     </a>
-                    <a href="#" class="nav__link">
+                    <a href="adminmessage.do" class="nav__link">
                         <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">Messenger</span>
                     </a>
@@ -42,7 +45,7 @@
                         </ul>
                     </div>
 
-                    <a href="#" class="nav__link">
+                    <a href="analytics.do" class="nav__link">
                         <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">Analytics</span>
                     </a>
@@ -78,6 +81,6 @@
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <!-- sidebarjs -->
     <script src="js/sidebar.js"></script>
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 </body>
 </html>
