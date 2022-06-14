@@ -17,10 +17,10 @@
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="admin.do" class="nav__logo">Hello,Admin</a>
+                    <a href="home.do" class="nav__logo">Hello,Admin</a>
                 </div>
                 <div class="nav__list">
-                    <a href="dashboard.do" class="nav__link active">
+                    <a href="admin.do" class="nav__link active">
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">Dashboard</span>
                     </a>

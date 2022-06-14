@@ -30,12 +30,10 @@
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 
-
-
-
 <!-- javascript -->
-<script src="assets/vendors/jquery.min.js"></script>
-<script src="assets/owlcarousel/owl.carousel.js"></script>
+
+<!-- <script src="assets/vendors/jquery.min.js"></script>
+<script src="assets/owlcarousel/owl.carousel.js"></script>  -->
 </head>
 <body>
 	<tiles:insertAttribute name="header" />

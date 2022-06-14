@@ -9,7 +9,7 @@
 <body>
   <header class="header">
         <div class="container">
-            <div class="row">
+            <div class="salesrow">
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="./index.html">
