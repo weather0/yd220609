@@ -48,15 +48,12 @@
                             <ul class="dropdown">
                                 <c:choose>
 	                                <c:when test="${not empty email}">
-		                                <li><a href="home.do">User Manage</a></li>
-		                                <li><a href="home.do">Sign Up</a></li>
+		                                <li><a href="userManageForm.do">User Manage</a></li>
 		                                <li><a href="logout.do">Logout</a></li>
-		                                <li><a href="home.do">${message}</a></li>
 	                                </c:when>
 	                                <c:otherwise>
-                                        <li><a href="home.do">Sign Up</a></li>
+                                        <li><a href="signUpForm.do">Sign Up</a></li>
                                         <li><a href="loginForm.do">Login</a></li>
-                                        <li><a href="home.do">${message }</a></li>
 	                                </c:otherwise>
 	                            </c:choose>
                             </ul>
