@@ -51,7 +51,7 @@
 		                                <li><a href="home.do">User Manage</a></li>
 		                                <li><a href="home.do">Sign Up</a></li>
 		                                <li><a href="logout.do">Logout</a></li>
-		                                <li><a href="home.do">${message }</a></li>
+		                                <li><a href="home.do">${message}</a></li>
 	                                </c:when>
 	                                <c:otherwise>
                                         <li><a href="home.do">Sign Up</a></li>
