@@ -5,6 +5,90 @@
   <head>
     <meta charset="UTF-8">
     <title>MovieInfo</title>
+    <style>
+      div.scroller_wrap {
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+
+
+
+      ol.people.scroller {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        margin-left: -10px;
+        margin-top: -10px;
+        padding-bottom: 10px;
+      }
+
+      ol.people {
+        list-style-type: none;
+        list-style-position: inside;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+
+
+      .card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(var(--lightGrey), 1);
+        background-color: #fff;
+      }
+
+
+
+      ol.people li.card {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 4px;
+        border: 1px solid rgba(var(--lightGrey), 1);
+        padding-bottom: 10px;
+        border-radius: var(--imageBorderRadius);
+        overflow: hidden;
+      }
+
+
+      ol.people li {
+        min-width: 140px;
+        width: 140px;
+        background-color: #fff;
+        margin-right: 10px;
+      }
+
+      ol.people li>a {
+        min-width: 138px;
+        width: 138px;
+        height: 175px;
+        display: block;
+      }
+
+
+      section.panel ol.people li a+p {
+        padding-top: 10px;
+      }
+
+
+      ol.people li p {
+        font-size: 1em;
+        margin: 0;
+        padding: 0 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+
+      ol.people li p a {
+        font-weight: bold;
+        color: #000;
+      }
+    </style>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -26,7 +110,7 @@
 
       const API_KEY = 'api_key=e51d70c65b46eb8bd60cafccc9325e8b';
       const BASE_URL = 'https://api.themoviedb.org/3';
-      const MOVIE_URL = '/movie/19609';
+      const MOVIE_URL = '/movie/146724';
       const poster = "https://image.tmdb.org/t/p/w300";
       let movieInfoAPI = BASE_URL + MOVIE_URL + '?' + API_KEY + '&language=ko-KR';
       let ratingAPI = BASE_URL + MOVIE_URL + '/rating?' + API_KEY + '&guest_session_id=5667cdad051a40c848b9b34da163b4dc';
@@ -116,38 +200,113 @@
 
 
 
-      // console.clear();
+
+
+
+
+      // Cast & Crew 카드 섹션
+
       fetch(creditAPI)
         .then(response => response.json())
         .then(credit => {
+          console.log(creditAPI);
+          let ol = document.querySelector('.people');
+          let anony = 'https://mvp.microsoft.com/ko-kr/PublicProfile/Photo/720101';
+
+          // 감독 카드
+
+          credit.crew.forEach(function (obj, i) {
+
+            if (obj.job == 'Director') {
+              let li = document.createElement('li');
+              li.className = 'card';
+              let atag = document.createElement('a');
+              atag.href = 'https://www.themoviedb.org/person/' + credit.crew[i].id;
+              let img = document.createElement('img');
+              img.loading = 'lazy';
+              img.className = 'profile';
+              if (credit.crew[i].profile_path == null) {
+                img.src = anony;
+                img.srcset = anony + ' 1x';
+                img.style = 'height:175px';
+              } else {
+                img.src = 'https://www.themoviedb.org/t/p/w138_and_h175_face' + credit.crew[i].profile_path;
+                img.srcset = 'https://www.themoviedb.org/t/p/w138_and_h175_face' + credit.crew[i].profile_path + ' 1x';
+              }
+              img.alt = credit.crew[i].name;
+
+              atag.append(img);
+
+              let atag2 = document.createElement('a');
+              atag2.innerHTML = credit.crew[i].name;
+              let ptag = document.createElement('p');
+              ptag.append(atag2)
+
+              let ptag2 = document.createElement('p');
+              ptag2.className = 'character';
+              ptag2.innerHTML = credit.crew[i].job;
+
+              li.append(atag);
+              li.append(ptag);
+              li.append(ptag2);
+              ol.append(li);
+
+            }
+          })
+
+
+
+          // 배우 카드
           for (let i = 0; i < 7; i++) {
-            document.querySelector('.card img').src = 'https://www.themoviedb.org/t/p/w138_and_h175_face' + credit.cast[i].profile_path
-            // <작성중>
+            let li = document.createElement('li');
+            li.className = 'card';
+            let atag = document.createElement('a');
+            atag.href = 'https://www.themoviedb.org/person/' + credit.cast[i].id;
+            let img = document.createElement('img');
+            img.loading = 'lazy';
+            img.className = 'profile';
+            if (credit.cast[i].profile_path == null) {
+              img.src = anony;
+              img.srcset = anony + ' 1x';
+              img.style = 'height:175px';
+            } else {
+              img.src = 'https://www.themoviedb.org/t/p/w138_and_h175_face' + credit.cast[i].profile_path;
+              img.srcset = 'https://www.themoviedb.org/t/p/w138_and_h175_face' + credit.cast[i].profile_path + ' 1x';
+            }
+            img.alt = credit.cast[i].name;
+
+            atag.append(img);
+
+            let atag2 = document.createElement('a');
+            atag2.innerHTML = credit.cast[i].name;
+            let ptag = document.createElement('p');
+            ptag.append(atag2)
+
+            let ptag2 = document.createElement('p');
+            ptag2.className = 'character';
+            ptag2.innerHTML = credit.cast[i].character;
+
+            li.append(atag);
+            li.append(ptag);
+            li.append(ptag2);
+            ol.append(li);
 
 
-
-            console.log(credit.cast[i].name + ' : ' + credit.cast[i].character);
           }
 
 
 
 
-          console.log('=========');
-          credit.crew.forEach(function (obj) {
-            if (obj.job == 'Director') {
-              console.log(obj.name);
-              console.log(', ');
-            }
-          })
 
 
-          console.log('=========');
-          credit.crew.forEach(function (obj) {
-            if (obj.job == 'Producer') {
-              console.log(obj.name);
-              console.log(', ');
-            }
-          })
+
+          // console.log('=========');
+          // credit.crew.forEach(function (obj) {
+          //   if (obj.job == 'Producer') {
+          //     console.log(obj.name);
+          //     console.log(', ');
+          //   }
+          // })
 
 
         })
@@ -233,6 +392,54 @@
                     </div> -->
                   </div>
                 </div>
+
+
+
+
+
+
+                <section class="panel top_billed scroller">
+                  <h3 dir="auto">Cast & Crew</h3>
+
+
+
+                  <div id="cast_scroller" class="scroller_wrap should_fade is_fading">
+                    <ol class="people scroller">
+
+                      <!-- <li class="card">
+                        <a href="https://www.themoviedb.org/person/6384-keanu-reeves?language=ko">
+                          <img loading="lazy" class="profile"
+                            src="https://www.themoviedb.org/t/p/w138_and_h175_face/4D0PpNI0kmP58hgrwGC3wCjxhnm.jpg"
+                            srcset="https://www.themoviedb.org/t/p/w138_and_h175_face/4D0PpNI0kmP58hgrwGC3wCjxhnm.jpg 1x, https://www.themoviedb.org/t/p/w276_and_h350_face/4D0PpNI0kmP58hgrwGC3wCjxhnm.jpg 2x"
+                            alt="Keanu Reeves">
+                        </a>
+                        <p><a href="https://www.themoviedb.org/person/6384-keanu-reeves?language=ko">Keanu Reeves</a>
+                        </p>
+                        <p class="character">Thomas A. Anderson / Neo</p>
+                      </li>
+
+                      <li class="filler view_more">
+                        <p><a href="/movie/603-the-matrix/cast?language=ko">더 보기 <span
+                              class="glyphicons_v2 arrow-thin-right"></span></a></p>
+                      </li> -->
+
+                    </ol>
+
+                  </div>
+
+
+                </section>
+
+
+
+
+
+
+
+
+
+
+
                 <div class="anime__details__btn">
                   <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
                   <a href="#" class="watch-btn"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
