@@ -14,7 +14,7 @@
         INSERT INTO K_USERS VALUES(#{email},#{pw},#{signdate},#{nick},#{preference1},#{preference2},#{preference3},#{authority})
     </insert>
     <update id="userUpdate" parameterType="co.edu.kanumovie.user.vo.UserVO">
-        UPDATE K_USERS SET (NICK) = #{nick} WHERE EMAIL = #{email}
+        UPDATE K_USERS SET NICK = #{nick} WHERE EMAIL = #{email}
     </update>
     <delete id="userDelete" parameterType="co.edu.kanumovie.user.vo.UserVO">
         DELETE FROM K_USERS WHERE EMAIL = #{email}

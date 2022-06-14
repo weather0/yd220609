@@ -10,12 +10,12 @@
     <div align="center">
         <div><h1>로그인 폼을 만들자</h1></div>
         <div>
-        <form id="frm" action="home.do" method="post">
+        <form id="frm" action="login.do" method="post">
             <table>
                 <tr>
                     <th>아이디</th>
                     <td>
-                        <input type="text" id="id" name="id" placeholder="id를 적으셈!!" required >
+                        <input type="text" id="email" name="email" placeholder="id를 적으셈!!" required >
                     </td>
                 </tr>
                 <tr>
@@ -29,7 +29,7 @@
             </form>
             <div>
                 <input type="reset" value="취소" >
-                <input type="button" value="뒤로가기" onclick="location.href='login.do'">
+                <input type="button" value="뒤로가기" onclick="location.href='home.do'">
             </div>
         </div>
     </div>

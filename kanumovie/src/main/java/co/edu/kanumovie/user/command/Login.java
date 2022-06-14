@@ -18,8 +18,13 @@ public class Login implements Command {
 		UserVO vo = new UserVO();
 		vo.setEmail(request.getParameter("email"));
 		vo.setPw(request.getParameter("pw"));
+		System.out.println(vo.getEmail());
+		System.out.println(vo.getPw());
 		
 		vo = dao.userSelect(vo);
+		System.out.println(vo);
+		
+		
 		if(vo != null) {
 			session.setAttribute("vo", vo);
 			session.setAttribute("email", vo.getEmail()); 
@@ -30,9 +35,9 @@ public class Login implements Command {
 			session.setAttribute("preference2", vo.getPreference2());
 			session.setAttribute("preference3", vo.getPreference3());
 			session.setAttribute("authority", vo.getAuthority());
-			request.setAttribute("message", vo.getNick()+"님 환영합니다!!!");
+			request.setAttribute("message", "login");
 		} else {
-			request.setAttribute("message", "아이디 혹은 비밀번호를 확인하세요!!!");
+			request.setAttribute("message", "login실패");
 		}
 		
 		return "home/home";
