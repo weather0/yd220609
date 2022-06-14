@@ -33,9 +33,9 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public int commentDelete(CommentVO vo) {
+	public int commentDelete(int num) {
 		// TODO Auto-generated method stub
-		return map.commentDelete(vo);
+		return map.commentDelete(num);
 	}
 
 }

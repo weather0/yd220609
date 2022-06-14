@@ -10,6 +10,7 @@
 	<typeAliases>
 		<typeAlias type="co.edu.kanumovie.movie.vo.MovieVO" alias="movie"/>
 		<typeAlias type="co.edu.kanumovie.genre.vo.GenreVO" alias="genre"/>
+		<typeAlias type="co.edu.kanumovie.show.vo.ShowVO" alias="show"/>
 	</typeAliases>
   <environments default="development">
     <environment id="development">
@@ -28,5 +29,6 @@
     <mapper resource="co/edu/kanumovie/user/service/user-mapper.xml" />
     <mapper resource="co/edu/kanumovie/comment/service/comment-map.xml"/>
     <mapper resource="co/edu/kanumovie/genre/service/genre-map.xml"/>
+    <mapper resource="co/edu/kanumovie/show/service/show-map.xml"/>
   </mappers>
 </configuration>
