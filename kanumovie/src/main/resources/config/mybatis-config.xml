@@ -28,5 +28,6 @@
     <mapper resource="co/edu/kanumovie/user/service/user-mapper.xml" />
     <mapper resource="co/edu/kanumovie/comment/service/comment-map.xml"/>
     <mapper resource="co/edu/kanumovie/genre/service/genre-map.xml"/>
+    <mapper resource="co/edu/kanumovie/show/service/show-map.xml"/>
   </mappers>
 </configuration>
