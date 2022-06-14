@@ -19,7 +19,6 @@ public class ShowVO {
 	private Date firstAirDate;
 	private double voteAverage;
 	private int voteCount;
-	private int seasonNumber;
-	private int episodeCount;
+	private String name;
 
 }

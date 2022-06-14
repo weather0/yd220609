@@ -30,8 +30,7 @@
 	<select id="movieSelectGenreList" parameterType="genre" resultMap="movieMap">
 		SELECT * FROM K_MOVIES 
 		WHERE 
-		GENRE_IDS LIKE '%'||#{id}||'%' OR
-		GENRE_IDS LIKE '%'||#{id}||']%' OR
-		GENRE_IDS LIKE '['||#{id}||'%'
+		GENRE_IDS LIKE '%'||#{id}||'%'
+		ORDER BY POPULARITY DESC
 	</select>
 </mapper>
