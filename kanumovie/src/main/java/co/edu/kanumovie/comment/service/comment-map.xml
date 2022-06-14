@@ -14,6 +14,9 @@
 
 	<insert id="commentInsert" parameterType="co.edu.kanumovie.comment.vo.CommentVO"> 
 		insert into k_comment values(COMMENT_ID_SEQ.nextval, #{comments}, SYSDATE, #{id} , #{email})
-	</insert> 
-	
+	</insert>
+
+	<delete id="commentDelete" parameterType="int">
+		DELETE FROM K_COMMENT WHERE C_ID = #{cid}
+	</delete> 
 </mapper>

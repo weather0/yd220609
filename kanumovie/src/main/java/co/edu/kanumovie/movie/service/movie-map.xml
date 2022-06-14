@@ -13,6 +13,7 @@
 		<result column="original_title" property="originalTitle"/>
 		<result column="overview" property="overview"/>
 		<result column="popularity" property="popularity"/>
+		<result column="poster_path" property="posterPath"/>
 		<result column="release_date" property="releaseDate"/>
 		<result column="title" property="title"/>
 		<result column="video" property="video"/>
@@ -26,4 +27,10 @@
 		${movie.releaseDate}, ${movie.title} , ${movie.video}, 
 		${movie.voteAverage}, ${movie.voteCount})
 	</insert>
+	<select id="movieSelectGenreList" parameterType="genre" resultMap="movieMap">
+		SELECT * FROM K_MOVIES 
+		WHERE 
+		GENRE_IDS LIKE '%'||#{id}||'%'
+		ORDER BY POPULARITY DESC
+	</select>
 </mapper>

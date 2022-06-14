@@ -16,10 +16,13 @@ import co.edu.kanumovie.admin.command.Admin;
 import co.edu.kanumovie.admin.command.AdminMessage;
 import co.edu.kanumovie.admin.command.Analytics;
 import co.edu.kanumovie.comment.command.Comment;
+import co.edu.kanumovie.comment.command.CommentDelete;
 import co.edu.kanumovie.comment.command.CommentInsert;
 import co.edu.kanumovie.common.Command;
+import co.edu.kanumovie.genre.command.GenreSelectList;
 import co.edu.kanumovie.home.command.Home;
 import co.edu.kanumovie.movie.command.MovieInfo;
+import co.edu.kanumovie.movie.command.MovieSelectGenreList;
 import co.edu.kanumovie.movie.command.MovieSelectList;
 import co.edu.kanumovie.user.command.FindPw;
 import co.edu.kanumovie.user.command.FindPwForm;
@@ -60,6 +63,9 @@ public class FrontController extends HttpServlet {
 		map.put("/comment.do", new Comment());
 		map.put("/movieInfo.do", new MovieInfo());		
 		map.put("/commentInsert.do", new CommentInsert());
+		map.put("/genreSelectList.do", new GenreSelectList());
+		map.put("/movieSelectGenreList.do", new MovieSelectGenreList());
+		map.put("/commentDelete.do", new CommentDelete());
 	}
 
 	@Override

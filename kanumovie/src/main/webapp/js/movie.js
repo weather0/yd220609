@@ -2,58 +2,71 @@ document.addEventListener('DOMContentLoaded', mainFnc)
 
 function mainFnc() {
 
+	let owl = $('.owl-carousel');
+	owl.owlCarousel({
+		margin: 30,
+		nav: true,
+		loop: false,
+		rewind: true,
+		responsive: {
+			0: {
+				items: 1
+			},
+			600: {
+				items: 3
+			},
+			1000: {
+				items: 4
+			}
+		}
+	})
+
 	const API_KEY = 'api_key=e51d70c65b46eb8bd60cafccc9325e8b';
 	const BASE_URL = 'https://api.themoviedb.org/3';
 	let API_URL = BASE_URL + '/trending/movie/week?' + API_KEY + "&language=ko";
 	const poster = "https://image.tmdb.org/t/p/w500"
 
-	function getTrendingMovie(url) {
+	console.log(API_URL);
 
+	function getTrendingContent(url) {
 		fetch(url)
 			.then(response => response.json())
 			.then(data => data.results)
-			.then(list => {
-				list.forEach((obj, idx) => {
-					let num = idx + 1;
-					num = num.toString();
-					let img = document.getElementById('movie-'+num);
-					img.width = "100";
-					img.height = "150";
-					console.log(img);
+			.then(arr => {
+				let divlist;
+				if (url.includes('/movie/')) {
+					divlist = document.querySelectorAll('.movie .item');
+				} else if (url.includes('/tv/')) {
+					divlist = document.querySelectorAll('.show .item');
+				}
+				console.log(divlist);
+				console.log(arr);
+				arr.forEach((obj, idx) => {
+					let img = document.createElement('img');
 					img.setAttribute('src', poster + obj.poster_path);
 					let title = document.createElement('h5');
-					title.innerHTML = obj.title;
-					img.parentElement.append(title);
+					divlist.forEach((div, dividx) => {
+						if (dividx == idx) {
+							if (url.includes('/movie/')) {
+								title.innerHTML = obj.title;
+							} else if (url.includes('/tv/')) {
+								title.innerHTML = obj.name;
+							}
+							div.append(img);
+							div.append(title);
+							console.log(div);
+						}
+					})
 				})
 			})
-			.catch(err => console.log(err));
+
 	}
 
-	getTrendingMovie(API_URL);
-
+	getTrendingContent(API_URL);
+	
 	API_URL = BASE_URL + '/trending/tv/week?' + API_KEY + "&language=ko";
 	
-
-	function getTrendingShow(url) {
-		fetch(url)
-			.then(response => response.json())
-			.then(data => data.results)
-			.then(list => {
-				list.forEach((obj, idx) => {
-					console.log(list);
-					let num = idx + 1;
-					num = num.toString();
-					let img = document.getElementById('show-'+num);
-					img.width = "100";
-					img.height = "150";
-					console.log(img);
-					img.setAttribute('src', poster + obj.poster_path);
-					let title = document.createElement('h5');
-					title.innerHTML = obj.name;
-					img.parentElement.append(title);
-				})
-			})
-	}
-	getTrendingShow(API_URL);
+	getTrendingContent(API_URL);
+	
 
 } 
