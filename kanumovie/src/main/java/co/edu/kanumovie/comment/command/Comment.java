@@ -16,7 +16,7 @@ public class Comment implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// 공지사항 목록  command명 호출명 
+		// command명 호출명 
 				HttpSession session = request.getSession();
 				CommentService dao = new CommentServiceImpl();
 				List<CommentVO> comments = new ArrayList<CommentVO>();

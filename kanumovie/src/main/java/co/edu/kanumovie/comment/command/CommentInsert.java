@@ -1,9 +1,7 @@
 package co.edu.kanumovie.comment.command;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +32,6 @@ public class CommentInsert implements Command {
 		// 업데이트 후 다시 전체 출력하기 위한 작업
 		vo = new CommentVO();
 		vo.setEmail(email);
-		System.out.println(vo.getEmail());
 		comments = dao.commentAllList(vo);
 		
 		// 리스트를 처리한것을 싦어서 보내야함.
