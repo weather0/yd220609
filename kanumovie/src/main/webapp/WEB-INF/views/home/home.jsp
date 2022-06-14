@@ -218,6 +218,12 @@
 							}
 						}
 					})
+				    let name = "<%= request.getAttribute("message") %>";
+				    if(name=='login') {
+					    alert('로그인되었습니다.')				    	
+				    } else if(name=='logout') {
+				    	alert('로그아웃되었습니다')
+				    }
 				</script>
 			</div>
 		</div>
