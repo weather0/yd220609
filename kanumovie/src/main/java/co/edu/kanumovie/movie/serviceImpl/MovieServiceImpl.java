@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import co.edu.kanumovie.common.DataSource;
+import co.edu.kanumovie.genre.vo.GenreVO;
 import co.edu.kanumovie.movie.service.MovieMapper;
 import co.edu.kanumovie.movie.service.MovieService;
 import co.edu.kanumovie.movie.vo.MovieVO;
@@ -37,6 +38,11 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public int movieDelete(MovieVO vo) {
 		return map.movieDelete(vo);
+	}
+
+	@Override
+	public List<MovieVO> movieSelectGenreList(GenreVO vo) {
+		return map.movieSelectGenreList(vo);
 	}
 
 }
