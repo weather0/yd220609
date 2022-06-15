@@ -17,9 +17,6 @@ public class GenreSelectList implements Command {
 		GenreService dao = new GenreServiceImpl(); 
 		List<GenreVO> genrelist = dao.genreSelectList();
 		request.setAttribute("genrelist", genrelist);
-		for (int i = 0; i < genrelist.size(); i++) {
-			System.out.println(genrelist.get(i).getName());
-		}
 		return "genre/genreSelectList";
 	}
 

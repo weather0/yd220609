@@ -25,9 +25,6 @@ public class MovieSelectGenreList implements Command {
 		vo.setName(request.getParameter("name"));
 		List<MovieVO> movielist = mdao.movieSelectGenreList(vo);
 		List<ShowVO> showlist = sdao.showSelectGenreList(vo);
-		for (int i = 0; i < showlist.size(); i++) {
-			System.out.println(showlist.get(i).getPosterPath());
-		}
 		request.setAttribute("movielist", movielist);
 		request.setAttribute("showlist", showlist);
 		return "movie/movieSelectGenreList";
