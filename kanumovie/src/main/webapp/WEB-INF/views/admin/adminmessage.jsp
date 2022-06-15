@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head> 
@@ -34,16 +35,21 @@
 	color:white;
 }
 
-
 </style>
 
 </head>
 <body>
 
 
+<br>
+
+<div>
+	<h1 align="center">신고 ${reportuserlistsize }건</h1>
+	
+</div>
 
 
-<!-- table start -->
+<!-- report table start -->
 
 <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
@@ -59,9 +65,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Nick</th>
                                     <th scope="col">SignDate</th>
-                                    <th scope="col">preference1</th>
-                                    <th scope="col">preference2</th>
-                                    <th scope="col">preference3</th>
+                                    <th scope="col">report</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,29 +79,101 @@
                                     <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
                                 </tr> -->
                                
-                               <c:forEach items="${list}" var="l">
+                               <c:forEach items="${reportuserlist}" var="l">
                                <tr>
                                	<td>
                                	<input class="form-check-input" type="checkbox">
                                	</td>
-                               	<td>${l.email } </td>
-                               	<td>${l.nick } </td>
-                               	<td> <fmt:formatDate value="${l.signdate}" 
-        							pattern="yyyy년 MM월 dd일" /> 
+                               	<td>${l.email}</td>
+                               	<td>${l.nick}</td>
+                               	<td><fmt:formatDate value="${l.signdate}" 
+        							pattern="yyyy년 MM월 dd일 hh시mm분" />
         						</td>
-                               	<td>${l.preference1} </td>
-                               	<td>${l.preference2} </td>
-                               	<td>${l.preference3} </td>
+        						<td>욕설/비방</td>
+                               	<!-- <td><button class="btn btn-sm btn-primary" align="center">access</button></td> -->
+                               	
                                </tr> 
                                </c:forEach>
                              
                             </tbody>
                         </table>
+                        <a class="btn btn-sm btn-primary" onclick="updateblockcheck()" style=" margin-top: 20px;
+    color: white">access</a>
+                        <a class="btn btn-sm btn-primary" onclick="updatereportcheck()" style=" margin-top: 20px;
+    color: white">cancel</a>
                     </div>
                 </div>
             </div>
 
-<!--  table end -->
+<!-- report table end -->
+
+
+<div>
+	<h1 align="center">차단된 유저 ${blacklistsize}명</h1>
+	
+</div>
+
+<!-- block table start -->
+
+<div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Users List</h6>
+                        <a href="">Show All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Nick</th>
+                                    <th scope="col">SignDate</th>
+                                    <th scope="col">block</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <!--   <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>01 Jan 2045</td>
+                                    <td>INV-0123</td>
+                                    <td>Jhon Doe</td>
+                                    <td>$123</td>
+                                    <td>Paid</td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                </tr> -->
+                               
+                               <c:forEach items="${blacklist}" var="l">
+                               <tr>
+                               	<td>
+                               	<input class="form-check-input" type="checkbox">
+                               	</td>
+                               	<td>${l.email}</td>
+                               	<td>${l.nick}</td>
+                               	<td><fmt:formatDate value="${l.signdate}" 
+        							pattern="yyyy년 MM월 dd일 hh시mm분" />
+        						</td>
+        						<td>욕설/비방</td>
+                               	<!-- <td><button class="btn btn-sm btn-primary" align="center">access</button></td> -->
+                               	
+                               </tr> 
+                               </c:forEach>
+                             
+                            </tbody>
+                        </table>
+                        <a class="btn btn-sm btn-primary" onclick="updateblockcheck()" style=" margin-top: 20px;
+    color: white">access</a>
+                        <a class="btn btn-sm btn-primary" onclick="updatereportcheck()" style=" margin-top: 20px;
+    color: white">cancel</a>
+                    </div>
+                </div>
+            </div>
+
+<!--  block talbe end -->
+
+
+
+
 
      <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -106,6 +182,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
 
 </body>
 </html>

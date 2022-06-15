@@ -9,6 +9,8 @@ public class MovieInfo implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		String id = request.getParameter("id");
+		request.setAttribute("movieid", id);
 		return "movie/movieInfo";
 	}
 
