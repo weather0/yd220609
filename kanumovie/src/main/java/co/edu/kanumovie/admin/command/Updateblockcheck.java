@@ -1,6 +1,7 @@
 package co.edu.kanumovie.admin.command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,24 +12,29 @@ import co.edu.kanumovie.admin.serviceimpl.AdminServiceImpl;
 import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.user.vo.UserVO;
 
-public class AdminMessage implements Command {
+public class Updateblockcheck implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		//신고 받은 유저 수 
-		List<UserVO> list = new ArrayList<UserVO>();
+		
+		String[] checkBoxArr = request.getParameterValues("checkBoxArr[]");
+		
 		AdminService dao = new AdminServiceImpl();
-		list = dao.selectReportUserList();
-		request.setAttribute("reportuserlist", list);
-		request.setAttribute("reportuserlistsize", list.size());
 		
-		//블랙리스트 유저 수
+		for(int i = 0; i < checkBoxArr.length; i++) {
+			String email = checkBoxArr[i];
+			System.out.println(email);
+//			email = email.strip(); 
+//			int n = dao.updateBlockCheck("test1");
+			int n = dao.updateBlockCheck(email);
+			if(n >= 1) {
+				System.out.println("=======업데이트 성공=======");
+			} else {
+				System.out.println("=========업데이트 실패=========");
+			}
+		}
 		
-		List<UserVO> blacklist = new ArrayList<UserVO>();
-		blacklist = dao.selectBlackList();
 		
-		request.setAttribute("blacklist", blacklist);
-		request.setAttribute("blacklistsize", blacklist.size());
 		return "admin/adminmessage";
 	}
 
