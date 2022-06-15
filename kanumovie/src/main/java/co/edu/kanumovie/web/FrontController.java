@@ -75,11 +75,7 @@ public class FrontController extends HttpServlet {
 		map.put("/genreSelectList.do", new GenreSelectList());
 		map.put("/movieSelectGenreList.do", new MovieSelectGenreList());
 		map.put("/commentDelete.do", new CommentDelete());
-<<<<<<< HEAD
 		map.put("/moviePlay.do", new MoviePlay());
-=======
-		
->>>>>>> branch 'dev' of https://github.com/Tessa1217/Kanumovie
 	}
 
 	@Override
