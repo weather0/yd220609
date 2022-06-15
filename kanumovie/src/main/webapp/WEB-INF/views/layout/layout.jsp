@@ -37,9 +37,9 @@
 </head>
 <body>
 	<tiles:insertAttribute name="header" />
-	<!-- admin으로 접속 했을 때만 출력되도록 변경예정 -->
+	<c:if test="${authority eq 'admin'}">
 	<tiles:insertAttribute name="sidebar" />
-
+	</c:if>
 	<tiles:insertAttribute name="body" />
 	<tiles:insertAttribute name="footer" />
 

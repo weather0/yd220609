@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import co.edu.kanumovie.admin.command.Admin;
 import co.edu.kanumovie.admin.command.AdminMessage;
 import co.edu.kanumovie.admin.command.Analytics;
+import co.edu.kanumovie.admin.command.UpdateReportCheck;
+import co.edu.kanumovie.admin.command.Updateblockcheck;
 import co.edu.kanumovie.comment.command.Comment;
 import co.edu.kanumovie.comment.command.CommentDelete;
 import co.edu.kanumovie.comment.command.CommentInsert;
@@ -50,6 +52,8 @@ public class FrontController extends HttpServlet {
 		map.put("/movieSelectList.do", new MovieSelectList());
 		map.put("/admin.do", new Admin());
 		map.put("/adminmessage.do", new AdminMessage());
+		map.put("/updateblockcheck.do", new Updateblockcheck());		
+		map.put("/updatereportcheck.do", new UpdateReportCheck());		
 		map.put("/analytics.do", new Analytics());
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
