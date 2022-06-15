@@ -13,7 +13,7 @@ public class CommentVO {
 	private int cid;
 	private String comments;
 	private Date wdate;
-	private int id; // movies 테이블 영화아이디
+	private String id; // movies 테이블 영화아이디
 	private String email; // user 테이블 email
 	
 }

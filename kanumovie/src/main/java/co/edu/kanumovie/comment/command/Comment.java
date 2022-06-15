@@ -22,13 +22,14 @@ public class Comment implements Command {
 				List<CommentVO> comments = new ArrayList<CommentVO>();
 				CommentVO vo = new CommentVO();
 				String email = (String) session.getAttribute("email");
+				
 				vo.setEmail(email);
 				comments = dao.commentAllList(vo);
 				
 				// 리스트를 처리한것을 싦어서 보내야함.
 				request.setAttribute("comments", comments);
 				
-				return "comment/comment";
+				return "movie/movieInfoghtest";
 	}
 
 }
