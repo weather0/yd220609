@@ -25,14 +25,15 @@ String email = (String) session.getAttribute("email");
 					<h6>
 						${comments.nick } - <span>${comments.wdate }</span>
 						<c:if test="${comments.email == email }">
-
-							<a href="#">수정</a>
+							<!-- 수정 삭제시 댓글의 번호 값을 넘겨줌 -->
+							<a href="#" onclick="updateviewBtn(${comments.cid})">수정</a>
 							<a href="#" onclick="commentDelete(${comments.cid})">삭제</a>
 						</c:if>
 						<a href="#">신고</a>
 					</h6>
-
-					<p>${comments.comments }</p>
+					<form id="myform" action="#">
+					<p id="p_${comments.cid}">${comments.comments }</p>
+					</form>
 				</div>
 			</div>
 		</c:forEach>
@@ -62,19 +63,38 @@ String email = (String) session.getAttribute("email");
 		  var httpRequest = null;
 		  if(window.ActiveXObject){
 				 try{
-				 httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+					 httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
 				 } catch(e) {
-					     try{
-						       httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-						    } catch (e2) { httpRequest = null;
-						 }          
-						      }      
-						      }      
-						      else if(window.XMLHttpRequest){ 
-							               httpRequest = new window.XMLHttpRequest(); 
-							           }          
-							  return httpRequest;   
-							         }
+			     try{
+			         httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				 } catch (e2) { httpRequest = null;
+			 }          
+		   }      
+		    }      
+		     else if(window.XMLHttpRequest){ 
+		           httpRequest = new window.XMLHttpRequest(); 
+		        }          
+		 return httpRequest;   
+	}
+	
+	function updateviewBtn(cid) {
+		
+		let p = document.getElementById('p_'+cid);		
+		let textarea = document.createElement('textarea');
+		textarea.setAttribute('id',cid);
+		p.append(textarea);
+		
+		let input = document.createElement('input');
+		input.setAttribute('type', 'submit');
+		input.setAttribute('id','changeBtn');
+
+		p.append(input);
+		
+	}
+	
+	
+	
+	
 		
 	
 	//댓글 삭제창
