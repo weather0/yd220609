@@ -10,11 +10,11 @@
 <body>
   <header class="header">
         <div class="container">
-            <div class="salesrow">
+            <div class="salesrow">	
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="./index.html">
-                            <img src="img/logo.png" alt="">
+                            <img src="logo.png" alt="">
                         </a>
                     </div>
                 </div>
