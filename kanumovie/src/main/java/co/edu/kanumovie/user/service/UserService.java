@@ -2,6 +2,7 @@ package co.edu.kanumovie.user.service;
 
 import java.util.List;
 
+import co.edu.kanumovie.user.vo.PreferVO;
 import co.edu.kanumovie.user.vo.UserVO;
 
 public interface UserService {
@@ -10,5 +11,9 @@ public interface UserService {
 	public UserVO userSelect(UserVO vo); // 한 개 유저 정보.
 	public int userInsert(UserVO vo); // 유저 회원가입.
 	public int userUpdate(UserVO vo); // 유저 정보 변경.
+	public int userUpdatePw(UserVO vo); // 유저 정보 pw 변경.
+	public int userUpdatePrefer(UserVO vo); // 유저 정보 선호 영화 변경.
 	public int userDelete(UserVO vo); // 유저 회원탈퇴.
+	
+	public List<PreferVO> perferList(); // 선호 영화 선택용 영화들 리스트.
 }

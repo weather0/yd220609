@@ -29,6 +29,8 @@ import co.edu.kanumovie.user.command.FindPwForm;
 import co.edu.kanumovie.user.command.Login;
 import co.edu.kanumovie.user.command.LoginForm;
 import co.edu.kanumovie.user.command.Logout;
+import co.edu.kanumovie.user.command.PreferGenreForm;
+import co.edu.kanumovie.user.command.PwChange;
 import co.edu.kanumovie.user.command.SignUp;
 import co.edu.kanumovie.user.command.SignUpForm;
 import co.edu.kanumovie.user.command.UserManage;
@@ -56,6 +58,8 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do",new Logout());
 		map.put("/userManageForm.do", new UserManageForm());
 		map.put("/userManage.do", new UserManage());
+		map.put("/pwChange.do", new PwChange());
+		map.put("/preferGenreForm.do", new PreferGenreForm());
 		map.put("/signUpForm.do", new SignUpForm());
 		map.put("/signUp.do", new SignUp());
 		map.put("/findPwForm.do", new FindPwForm());
@@ -66,6 +70,7 @@ public class FrontController extends HttpServlet {
 		map.put("/genreSelectList.do", new GenreSelectList());
 		map.put("/movieSelectGenreList.do", new MovieSelectGenreList());
 		map.put("/commentDelete.do", new CommentDelete());
+		
 	}
 
 	@Override

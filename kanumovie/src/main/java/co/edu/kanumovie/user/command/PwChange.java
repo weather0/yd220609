@@ -9,19 +9,16 @@ import co.edu.kanumovie.user.service.UserService;
 import co.edu.kanumovie.user.serviceImpl.UserServiceImpl;
 import co.edu.kanumovie.user.vo.UserVO;
 
-public class UserManage implements Command {
+public class PwChange implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// 유저 정보 변경 DB보내고 세션 변경하고 홈페이지로. >> 변경: 닉네임 변경 기능만.
+		// 비밀번호 변경 db에 넣고 유저 관리로 돌아가기.
 		UserService dao = new UserServiceImpl();
 		UserVO vo = new UserVO();
 		vo.setEmail(request.getParameter("email"));
-		vo.setNick(request.getParameter("nick"));
-		System.out.println(vo.getNick());
-		System.out.println(vo.getEmail());
-
-		dao.userUpdate(vo);
+		vo.setPw(request.getParameter("pw"));
+		dao.userUpdatePw(vo);
 		
 		// 세션 변경
 		HttpSession session = request.getSession();
@@ -44,7 +41,7 @@ public class UserManage implements Command {
 			session2.setAttribute("authority", vo2.getAuthority());
 		}
 		
-		return "home/home";
+		return "user/userManageForm";
 	}
 
 }
