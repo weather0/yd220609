@@ -1,0 +1,201 @@
+@charset "UTF-8";
+
+html {
+  --scrollerGrey: 219, 219, 219;
+  --lightGrey: 227, 227, 227;
+  --darkerGrey: 200, 200, 200;
+  --tmdbDarkBlue: 3, 37, 65;
+  --tmdbLightBlue: 1, 180, 228;
+  --tmdbLighterGreen: 192, 254, 207;
+  --tmdbLightGreen: 30, 213, 169;
+  --tmdbLogoGreen: 144, 206, 161;
+  --tmdbLogoOrange: 253, 193, 112;
+  --tmdbLogoRed: 217, 59, 99;
+  --accountSilver: 149, 149, 149;
+  --accountPink: 234, 20, 140;
+  --accountPurple: 128, 91, 231;
+  --accountGreen: 1, 210, 119;
+  --accountTeal: 1, 198, 172;
+  --accountLightBlue: 1, 180, 228;
+  --accountBlue: 1, 119, 210;
+  --accountOrange: 210, 119, 1;
+  --accountYellow: 210, 144, 1;
+  --accountRed: 212, 2, 66;
+  --imageBorderRadius: 8px;
+  --maxPrimaryPageWidth: 1400px;
+}
+
+
+
+/* 포스터 */
+div.poster {
+  float: left;
+  width: 300px;
+  height: 430px;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.posterImg {
+  border-radius: 8px;
+}
+
+
+/* 영화 스펙 */
+div.details {
+  float: right;
+}
+
+/* 코멘트 */
+div.reviews {
+  float: left;
+}
+
+/* 추천바 */
+div.rightbar {
+  float: right;
+}
+
+/* 배우 섹션 start */
+div.product__sidebar__view__item {
+  height: 170px;
+  position: relative;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+section.panel {
+  clear: both;
+  background: #0b0c2a;
+  border: none;
+  /* margin-top: 1.25rem; */
+
+}
+
+section.panel h3 {
+  color: white;
+}
+
+
+ol.people.scroller::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+ol.people.scroller::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--scrollerGrey), 1);
+  border-radius: 20px;
+}
+
+ol.people.scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+ol.people.scroller {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-bottom: 10px;
+}
+
+ol.people {
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* border: 1px solid rgba(var(--lightGrey), 1); */
+  /* background-color: #fff; */
+}
+
+ol.people li.card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 4px;
+  /* border: 1px solid rgba(var(--lightGrey), 1); */
+  padding-bottom: 10px;
+  border-radius: var(--imageBorderRadius);
+  overflow: hidden;
+  background: #1d1e39;
+}
+
+
+ol.people li {
+  min-width: 140px;
+  width: 140px;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+ol.people li>a {
+  min-width: 138px;
+  width: 138px;
+  height: 175px;
+  display: block;
+}
+
+
+section.panel ol.people li a+p {
+  padding-top: 10px;
+}
+
+
+ol.people li p {
+  font-size: 1em;
+  margin: 0;
+  padding: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #b7b7b7;
+}
+
+
+ol.people li p a {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* 배우 섹션 스크롤 */
+div.scroller_wrap {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+div.scroller_wrap.should_fade.is_hidden:after {
+  transition: linear 0.3s;
+  opacity: 0;
+}
+
+
+div.scroller_wrap.should_fade:after {
+  content: '';
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #0b0c2a 100%);
+  will-change: opacity;
+  pointer-events: none;
+}
+
+/* 배우 섹션 end */
+
+/* 추천영화 */
+.product__sidebar__view__item h5 {
+  text-shadow: 2px 2px 3px black;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 26px;
+}
