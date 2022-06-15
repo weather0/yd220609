@@ -30,5 +30,30 @@ public class AdminServiceImpl implements AdminService {
 		return map.selectAllUserCount();
 	}
 
+	@Override
+	public List<UserVO> selectReportUserList() {
+		return map.selectReportUserList();
+	}
+
+	@Override
+	public int updateBlockCheck(String email) {
+		
+		return map.updateBlockCheck(email);
+	}
+
+	@Override
+	public int updateReportCheck(String email) {
+		
+		return map.updateReportCheck(email);
+	}
+
+	@Override
+	public List<UserVO> selectBlackList() {
+		
+		return map.selectBlackList();
+	}
+
+	
+
 
 }

@@ -5,13 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.edu.kanumovie.common.Command;
 
-public class MovieInfo implements Command {
+public class MoviePlay implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		request.setAttribute("movieid", id);
-		return "movie/movieInfo";
+		return "movie/moviePlay";
 	}
 
 }

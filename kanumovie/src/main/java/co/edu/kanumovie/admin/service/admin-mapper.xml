@@ -20,5 +20,27 @@ to_char(signdate, 'yy/mm/dd') = to_char(sysdate, 'yy/mm/dd')
 SELECT count(*) FROM k_users
 </select>
 
+<select id="selectReportUserList" resultType="co.edu.kanumovie.user.vo.UserVO">
+SELECT * FROM k_users WHERE report = 'y'
+</select>
+
+<select id="selectBlackList" resultType="co.edu.kanumovie.user.vo.UserVO">
+
+SELECT * FROM k_users WHERE blockcheck = 'y'
+</select>
+
+
+
+<update id="updateBlockCheck" parameterType="String">
+	<!-- update k_users set blockcheck = 'y' 
+	WHERE email = #{email} -->
+	UPDATE k_USERS SET blockcheck = 'y', report = 'n' WHERE email = #{email}
+</update>
+
+<update id="updateReportCheck" parameterType="String">
+
+	UPDATE k_users SET report = 'n' WHERE email = #{email}
+</update>
+
 
 </mapper>

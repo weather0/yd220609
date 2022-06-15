@@ -37,5 +37,12 @@ public class CommentServiceImpl implements CommentService {
 		// TODO Auto-generated method stub
 		return map.commentDelete(num);
 	}
+	
+	@Override
+	public String commentSelect(int num) {
+		// TODO Auto-generated method stub
+		return map.commentSelect(num);
+	}
+	
 
 }

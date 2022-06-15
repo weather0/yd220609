@@ -6,6 +6,7 @@ public class ShowDataMain {
 		ShowData data = new ShowData();
 		String result = data.getData();
 		System.out.println(result);
+		
 	}
 
 }
