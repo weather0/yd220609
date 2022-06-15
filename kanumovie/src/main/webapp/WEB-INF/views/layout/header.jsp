@@ -13,8 +13,8 @@
             <div class="salesrow">	
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
-                            <img src="logo.png" alt="">
+                        <a href="home.do">
+                            <img src="img/kanumovielogo.png" alt="">
                         </a>
                     </div>
                 </div>
