@@ -53,6 +53,18 @@ public class AdminServiceImpl implements AdminService {
 		return map.selectBlackList();
 	}
 
+	@Override
+	public int updateUnblockCheck(String email) {
+		
+		return map.updateUnblockCheck(email);
+	}
+
+	@Override
+	public int selectAllReportUsers() {
+		
+		return map.selectAllReportUsers();
+	}
+
 	
 
 

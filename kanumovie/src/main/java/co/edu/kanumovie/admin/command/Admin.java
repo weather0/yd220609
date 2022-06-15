@@ -26,12 +26,17 @@ public class Admin implements Command {
 		
 		//오늘 가입한 회원 수
 		int todayUsersCount = dao.todayUsersCount();
-		request.setAttribute("usersCount", todayUsersCount);
+		request.setAttribute("todayUsersCount", todayUsersCount);
 		
 		//총 회원 수 
 		
-		int AllUserCount = dao.selectAllUserCount();
-		request.setAttribute("userscount", AllUserCount);
+		int allUserCount = dao.selectAllUserCount();
+		request.setAttribute("allUsersCount", allUserCount);
+		
+		//신고 받은 유저 수
+		
+		int allReportUsers = dao.selectAllReportUsers();
+		request.setAttribute("reportusers", allReportUsers);
 		
 		return "admin/admin";
 	}

@@ -4,7 +4,7 @@
 
 
  <select id="selectAllUserList" resultType="co.edu.kanumovie.user.vo.UserVO" >
-        SELECT * FROM K_USERS ORDER BY SIGNDATE
+        SELECT * FROM K_USERS ORDER BY SIGNDATE DESC
  </select>
 
 <select id="todayUsersCount" resultType="int">
@@ -41,6 +41,16 @@ SELECT * FROM k_users WHERE blockcheck = 'y'
 
 	UPDATE k_users SET report = 'n' WHERE email = #{email}
 </update>
+
+<update id="updateUnblockCheck" parameterType="String">
+	UPDATE k_users SET blockcheck = 'n' WHERE email = #{email} 
+
+</update>
+
+<select id="selectAllReportUsers" resultType="int">
+SELECT count(*) FROM k_users WHERE report = 'y'
+</select>
+
 
 
 </mapper>

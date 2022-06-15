@@ -2499,6 +2499,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input[type="checkbox"] {
+  margin-left: auto !important;
+  background-color: white;
   border-radius: .25em
 }
 

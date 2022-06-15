@@ -17,6 +17,7 @@ import co.edu.kanumovie.admin.command.AdminMessage;
 import co.edu.kanumovie.admin.command.Analytics;
 import co.edu.kanumovie.admin.command.UpdateReportCheck;
 import co.edu.kanumovie.admin.command.Updateblockcheck;
+import co.edu.kanumovie.admin.command.Updateunblockcheck;
 import co.edu.kanumovie.comment.command.Comment;
 import co.edu.kanumovie.comment.command.CommentDelete;
 import co.edu.kanumovie.comment.command.CommentInsert;
@@ -57,7 +58,8 @@ public class FrontController extends HttpServlet {
 		map.put("/admin.do", new Admin());
 		map.put("/adminmessage.do", new AdminMessage());
 		map.put("/updateblockcheck.do", new Updateblockcheck());		
-		map.put("/updatereportcheck.do", new UpdateReportCheck());		
+		map.put("/updatereportcheck.do", new UpdateReportCheck());	
+		map.put("/updateunblockcheck.do", new Updateunblockcheck());
 		map.put("/analytics.do", new Analytics());
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
