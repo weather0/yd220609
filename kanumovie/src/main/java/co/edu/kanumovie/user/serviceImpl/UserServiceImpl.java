@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import co.edu.kanumovie.common.DataSource;
 import co.edu.kanumovie.user.service.UserMapper;
 import co.edu.kanumovie.user.service.UserService;
+import co.edu.kanumovie.user.vo.PreferVO;
 import co.edu.kanumovie.user.vo.UserVO;
 
 public class UserServiceImpl implements UserService {
@@ -42,6 +43,21 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int userDelete(UserVO vo) {
 		return map.userDelete(vo);
+	}
+
+	@Override
+	public int userUpdatePw(UserVO vo) {
+		return map.userUpdatePw(vo);
+	}
+
+	@Override
+	public int userUpdatePrefer(UserVO vo) {
+		return map.userUpdatePrefer(vo);
+	}
+
+	@Override
+	public List<PreferVO> perferList() {
+		return map.perferList();
 	}
 
 }
