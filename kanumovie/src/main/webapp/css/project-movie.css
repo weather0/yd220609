@@ -1,4 +1,7 @@
-#movielist-container {
+h1 {
+	color: #fff;
+}
+.infinite {
 	width: 90%;
 	margin: 0 auto;
 }
@@ -8,6 +11,7 @@
 	grid-template-columns: 20% 20% 20% 20% 20%;
 	gap: 1%;
 	justify-content: center;
+	margin-top: 4.5%;
 }
 
 .movie-card, .show-card {

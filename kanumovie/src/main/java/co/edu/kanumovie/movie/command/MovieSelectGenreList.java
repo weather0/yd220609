@@ -27,6 +27,8 @@ public class MovieSelectGenreList implements Command {
 		List<ShowVO> showlist = sdao.showSelectGenreList(vo);
 		request.setAttribute("movielist", movielist);
 		request.setAttribute("showlist", showlist);
+		request.setAttribute("genre", vo.getName());
+		request.setAttribute("id", vo.getId());
 		return "movie/movieSelectGenreList";
 	}
 
