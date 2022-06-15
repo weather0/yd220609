@@ -65,6 +65,12 @@ public class AdminServiceImpl implements AdminService {
 		return map.selectAllReportUsers();
 	}
 
+	@Override
+	public int selectCountWeeklySignUpUsersCount(String weeks) {
+		
+		return map.selectCountWeeklySignUpUsersCount(weeks);
+	}
+
 	
 
 

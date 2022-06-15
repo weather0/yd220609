@@ -10,6 +10,7 @@ public interface AdminService {
 	public List<UserVO> selectReportUserList(); //신고 받은 유저 리스트 
 	public List<UserVO> selectBlackList(); //블랙리스트
 	public int todayUsersCount(); //오늘 가입한 유저 수
+	public int selectCountWeeklySignUpUsersCount(String weeks); // 주간 회원 가입 유저 수
 	public int selectAllUserCount(); // 모든 유저 수 
 	public int selectAllReportUsers(); //신고 받은 유저 수 
 	public int updateBlockCheck(String email); //차단 박기

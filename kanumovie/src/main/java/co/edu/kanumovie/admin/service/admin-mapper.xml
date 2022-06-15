@@ -51,6 +51,9 @@ SELECT * FROM k_users WHERE blockcheck = 'y'
 SELECT count(*) FROM k_users WHERE report = 'y'
 </select>
 
+<select id="selectCountWeeklySignUpUsersCount" resultType="int">
 
+SELECT COUNT(*) FROM k_users WHERE to_char(signdate) = #{dateToStr}
+</select>
 
 </mapper>
