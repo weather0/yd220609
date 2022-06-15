@@ -24,6 +24,7 @@ import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.genre.command.GenreSelectList;
 import co.edu.kanumovie.home.command.Home;
 import co.edu.kanumovie.movie.command.MovieInfo;
+import co.edu.kanumovie.movie.command.MovieInfoghtest;
 import co.edu.kanumovie.movie.command.MovieSelectGenreList;
 import co.edu.kanumovie.movie.command.MovieSelectList;
 import co.edu.kanumovie.user.command.FindPw;
@@ -74,6 +75,7 @@ public class FrontController extends HttpServlet {
 		map.put("/genreSelectList.do", new GenreSelectList());
 		map.put("/movieSelectGenreList.do", new MovieSelectGenreList());
 		map.put("/commentDelete.do", new CommentDelete());
+		map.put("/movieInfoghtest.do", new MovieInfoghtest());
 		
 	}
 
