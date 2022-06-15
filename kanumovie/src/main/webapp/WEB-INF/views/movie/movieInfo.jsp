@@ -5,184 +5,6 @@
   <head>
     <meta charset="UTF-8">
     <title>MovieInfo</title>
-    <style>
-      html {
-        --scrollerGrey: 219, 219, 219;
-        --lightGrey: 227, 227, 227;
-        --darkerGrey: 200, 200, 200;
-        --tmdbDarkBlue: 3, 37, 65;
-        --tmdbLightBlue: 1, 180, 228;
-        --tmdbLighterGreen: 192, 254, 207;
-        --tmdbLightGreen: 30, 213, 169;
-        --tmdbLogoGreen: 144, 206, 161;
-        --tmdbLogoOrange: 253, 193, 112;
-        --tmdbLogoRed: 217, 59, 99;
-        --accountSilver: 149, 149, 149;
-        --accountPink: 234, 20, 140;
-        --accountPurple: 128, 91, 231;
-        --accountGreen: 1, 210, 119;
-        --accountTeal: 1, 198, 172;
-        --accountLightBlue: 1, 180, 228;
-        --accountBlue: 1, 119, 210;
-        --accountOrange: 210, 119, 1;
-        --accountYellow: 210, 144, 1;
-        --accountRed: 212, 2, 66;
-        --imageBorderRadius: 8px;
-        --maxPrimaryPageWidth: 1400px;
-      }
-
-      div.scroller_wrap {
-        position: relative;
-        top: 0;
-        left: 0;
-      }
-
-      div.scroller_wrap.should_fade.is_hidden:after {
-        transition: linear 0.3s;
-        opacity: 0;
-      }
-
-
-      div.scroller_wrap.should_fade:after {
-        content: '';
-        width: 60px;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        right: 0;
-        background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #0b0c2a 100%);
-        will-change: opacity;
-        pointer-events: none;
-      }
-
-      div.poster {
-        float: left;
-      }
-
-      div.details {
-        float: right;
-      }
-
-      div.reviews {
-        float: left;
-      }
-
-      div.rightbar {
-        float: right;
-      }
-
-
-      section.panel {
-        clear: both;
-        background: #0b0c2a;
-        border: none;
-        /* margin-top: 1.25rem; */
-
-      }
-
-      section.panel h3 {
-        color: white;
-      }
-
-
-      ol.people.scroller::-webkit-scrollbar {
-        height: 8px;
-        width: 8px;
-      }
-
-      ol.people.scroller::-webkit-scrollbar-thumb {
-        background-color: rgba(var(--scrollerGrey), 1);
-        border-radius: 20px;
-      }
-
-      ol.people.scroller::-webkit-scrollbar-track {
-        background: transparent;
-      }
-
-      ol.people.scroller {
-        -webkit-overflow-scrolling: touch;
-        overflow-y: hidden;
-        overflow-x: scroll;
-        margin-left: -10px;
-        margin-top: -10px;
-        padding-bottom: 10px;
-      }
-
-      ol.people {
-        list-style-type: none;
-        list-style-position: inside;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        position: relative;
-        top: 0;
-        left: 0;
-      }
-
-
-      .card {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(var(--lightGrey), 1);
-        background-color: #fff;
-      }
-
-
-
-      ol.people li.card {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        margin-left: 10px;
-        margin-right: 4px;
-        /* border: 1px solid rgba(var(--lightGrey), 1); */
-        padding-bottom: 10px;
-        border-radius: var(--imageBorderRadius);
-        overflow: hidden;
-        background: #1d1e39;
-      }
-
-
-      ol.people li {
-        min-width: 140px;
-        width: 140px;
-        background-color: #fff;
-        margin-right: 10px;
-      }
-
-      ol.people li>a {
-        min-width: 138px;
-        width: 138px;
-        height: 175px;
-        display: block;
-      }
-
-
-      section.panel ol.people li a+p {
-        padding-top: 10px;
-      }
-
-
-      ol.people li p {
-        font-size: 1em;
-        margin: 0;
-        padding: 0 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: #b7b7b7;
-      }
-
-
-      ol.people li p a {
-        font-weight: bold;
-        color: #fff;
-      }
-
-      .product__sidebar__view__item {
-        height: 170px;
-        position: relative;
-        border-radius: 5px;
-        margin-bottom: 10px;
-      }
-    </style>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -199,7 +21,10 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
+    <!-- movieInfo스타일 -->
+    <link rel="stylesheet" href="css/movieInfo.css">
 
+    <!-- movieInfo스크립트 -->
     <script src="js/movieInfo.js"></script>
 
 
@@ -237,10 +62,11 @@
         <div class="anime__details__content">
           <div class="row">
             <div class="col-lg-4 poster">
-              <div class="anime__details__pic">
-                <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
-              </div>
+              <img class="posterImg">
+              <!-- <div class="anime__details__pic"> -->
+              <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
+              <!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
+              <!-- </div> -->
             </div>
             <div class="col-lg-8 details">
               <div class="anime__details__text">
@@ -401,10 +227,10 @@
               </div>
 
 
-              <div class="product__sidebar__view__item set-bg"
+              <!-- <div class="product__sidebar__view__item set-bg"
                 data-setbg="https://image.tmdb.org/t/p/w300/YfMEwVRe1c5rhFYmL2P8153T8x.jpg">
                 <h5><a href="#">매트릭스 2: 리로디드</a></h5>
-              </div>
+              </div> -->
 
               <!-- <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-1.jpg">
                 <div class="ep">18 / ?</div>
@@ -456,8 +282,8 @@
     <div class="search-model">
       <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch"><i class="icon_close"></i></div>
-        <form class="search-model-form">
-          <input type="text" id="search-input" placeholder="Search here.....">
+        <form class="search-model-form" name="searchFn" action="movieSearch.do" method="get">
+          <input type="text" id="search-input" name="query" placeholder="Search here.....">
         </form>
       </div>
     </div>
