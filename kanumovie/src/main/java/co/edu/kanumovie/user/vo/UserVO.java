@@ -2,6 +2,7 @@ package co.edu.kanumovie.user.vo;
 
 import java.util.Date;
 
+import co.edu.kanumovie.genre.vo.GenreVO;
 import lombok.Getter;
 import lombok.Setter;
 

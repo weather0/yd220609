@@ -30,6 +30,7 @@
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 
+
 <!-- javascript -->
 
 <!-- <script src="assets/vendors/jquery.min.js"></script>
@@ -45,8 +46,8 @@
 
 
 	<!-- Js Plugins -->
-<!-- 	<script src="assets/vendors/highlight.js"></script>
-	<script src="assets/js/app.js"></script> -->
+	<script src="assets/vendors/highlight.js"></script>
+	<script src="assets/js/app.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/player.js"></script>

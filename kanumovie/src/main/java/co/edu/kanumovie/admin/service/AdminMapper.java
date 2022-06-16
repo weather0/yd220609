@@ -2,6 +2,8 @@ package co.edu.kanumovie.admin.service;
 
 import java.util.List;
 
+import co.edu.kanumovie.admin.vo.BannerVO;
+import co.edu.kanumovie.admin.vo.PreferredGenreVO;
 import co.edu.kanumovie.user.vo.UserVO;
 
 public interface AdminMapper {
@@ -16,4 +18,8 @@ public interface AdminMapper {
 	public int updateBlockCheck(String email); //차단 박기
 	public int updateReportCheck(String email); //신고 취소 
 	public int updateUnblockCheck(String email); //차단 취소
+	public List<PreferredGenreVO> selectUsersPreferredGenre(); //유저 선호 장르 
+	public int insertBanner(BannerVO vo); //배너 추가
+	public int updateBanner(BannerVO vo); //배너 수정
+	public int deleteBanner(BannerVO vo); //배너 삭제 
 }
