@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import co.edu.kanumovie.admin.service.AdminMapper;
 import co.edu.kanumovie.admin.service.AdminService;
+import co.edu.kanumovie.admin.vo.PreferredGenreVO;
 import co.edu.kanumovie.common.DataSource;
 import co.edu.kanumovie.user.vo.UserVO;
 
@@ -69,6 +70,12 @@ public class AdminServiceImpl implements AdminService {
 	public int selectCountWeeklySignUpUsersCount(String weeks) {
 		
 		return map.selectCountWeeklySignUpUsersCount(weeks);
+	}
+
+	@Override
+	public List<PreferredGenreVO> selectUsersPreferredGenre() {
+	
+		return map.selectUsersPreferredGenre();
 	}
 
 	

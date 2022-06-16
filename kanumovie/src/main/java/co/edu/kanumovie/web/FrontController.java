@@ -16,6 +16,7 @@ import co.edu.kanumovie.admin.command.Admin;
 import co.edu.kanumovie.admin.command.AdminMessage;
 import co.edu.kanumovie.admin.command.Analytics;
 import co.edu.kanumovie.admin.command.Analyticssignupdata;
+import co.edu.kanumovie.admin.command.SelectUsersPreferredGenre;
 import co.edu.kanumovie.admin.command.UpdateReportCheck;
 import co.edu.kanumovie.admin.command.Updateblockcheck;
 import co.edu.kanumovie.admin.command.Updateunblockcheck;
@@ -43,15 +44,14 @@ import co.edu.kanumovie.user.command.SignUpForm;
 import co.edu.kanumovie.user.command.UserManage;
 import co.edu.kanumovie.user.command.UserManageForm;
 
-
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Map<String, Command> map = new HashMap<String, Command>(); 
+	private Map<String, Command> map = new HashMap<String, Command>();
 
-    public FrontController() {
-        super();
-    }
+	public FrontController() {
+		super();
+	}
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -59,14 +59,15 @@ public class FrontController extends HttpServlet {
 		map.put("/movieSelectList.do", new MovieSelectList());
 		map.put("/admin.do", new Admin());
 		map.put("/adminmessage.do", new AdminMessage());
-		map.put("/updateblockcheck.do", new Updateblockcheck());		
-		map.put("/updatereportcheck.do", new UpdateReportCheck());	
+		map.put("/updateblockcheck.do", new Updateblockcheck());
+		map.put("/updatereportcheck.do", new UpdateReportCheck());
 		map.put("/updateunblockcheck.do", new Updateunblockcheck());
 		map.put("/analytics.do", new Analytics());
 		map.put("/analyticssignupdata.do", new Analyticssignupdata());
+		map.put("/selectUsersPreferredGenre.do", new SelectUsersPreferredGenre());
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
-		map.put("/logout.do",new Logout());
+		map.put("/logout.do", new Logout());
 		map.put("/userManageForm.do", new UserManageForm());
 		map.put("/userManage.do", new UserManage());
 		map.put("/pwChange.do", new PwChange());
@@ -76,7 +77,7 @@ public class FrontController extends HttpServlet {
 		map.put("/findPwForm.do", new FindPwForm());
 		map.put("/findPw.do", new FindPw());
 		map.put("/comment.do", new Comment());
-		map.put("/movieInfo.do", new MovieInfo());		
+		map.put("/movieInfo.do", new MovieInfo());
 		map.put("/commentInsert.do", new CommentInsert());
 		map.put("/genreSelectList.do", new GenreSelectList());
 		map.put("/movieSelectGenreList.do", new MovieSelectGenreList());
@@ -87,20 +88,25 @@ public class FrontController extends HttpServlet {
 	}
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String uri = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String page = uri.substring(contextPath.length());
-		
+
 		Command command = map.get(page);
 		String viewPage = command.exec(request, response);
-		
-		if (!viewPage.endsWith(".do")) {
+		if (viewPage.startsWith("ajax:")) {
+			response.setContentType("text/html; charset=UTF-8");
+			viewPage = viewPage.substring(5);
+			response.getWriter().append(viewPage);
+			return;
+		} else if (!viewPage.endsWith(".do")) {
 			viewPage = viewPage + ".tiles";
 		}
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}

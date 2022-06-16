@@ -2,6 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.edu.kanumovie.admin.service.AdminMapper">
 
+<!-- 
+<resultMap type="co.edu.kanumovie.user.vo.UserVO" id="UserVO">
+    <result column="preference1" property="preference1"/>
+    <result column="preference2" property="preference2"/>
+    <result column="preference3" property="preference3"/>
+    <collection property="genreVO" resultMap="GenreVO"/>
+</resultMap>
+property에는 uservo에 선언한 변수명 resultMap은 밑에 장르아이디 이름
+ 
+<resultMap type="co.edu.kanumovie.genre.vo.GenreVO" id="GenreVO">
+    <result column="id" property="id"/>
+    <result column="name" property="name"/>
+</resultMap> -->
+
+
 
  <select id="selectAllUserList" resultType="co.edu.kanumovie.user.vo.UserVO" >
         SELECT * FROM K_USERS ORDER BY SIGNDATE DESC
@@ -55,5 +70,14 @@ SELECT count(*) FROM k_users WHERE report = 'y'
 
 SELECT COUNT(*) FROM k_users WHERE to_char(signdate) = #{dateToStr}
 </select>
+
+<select id="selectUsersPreferredGenre" resultType="co.edu.kanumovie.admin.vo.PreferredGenreVO" >
+SELECT  g.name,count(g.name) AS genrecount
+FROM k_users u LEFT JOIN k_genres g
+on u.preference1 = g.id OR u.preference2 = g.id or u.preference3 = g.id
+GROUP BY g.name
+ORDER BY 2 DESC FETCH FIRST 5 ROWS ONLY
+</select>
+
 
 </mapper>

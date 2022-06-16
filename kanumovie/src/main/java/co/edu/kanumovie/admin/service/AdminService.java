@@ -2,6 +2,7 @@ package co.edu.kanumovie.admin.service;
 
 import java.util.List;
 
+import co.edu.kanumovie.admin.vo.PreferredGenreVO;
 import co.edu.kanumovie.user.vo.UserVO;
 
 public interface AdminService {
@@ -16,4 +17,6 @@ public interface AdminService {
 	public int updateBlockCheck(String email); //차단 박기
 	public int updateReportCheck(String email); //신고 취소 
 	public int updateUnblockCheck(String email); //차단 취소
+	public List<PreferredGenreVO> selectUsersPreferredGenre(); // 유저 선호 장르
+	
 }
