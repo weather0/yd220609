@@ -4,7 +4,7 @@ function mainFnc() {
 
 	let owl = $('.owl-carousel');
 	owl.owlCarousel({
-		margin: 30,
+/*		margin: 20,*/
 		nav: true,
 		loop: false,
 		rewind: true,
@@ -39,11 +39,9 @@ function mainFnc() {
 				} else if (url.includes('/tv/')) {
 					divlist = document.querySelectorAll('.show .item');
 				}
-				console.log(divlist);
-				console.log(arr);
 				arr.forEach((obj, idx) => {
-					let img = document.createElement('img');
-					img.setAttribute('src', poster + obj.poster_path);
+					let rank = document.createElement('h2');
+					rank.innerHTML = (idx+1);
 					let title = document.createElement('h5');
 					divlist.forEach((div, dividx) => {
 						if (dividx == idx) {
@@ -52,7 +50,11 @@ function mainFnc() {
 							} else if (url.includes('/tv/')) {
 								title.innerHTML = obj.name;
 							}
-							div.append(img);
+							div.append(rank);
+							div.setAttribute('style', 'background-image:url('+ poster + obj.poster_path + ')');
+							/*div.append(img);*/
+							title.setAttribute('style', 'visibility=hidden');
+							
 							div.append(title);
 							console.log(div);
 						}
@@ -67,6 +69,8 @@ function mainFnc() {
 	API_URL = BASE_URL + '/trending/tv/week?' + API_KEY + "&language=ko";
 	
 	getTrendingContent(API_URL);
+	
+	
 	
 
 } 
