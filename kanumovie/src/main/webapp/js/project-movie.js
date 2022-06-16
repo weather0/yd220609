@@ -18,7 +18,7 @@ function movieList(num) {
 		div.setAttribute('class', 'movie-card-container');
 		div.setAttribute('data-value', num);
 		document.querySelector('div.infinite').append(div);
-		
+
 	}
 	getData(API_URL, num);
 }
@@ -34,12 +34,29 @@ function getData(url, num) {
 				let container = document.querySelectorAll('div.movie-card-container');
 				container.forEach((con) => {
 					if (con.getAttribute('data-value') == pageCnt) {
-					con.append(card);
-				}
-				rating(); 
+						con.append(card);
+					}
+					rating();
 				})
 			})
 		})
+}
+
+function loader() {
+	let div = document.createElement('div');
+	div.setAttribute('class', 'loadcontainer');
+	let svg = document.createElement('svg');
+	svg.setAttribute('class', 'loader');
+	svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+	svg.setAttribute('viewBox', '0 0 340 340');
+	let circle1 = document.createElement('circle');
+	circle1.setAttribute('cx', '170');
+	circle1.setAttribute('cy', '170');
+	circle1.setAttribute('r', '160');
+	circle1.setAttribute('stroke', '#E2007C');
+	svg.append(circle1);
+	div.append(svg);
+	document.querySelector('.infinite').append(div);
 }
 
 function makeCard(obj) {

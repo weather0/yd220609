@@ -1,28 +1,62 @@
 
+let usercount = [];
+let PreferredGenreCount = [];
+let PreferredGenreName = [];
+
 
 $(function() {
 	$.ajax({
-        type: 'POST',
-        url: 'analyticssignupdata.do',
-        dataType: 'text',
-        success: function(result) {
-            console.log(result);
-        },
-        error: function(err) {
-            console.log(err)
-        }
-    });
+		url: "selectUsersPreferredGenre.do",
+		type: "POST",
+		dataType: "json",
+		success: function(data) {
+			console.log(data)
+			data.forEach((ele) => {
+				PreferredGenreName.push(ele.name);
+				PreferredGenreCount.push(ele.genreCount);
+			})
+
+		},
+		error: function() {
+
+		}
+	});
 });
+
+$(function() {
+	$.ajax({
+		type: 'POST',
+		url: 'analyticssignupdata.do',
+		dataType: 'text',
+		success: function(result) {
+			//	console.log(result);
+			let str = result.split(',');
+			//	console.log(str);
+			//	console.log(str.length);
+			str.forEach((elem) => {
+				usercount.push(elem);
+			})
+		},
+		error: function(err) {
+			console.log(err)
+		}
+	});
+});
+
+
+
+
+
 
 const ctx = document.getElementById("myChart").getContext("2d");
 const myChart = new Chart(ctx, {
 	type: "bar",
 	data: {
-		labels: ["액션", "로맨스", "호러", "Green", "Purple", "Orange"],
+		labels: PreferredGenreName,
 		datasets: [
 			{
 				label: "# of Votes",
-				data: [12, 19, 3, 5, 2, 3],
+				data: PreferredGenreCount,
 				backgroundColor: [
 					"rgba(255, 99, 132, 0.2)",
 					"rgba(54, 162, 235, 0.2)",
@@ -90,7 +124,7 @@ function getDateStr(myDate) {
 	return (
 		// myDate.getFullYear() +
 		// "-" +
-		myDate.getMonth() + 1 + "-" + myDate.getDate()
+		myDate.getMonth() + 1 + "/" + myDate.getDate()
 	);
 }
 //오늘 날짜 받아서 일주일전 날짜구하는 함수
@@ -114,7 +148,7 @@ const myChart2 = new Chart(ctx2, {
 		datasets: [
 			{
 				label: "# of Votes",
-				data: [12, 19, 3, 5, 2, 3],
+				data: usercount,
 				backgroundColor: [
 					"rgba(255, 99, 132, 0.2)",
 					"rgba(54, 162, 235, 0.2)",

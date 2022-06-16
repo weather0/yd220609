@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <title>MovieInfo</title>
 
+    <!-- 좋아요아이콘 -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
@@ -26,6 +29,9 @@
 
     <!-- movieInfo스크립트 -->
     <script src="js/movieInfo.js"></script>
+
+
+
 
 
   </head>
@@ -76,6 +82,75 @@
                 </div>
                 <div class="anime__details__rating">
                   <div class="rating">
+
+
+
+                    <!-- 좋아요 버튼 start -->
+                    <div class="like-container">
+                      <div class="like-cnt unchecked" id="like-cnt">
+                        <i class="like-btn material-icons">thumb_up</i>
+                      </div>
+                    </div>
+
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+                    <script src='https://cdn.jsdelivr.net/mojs/latest/mo.min.js'></script>
+                    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/DrawSVGPlugin.min.js'></script>
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+                    <script id="rendered-js">
+                      var check_status = false;
+                      var like_cnt = $("#like-cnt");
+                      var like_parent = $(".like-container");
+
+                      var burst = new mojs.Burst({
+                        parent: like_parent,
+                        radius: { 20: 60 },
+                        count: 15,
+                        angle: { 0: 30 },
+                        children: {
+                          delay: 250,
+                          duration: 700,
+                          radius: { 10: 0 },
+                          fill: ['#ddca7e'],
+                          easing: mojs.easing.bezier(.08, .69, .39, .97)
+                        }
+                      });
+
+
+
+                      $("#like-cnt").click(function () {
+                        var t1 = new TimelineLite();
+                        var t2 = new TimelineLite();
+                        if (!check_status) {
+                          t1.set(like_cnt, { scale: 0 });
+                          t1.set('.like-btn', { scale: 0 });
+                          t1.to(like_cnt, 0.6, { scale: 1, background: '#ddca7e', ease: Expo.easeOut });
+                          t2.to('.like-btn', 0.65, { scale: 1, ease: Elastic.easeOut.config(1, 0.3) }, '+=0.2');
+                          //    t1.timeScale(5);
+                          check_status = true;
+                          //circleShape.replay();
+                          burst.replay();
+
+                          // 좋아요 DB입력
+                          fetch('likes.do?id=' + getParameter('id'))
+                            .catch(err => console.log(err));
+
+                        } else {
+                          t1.to(like_cnt, 1, { scale: 1 }).
+                            to(like_cnt, 1, { scale: 1, background: 'rgba(255,255,255,0.3)', ease: Power4.easeOut });
+                          t1.timeScale(7);
+                          check_status = false;
+                        }
+
+                      });
+                    </script>
+
+                    <!-- 좋아요 버튼 end -->
+
+
+
+
+
+
                   </div>
                   <span class="votesCnt"></span>
                 </div>
@@ -318,6 +393,7 @@
       })
 
     </script>
+
 
   </body>
 

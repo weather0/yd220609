@@ -11,36 +11,108 @@
 
 #showcontainer {
 	width: 90%;
-	height: 800px;
+	padding-left: 5%;
+	height: 2500px;
+	position: relative;
 }
 
 #showcontainer .row {
 	width: 100%;
-	margin: 1% 5%;
-	height: 500px;
-	box-sizing: border-box;
-	float: left;
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	height: 600px;
+}
+
+#showcontainer .large-16 {
+	width: 100%;
+	height: 700px;
+	padding: 0%;
+	margin: 0 auto;
+}
+
+#showcontainer .owl-carousel {
+	width: 100%;
+	height: 100%;
+	padding: 2%;
+}
+
+#showcontainer .owl-stage-outer {
+	height: 100%;
+	width: 100%;
+	padding: 2% 2% 2% 2%;
+}
+
+#showcontainer .owl-stage .active {
+	overflow: visible;
+	height: 100%;
+}
+
+#showcontainer .owl-stage {
+	width: 100%;
+	height: 100%;
+}
+
+#showcontainer .owl-item {
+	padding: 0%;
+	width: 95%;
+	height: 100%;
 }
 
 h1 {
 	color: white;
 }
 
-#showcontainer h3 {
-	height: 100px;
-	color: white;
-	margin-bottom: 3%;
+.item {
+	position: relative;
+	width: 95%;
+	height: 100%;
+	background-size: cover;
+	border-radius: 10px;
+	margin: 0%;
 }
 
-#showcontainer img {
-	width: 100%;
-	height: 350px;
+.item:hover {
+	transform: scale(1.1);
+	transition: 0.5s;
+	cursor: selector;
+	border-radius: 10px;
+	z-index: 50; 
 }
 
-div h5 {
-	background: none;
-	text-align: center;
+.item:hover h2 {
+	visibility: hidden;
+}
+
+.item:hover p {
+	display: none;
+}
+
+.item h2 {
+	position: absolute;
+	top: -3%;
+	left: -3%;
 	color: #fff;
+	font-weight: bold;
+	z-index: 100;
+	
+	
+}
+
+#showcontainer h3 {
+	color: white;
+	margin:3% 0% 0% 3%;
+}
+
+#showcontainer p {
+	color: #fff;
+	position: absolute;
+	display: flex;
+	top: 70%;
+	left: 5%;
+	font-size: xx-large;
+	line-height: 140%;
+	overflow: visible;
 }
 </style>
 
@@ -150,8 +222,7 @@ div h5 {
 					<div class="item" id="show20"></div>
 				</div>
 				<script type="text/javascript">
-					
-					</script>
+				</script>
 				  <script>  
 					let name = "<%=request.getAttribute("message")%>";
 					if (name == 'login') {
