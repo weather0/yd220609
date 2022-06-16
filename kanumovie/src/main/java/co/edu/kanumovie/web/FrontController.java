@@ -22,6 +22,7 @@ import co.edu.kanumovie.admin.command.Updateunblockcheck;
 import co.edu.kanumovie.comment.command.Comment;
 import co.edu.kanumovie.comment.command.CommentDelete;
 import co.edu.kanumovie.comment.command.CommentInsert;
+import co.edu.kanumovie.comment.command.CommentUpdate;
 import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.genre.command.GenreSelectList;
 import co.edu.kanumovie.home.command.Home;
@@ -84,6 +85,7 @@ public class FrontController extends HttpServlet {
 		map.put("/movieInfoghtest.do", new MovieInfoghtest());
 		map.put("/moviePlay.do", new MoviePlay());
 		map.put("/movieSearch.do", new MovieSearch());
+		map.put("/commentUpdate.do", new CommentUpdate());
 	}
 
 	@Override

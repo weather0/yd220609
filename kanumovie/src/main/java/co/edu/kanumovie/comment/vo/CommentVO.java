@@ -10,7 +10,7 @@ import lombok.Setter;
 
 public class CommentVO {
 	private String nick;
-	private int cid;
+	private String cid;
 	private String comments;
 	private Date wdate;
 	private String id; // movies 테이블 영화아이디
