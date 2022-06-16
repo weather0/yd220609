@@ -60,4 +60,9 @@ public class UserServiceImpl implements UserService {
 		return map.perferList();
 	}
 
+	@Override
+	public int userUpdateProfile(UserVO vo) {
+		return map.userUpdateProfile(vo);
+	}
+
 }

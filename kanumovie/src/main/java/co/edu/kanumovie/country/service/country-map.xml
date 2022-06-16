@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.edu.kanumovie.country.service.CountryMapper">
+	<select id="countrySelectList" resultMap="countryMap">
+		SELECT * FROM K_COUNTRIES 
+		ORDER BY ORDERIDX
+	</select>
+	<resultMap id="countryMap" type="country">
+		<result column="id" property="id"/>
+		<result column="eng_name" property="engName"/>
+		<result column="orderidx" property="orderIdx"/>
+		<result column="korean_name" property="koreanName"/>
+	</resultMap>
+</mapper>

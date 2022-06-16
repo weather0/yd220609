@@ -29,10 +29,11 @@ public class UserManage implements Command {
 		HttpSession session2 = request.getSession();
 		UserVO vo2 = new UserVO();
 		vo2.setEmail(request.getParameter("email"));
+		vo2.setPw(request.getParameter("pw"));
 		
 		vo2 = dao.userSelect(vo2);
 		
-		if(vo != null) {
+		if(vo2 != null) {
 			session2.setAttribute("vo", vo2);
 			session2.setAttribute("email", vo2.getEmail()); 
 			session2.setAttribute("pw", vo2.getPw());    
@@ -42,6 +43,10 @@ public class UserManage implements Command {
 			session2.setAttribute("preference2", vo2.getPreference2());
 			session2.setAttribute("preference3", vo2.getPreference3());
 			session2.setAttribute("authority", vo2.getAuthority());
+			session2.setAttribute("blockCheck", vo2.getBlockCheck());
+			session2.setAttribute("report", vo2.getReport());
+			session2.setAttribute("fileName", vo2.getFileName());
+			session2.setAttribute("directoryfileName", vo2.getDirectoryFileName());
 		}
 		
 		return "home/home";

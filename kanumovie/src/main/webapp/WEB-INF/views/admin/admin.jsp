@@ -23,10 +23,10 @@
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/salesbootstrap.min.css" rel="stylesheet">
+    <link href="css/salesbootstrap.min.css" rel="stylesheet"> 
 
     <!-- Template Stylesheet -->
-    <link href="css/salesstyle.css" rel="stylesheet">
+    <link href="css/salesstyle.css" rel="stylesheet"> 
 
 <style>
 
@@ -34,6 +34,18 @@
 	color:white;
 }
 
+/* .table {
+	background-color: #070720 !important;
+	color: #6C7293; 
+}
+
+.table thead tr {
+	background-color: #070720 !important;
+}
+
+.table tbody tr:nth-Child(even) {
+	background-color: #070720 !important;
+} */
 
 </style>
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.edu.kanumovie.likes.service.LikesMapper">
+	<select id="likesSelectList" resultType="co.edu.kanumovie.likes.vo.LikesVO">
+		SELECT * FROM K_LIKES
+	</select>
+	<insert id="likesInsert" parameterType="co.edu.kanumovie.likes.vo.LikesVO">
+		INSERT INTO K_LIKES VALUES (L_ID_SEQ.nextval, #{id}, #{email})
+	</insert>
+	<delete id="likesDelete" parameterType="co.edu.kanumovie.likes.vo.LikesVO">
+		DELETE FROM K_LIKES WHERE LIKES_ID = #{likesID}
+	</delete>
+
+</mapper>

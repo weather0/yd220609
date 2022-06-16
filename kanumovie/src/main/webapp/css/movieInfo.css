@@ -46,6 +46,7 @@ div.details {
   float: right;
 }
 
+
 /* 코멘트 */
 div.reviews {
   float: left;
@@ -199,3 +200,51 @@ div.scroller_wrap.should_fade:after {
   font-weight: 700;
   line-height: 26px;
 }
+
+
+
+/* 좋아요 버튼 start */
+body {
+  /* background: #333; */
+}
+
+.like-container {
+  filter: url('#filter');
+  position: absolute;
+  left: -100%;
+  top: 50%;
+  transform: translate(50%, -50%);
+
+
+}
+
+.like-cnt {
+  position: absolute;
+  cursor: pointer;
+  left: 50%;
+  top: 100%;
+  transform: translate(50%, -50%);
+  background: rgba(255, 255, 255, 0.3);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 75px;
+  z-index: 10;
+
+}
+
+.like-btn {
+  color: #fff;
+}
+
+
+::-moz-selection {
+  background: transparent;
+}
+
+::selection {
+  background: transparent;
+}
+
+/* 좋아요 버튼 end */

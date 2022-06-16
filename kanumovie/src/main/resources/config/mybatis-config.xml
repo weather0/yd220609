@@ -11,6 +11,7 @@
 		<typeAlias type="co.edu.kanumovie.movie.vo.MovieVO" alias="movie"/>
 		<typeAlias type="co.edu.kanumovie.genre.vo.GenreVO" alias="genre"/>
 		<typeAlias type="co.edu.kanumovie.show.vo.ShowVO" alias="show"/>
+		<typeAlias type="co.edu.kanumovie.country.vo.CountryVO" alias="country"/>
 	</typeAliases>
   <environments default="development">
     <environment id="development">
