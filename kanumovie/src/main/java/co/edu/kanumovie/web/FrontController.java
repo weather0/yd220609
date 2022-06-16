@@ -28,6 +28,9 @@ import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.country.command.CountrySelectList;
 import co.edu.kanumovie.genre.command.GenreSelectList;
 import co.edu.kanumovie.home.command.Home;
+import co.edu.kanumovie.likes.command.Likes;
+import co.edu.kanumovie.likes.command.LikesDelete;
+import co.edu.kanumovie.likes.command.LikesSelectList;
 import co.edu.kanumovie.movie.command.MovieInfo;
 import co.edu.kanumovie.movie.command.MovieInfoghtest;
 import co.edu.kanumovie.movie.command.MoviePlay;
@@ -88,6 +91,9 @@ public class FrontController extends HttpServlet {
 		map.put("/movieInfoghtest.do", new MovieInfoghtest());
 		map.put("/moviePlay.do", new MoviePlay());
 		map.put("/movieSearch.do", new MovieSearch());
+		map.put("/likes.do", new Likes());
+		map.put("/likesDelete.do", new LikesDelete());
+		map.put("/likesSelectList.do", new LikesSelectList());
 	}
 
 	@Override
