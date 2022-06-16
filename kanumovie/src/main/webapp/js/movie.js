@@ -42,7 +42,7 @@ function mainFnc() {
 				arr.forEach((obj, idx) => {
 					let rank = document.createElement('h2');
 					rank.innerHTML = (idx+1);
-					let title = document.createElement('h5');
+					let title = document.createElement('p');
 					divlist.forEach((div, dividx) => {
 						if (dividx == idx) {
 							if (url.includes('/movie/')) {
@@ -52,11 +52,7 @@ function mainFnc() {
 							}
 							div.append(rank);
 							div.setAttribute('style', 'background-image:url('+ poster + obj.poster_path + ')');
-							/*div.append(img);*/
-							title.setAttribute('style', 'visibility=hidden');
-							
 							div.append(title);
-							console.log(div);
 						}
 					})
 				})
