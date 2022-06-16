@@ -995,12 +995,14 @@ ol {
 
 .anime__details__title {
 	margin-bottom: 20px;
+	width: 400px;
 }
 
 .anime__details__title h3 {
 	color: #ffffff;
 	font-weight: 700;
 	margin-bottom: 13px;
+	word-break: keep-all;
 }
 
 .anime__details__title span {
