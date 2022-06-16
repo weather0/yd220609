@@ -20,6 +20,10 @@
 		insert into k_comment values(COMMENT_ID_SEQ.nextval, #{comments}, SYSDATE, #{id} , #{email})
 	</insert>
 
+
+	<update id="commentUpdate" parameterType="co.edu.kanumovie.comment.vo.CommentVO">
+		update k_comment set c_comment = #{comments} where C_ID = #{cid} 
+	</update>
 	<delete id="commentDelete" parameterType="int">
 		DELETE FROM K_COMMENT WHERE C_ID = #{cid}
 	</delete> 

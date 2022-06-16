@@ -62,7 +62,6 @@ fetch(movieInfoAPI)
 
 
     // 별점
-    movie.vote_count
     let fullstar = parseInt(movie.vote_average / 2);
     let halfstar = movie.vote_average % 2;
     let rating = document.querySelector('.rating');

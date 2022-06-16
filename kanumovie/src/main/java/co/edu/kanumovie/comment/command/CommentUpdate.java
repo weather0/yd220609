@@ -1,7 +1,5 @@
-package co.edu.kanumovie.movie.command;
+package co.edu.kanumovie.comment.command;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,24 +10,26 @@ import co.edu.kanumovie.comment.serviceImpl.CommentServiceImpl;
 import co.edu.kanumovie.comment.vo.CommentVO;
 import co.edu.kanumovie.common.Command;
 
-public class MovieInfoghtest implements Command	 {
+public class CommentUpdate implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		request.setAttribute("movieid", id);
-		
+		// 댓글 수정
 		HttpSession session = request.getSession();
 		CommentService dao = new CommentServiceImpl();
-		List<CommentVO> comments = new ArrayList<CommentVO>();
 		CommentVO vo = new CommentVO();
+		//업데이트 하기전 값 준비 : cid, comments , session email값
 		String email = (String) session.getAttribute("email");
+		vo.setCid(request.getParameter("cid"));
+		vo.setComments(request.getParameter("comments"));
 		vo.setEmail(email);
-		vo.setId(id);	
-		comments = dao.commentAllList(vo);
 		
-		// 리스트를 처리한것을 싦어서 보내야함.
-		request.setAttribute("comments", comments);
+		System.out.println(vo.getCid());
+		System.out.println(vo.getComments());
+		System.out.println(vo.getEmail());
+		
+		dao.commentUpdate(vo);
+		
 		return "movie/movieInfoghtest";
 	}
 

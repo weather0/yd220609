@@ -39,7 +39,7 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Sign Up</h3>
-                        <form action="signUp.do" method="post">
+                        <form action="signUp.do" method="post" enctype="multipart/form-data">
                             <div class="input__item">
                                 <input type="text" id="email" name="email" placeholder="Email address" required>
                                 <span class="icon_mail"></span>
@@ -52,7 +52,8 @@
                                 <input type="password" id="pw" name="pw" placeholder="Password" required>
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Login Now</button>
+                            
+                            <button type="submit" class="site-btn">Register Now</button>
                         </form>
                         <h5>Already have an account? <a href="loginForm.do">Log In!</a></h5>
                     </div>

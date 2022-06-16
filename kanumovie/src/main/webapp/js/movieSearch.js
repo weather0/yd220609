@@ -63,43 +63,56 @@ let movieSearch = function () {
       })
 
 
-      console.log(currentpage);
-      console.log(totalpage);
-
-      // 페이지 추가
-      window.addEventListener('scroll', (e) => {
-        if (currentpage < totalpage) {
-
-          // 창내부크기 + 스크롤커서위치값(하단으로 갈수록 값 커짐)
-          let val = window.innerHeight + window.scrollY;
-          let collection = document.querySelector('.movie-card-container');
-
-          // console.log('스크롤위치:' + window.scrollY + ' 창높이:' + window.innerHeight + ' 문서크기:' + collection.offsetHeight);
-          // 참고 velog.io/@sa02045/Scroll-%EC%A0%95%EB%A6%AC
-
-          // offsetHeigt는 태그의 높이(코드라인)
-          // 근데 그대로 val과 비교하면 스크롤 좀만 내려도 조건이 충족되어서
-          // 그 민감도를 좀 떨어뜨리기 위해 임의로 +1000정도 값을 줌
-          if (val >= container.offsetHeight + 1000) {
-            pageNum++;
-            SEARCH_URL = '/search/movie?query=' + getParameter('query') + '&page=' + pageNum;
-            searchAPI = BASE_URL + SEARCH_URL + '&' + API_KEY + '&language=ko-KR';
-
-            // 다음 페이지 실행
-            movieSearch();
-          }
-        } else {
-          // 이거 반드시 해줘야 함. 
-          // 안 할 시, 페이징 다 끝났는데도 스크롤 내리면 무한으로 이벤트가 실행되어 자원 낭비
-          e.stopPropagation;
-        }
-      });
-
     })
     .catch(err => console.log(err));
 }
 // 최초실행
 movieSearch();
+
+
+
+// 페이지 추가
+
+let addPage = function () {
+  window.addEventListener('scroll', (e) => {
+    if (currentpage < totalpage) {
+
+      // 창내부크기 + 스크롤커서위치값(하단으로 갈수록 값 커짐)
+      let val = window.innerHeight + window.scrollY;
+      // let collection = document.querySelector('.movie-card-container');
+
+      // console.log('스크롤위치:' + window.scrollY + ' 창높이:' + window.innerHeight + ' 문서크기:' + collection.offsetHeight);
+      // 참고 velog.io/@sa02045/Scroll-%EC%A0%95%EB%A6%AC
+
+      // offsetHeigt는 태그의 높이(코드라인)
+      if (val >= container.offsetHeight + 1000) {
+        pageNum++;
+        SEARCH_URL = '/search/movie?query=' + getParameter('query') + '&page=' + pageNum;
+        searchAPI = BASE_URL + SEARCH_URL + '&' + API_KEY + '&language=ko-KR';
+
+        // 다음 페이지 실행
+        movieSearch();
+      }
+    } else {
+      // 이거 반드시 해줘야 함. 
+      // 안 할 시, 페이징 다 끝났는데도 스크롤 내리면 무한으로 이벤트가 실행되어 자원 낭비
+      e.stopPropagation;
+    }
+  });
+}
+
+
+
+// if (currentpage < totalpage) {
+addPage();
+// }
+
+
+window.onload = function () {
+  setTimeout(function () {
+    scrollTo(0, 0);
+  }, 200)
+}
 
 
 
@@ -122,5 +135,7 @@ function rating() {
     }
   })
 }
+
+
 
 

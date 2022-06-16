@@ -11,7 +11,7 @@
         SELECT * FROM K_USERS WHERE EMAIL = #{email} AND PW = #{pw}
     </select>
     <insert id="userInsert" parameterType="co.edu.kanumovie.user.vo.UserVO">
-        INSERT INTO K_USERS VALUES(#{email},#{pw},SYSDATE,#{nick},#{preference1},#{preference2},#{preference3},'USER','n','n')
+        INSERT INTO K_USERS VALUES(#{email},#{pw},SYSDATE,#{nick},#{preference1},#{preference2},#{preference3},'USER','n','n',#{fileName},#{directoryFileName})
     </insert>
     <update id="userUpdate" parameterType="co.edu.kanumovie.user.vo.UserVO">
         UPDATE K_USERS
@@ -35,4 +35,9 @@
     <select id="perferList" resultType="co.edu.kanumovie.user.vo.PreferVO">
         SELECT * FROM K_PREFERMOVIE ORDER BY GENRE
     </select>
+    <update id="userUpdateProfile" parameterType="co.edu.kanumovie.user.vo.UserVO">
+        UPDATE K_USERS 
+        SET FILENAME = #{fileName}, DIRECTORYFILENAME = #{directoryFileName}
+        WHERE EMAIL = #{email}
+    </update>
 </mapper>

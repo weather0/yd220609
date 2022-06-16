@@ -13,5 +13,4 @@ public class MovieInfo implements Command {
 		request.setAttribute("movieid", id);
 		return "movie/movieInfo";
 	}
-
 }

@@ -18,6 +18,6 @@ public class CommentDelete implements Command {
 		
 		 dao.commentDelete(cid);
 		
-		return "comment/comment";
+		return "";
 	}
 }

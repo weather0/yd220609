@@ -14,6 +14,7 @@ public interface UserService {
 	public int userUpdatePw(UserVO vo); // 유저 정보 pw 변경.
 	public int userUpdatePrefer(UserVO vo); // 유저 정보 선호 영화 변경.
 	public int userDelete(UserVO vo); // 유저 회원탈퇴.
+	public int userUpdateProfile(UserVO vo); // 유저 프로필 변경.
 	
 	public List<PreferVO> perferList(); // 선호 영화 선택용 영화들 리스트.
 }
