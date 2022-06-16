@@ -653,9 +653,7 @@ pre code {
   }
 }
 
-/* 어드민페이지 수정했는데 문제 있으면
-class 이름을 수정부탁드립니다. */
-.salesrow {
+.row {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -2510,9 +2508,8 @@ textarea.form-control {
   padding-left: 1.25rem
 }
 
-
 .form-check-input {
-  /* position: absolute; */
+  position: absolute;
   margin-top: .3rem;
   margin-left: -1.25rem
 }
@@ -7316,8 +7313,9 @@ button.bg-primary:hover {
   background-color: #0062cc !important
 }
 
+/* 
 .bg-secondary {
-  background-color: #6c757d !important
+  background-color: #6c757d
 }
 
 a.bg-secondary:focus,
@@ -7325,7 +7323,7 @@ a.bg-secondary:hover,
 button.bg-secondary:focus,
 button.bg-secondary:hover {
   background-color: #545b62 !important
-}
+} */
 
 .bg-success {
   background-color: #28a745 !important
@@ -7381,10 +7379,10 @@ button.bg-light:focus,
 button.bg-light:hover {
   background-color: #dae0e5 !important
 }
-
+/* 
 .bg-dark {
   background-color: #343a40 !important
-}
+} */
 
 a.bg-dark:focus,
 a.bg-dark:hover,
@@ -10709,7 +10707,7 @@ button.bg-dark:hover {
     margin-left: .5rem !important
   }
 
-  .m-xl-3 {
+  . .m-xl-3 {
     margin: 1rem !important
   }
 
@@ -11151,13 +11149,12 @@ button.bg-dark:hover {
     text-align: left !important
   }
 
-  .text-xl-right {
-    text-align: right !important
-  }
+  .text-xl-righ text-align: right !important
+}
 
-  .text-xl-center {
-    text-align: center !important
-  }
+.text-xl-center {
+  text-align: center !important
+}
 }
 
 .text-lowercase {
