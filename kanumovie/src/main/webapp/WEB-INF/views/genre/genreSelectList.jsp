@@ -55,13 +55,13 @@
 	font-weight: bold;
 }
 
-.genre-card:hover {
+.genre-card:hover, .country-card:hover {
 	transform: scale(1.1);
 	transition: 0.4s;
 	cursor: pointer;
 }
 
-.genre-card:hover h3 {
+.genre-card:hover h3, .country-card:hover h3 {
 	text-decoration: underline;
 }
 </style>
@@ -83,7 +83,7 @@
 			<c:forEach items="${genrelist}" var="genre">
 				<div class="genre-card"
 					style="background-image:url(img/${genre.name}.jpg)"
-					onclick="location.href='movieSelectGenreList.do?name=genre&id=${genre.id}'">
+					onclick="location.href='movieSelectGenreList.do?name=${genre.name}&id=${genre.id}'">
 					<div>
 						<h3>${genre.name}</h3>
 					</div>
@@ -123,7 +123,7 @@
 				if (elem.name) {
 					div.setAttribute('class', 'genre-card');
 					div.setAttribute('style', 'background-image:url(img/' + elem.name + '.jpg)');
-					div.setAttribute('onclick', "location.href='movieSelectGenreList.do?name=genre&id=" + elem.id + "'");
+					div.setAttribute('onclick', "location.href='movieSelectGenreList.do?name=" + elem.name + "&id=" + elem.id + "'");
 					let genre = document.createElement('div');
 					let genreName = document.createElement('h3');
 					genreName.innerHTML = elem.name;
@@ -132,8 +132,8 @@
 					return div;
 				} else if (elem.koreanName) {
 					div.setAttribute('class', 'country-card');
-					div.setAttribute('style', 'background-image:url(img/' + elem.koreanName + '.jpg)');
-					div.setAttribute('onclick', "location.href='movieSelectCountryList.do?name=country&id=" + elem.id + "'");
+					div.setAttribute('style', 'background-image:url(img/' + elem.id + '.jpg)');
+					div.setAttribute('onclick', "location.href='movieSelectCountryList.do?name=" + elem.koreanName + "&id=" + elem.id + "'");
 					let country = document.createElement('div');
 					let countryname = document.createElement('h3');
 					countryname.innerHTML = elem.koreanName;

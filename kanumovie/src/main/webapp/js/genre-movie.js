@@ -12,7 +12,6 @@ list.forEach(container => {
 
 function movieList(num) {
 	let API_URL = BASE_URL + genreURL + num;
-	console.log(API_URL);
 	if (num > 2) {
 		let div = document.createElement('div');
 		div.setAttribute('class', 'movie-card-container');
@@ -20,7 +19,7 @@ function movieList(num) {
 		document.querySelector('div.infinite').append(div);
 
 	}
-	getData(API_URL, num);
+		getData(API_URL, num);
 }
 
 function getData(url, num) {
@@ -36,27 +35,10 @@ function getData(url, num) {
 					if (con.getAttribute('data-value') == pageCnt) {
 						con.append(card);
 					}
-					rating();
 				})
 			})
+			rating(); 
 		})
-}
-
-function loader() {
-	let div = document.createElement('div');
-	div.setAttribute('class', 'loadcontainer');
-	let svg = document.createElement('svg');
-	svg.setAttribute('class', 'loader');
-	svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-	svg.setAttribute('viewBox', '0 0 340 340');
-	let circle1 = document.createElement('circle');
-	circle1.setAttribute('cx', '170');
-	circle1.setAttribute('cy', '170');
-	circle1.setAttribute('r', '160');
-	circle1.setAttribute('stroke', '#E2007C');
-	svg.append(circle1);
-	div.append(svg);
-	document.querySelector('.infinite').append(div);
 }
 
 function makeCard(obj) {
@@ -83,21 +65,5 @@ function makeCard(obj) {
 	return card;
 }
 
-function rating() {
-	let rating = $('.star-rate');
-	rating.each(function() {
-		let score = $(this).attr('data-rate');
-		score = parseFloat(score) / 2;
-		let numScore = Math.trunc(score);
-		let floatScore = score - Math.trunc(score);
-		if (floatScore < 0.5) {
-			$(this).find('span:nth-child(-n+' + numScore + ')')
-				.addClass('checked');
-		} else if (floatScore >= 0.5) {
-			$(this).find('span:nth-child(-n+' + numScore + ')')
-				.addClass('checked');
-			$(this).find('span:nth-child(' + (numScore + 1) + ')')
-				.addClass('fa-star-half-o');
-		}
-	})
-}
+
+

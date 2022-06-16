@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="category-kind-container">
-	<h3 id="genreTitle">Categories > Genre > ${genre}</h3>
+	<h3 id="countryTitle">Categories > Country > ${koreanTitle}</h3>
 </div>
 <div class="infinite">
 	<input type="hidden" value="${id}">
@@ -24,7 +24,20 @@
 	</div>
 </div>
 <script src="js/rating.js"></script>
-<script src="js/scroll.js"></script>
 <script src="js/genre-movie.js"></script>
+<script src="js/country-movie.js"></script>
+<script>
+let page = 0;
+window.onscroll = function() {
+	let container = document.querySelector('div.infinite');
+	if (page < 5) {
+		if (window.scrollY > window.innerHeight && (window.scrollY) >= (container.offsetHeight-400)) {
+			countryMovieList(count);
+			count++;
+			page++;
+		} 
+	}
+}
+</script>
 </body>
 </html>
