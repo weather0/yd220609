@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import co.edu.kanumovie.admin.service.AdminMapper;
 import co.edu.kanumovie.admin.service.AdminService;
+import co.edu.kanumovie.admin.vo.BannerVO;
 import co.edu.kanumovie.admin.vo.PreferredGenreVO;
 import co.edu.kanumovie.common.DataSource;
 import co.edu.kanumovie.user.vo.UserVO;
@@ -76,6 +77,24 @@ public class AdminServiceImpl implements AdminService {
 	public List<PreferredGenreVO> selectUsersPreferredGenre() {
 	
 		return map.selectUsersPreferredGenre();
+	}
+
+	@Override
+	public int insertBanner(BannerVO vo) {
+		
+		return map.insertBanner(vo);
+	}
+
+	@Override
+	public int updateBanner(BannerVO vo) {
+		
+		return map.updateBanner(vo);
+	}
+
+	@Override
+	public int deleteBanner(BannerVO vo) {
+		
+		return map.deleteBanner(vo);
 	}
 
 	

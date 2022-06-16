@@ -1,28 +1,27 @@
 
 let usercount = [];
-
+let PreferredGenreCount = [];
+let PreferredGenreName = [];
 
 
 $(function() {
 	$.ajax({
-		type: 'POST',
-		url: 'selectUsersPreferredGenre.do',
-		dataType: 'text',
-		success: function(result) {
-			console.log(result);
-			let str = result.split(',');
-			console.log(str);
-			console.log(str.length);
-			str.forEach((elem) => {
-				usercount.push(elem);
+		url: "selectUsersPreferredGenre.do",
+		type: "POST",
+		dataType: "json",
+		success: function(data) {
+			console.log(data)
+			data.forEach((ele) => {
+				PreferredGenreName.push(ele.name);
+				PreferredGenreCount.push(ele.genreCount);
 			})
+
 		},
-		error: function(err) {
-			console.log(err)
+		error: function() {
+
 		}
 	});
 });
-
 
 $(function() {
 	$.ajax({
@@ -30,10 +29,10 @@ $(function() {
 		url: 'analyticssignupdata.do',
 		dataType: 'text',
 		success: function(result) {
-			console.log(result);
+			//	console.log(result);
 			let str = result.split(',');
-			console.log(str);
-			console.log(str.length);
+			//	console.log(str);
+			//	console.log(str.length);
 			str.forEach((elem) => {
 				usercount.push(elem);
 			})
@@ -53,11 +52,11 @@ const ctx = document.getElementById("myChart").getContext("2d");
 const myChart = new Chart(ctx, {
 	type: "bar",
 	data: {
-		labels: ["액션", "로맨스", "호러", "Green", "Purple", "Orange"],
+		labels: PreferredGenreName,
 		datasets: [
 			{
 				label: "# of Votes",
-				data: [12, 19, 3, 5, 2, 3],
+				data: PreferredGenreCount,
 				backgroundColor: [
 					"rgba(255, 99, 132, 0.2)",
 					"rgba(54, 162, 235, 0.2)",
@@ -149,7 +148,7 @@ const myChart2 = new Chart(ctx2, {
 		datasets: [
 			{
 				label: "# of Votes",
-				data:usercount,
+				data: usercount,
 				backgroundColor: [
 					"rgba(255, 99, 132, 0.2)",
 					"rgba(54, 162, 235, 0.2)",

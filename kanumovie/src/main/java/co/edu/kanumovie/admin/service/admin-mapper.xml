@@ -80,4 +80,15 @@ ORDER BY 2 DESC FETCH FIRST 5 ROWS ONLY
 </select>
 
 
+<insert id="insertBanner">
+INSERT INTO k_banner VALUES (BANNER_ID_SEQ.nextval,#{genrename},#{btitle},#{bcontent},#{bimgsrc})
+</insert>
+
+<update id="updateBanner">
+
+</update>
+
+<delete id="deleteBanner">
+DELETE FROM 
+</delete>
 </mapper>

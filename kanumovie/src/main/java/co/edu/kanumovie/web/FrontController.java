@@ -20,6 +20,7 @@ import co.edu.kanumovie.admin.command.SelectUsersPreferredGenre;
 import co.edu.kanumovie.admin.command.UpdateReportCheck;
 import co.edu.kanumovie.admin.command.Updateblockcheck;
 import co.edu.kanumovie.admin.command.Updateunblockcheck;
+import co.edu.kanumovie.admin.command.bannerinputform;
 import co.edu.kanumovie.comment.command.Comment;
 import co.edu.kanumovie.comment.command.CommentDelete;
 import co.edu.kanumovie.comment.command.CommentInsert;
@@ -57,14 +58,15 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/home.do", new Home());
 		map.put("/movieSelectList.do", new MovieSelectList());
-		map.put("/admin.do", new Admin());
-		map.put("/adminmessage.do", new AdminMessage());
-		map.put("/updateblockcheck.do", new Updateblockcheck());
-		map.put("/updatereportcheck.do", new UpdateReportCheck());
-		map.put("/updateunblockcheck.do", new Updateunblockcheck());
-		map.put("/analytics.do", new Analytics());
-		map.put("/analyticssignupdata.do", new Analyticssignupdata());
-		map.put("/selectUsersPreferredGenre.do", new SelectUsersPreferredGenre());
+		map.put("/admin.do", new Admin());//관리자 페이지 이동
+		map.put("/adminmessage.do", new AdminMessage()); //신고관리페이지이동
+		map.put("/updateblockcheck.do", new Updateblockcheck()); //차단 처리
+		map.put("/updatereportcheck.do", new UpdateReportCheck()); //신고 처리
+		map.put("/updateunblockcheck.do", new Updateunblockcheck());// 차단 해제 처리
+		map.put("/analytics.do", new Analytics()); //차트 페이지 이동
+		map.put("/analyticssignupdata.do", new Analyticssignupdata()); //주간 회원가입 유저 수 처리
+		map.put("/selectUsersPreferredGenre.do", new SelectUsersPreferredGenre()); //유저 선호 장르 데이터처리
+		map.put("/bannerinputform.do", new bannerinputform());//배너 인풋폼 이동
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
 		map.put("/logout.do", new Logout());
