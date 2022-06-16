@@ -18,7 +18,7 @@ String genre = request.getParameter("name");
 String id = request.getParameter("id");
 %>
 <div>
-	<h1>${genre}</h1>
+	<h3>Categories > Genre > ${genre}</h3>
 </div>
 <div class="infinite">
 	<input type="hidden" value="${id}">
@@ -29,16 +29,16 @@ String id = request.getParameter("id");
 </div>
 <script src="js/project-movie.js"></script>
 <script>
-console.log(document.querySelector('input').value);
-let cnt = 0;
-window.onscroll = function() {
+let page = 0;
+window.onscroll = function(e) {
 	let container = document.querySelector('div.infinite');
-	console.log(container.offsetHeight);
-	console.log(scrollY);
-	if (window.scrollY > window.innerHeight && (window.scrollY) >= (container.offsetHeight-400)) {
-		movieList(count);
-		count++;
-		console.log("add");
+	if (page < 5) {
+		if (window.scrollY > window.innerHeight && (window.scrollY) >= (container.offsetHeight-400)) {
+			movieList(count);
+			count++;
+			page++;
+			console.log(count, page, "add");
+		} 
 	}
 }
 </script>
