@@ -80,6 +80,19 @@
                             </div>
                             <button type="submit" class="site-btn">선호 영화 수정</button>
                         </form>
+                        <form action="profileChange.do" method="post" enctype="multipart/form-data">
+                            <div class="anime__review__item__pic">
+                            <br>
+                                <img alt="${fileName}" src="img/profile/${fileName}">
+                            <br>
+                            </div>
+                            <div class="input__item">
+                                <input type="hidden" id="email" name="email" value="${email}">
+                                <input type="hidden" id="pw" name="pw" value="${pw}">
+                                <input type="file" id="file" name="file" required>
+                            </div>
+                            <button type="submit" class="site-btn">프로필 사진 수정</button>
+                        </form>
                         <form action="userManage.do" method="post">
 	                        <div>
 	                            <br> 
@@ -88,13 +101,20 @@
 	                        </div>
                             <div class="input__item">
                                 <input type="hidden" id="email" name="email" value="${email}">
+                                <input type="hidden" id="pw" name="pw" value="${pw}">
                             </div> 
                             <div class="input__item">
-                                <input type="text" id="nick" name="nick" placeholder="${nick}">
+                                <input type="text" id="nick" name="nick" placeholder="${nick}" required>
                                 <span class="icon_profile"></span>
                             </div>
                             
                             <button type="submit" class="site-btn">Change</button>
+                        </form>
+                        <form action="#" method="post">
+                            <div class="input__item">
+                                <input type="hidden" id="email" name="email" value="${email}">
+                            </div>
+                            <button type="button" class="site-btn" onclick="deleteUser()" >회원 탈퇴</button>
                         </form>
                     </div>
                 </div>
@@ -117,6 +137,17 @@
         		alert('비밀번호가 정확하지 않습니다! 다시 입력하세요!');
         	}
         }
+        
+        function deleteUser() {
+        	if (confirm("이 버튼에 대한 동작을 수행합니다. 계속합니까?")) {
+                // 확인 버튼 클릭 시 동작
+                alert("동작을 시작합니다.");
+            } else {
+                // 취소 버튼 클릭 시 동작
+                alert("동작을 취소했습니다.");
+            }
+        }
+        
     </script>
 </body>
 </html>

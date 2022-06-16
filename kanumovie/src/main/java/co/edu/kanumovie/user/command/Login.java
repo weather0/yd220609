@@ -31,6 +31,10 @@ public class Login implements Command {
 			session.setAttribute("preference2", vo.getPreference2());
 			session.setAttribute("preference3", vo.getPreference3());
 			session.setAttribute("authority", vo.getAuthority());
+			session.setAttribute("blockCheck", vo.getBlockCheck());
+			session.setAttribute("report", vo.getReport());
+			session.setAttribute("fileName", vo.getFileName());
+			session.setAttribute("directoryfileName", vo.getDirectoryFileName());
 			request.setAttribute("message", "login");
 		} else {
 			request.setAttribute("message", "login2");

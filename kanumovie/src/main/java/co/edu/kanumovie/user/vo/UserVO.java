@@ -16,4 +16,8 @@ public class UserVO {
 	private int preference2;
 	private int preference3;
 	private String authority;
+	private String blockCheck;
+	private String report;
+	private String fileName;
+	private String directoryFileName;
 }
