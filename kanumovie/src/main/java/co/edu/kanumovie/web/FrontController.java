@@ -88,6 +88,7 @@ public class FrontController extends HttpServlet {
 		map.put("/movieInfoghtest.do", new MovieInfoghtest());
 		map.put("/moviePlay.do", new MoviePlay());
 		map.put("/movieSearch.do", new MovieSearch());
+		map.put("/countrySelectList.do", new CountrySelectList());
 	}
 
 	@Override

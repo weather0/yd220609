@@ -35,13 +35,13 @@
 	font-weight: bold;
 }
 
-.genre-card-container {
+.genre-card-container, .country-card-container {
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
 	padding: 1%;
 }
 
-.genre-card {
+.genre-card, .country-card {
 	margin: 3%;
 	border-radius: 10px;
 	height: 200px;
@@ -50,7 +50,7 @@
 	padding: 2%;
 }
 
-.genre-card h3 {
+.genre-card h3, .country-card h3 {
 	color: #fff;
 	font-weight: bold;
 }
@@ -77,7 +77,7 @@
 		<div id="button-container">
 			<h4>카테고리 둘러보기</h4>
 			<button type="button">장르</button>
-			<button type="button" onclick="searchCountry()">국가</button>
+			<button type="button" onclick="countryList()">국가</button>
 		</div>
 		<div class="genre-card-container">
 			<c:forEach items="${genrelist}" var="genre">
@@ -91,11 +91,42 @@
 			</c:forEach>
 		</div>
 		<script>
+		
+			function countryList() {
+				searchCountry();
+			}
+			
 			function searchCountry() {
 				fetch('countrySelectList.do')
-					.then(response => console.log(response))
+					.then(response => response.json())
+					.then(data => {
+						if (document.querySelector(".genre-card-container")) {
+							document.querySelector(".genre-card-container").remove();
+							let div = document.createElement('div');
+							div.setAttribute('class', 'country-card-container');
+							document.querySelector('#category-container').append(div);
+							data.forEach((elem) => {
+								let card = makeList(elem);
+								div.append(card);
+							})
+						}
+					})
 					.catch(err => console.log(err))
 			}
+			
+			function makeList(elem) {
+				let div = document.createElement('div');
+				div.setAttribute('class', 'country-card');
+				div.setAttribute('style', 'background-image:url(img/Action.jpg)');
+				div.setAttribute('onclick', 'location.href="#"');
+				let country = document.createElement('div');
+				let countryname = document.createElement('h3');
+				countryname.innerHTML = elem.koreanName;
+				country.append(countryname);
+				div.append(country);
+				return div;
+			}
+			
 		</script>
 	</div>
 </body>
