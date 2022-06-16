@@ -13,12 +13,8 @@
 <link rel="stylesheet" href="css/project-movie.css">
 </head>
 <body>
-<%
-String genre = request.getParameter("name");
-String id = request.getParameter("id");
-%>
-<div>
-	<h3>Categories > Genre > ${genre}</h3>
+<div class="category-kind-container">
+	<h3 id="genreTitle">Categories > Genre > ${genre}</h3>
 </div>
 <div class="infinite">
 	<input type="hidden" value="${id}">
@@ -27,20 +23,8 @@ String id = request.getParameter("id");
 	<div class="movie-card-container" data-value='2'>
 	</div>
 </div>
-<script src="js/project-movie.js"></script>
-<script>
-let page = 0;
-window.onscroll = function(e) {
-	let container = document.querySelector('div.infinite');
-	if (page < 5) {
-		if (window.scrollY > window.innerHeight && (window.scrollY) >= (container.offsetHeight-400)) {
-			movieList(count);
-			count++;
-			page++;
-			console.log(count, page, "add");
-		} 
-	}
-}
-</script>
+<script src="js/rating.js"></script>
+<script src="js/scroll.js"></script>
+<script src="js/genre-movie.js"></script>
 </body>
 </html>
