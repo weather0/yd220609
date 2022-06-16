@@ -76,14 +76,14 @@
 	<div id="category-container">
 		<div id="button-container">
 			<h4>카테고리 둘러보기</h4>
-			<button type="button">장르</button>
+			<button type="button" onclick="genreList()">장르</button>
 			<button type="button" onclick="countryList()">국가</button>
 		</div>
 		<div class="genre-card-container">
 			<c:forEach items="${genrelist}" var="genre">
 				<div class="genre-card"
 					style="background-image:url(img/${genre.name}.jpg)"
-					onclick="location.href='movieSelectGenreList.do?name=${genre.name}&id=${genre.id}'">
+					onclick="location.href='movieSelectGenreList.do?name=genre&id=${genre.id}'">
 					<div>
 						<h3>${genre.name}</h3>
 					</div>
@@ -93,7 +93,11 @@
 		<script>
 		
 			function countryList() {
+				if (!document.querySelector('.country-card-container')) {
 				searchCountry();
+				} else {
+					return;
+				}
 			}
 			
 			function searchCountry() {
@@ -115,16 +119,54 @@
 			}
 			
 			function makeList(elem) {
-				let div = document.createElement('div');
-				div.setAttribute('class', 'country-card');
-				div.setAttribute('style', 'background-image:url(img/Action.jpg)');
-				div.setAttribute('onclick', 'location.href="#"');
-				let country = document.createElement('div');
-				let countryname = document.createElement('h3');
-				countryname.innerHTML = elem.koreanName;
-				country.append(countryname);
-				div.append(country);
-				return div;
+				let div = document.createElement('div');				
+				if (elem.name) {
+					div.setAttribute('class', 'genre-card');
+					div.setAttribute('style', 'background-image:url(img/' + elem.name + '.jpg)');
+					div.setAttribute('onclick', "location.href='movieSelectGenreList.do?name=genre&id=" + elem.id + "'");
+					let genre = document.createElement('div');
+					let genreName = document.createElement('h3');
+					genreName.innerHTML = elem.name;
+					genre.append(genreName);
+					div.append(genre);
+					return div;
+				} else if (elem.koreanName) {
+					div.setAttribute('class', 'country-card');
+					div.setAttribute('style', 'background-image:url(img/' + elem.koreanName + '.jpg)');
+					div.setAttribute('onclick', "location.href='movieSelectCountryList.do?name=country&id=" + elem.id + "'");
+					let country = document.createElement('div');
+					let countryname = document.createElement('h3');
+					countryname.innerHTML = elem.koreanName;
+					country.append(countryname);
+					div.append(country);
+					return div;
+				}
+			}
+			
+			function genreList() {
+				if (!document.querySelector('.genre-card-container')) {
+					searchGenre();
+				} else {
+					return;
+				}
+				
+			}
+			
+			function searchGenre() {
+				fetch('genreSelectList.do?type=ajax')
+					.then(response => response.json())
+					.then(data => {
+						if (document.querySelector(".country-card-container")) {
+							document.querySelector(".country-card-container").remove(); 
+							let div = document.createElement('div');
+							div.setAttribute('class', 'genre-card-container');
+							document.querySelector('#category-container').append(div);
+							data.forEach((elem) => {
+								let card = makeList(elem);
+								div.append(card);
+							})
+						}
+					})
 			}
 			
 		</script>
