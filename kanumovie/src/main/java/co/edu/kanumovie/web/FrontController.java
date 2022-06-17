@@ -29,7 +29,6 @@ import co.edu.kanumovie.country.command.CountrySelectList;
 import co.edu.kanumovie.genre.command.GenreSelectList;
 import co.edu.kanumovie.home.command.Home;
 import co.edu.kanumovie.likes.command.Likes;
-import co.edu.kanumovie.likes.command.UserLikesSelectList;
 import co.edu.kanumovie.movie.command.MovieInfo;
 import co.edu.kanumovie.movie.command.MovieInfoghtest;
 import co.edu.kanumovie.movie.command.MoviePlay;
@@ -52,7 +51,6 @@ import co.edu.kanumovie.user.command.SignUp;
 import co.edu.kanumovie.user.command.SignUpForm;
 import co.edu.kanumovie.user.command.UserManage;
 import co.edu.kanumovie.user.command.UserManageForm;
-import freemarker.core.Comment;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -90,7 +88,6 @@ public class FrontController extends HttpServlet {
 		map.put("/findPw.do", new FindPw());
 		map.put("/report.do", new Report());  // report 신고창
 		map.put("/profileChange.do", new ProfileChange());
-		map.put("/comment.do", new Comment());
 		map.put("/movieInfo.do", new MovieInfo());
 		map.put("/commentInsert.do", new CommentInsert());
 		map.put("/genreSelectList.do", new GenreSelectList());
@@ -105,7 +102,7 @@ public class FrontController extends HttpServlet {
 		map.put("/commentUpdate.do", new CommentUpdate());  // comment 수정
 		map.put("/reportUpdate.do", new ReportUpdate());  // 신고 후 user table update
 		map.put("/likes.do", new Likes());
-		map.put("/userLikesSelectList.do", new UserLikesSelectList());
+		//map.put("/userLikesSelectList.do", new UserLikesSelectList());
 	}
 
 	@Override
