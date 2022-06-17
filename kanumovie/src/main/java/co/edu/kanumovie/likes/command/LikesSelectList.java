@@ -15,18 +15,17 @@ public class LikesSelectList implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		LikesService dao = new LikesServiceImpl();
 		LikesVO vo = new LikesVO();
-		
+
 		List<LikesVO> list = new ArrayList<LikesVO>();
 		list = dao.likesSelectList();
-		for(int i = 0; i<list.size(); i++){
-			// 작업 진행중
-		}
-		
-		
-		
+//		for (int i = 0; i < list.size(); i++) {
+//			list.get(i).getEmail();
+//		}
+//		request.setAttribute(", vo);
+
 		return "movie/movieInfo";
 	}
 
