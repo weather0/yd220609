@@ -24,7 +24,7 @@ public class LikesSelectList implements Command {
 		LikesVO vo = new LikesVO();
 		
 		List<LikesVO> list = new ArrayList<LikesVO>();
-		list = dao.likesSelectList();
+		list = dao.likesSelectList(vo);
 		// 장르별 영화 페이지 좋아요 리스트 조회
 		if (request.getParameter("genre") != null) {
 			request.setAttribute("likelist", list);
