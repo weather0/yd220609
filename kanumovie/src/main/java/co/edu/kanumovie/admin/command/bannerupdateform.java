@@ -1,7 +1,4 @@
-package co.edu.kanumovie.home.command;
-
-import java.util.ArrayList;
-import java.util.List;
+package co.edu.kanumovie.admin.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,19 +8,20 @@ import co.edu.kanumovie.admin.serviceimpl.AdminServiceImpl;
 import co.edu.kanumovie.admin.vo.BannerVO;
 import co.edu.kanumovie.common.Command;
 
-public class Home implements Command {
+public class bannerupdateform implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		
+		String bid = request.getParameter("bid");
+
 		AdminService dao = new AdminServiceImpl();
-		List<BannerVO> blist = new ArrayList<BannerVO>();
-		
-		blist = dao.selectAllBannerList();
-		
-		request.setAttribute("blist", blist);
-		
-		return "home/home";
+		BannerVO vo = new BannerVO();
+		vo.setBid(Integer.parseInt(bid));
+		vo = dao.selectBanner(vo.getBid());
+
+		request.setAttribute("banner", vo);
+	
+		return "admin/bannerupdateform";
 	}
 
 }

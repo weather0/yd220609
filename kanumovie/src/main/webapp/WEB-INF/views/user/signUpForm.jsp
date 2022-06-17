@@ -39,7 +39,7 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Sign Up</h3>
-                        <form action="signUp.do" method="post">
+                        <form action="signUp.do" method="post" enctype="multipart/form-data">
                             <div class="input__item">
                                 <input type="text" id="email" name="email" placeholder="Email address" required>
                                 <span class="icon_mail"></span>
