@@ -28,7 +28,7 @@
     
 <title>preferGenreForm.do</title>
 <style>
-    .n {
+    #n {
         color:red;
     }
 </style>
@@ -36,11 +36,11 @@
 <body>
     <div align="center">
         <div>
-            <div><h1 class="n">선호 장르 페이지</h1></div>
+            <div><p id="n"></p></div>
         </div>
     </div>
     
-    <div class="infinite"></div>
+    <div class="infinite" id="re"></div>
 
 
     <!-- Search model Begin -->
@@ -55,7 +55,6 @@
     <!-- Search model end -->
 
 
-
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -68,25 +67,25 @@
     
 </body>
     <script>
-        /* function genSelect() {
-        	let gen = document.querySelector('#genre').innerHTML;
-        	console.log(gen);
-        } */
 
-        let pageNum = 1;
         const API_KEY = 'api_key=e51d70c65b46eb8bd60cafccc9325e8b';
         const BASE_URL = 'https://api.themoviedb.org/3';
-        let TOPRATE_URL = '/movie/top_rated?';
+        const TOPRATE_URL = '/movie/top_rated?';
         const IMG_URL = "https://image.tmdb.org/t/p/w300";
-        let searchAPI = BASE_URL + TOPRATE_URL + '&' + API_KEY + '&language=ko-KR'+ '&page='+pageNum ;
-
+       
+        
         let container = document.querySelector('.infinite');
         let page = document.createElement('div');
         let totalpage;
         let currentpage;
         let totalgenre= new Array();
+          let cnt = 0;
 
-        let movieSearch = function () {
+        let movieSearch = function (pageNum) {
+          
+          
+          let searchAPI = BASE_URL + TOPRATE_URL + '&' + API_KEY + '&language=ko-KR'+ '&page='+pageNum;
+	     
 
           fetch(searchAPI)
             .then(response => response.json())
@@ -99,12 +98,13 @@
               searched.results.forEach((elem) => {
                 let card = document.createElement('div');
                 card.setAttribute('class', 'movie-card');
-                card.addEventListener('click', addGenre);
+                card.addEventListener('click', addGenre); 
                 function addGenre() {
-                	totalgenre = totalgenre.concat(elem.genre_ids);
+                    totalgenre = totalgenre.concat(elem.genre_ids);
                     console.log(elem.genre_ids);
-                    
                     console.log(totalgenre);
+                    console.log('카운팅'+cnt);
+                    cnt++;
                 }
                 let img = document.createElement('img');
                 if (elem.poster_path == null) {
@@ -122,63 +122,25 @@
                 page.setAttribute('class', 'movie-card-container');
                 // page.setAttribute('id', 'page-' + i);
                 container.append(page);
-
               })
-
-
+              
             })
             .catch(err => console.log(err));
+            
         }
+
+        
         // 최초실행
-        movieSearch();
-
-
-
-        // 페이지 추가
-
-        let addPage = function () {
-          window.addEventListener('scroll', (e) => {
-            if (currentpage < totalpage) {
-
-              // 창내부크기 + 스크롤커서위치값(하단으로 갈수록 값 커짐)
-              let val = window.innerHeight + window.scrollY;
-              // let collection = document.querySelector('.movie-card-container');
-
-              // console.log('스크롤위치:' + window.scrollY + ' 창높이:' + window.innerHeight + ' 문서크기:' + collection.offsetHeight);
-              // 참고 velog.io/@sa02045/Scroll-%EC%A0%95%EB%A6%AC
-
-              // offsetHeigt는 태그의 높이(코드라인)
-              if (val >= container.offsetHeight + 1000) {
-                pageNum++;
-                SEARCH_URL = '/search/movie?query=' + getParameter('query') + '&page=' + pageNum;
-                searchAPI = BASE_URL + SEARCH_URL + '&' + API_KEY + '&language=ko-KR';
-
-                // 다음 페이지 실행
-                movieSearch();
-              }
-            } else {
-              // 이거 반드시 해줘야 함. 
-              // 안 할 시, 페이징 다 끝났는데도 스크롤 내리면 무한으로 이벤트가 실행되어 자원 낭비
-              e.stopPropagation;
-            }
-          });
+        movieSearch(1);
+        console.log('카운팅'+cnt);
+        if(cnt==1) {
+        movieSearch(2);        	
         }
-
-
-
-        // if (currentpage < totalpage) {
-        addPage();
-        // }
-
-
-        window.onload = function () {
-          setTimeout(function () {
-            scrollTo(0, 0);
-          }, 200)
+        console.log('카운팅'+cnt);
+        if(cnt==2) {
+        movieSearch(3);
         }
-
-
-
+        
 
         
     </script>
