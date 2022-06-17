@@ -38,8 +38,7 @@ function getData(url, num) {
 				})
 			})
 			rating(); 
-			getLikes();
-			console.log(document.querySelectorAll('.fa-heart'));
+			getLikes(); 
 		})
 }
 
@@ -62,14 +61,18 @@ function makeCard(obj) {
 		star.setAttribute('class', 'fa fa-star');
 		rate.append(star);
 	}
-	let button = makeButton(); 
+	let button = makeButton(obj); 
+	let input = document.createElement('input');
+	input.setAttribute('type', 'hidden');
+	input.setAttribute('value', obj.id);
+	card.append(input);
 	card.append(button);
 	info.append(rate);
 	card.append(info);
 	return card;
 }
 
-function makeButton() {
+function makeButton(obj) {
 	let div = document.createElement('div');
 	div.setAttribute('style', 'z-index:999;');
 	let button = document.createElement('button');
@@ -77,20 +80,34 @@ function makeButton() {
 	button.setAttribute('class', 'w3-button w3-black w3-round');
 	let icon = document.createElement('i');
 	icon.setAttribute('class', 'fa fa-heart');
+	icon.setAttribute('id', 'movie-' + obj.id);
 	icon.setAttribute('style', 'font-size:20px;color:grey;background:none;');
 	button.append(icon);
 	div.append(button);
 	return div;
 }
 
-
+let param = {type:'genre', email:'a@a.a'};
 function getLikes() {
-	fetch('likesSelectList.do?page=genre')
+	fetch('userLikesSelectList.do', {
+		method:'POST',
+		headers:{'Content-Type':'application/json'},
+		body: JSON.stringify(param)
+	})
 		.then(response => response.json())
 		.then(data => {
-			console.log(data);
-		})
-		.catch(err => console.log(err))
+			let movieData = document.querySelectorAll('.movie-card input');
+			movieData.forEach((elem) => {
+				data.forEach((like) => {
+					if (like.id == elem.getAttribute('value')) {
+						document.querySelector('#movie-'+like.id).setAttribute('style', 'color:red');
+						console.log(document.querySelector('#movie-'+like.id).parentElement);
+					} else {
+						console.log(false);
+					}
+				})
+			})
+		});
 }
 
 
