@@ -74,14 +74,27 @@ function makeCard(obj) {
 
 function makeButton(obj) {
 	let div = document.createElement('div');
-	div.setAttribute('style', 'z-index:999;');
 	let button = document.createElement('button');
 	button.setAttribute('type', 'button');
 	button.setAttribute('class', 'w3-button w3-black w3-round');
+	button.addEventListener('click', function(e) {
+		e.stopPropagation();
+		let heart = this.firstChild;
+		let cmd = "";
+		if (heart.style.color == 'red') {
+			heart.setAttribute('style', 'font-size:30px;color:grey');
+			cmd = "delete";
+		} else if (heart.style.color == 'grey') {
+			heart.setAttribute('style', 'font-size:30px;color:red');
+			cmd = "update";
+		}
+		
+	})
+	button.setAttribute('style', 'background:none;z-index:999;')
 	let icon = document.createElement('i');
 	icon.setAttribute('class', 'fa fa-heart');
 	icon.setAttribute('id', 'movie-' + obj.id);
-	icon.setAttribute('style', 'font-size:20px;color:grey;background:none;');
+	icon.setAttribute('style', 'font-size:30px;color:grey;background:none;');
 	button.append(icon);
 	div.append(button);
 	return div;
@@ -109,5 +122,7 @@ function getLikes() {
 			})
 		});
 }
+
+
 
 
