@@ -25,15 +25,15 @@ import co.edu.kanumovie.admin.command.Updateblockcheck;
 import co.edu.kanumovie.admin.command.Updateunblockcheck;
 import co.edu.kanumovie.admin.command.bannerinputform;
 import co.edu.kanumovie.admin.command.bannerupdateform;
-import co.edu.kanumovie.comment.command.Comment;
+//import co.edu.kanumovie.comment.command.Comment;
 import co.edu.kanumovie.comment.command.CommentDelete;
 import co.edu.kanumovie.comment.command.CommentInsert;
+import co.edu.kanumovie.comment.command.CommentUpdate;
 import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.country.command.CountrySelectList;
 import co.edu.kanumovie.genre.command.GenreSelectList;
 import co.edu.kanumovie.home.command.Home;
 import co.edu.kanumovie.likes.command.Likes;
-import co.edu.kanumovie.likes.command.UserLikesSelectList;
 import co.edu.kanumovie.movie.command.MovieInfo;
 import co.edu.kanumovie.movie.command.MovieInfoghtest;
 import co.edu.kanumovie.movie.command.MoviePlay;
@@ -41,6 +41,9 @@ import co.edu.kanumovie.movie.command.MovieSearch;
 import co.edu.kanumovie.movie.command.MovieSelectCountryList;
 import co.edu.kanumovie.movie.command.MovieSelectGenreList;
 import co.edu.kanumovie.movie.command.MovieSelectList;
+import co.edu.kanumovie.report.command.Report;
+import co.edu.kanumovie.report.command.ReportInsert;
+import co.edu.kanumovie.report.command.ReportUpdate;
 import co.edu.kanumovie.user.command.FindPw;
 import co.edu.kanumovie.user.command.FindPwForm;
 import co.edu.kanumovie.user.command.Login;
@@ -85,14 +88,15 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do", new Logout());
 		map.put("/userManageForm.do", new UserManageForm());
 		map.put("/userManage.do", new UserManage());
+		map.put("/profileChange.do", new ProfileChange());
 		map.put("/pwChange.do", new PwChange());
 		map.put("/preferGenreForm.do", new PreferGenreForm());
 		map.put("/signUpForm.do", new SignUpForm());
 		map.put("/signUp.do", new SignUp());
 		map.put("/findPwForm.do", new FindPwForm());
 		map.put("/findPw.do", new FindPw());
+		map.put("/report.do", new Report());  // report 신고창
 		map.put("/profileChange.do", new ProfileChange());
-		map.put("/comment.do", new Comment());
 		map.put("/movieInfo.do", new MovieInfo());
 		map.put("/commentInsert.do", new CommentInsert());
 		map.put("/genreSelectList.do", new GenreSelectList());
@@ -103,8 +107,11 @@ public class FrontController extends HttpServlet {
 		map.put("/movieSearch.do", new MovieSearch());
 		map.put("/countrySelectList.do", new CountrySelectList());
 		map.put("/movieSelectCountryList.do", new MovieSelectCountryList());
+		map.put("/reportInsert.do", new ReportInsert());   // 신고 등록
+		map.put("/commentUpdate.do", new CommentUpdate());  // comment 수정
+		map.put("/reportUpdate.do", new ReportUpdate());  // 신고 후 user table update
 		map.put("/likes.do", new Likes());
-		map.put("/userLikesSelectList.do", new UserLikesSelectList());
+		//map.put("/userLikesSelectList.do", new UserLikesSelectList());
 	}
 
 	@Override

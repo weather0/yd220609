@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.edu.kanumovie.comment.service.CommentMapper">
 	<select id="commentAllList"	parameterType="co.edu.kanumovie.comment.vo.CommentVO" resultType="co.edu.kanumovie.comment.vo.CommentVO">
-		SELECT c.c_id as cid , c.c_comment as comments , c.c_date as wdate, c.id, c.email, u.nick
+		SELECT c.c_id as cid , c.c_comment as comments , c.c_date as wdate, c.id, c.email, u.nick,u.fileName
 		FROM k_movies m
 			INNER JOIN k_comment c
 		ON ((c.id = m.id) and c.id = #{id})
