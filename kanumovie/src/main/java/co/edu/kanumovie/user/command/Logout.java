@@ -14,7 +14,7 @@ public class Logout implements Command {
 		HttpSession session = request.getSession();
 		session.invalidate(); // 세션객체를 완전히 삭제.
 		request.setAttribute("message", "logout");
-		return "home/home";
+		return "/home.do";
 	}
 
 }

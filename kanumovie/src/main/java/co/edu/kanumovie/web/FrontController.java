@@ -43,6 +43,7 @@ import co.edu.kanumovie.user.command.Login;
 import co.edu.kanumovie.user.command.LoginForm;
 import co.edu.kanumovie.user.command.Logout;
 import co.edu.kanumovie.user.command.PreferGenreForm;
+import co.edu.kanumovie.user.command.ProfileChange;
 import co.edu.kanumovie.user.command.PwChange;
 import co.edu.kanumovie.user.command.SignUp;
 import co.edu.kanumovie.user.command.SignUpForm;
@@ -82,6 +83,7 @@ public class FrontController extends HttpServlet {
 		map.put("/signUp.do", new SignUp());
 		map.put("/findPwForm.do", new FindPwForm());
 		map.put("/findPw.do", new FindPw());
+		map.put("/profileChange.do", new ProfileChange());
 		map.put("/comment.do", new Comment());
 		map.put("/movieInfo.do", new MovieInfo());
 		map.put("/commentInsert.do", new CommentInsert());
@@ -108,17 +110,23 @@ public class FrontController extends HttpServlet {
 
 		Command command = map.get(page);
 		String viewPage = command.exec(request, response);
-		if (viewPage.startsWith("ajax:")) {
-			response.setContentType("text/html; charset=UTF-8");
-			viewPage = viewPage.substring(5);
-			response.getWriter().append(viewPage);
-			return;
-		} else if (!viewPage.endsWith(".do")) {
-			viewPage = viewPage + ".tiles";
+		System.out.println(viewPage);
+		
+		if(!viewPage.endsWith(".do")) {
+			if (viewPage.startsWith("ajax:")) {
+				response.setContentType("text/html; charset=UTF-8");
+				viewPage = viewPage.substring(5);
+				response.getWriter().append(viewPage);
+				return;
+			} else {
+				viewPage = viewPage + ".tiles";
+			}
+	
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
+		}else {
+			response.sendRedirect(viewPage);
 		}
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		dispatcher.forward(request, response);
 	}
 
 }
