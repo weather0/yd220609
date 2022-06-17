@@ -121,6 +121,8 @@
                 page.append(card);
                 page.setAttribute('class', 'movie-card-container');
                 // page.setAttribute('id', 'page-' + i);
+                
+                
                 container.append(page);
               })
               
