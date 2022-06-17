@@ -38,6 +38,8 @@ function getData(url, num) {
 				})
 			})
 			rating(); 
+			getLikes();
+			console.log(document.querySelectorAll('.fa-heart'));
 		})
 }
 
@@ -60,10 +62,35 @@ function makeCard(obj) {
 		star.setAttribute('class', 'fa fa-star');
 		rate.append(star);
 	}
+	let button = makeButton(); 
+	card.append(button);
 	info.append(rate);
 	card.append(info);
 	return card;
 }
 
+function makeButton() {
+	let div = document.createElement('div');
+	div.setAttribute('style', 'z-index:999;');
+	let button = document.createElement('button');
+	button.setAttribute('type', 'button');
+	button.setAttribute('class', 'w3-button w3-black w3-round');
+	let icon = document.createElement('i');
+	icon.setAttribute('class', 'fa fa-heart');
+	icon.setAttribute('style', 'font-size:20px;color:grey;background:none;');
+	button.append(icon);
+	div.append(button);
+	return div;
+}
+
+
+function getLikes() {
+	fetch('likesSelectList.do?page=genre')
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+		})
+		.catch(err => console.log(err))
+}
 
 
