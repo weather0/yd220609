@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.edu.kanumovie.likes.service.LikesMapper">
 	<select id="likesSelectList" resultType="co.edu.kanumovie.likes.vo.LikesVO">
-		SELECT * FROM K_LIKES
+		SELECT * FROM K_LIKES WHERE ID = #{id} AND EMAIL = #{email}
 	</select>
 	<insert id="likesInsert" parameterType="co.edu.kanumovie.likes.vo.LikesVO">
 		INSERT INTO K_LIKES VALUES (L_ID_SEQ.nextval, #{id}, #{email})

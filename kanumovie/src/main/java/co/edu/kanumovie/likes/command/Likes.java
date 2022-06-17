@@ -14,6 +14,7 @@ public class Likes implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		
 		LikesService dao = new LikesServiceImpl();
+		
 		LikesVO vo = new LikesVO();
 		vo.setId(Integer.parseInt(request.getParameter("id")));
 		vo.setEmail("abc@abc.com"); // 나중에 로그인세션ID로 수정할 것
