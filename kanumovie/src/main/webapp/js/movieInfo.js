@@ -15,21 +15,6 @@ let recomAPI = BASE_URL + MOVIE_URL + '/recommendations?' + API_KEY + '&language
 let creditAPI = BASE_URL + MOVIE_URL + '/credits?' + API_KEY + '&language=ko-KR';
 let ratingAPI = BASE_URL + MOVIE_URL + '/rating?' + API_KEY + '&guest_session_id=5667cdad051a40c848b9b34da163b4dc';
 
-// 기존 좋아요 여부 확인
-fetch('likes.do', {
-  method: 'post',
-  headers: { 'Content-type': 'application/x-www-form-urlencoded' },
-  body: 'email=' + '<%=uid%>' + '&id=' + getParameter('id')
-})
-  .then(result => {
-
-
-
-  })
-  .catch(err => console.log(err));
-
-
-
 
 // 영화정보 섹션
 fetch(movieInfoAPI)
@@ -246,7 +231,7 @@ fetch(recomAPI)
       recomCard.append(aimgtag);
       recombar.append(recomCard);
     }
-    console.log(recombar)
+    // console.log(recombar)
   })
   .catch(err => console.log(err));
 
