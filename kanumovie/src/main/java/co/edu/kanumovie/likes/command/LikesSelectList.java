@@ -16,15 +16,25 @@ public class LikesSelectList implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 
-		LikesService dao = new LikesServiceImpl();
-		LikesVO vo = new LikesVO();
-
+		LikesService dao = new LikesServiceImpl();		
 		List<LikesVO> list = new ArrayList<LikesVO>();
-		list = dao.likesSelectList();
-//		for (int i = 0; i < list.size(); i++) {
-//			list.get(i).getEmail();
-//		}
-//		request.setAttribute(", vo);
+		LikesVO vo = new LikesVO();
+		vo.setId(Integer.parseInt(request.getParameter("id")));
+		vo.setEmail(request.getParameter("email"));
+		list = dao.likesSelectList(vo);
+		if(!list.isEmpty()) {
+			int likesId = list.get(0).getLikesId();
+			String email = list.get(0).getEmail();
+			request.setAttribute("likesId", likesId);
+			request.setAttribute("email", email);
+//			Gson gson = new GsonBuilder().create();
+//
+//			
+//			resp.getWriter().print(gson.toJson(list));
+		}
+		
+		// 요기부분에 유진 쓰고 싶은 로직 쓰면 돼
+
 
 		return "movie/movieInfo";
 	}

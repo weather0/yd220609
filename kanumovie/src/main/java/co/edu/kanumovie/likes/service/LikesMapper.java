@@ -5,7 +5,7 @@ import java.util.List;
 import co.edu.kanumovie.likes.vo.LikesVO;
 
 public interface LikesMapper {
-	List<LikesVO> likesSelectList();
+	List<LikesVO> likesSelectList(LikesVO vo);
 	int likesInsert(LikesVO vo); 
 	int likesDelete(LikesVO vo); 
 

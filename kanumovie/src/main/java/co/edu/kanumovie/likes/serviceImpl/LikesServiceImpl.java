@@ -15,8 +15,8 @@ public class LikesServiceImpl implements LikesService {
 	LikesMapper map = sqlSession.getMapper(LikesMapper.class);
 
 	@Override
-	public List<LikesVO> likesSelectList() {
-		return map.likesSelectList();
+	public List<LikesVO> likesSelectList(LikesVO vo) {
+		return map.likesSelectList(vo);
 	}
 
 	@Override
@@ -28,5 +28,6 @@ public class LikesServiceImpl implements LikesService {
 	public int likesDelete(LikesVO vo) {
 		return map.likesDelete(vo);
 	}
+
 
 }

@@ -39,7 +39,6 @@
 
 
       <body>
-
         <!-- Page Preloder -->
         <div id="preloder">
           <div class="loader"></div>
@@ -381,13 +380,14 @@
 
 
         <script>
+          // 별점 주기 기능
           // console.log(document.querySelector('.votesCnt'));
           document.querySelector('.votesCnt').addEventListener('click', function () {
 
             fetch(ratingAPI, {
               method: 'post',
               headers: { 'Content-type': 'application/x-www-form-urlencoded' },
-              body: 'value=' + 8.5
+              body: 'value=' + 8.5 // 수정요
             })
               .then(response => console.log(response))
               .catch(err => console.log(err));
