@@ -9,6 +9,7 @@ public class Home implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("home 실행");
 		return "home/home";
 	}
 

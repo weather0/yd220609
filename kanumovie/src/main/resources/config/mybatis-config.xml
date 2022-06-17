@@ -33,5 +33,7 @@
     <mapper resource="co/edu/kanumovie/show/service/show-map.xml"/>
     <mapper resource="co/edu/kanumovie/country/service/country-map.xml"/>
     <mapper resource="co/edu/kanumovie/report/service/report-map.xml"/>
+    <mapper resource="co/edu/kanumovie/country/service/country-map.xml"/>
+    <mapper resource="co/edu/kanumovie/likes/service/likes-map.xml"/>
   </mappers>
 </configuration>
