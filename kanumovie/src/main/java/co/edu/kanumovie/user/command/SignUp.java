@@ -45,7 +45,7 @@ public class SignUp implements Command {
 		}
 		dao.userInsert(vo);
 		request.setAttribute("message", "signup");
-		return "/home.do";
+		return "home.do";
 	}
 
 }
