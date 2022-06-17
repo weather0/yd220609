@@ -16,11 +16,15 @@ import co.edu.kanumovie.admin.command.Admin;
 import co.edu.kanumovie.admin.command.AdminMessage;
 import co.edu.kanumovie.admin.command.Analytics;
 import co.edu.kanumovie.admin.command.Analyticssignupdata;
+import co.edu.kanumovie.admin.command.Deletebanner;
+import co.edu.kanumovie.admin.command.Insertbanner;
 import co.edu.kanumovie.admin.command.SelectUsersPreferredGenre;
 import co.edu.kanumovie.admin.command.UpdateReportCheck;
+import co.edu.kanumovie.admin.command.Updatebanner;
 import co.edu.kanumovie.admin.command.Updateblockcheck;
 import co.edu.kanumovie.admin.command.Updateunblockcheck;
 import co.edu.kanumovie.admin.command.bannerinputform;
+import co.edu.kanumovie.admin.command.bannerupdateform;
 import co.edu.kanumovie.comment.command.Comment;
 import co.edu.kanumovie.comment.command.CommentDelete;
 import co.edu.kanumovie.comment.command.CommentInsert;
@@ -72,6 +76,10 @@ public class FrontController extends HttpServlet {
 		map.put("/analyticssignupdata.do", new Analyticssignupdata()); //주간 회원가입 유저 수 처리
 		map.put("/selectUsersPreferredGenre.do", new SelectUsersPreferredGenre()); //유저 선호 장르 데이터처리
 		map.put("/bannerinputform.do", new bannerinputform());//배너 인풋폼 이동
+		map.put("/bannerupdateform.do", new bannerupdateform());//배너 업데이트폼 이동
+		map.put("/updatebanner.do", new Updatebanner());//배너 업데이트
+		map.put("/deletebanner.do", new Deletebanner());//배너 딜리트
+		map.put("/insertbanner.do", new Insertbanner());//배너 등록
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
 		map.put("/logout.do", new Logout());

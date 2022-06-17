@@ -20,6 +20,8 @@ public interface AdminMapper {
 	public int updateUnblockCheck(String email); //차단 취소
 	public List<PreferredGenreVO> selectUsersPreferredGenre(); //유저 선호 장르 
 	public int insertBanner(BannerVO vo); //배너 추가
-	public int updateBanner(BannerVO vo); //배너 수정
+	public int updateBanner(int id); //배너 수정
 	public int deleteBanner(BannerVO vo); //배너 삭제 
+	public List<BannerVO> selectAllBannerList(); // 전체 배너 리스트 
+	public BannerVO selectBanner(int id); //배너 단건 조회
 }

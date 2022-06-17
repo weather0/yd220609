@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,29 +16,23 @@
 	background-color: #191C24 !important;
 }
 
-
 .mb-4 {
 	color: white;
 }
 
 .nice-select {
-
-margin-top: -1px;
-margin-bottom: 30px;
-
+	margin-top: -1px;
+	margin-bottom: 30px;
 }
-
 
 .bg-dark {
 	color: #4d4d4d !important;
 }
 
 input[type="file"] {
-
 	background-color: #fff !important;
 	height: 38px;
 	width: 100%;
-
 }
 
 .selectform {
@@ -46,11 +40,8 @@ input[type="file"] {
 }
 
 .form-control {
-
-margin-top: 22px;
-
+	margin-top: 22px;
 }
-
 
 .btn-primary {
 	margin-top: 10px; color : #fff;
@@ -126,12 +117,11 @@ margin-top: 22px;
 }
   */
 
-
 </style>
 </head>
 <body>
-					<form action="insertbanner.do" method="POST" enctype="multipart/form-data">
-				
+	<!--  -->
+				<form action="updatebanner.do" method="POST" enctype="multipart/form-data">
 					<div class="form-floating mb-3">
 					<select class="form-select" id="floatingSelect" style="width:300px;height:100px;"
 						aria-label="Floating label select example" name="selectedgenre">
@@ -161,11 +151,11 @@ margin-top: 22px;
 					
 				<div class="ainputBoxContainer">
 					<div class="ainputBox">
-						<input type="text" required="required" name="title" id="title"> <span>title</span>
+						<input type="text" required="required" name="title" id="title" value="${banner.btitle}"> <span>title</span>
 					</div>
-					
+
 					<div class="ainputBox">
-						<textarea required="required" style="height: 150px;" name="content"></textarea>
+						<textarea required="required" style="height: 150px;" name="content">${banner.bcontent}</textarea>
 						 <span>Content</span>
 					</div>
 					
@@ -175,12 +165,16 @@ margin-top: 22px;
 						type="file">
 					</div>
 					<a class="btn btn-sm btn-primary" href="home.do">메인으로</a>
-					<input type="submit" class="btn btn-sm btn-primary" value="등록">
+					<input type="hidden" name="bid" id="bid" value="{$banner.bid}">
+					<input type="submit" class="btn btn-sm btn-primary" value="수정">
 					<input type="reset" class="btn btn-sm btn-primary" value="취소">
 				</div>
 				</form>
 
+		
+		
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script src="js/salesadmin.js"></script>
+		<script src="js/banner.js"></script>
 </body>
 </html>
