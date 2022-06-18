@@ -38,13 +38,13 @@ public class FindPw implements Command {
 		
 		return "user/findPw";
 	}
-	
+	//  시간없어서 gmail 계정만 가능.
 	public static void sendMail(String pw, String email) {
 	    // 메일 인코딩
 	    final String bodyEncoding = "UTF-8"; //콘텐츠 인코딩
 	    
 	    String subject = "KANU MOVIE 비밀번호 발송";
-	    String fromEmail = "hoo788@gmail.com";
+	    String fromEmail = "KanuMovie";
 	    String fromUsername = "KANU MOVIE";
 	    String toEmail = email; // 콤마(,)로 여러개 나열
 	    
