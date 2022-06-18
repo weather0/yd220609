@@ -71,10 +71,11 @@
 								<tr class="text-white">
 									<th scope="col"><input class="form-check-input"
 										type="checkbox"></th>
-									<th scope="col">Email</th>
-									<th scope="col">Nick</th>
-									<th scope="col">SignDate</th>
-									<th scope="col">Report</th>
+									<th scope="col">신고받은사람</th>
+									<th scope="col">신고자</th>
+									<th scope="col">신고날짜</th>
+									<th scope="col">사유</th>
+									<th scope="col">내용</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -117,10 +118,11 @@
 								<tr class="text-white">
 									<th scope="col"><input class="form-check-input"
 										type="checkbox"></th>
-									<th scope="col">Email</th>
-									<th scope="col">Nick</th>
-									<th scope="col">SignDate</th>
-									<th scope="col">report</th>
+									<th scope="col">신고받은사람</th>
+									<th scope="col">신고자</th>
+									<th scope="col">신고날짜</th>
+									<th scope="col">사유</th>
+									<th scope="col">내용</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -138,11 +140,12 @@
 									<tr>
 										<td><input class="form-check-input" type="checkbox">
 										</td>
-										<td>${l.email}</td>
-										<td>${l.nick}</td>
-										<td><fmt:formatDate value="${l.signdate}"
+										<td>${l.reportedEmail}</td>
+										<td>${l.reportSendEmail}</td>
+										<td><fmt:formatDate value="${l.reportDate}"
 												pattern="yyyy년 MM월 dd일 hh시mm분" /></td>
-										<td>욕설/비방</td>
+										<td>${l.reportSubject}</td>
+										<td>${l.reportContent}</td>
 										<!-- <td><button class="btn btn-sm btn-primary" align="center">access</button></td> -->
 
 									</tr>
