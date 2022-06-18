@@ -2507,13 +2507,13 @@ textarea.form-control {
   display: block;
   padding-left: 1.25rem
 }
-
+/* 
 .form-check-input {
   position: absolute;
   margin-top: .3rem;
   margin-left: -1.25rem
 }
-
+ */
 .form-check-input:disabled~.form-check-label,
 .form-check-input[disabled]~.form-check-label {
   color: #6c757d
@@ -10707,7 +10707,7 @@ button.bg-dark:hover {
     margin-left: .5rem !important
   }
 
-  . .m-xl-3 {
+  .m-xl-3 {
     margin: 1rem !important
   }
 
@@ -11149,13 +11149,16 @@ button.bg-dark:hover {
     text-align: left !important
   }
 
-  .text-xl-righ text-align: right !important
+  .text-xl-righ {
+  text-align: right !important
+  } 
+  
 }
 
 .text-xl-center {
   text-align: center !important
 }
-}
+
 
 .text-lowercase {
   text-transform: lowercase !important

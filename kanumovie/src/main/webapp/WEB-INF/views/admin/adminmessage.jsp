@@ -41,6 +41,16 @@
 .mb-2:hover {
 	color: white;
 }
+
+.pageul {
+font-size: 20px;
+}
+.pageul li{
+list-style-type: none;
+display: inline;
+}
+ 
+
 </style>
 
 </head>
@@ -58,7 +68,7 @@
 	<!-- report table start -->
 	<c:choose>
 		<c:when test="${reportuserlistsize eq 0}">
-				<div class="container-fluid pt-4 px-4">
+			<div class="container-fluid pt-4 px-4">
 				<div class="bg-secondary text-center rounded p-4">
 					<div class="d-flex align-items-center justify-content-between mb-4">
 						<h6 class="mb-0">Users List</h6>
@@ -89,18 +99,16 @@
                                     <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
                                 </tr> -->
 								<tr>
-									<td colspan="5" align="center">신고된 유저가 없습니다.</td>
+									<td colspan="6" align="center">신고된 유저가 없습니다.</td>
 								</tr>
-								
+
 							</tbody>
 						</table>
-						<a class="btn btn-sm btn-primary" onclick="updateunblockcheck()"
-							style="margin-top: 20px; color: white">unblock</a>
 					</div>
 				</div>
 			</div>
 
-			
+
 		</c:when>
 		<c:when test="${reportuserlistsize ne 0}">
 
@@ -150,9 +158,12 @@
 
 									</tr>
 								</c:forEach>
-
+								
 							</tbody>
 						</table>
+					
+						
+						<a class="btn btn-sm btn-primary" href="adminmessage.do?p=${startNum+5}&t=&q=">다음</a>
 						<a class="btn btn-sm btn-primary" onclick="updateblockcheck()"
 							style="margin-top: 20px; color: white">access</a> <a
 							class="btn btn-sm btn-primary" onclick="updatereportcheck()"
@@ -209,11 +220,9 @@
 								<tr>
 									<td colspan="5" align="center">차단된 유저가 없습니다.</td>
 								</tr>
-								
+
 							</tbody>
 						</table>
-						<a class="btn btn-sm btn-primary" onclick="updateunblockcheck()"
-							style="margin-top: 20px; color: white">unblock</a>
 					</div>
 				</div>
 			</div>

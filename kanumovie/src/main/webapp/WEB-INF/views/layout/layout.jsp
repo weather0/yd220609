@@ -21,14 +21,14 @@
 	href="assets/owlcarousel/assets/owl.carousel.min.css">
 <link rel="stylesheet"
 	href="assets/owlcarousel/assets/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.min.css?ver=1" type="text/css">
 <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
 <link rel="stylesheet" href="css/plyr.css" type="text/css">
 <link rel="stylesheet" href="css/nice-select.css" type="text/css">
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/style.css?ver=1" type="text/css">
 
 
 <!-- javascript -->
