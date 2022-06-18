@@ -109,4 +109,20 @@ SELECT * FROM k_banner WHERE bid = #{bid}
 
 
 
+<select id="selectAllReportList" resultType="co.edu.kanumovie.report.vo.ReportVO">
+
+SELECT * FROM k_report ORDER BY reportdate desc
+
+</select>
+
+<delete id="deleteReport">
+
+DELETE FROM k_report WHERE reportedemail = #{email}
+</delete>
+
+<delete id="deleteAllComment">
+DELETE FROM k_comment WHERE email = #{email}
+</delete>
+
+
 </mapper>
