@@ -47,6 +47,14 @@
 	background-color: #070720 !important;
 } */
 
+.pageul {
+font-size: 20px;
+}
+.pageul li{
+list-style-type: none;
+display: inline;
+}
+ 
 </style>
 
 </head>
@@ -55,7 +63,7 @@
 
 <!-- sales start -->
  <div class="container-fluid pt-4 px-4">
-                <div class="salesrow g-4">
+                <div class="row g-4">
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
@@ -148,6 +156,31 @@
                              
                             </tbody>
                         </table>
+                        
+                        <c:if test="${paging.prev}">
+                        	<a href="admin.do?page=${paging.begingPage-1}">prev</a>
+                        </c:if>
+                        
+                        
+               			<c:forEach begin="${paging.beginPage}" end="${paging.endPage}" step="1" var="index"> 
+               				<c:choose>
+               					<c:when test="${paging.page==index}">
+               						${index}
+               					</c:when>
+               					<c:otherwise>
+               					<a href="admin.do?page=${index}">${index}</a>
+               					</c:otherwise>
+               				</c:choose>
+               			</c:forEach>
+               			<c:if test="${paging.next}">
+               				<a href="admin.do?page=${paging.endPage+1}">next</a>
+               			</c:if>
+               	
+						<%-- <ul class="pageul">
+							<c:forEach var="i" begin="0" end="9">
+							<li><a href="?p=${startNum+i}&t=&q=">${startNum+i}</a></li>
+							</c:forEach> 
+						</ul>--%>
                     </div>
                 </div>
             </div>
