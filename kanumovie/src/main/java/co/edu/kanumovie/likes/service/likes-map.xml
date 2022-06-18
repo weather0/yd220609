@@ -8,7 +8,7 @@
 		INSERT INTO K_LIKES VALUES (L_ID_SEQ.nextval, #{id}, #{email})
 	</insert>
 	<delete id="likesDelete" parameterType="co.edu.kanumovie.likes.vo.LikesVO">
-		DELETE FROM K_LIKES WHERE LIKES_ID = #{likesID}
+		DELETE FROM K_LIKES WHERE LIKES_ID = #{likes_Id}
 	</delete>
 
 </mapper>

@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LikesVO {
-	int likesId;
+	int likes_Id;
 	int id;
 	String email;
 
