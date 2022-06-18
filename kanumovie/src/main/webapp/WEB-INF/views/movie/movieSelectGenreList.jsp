@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<% String email=(String) session.getAttribute("email"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,7 @@
 </div>
 <div class="infinite">
 	<input type="hidden" value="${id}">
+	<input type="hidden" id = "sessionId" value="${email}">
 	<div class="movie-card-container" data-value='1'>
 	</div>
 	<div class="movie-card-container" data-value='2'>
