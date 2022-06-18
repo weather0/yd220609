@@ -40,4 +40,7 @@
         SET FILENAME = #{fileName}, DIRECTORYFILENAME = #{directoryFileName}
         WHERE EMAIL = #{email}
     </update>
+    <select id="userSelectEmail" resultType="co.edu.kanumovie.user.vo.UserVO">
+        SELECT * FROM K_USERS WHERE EMAIL = #{email}
+    </select>
 </mapper>

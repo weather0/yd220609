@@ -17,4 +17,5 @@ public interface UserMapper {
 	public int userUpdateProfile(UserVO vo); // 유저 프로필 변경.
 	
 	public List<PreferVO> perferList(); // 선호 영화 선택용 영화들 리스트.
+	public UserVO userSelectEmail(UserVO vo); // 한 개 유저 정보 이메일로 가져오기.
 }

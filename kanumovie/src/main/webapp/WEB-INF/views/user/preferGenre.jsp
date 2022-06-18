@@ -35,9 +35,13 @@
     #ff {
     	display:none;
     }
+    #move {
+    	display:none;
+    }
 </style>
 </head>
 <body>
+	<div id="move"></div>
     <div align="center">
         <div>
             <div><h1 id="n">선호하는 영화를 고르세요!!!</h1></div>
@@ -111,23 +115,35 @@
                 card.setAttribute('class', 'movie-card');
                 card.addEventListener('click', addGenre); 
                 function addGenre() {
-                    totalgenre = totalgenre.concat(elem.genre_ids);
+                    
+                	let location = document.querySelector("#move").offsetTop;
+                    window.scrollTo({top:location, behavior:'smooth'});
+                	
+                	totalgenre = totalgenre.concat(elem.genre_ids);
                     cnt++;
                     document.getElementById('count').value = cnt;
+                    
+                    
                     if(document.getElementById('count').value == 2) {
                     	let removeclass = document.getElementsByClassName('movie-card');
                     	while (removeclass.length > 0) { 
                     		removeclass[0].remove()
                     		};
                         movieSearch(2);
-                        }
+                        let location = document.querySelector("#move").offsetTop;
+                        window.scrollTo({top:location, behavior:'smooth'});
+                    }
+                    
                     if(document.getElementById('count').value == 3) {
                     	let removeclass = document.getElementsByClassName('movie-card');
                     	while (removeclass.length > 0) { 
                     		removeclass[0].remove()
                     		};
                         movieSearch(3);
-                        }
+                        let location = document.querySelector("#move").offsetTop;
+                        window.scrollTo({top:location, behavior:'smooth'});
+                    }
+                    
                     if(document.getElementById('count').value == 4) {
                     	saveGenreId()
                     }
@@ -187,6 +203,7 @@
 			        "preference3": a[2][1] },
 			    success: function (data) {
 			            alert("선호 영화 선택 완료");
+			            window.location.reload();
 			        }
 			}); 
 			// 대부 사이코 이창

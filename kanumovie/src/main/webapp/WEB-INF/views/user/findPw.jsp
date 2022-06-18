@@ -14,7 +14,7 @@
 <body>
     <div align="center">
         <div>
-            <h1 class="n">비밀번호 : ${pw}</h1>
+            <h1 class="n">요청하신 이메일로 비밀번호 정보를 전송했습니다.</h1>
         </div>
         <div>
             <button onclick="location.href='home.do'" class="n">홈으로</button>
