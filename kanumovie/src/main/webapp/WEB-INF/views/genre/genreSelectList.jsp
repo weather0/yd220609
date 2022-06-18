@@ -82,7 +82,7 @@
 	<div>
 		<form>
 			<input type="text" placeholder="Search Your Show" onkeyup="searching()" id="schbox">
-      <!-- <input type="submit" value="Search"> -->
+      <!-- <input type="submit" value="Search"> 일단 안지웠어 -->
 		</form>
 	</div>
 	<div id="category-container">
@@ -179,6 +179,7 @@
 							})
 						}
 					})
+
 			}
 
       // 검색 기능
@@ -196,7 +197,7 @@
           }
         }
       }
-			
+
 		</script>
 	</div>
 </body>

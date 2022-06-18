@@ -22,8 +22,12 @@ public class ProfileChange implements Command {
 		UserService dao = new UserServiceImpl();
 		UserVO vo = new UserVO();
 		
-		// saveDir의 경로는 img/profile의 절대경로로 설정 >> 발표 전 서버 컴퓨터의 프로젝트의 img/profile 경로로 설정!!!
-		String saveDir = "C:\\Users\\admin\\git\\Kanumovie\\kanumovie\\src\\main\\webapp\\img\\profile\\";
+		// saveDir의 경로는 img/profile
+		String saveDir = request.getServletContext().getRealPath("img\\profile");
+		System.out.println(request.getServletContext().getRealPath("img\\profile"));
+		
+//		String saveDir = "C:\\Users\\admin\\git\\Kanumovie\\kanumovie\\src\\main\\webapp\\img\\profile\\";
+		
 		int size = 1024*1024*1024; // 파일 최대 사이즈
 		String originalFile = "";
 		String dirFile = "";
