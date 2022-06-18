@@ -39,17 +39,12 @@
                 </div>
                 <div class="col-lg-2">
                     <div class="header__right">
-                    <div width="34%">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                    </div>  
                       <!--  <a href="loginForm.do"><span class="icon_profile"></span></a> -->
-                      <div width="34%">
                       <c:if test="${not empty email}">
                         <a href="userManageForm.do"><span><div class="anime__review__item__pic"><img alt="${fileName}" src="img/profile/${fileName}"></div></span></a>
                       </c:if>
-                      </div>
                         <!--  임시 프로필 확인용 -->
-                        <div width="34%">
                                 <c:choose>
 	                                <c:when test="${not empty email}">
 	                                <a href="logout.do">Logout</a>
@@ -59,7 +54,6 @@
                                         <a href="loginForm.do">Login</a>
 	                                </c:otherwise>
 	                            </c:choose>
-	                      </div>
                         </div> 
                       </div>
                     </div>

@@ -58,6 +58,7 @@ import co.edu.kanumovie.user.command.SignUp;
 import co.edu.kanumovie.user.command.SignUpForm;
 import co.edu.kanumovie.user.command.UserManage;
 import co.edu.kanumovie.user.command.UserManageForm;
+import co.edu.kanumovie.user.command.preferGenre;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -93,6 +94,7 @@ public class FrontController extends HttpServlet {
 		map.put("/profileChange.do", new ProfileChange());
 		map.put("/pwChange.do", new PwChange());
 		map.put("/preferGenreForm.do", new PreferGenreForm());
+		map.put("/preferGenre.do", new preferGenre()); // 선호 영화 장르.
 		map.put("/signUpForm.do", new SignUpForm());
 		map.put("/signUp.do", new SignUp());
 		map.put("/findPwForm.do", new FindPwForm());

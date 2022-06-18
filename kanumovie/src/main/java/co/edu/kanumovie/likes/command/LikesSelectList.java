@@ -23,11 +23,9 @@ public class LikesSelectList implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		LikesService dao = new LikesServiceImpl();
-		LikesService dao = new LikesServiceImpl();
 		List<LikesVO> list = new ArrayList<LikesVO>();
 		LikesVO vo = new LikesVO();
 		
-		List<LikesVO> list = new ArrayList<LikesVO>();
 		list = dao.likesSelectList(vo);
 		// 장르별 영화 페이지 좋아요 리스트 조회
 		if (request.getParameter("genre") != null) {
