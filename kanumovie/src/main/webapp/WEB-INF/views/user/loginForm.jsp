@@ -8,11 +8,38 @@
 <title>loginForm</title>
 
 <style>
-	#forget_pass{
-	
+	.logincontainer {
+		padding: 0%;
 	}
+	.loginheader .container, .logincontainer .container {
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+		padding: 10%;
+	} 
+	/* 
+	.logincontainer .container {
+		background: rgba(0, 0, 0, 0.5);
+	} */
+	
+	.login__form {
+		padding: 0%;
+		text-align: center;
+	} 
+	.login__form #passwordFind {
+		padding: 10%;
+		width: 100%;
+	}
+	
+	.login__form #passwordFind a {
+		text-align: center;
+		width: 100%;
+		margin-left: 20%;
+		padding-left: 30%;
+		margin-bottom: 5%;
+	}
+	
 </style>
-
 </head>
 <body>
     <!-- Page Preloder -->
@@ -21,7 +48,7 @@
     </div>
 
     <!-- Normal Breadcrumb Begin -->
-    <section class="normal-breadcrumb set-bg" data-setbg="img/normal-breadcrumb.jpg">
+    <section class="loginheader normal-breadcrumb set-bg" data-setbg="img/normal-breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -36,7 +63,7 @@
     <!-- Normal Breadcrumb End -->
 
     <!-- Login Section Begin -->
-    <section class="login spad">
+    <section class="logincontainer login spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -54,7 +81,7 @@
                             <button type="submit" class="site-btn">Login Now</button>
                         </form>
                         <br><br>
-                        <a href="findPwForm.do" class="forget_pass" id="forget_pass" >Forgot Your Password?</a>
+                        <div id="passwordFind"><a href="findPwForm.do" class="forget_pass">Forgot Your Password?</a></div>
                     </div>
                 </div>
                 <div class="col-lg-6">
