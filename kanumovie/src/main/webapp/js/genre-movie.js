@@ -1,10 +1,12 @@
 const BASE_URL = "https://api.themoviedb.org/3/discover/movie?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko-KO&with_genres="
 let genreId = parseInt(document.querySelector('input').getAttribute('value'));
 let genreURL = genreId + "&page=";
+let sessionId = document.querySelector('#sessionId').value;
 
 let count;
 let list = document.querySelectorAll('div.movie-card-container');
 list.forEach(container => {
+	console.log(window.sessionStorage);
 	let number = container.getAttribute('data-value');
 	movieList(number);
 	count = parseInt(number) + 1;
@@ -19,7 +21,7 @@ function movieList(num) {
 		document.querySelector('div.infinite').append(div);
 
 	}
-		getData(API_URL, num);
+	getData(API_URL, num);
 }
 
 function getData(url, num) {
@@ -37,8 +39,8 @@ function getData(url, num) {
 					}
 				})
 			})
-			rating(); 
-			getLikes(); 
+			rating();
+			getLikes();
 		})
 }
 
@@ -61,7 +63,7 @@ function makeCard(obj) {
 		star.setAttribute('class', 'fa fa-star');
 		rate.append(star);
 	}
-	let button = makeButton(obj); 
+	let button = makeButton(obj);
 	let input = document.createElement('input');
 	input.setAttribute('type', 'hidden');
 	input.setAttribute('value', obj.id);
@@ -81,14 +83,37 @@ function makeButton(obj) {
 		e.stopPropagation();
 		let heart = this.firstChild;
 		let cmd = "";
-		if (heart.style.color == 'red') {
-			heart.setAttribute('style', 'font-size:30px;color:grey');
-			cmd = "delete";
-		} else if (heart.style.color == 'grey') {
-			heart.setAttribute('style', 'font-size:30px;color:red');
-			cmd = "update";
+		if (!!sessionId) {
+			if (heart.style.color == 'red') {
+				heart.setAttribute('style', 'font-size:30px;color:grey');
+				cmd = "delete";
+			} else if (heart.style.color == 'grey') {
+				heart.setAttribute('style', 'font-size:30px;color:red');
+				cmd = "insert";
+			}
+		} else if (!sessionId) {
+			alert("로그인이 필요한 기능입니다.");	
 		}
-		
+		let param = 'cmd=' + cmd + '&id=' + this.children[0].getAttribute('id').substring(6) + '&email=' + sessionId;
+		if (cmd == 'insert') {
+			fetch('likes.do', {
+				method:'POST', 
+				headers:{'Content-Type':'application/x-www-form-urlencoded'},
+				body: param
+			})
+				.then(response => response.json())
+				.then(message => console.log(message))
+				.catch(err => console.log(err))
+		} else if (cmd == 'delete') {
+			fetch('likesDelete.do', {
+				method:'POST',
+				headers:{'Content-Type':'application/x-www-form-urlencoded'},
+				body: param
+			})
+				.then(response => response.json())
+				.then(message => console.log(message))
+				.catch(err => console.log(err))
+		}
 	})
 	button.setAttribute('style', 'background:none;z-index:999;')
 	let icon = document.createElement('i');
@@ -100,28 +125,33 @@ function makeButton(obj) {
 	return div;
 }
 
-let param = {type:'genre', email:'a@a.a'};
+
+let param = { type: 'genre', email: sessionId };
 function getLikes() {
-	fetch('userLikesSelectList.do', {
-		method:'POST',
-		headers:{'Content-Type':'application/json'},
-		body: JSON.stringify(param)
-	})
-		.then(response => response.json())
-		.then(data => {
-			let movieData = document.querySelectorAll('.movie-card input');
-			movieData.forEach((elem) => {
-				data.forEach((like) => {
-					if (like.id == elem.getAttribute('value')) {
-						document.querySelector('#movie-'+like.id).setAttribute('style', 'color:red');
-						console.log(document.querySelector('#movie-'+like.id).parentElement);
-					} else {
-						console.log(false);
-					}
+	if (sessionId) {
+		fetch('userLikesSelectList.do', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(param)
+		})
+			.then(response => response.json())
+			.then(data => {
+				let movieData = document.querySelectorAll('.movie-card input');
+				movieData.forEach((elem) => {
+					data.forEach((like) => {
+						if (like.id == elem.getAttribute('value')) {
+							document.querySelector('#movie-' + like.id).setAttribute('style', 'color:red');
+							console.log(document.querySelector('#movie-' + like.id).parentElement);
+						} else {
+							console.log(false);
+						}
+					})
 				})
-			})
-		});
+			});
+	}
 }
+
+
 
 
 

@@ -33,6 +33,7 @@ public class UserLikesSelectList implements Command {
 			e.printStackTrace();
 		}
 		UserVO vo = new UserVO(); 
+		System.out.println(map.get("email"));
 		vo.setEmail(map.get("email"));
 		List<LikesVO> likes = dao.userLikesSelectList(vo);
 		for (int i = 0; i < likes.size(); i++) {
