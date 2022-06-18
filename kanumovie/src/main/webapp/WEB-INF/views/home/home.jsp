@@ -7,7 +7,7 @@
 <style>
 #banner {
 	margin: 0 auto;
-	width: 90%;
+	width: 80%;
 }
 
 #showcontainer {
@@ -18,18 +18,22 @@
 }
 
 #showcontainer .row {
+	box-sizing: border-box;
+	display: block;
 	width: 100%;
-	margin: 0;
+	margin: 5% 0% 5% 0%;
 	padding: 0;
-	max-width: 100%;
 	height: 600px;
+	max-width: 100%;
+	max-height: 600px;
 }
 
 #showcontainer .large-16 {
 	width: 100%;
-	height: 700px;
+	height: 500px;
+	max-height: 500px;
 	padding: 0%;
-	margin: 0 auto;
+	margin: 0%;
 }
 
 #showcontainer .owl-carousel {
@@ -103,6 +107,7 @@ h1 {
 #showcontainer h3 {
 	color: white;
 	margin:3% 0% 0% 3%;
+	width: 100%;
 }
 
 #showcontainer p {
@@ -114,6 +119,10 @@ h1 {
 	font-size: xx-large;
 	line-height: 140%;
 	overflow: visible;
+}
+
+#bdirname {
+	background-size: 100% 100%;
 }
 </style>
 

@@ -80,15 +80,16 @@ function makeButton(obj) {
 	button.setAttribute('type', 'button');
 	button.setAttribute('class', 'w3-button w3-black w3-round');
 	button.addEventListener('click', function(e) {
+		console.log("heart");
 		e.stopPropagation();
 		let heart = this.firstChild;
 		let cmd = "";
 		if (!!sessionId) {
 			if (heart.style.color == 'red') {
-				heart.setAttribute('style', 'font-size:30px;color:grey');
+				heart.setAttribute('style', 'color:grey');
 				cmd = "delete";
 			} else if (heart.style.color == 'grey') {
-				heart.setAttribute('style', 'font-size:30px;color:red');
+				heart.setAttribute('style', 'color:red');
 				cmd = "insert";
 			}
 		} else if (!sessionId) {
@@ -118,15 +119,15 @@ function makeButton(obj) {
 	button.setAttribute('style', 'background:none;z-index:999;')
 	let icon = document.createElement('i');
 	icon.setAttribute('class', 'fa fa-heart');
+	icon.setAttribute('style', 'color:grey');
 	icon.setAttribute('id', 'movie-' + obj.id);
-	icon.setAttribute('style', 'font-size:30px;color:grey;background:none;');
 	button.append(icon);
 	div.append(button);
 	return div;
 }
 
 
-let param = { type: 'genre', email: sessionId };
+let param = {email: sessionId };
 function getLikes() {
 	if (sessionId) {
 		fetch('userLikesSelectList.do', {

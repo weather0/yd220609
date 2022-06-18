@@ -92,3 +92,8 @@ h2 {
 	font-weight: bold;
 	margin: 2%;
 }
+
+button .fa.fa-heart {
+	font-size: 30px;
+	background: none;
+}

@@ -2,6 +2,7 @@ const BASE_URL_C = "https://api.themoviedb.org/3/discover/movie?api_key=e51d70c6
 let countryId = document.querySelector('input').getAttribute('value');
 let countryURL = countryId + "&page=";
 let sorting = "&sort_by=vote_count.desc"
+let c_sessionId = document.querySelector("#c_sessionId").value;
 
 let c_count;
 let cList = document.querySelectorAll('div.movie-card-container');
@@ -40,5 +41,82 @@ function getCountryData(url, num) {
 				})
 			})
 			rating(); 
+			getLikes(); 
 		})
+}
+
+function makeButton(obj) {
+	let div = document.createElement('div');
+	let button = document.createElement('button');
+	button.setAttribute('type', 'button');
+	button.setAttribute('class', 'w3-button w3-black w3-round');
+	button.addEventListener('click', function(e) {
+		e.stopPropagation();
+		let heart = this.firstChild;
+		let cmd = "";
+		if (!!c_sessionId) {
+			if (heart.style.color == 'red') {
+				heart.setAttribute('style', 'color:grey');
+				cmd = "delete";
+			} else if (heart.style.color == 'grey') {
+				heart.setAttribute('style', 'color:red');
+				cmd = "insert";
+			}
+		} else if (!c_sessionId) {
+			alert("로그인이 필요한 기능입니다.");	
+		}
+		let param = 'cmd=' + cmd + '&id=' + this.children[0].getAttribute('id').substring(6) + '&email=' + c_sessionId;
+		if (cmd == 'insert') {
+			fetch('likes.do', {
+				method:'POST', 
+				headers:{'Content-Type':'application/x-www-form-urlencoded'},
+				body: param
+			})
+				.then(response => response.json())
+				.then(message => console.log(message))
+				.catch(err => console.log(err))
+		} else if (cmd == 'delete') {
+			fetch('likesDelete.do', {
+				method:'POST',
+				headers:{'Content-Type':'application/x-www-form-urlencoded'},
+				body: param
+			})
+				.then(response => response.json())
+				.then(message => console.log(message))
+				.catch(err => console.log(err))
+		}
+	})
+	button.setAttribute('style', 'background:none;z-index:999;')
+	let icon = document.createElement('i');
+	icon.setAttribute('class', 'fa fa-heart');
+	icon.setAttribute('id', 'movie-' + obj.id);
+	button.append(icon);
+	div.append(button);
+	return div;
+}
+
+
+let c_param = {email: c_sessionId };
+function getLikes() {
+	if (c_sessionId) {
+		fetch('userLikesSelectList.do', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(c_param)
+		})
+			.then(response => response.json())
+			.then(data => {
+				let movieData = document.querySelectorAll('.movie-card input');
+				movieData.forEach((elem) => {
+					data.forEach((like) => {
+						if (like.id == elem.getAttribute('value')) {
+							document.querySelector('#movie-' + like.id).setAttribute('style', 'color:red');
+							console.log(document.querySelector('#movie-' + like.id).parentElement);
+						} else {
+							console.log(false);
+						}
+					})
+				})
+			});
+	}
 }

@@ -21,6 +21,7 @@ public class LikesDelete implements Command {
 			System.out.println(vo.getId());
 			vo.setEmail(request.getParameter("email"));
 			System.out.println(vo.getEmail());
+			vo.setLikes_Id(0);
 			System.out.println(vo.getLikes_Id());
 			int delete = dao.likesDelete(vo);
 			if (delete >= 1) {
