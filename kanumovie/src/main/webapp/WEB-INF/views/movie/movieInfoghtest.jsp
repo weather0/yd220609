@@ -371,7 +371,8 @@ ul {
 			if(x == null){
 				console.log('ss');
 			} else {
-				document.querySelector('#zzz').remove();
+				document.getElementById('zzz').remove();
+				//document.querySelector('#zzz').remove();
 			}
 		})
 			
@@ -401,7 +402,7 @@ ul {
 		
 		let br2 = document.createElement('br');
 		let input2 = document.createElement('input');
-		div.append(br2);
+// 		div.append(br2);
 		
 		input2.setAttribute('value', '수정');
 		input2.setAttribute('type', 'button');
@@ -412,7 +413,6 @@ ul {
 		p.append(input2); */
 		
 		div.append(input2);
-		
 		
 		let button2 = document.createElement('button');
 		button2.setAttribute('class', 'btn btn-sm btn-success');
@@ -453,7 +453,8 @@ ul {
 		//취소버튼을 클릭하면 실행
 		UpdateBtn2.addEventListener("click", function() {
 			document.getElementById("comments2").remove();
-			
+			document.getElementById("changeBtn").remove();
+			document.getElementById("changeBtn2").remove();
 			
 		});
 	}

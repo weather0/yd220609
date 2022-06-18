@@ -25,10 +25,15 @@ a {
 </style>
 </head>
 <body>
+<hr><hr><hr>
+<div id = "center">
  <p id="content">정상적으로 신고되었습니다.</p>
+ <hr>
   <p id="content">빠른 시일 내에 처리하도록 하겠습니다.</p>
-  <div id = "center">
-	<a href="home.do">메인홈페이지로 돌아가기</a>
+  
+  
+  <hr><hr><hr><hr><hr><hr><hr>
+  <a href="home.do">메인홈페이지로 돌아가기</a>
 </div>
 </body>
 </html>
