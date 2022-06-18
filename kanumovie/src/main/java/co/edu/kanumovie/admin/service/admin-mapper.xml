@@ -80,15 +80,49 @@ ORDER BY 2 DESC FETCH FIRST 5 ROWS ONLY
 </select>
 
 
-<insert id="insertBanner">
-INSERT INTO k_banner VALUES (BANNER_ID_SEQ.nextval,#{genrename},#{btitle},#{bcontent},#{bimgsrc})
+
+<insert id="insertBanner" parameterType="co.edu.kanumovie.admin.vo.BannerVO">
+INSERT INTO k_banner (genrename,btitle,bcontent,bimgsrc,bdirname,bid)
+VALUES (#{genrename},#{btitle},#{bcontent},#{bimgsrc},#{bdirname},BANNER_ID_SEQ.nextval)
+
+<!-- INSERT INTO k_banner
+VALUES (#{genrename},#{btitle},#{bcontent},#{bimgsrc},BANNER_ID_SEQ.nextval,#{bdirname}) -->
 </insert>
 
-<update id="updateBanner">
-
+<update id="updateBanner" parameterType="co.edu.kanumovie.admin.vo.BannerVO" >
+UPDATE k_banner SET genrename = #{genrename}, btitle = #{btitle},
+bcontent = #{bcontent}, bimgsrc = #{bimgsrc}, bdirname = #{bdirname}
+ WHERE bid = #{bid}
 </update>
 
 <delete id="deleteBanner">
-DELETE FROM 
+DELETE FROM k_banner WHERE bid = #{bid}
 </delete>
+
+<select id="selectAllBannerList" resultType="co.edu.kanumovie.admin.vo.BannerVO">
+SELECT * FROM k_banner ORDER BY bid desc
+</select>
+
+<select id="selectBanner" resultType="co.edu.kanumovie.admin.vo.BannerVO">
+SELECT * FROM k_banner WHERE bid = #{bid}
+</select>
+
+
+
+<select id="selectAllReportList" resultType="co.edu.kanumovie.report.vo.ReportVO">
+
+SELECT * FROM k_report ORDER BY reportdate desc
+
+</select>
+
+<delete id="deleteReport">
+
+DELETE FROM k_report WHERE reportedemail = #{email}
+</delete>
+
+<delete id="deleteAllComment">
+DELETE FROM k_comment WHERE email = #{email}
+</delete>
+
+
 </mapper>

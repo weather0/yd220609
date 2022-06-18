@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.edu.kanumovie.report.service.ReportMapper">
+	<insert id="reportInsert"	parameterType="co.edu.kanumovie.report.vo.ReportVO">
+		INSERT INTO K_REPORT VALUES (REPORT_ID_SEQ.nextval , #{reportSendEmail} , #{reportedEmail} , SYSDATE, #{reportSubject} , #{reportContent})
+	</insert>
+	
+	<update id="reportUpdate" parameterType="String">
+		UPDATE k_users SET REPORT = 'y' WHERE EMAIL= #{reportedEmail}
+	</update>
+	
+	
+</mapper>

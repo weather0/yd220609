@@ -8,6 +8,7 @@ import co.edu.kanumovie.common.DataSource;
 import co.edu.kanumovie.likes.service.LikesMapper;
 import co.edu.kanumovie.likes.service.LikesService;
 import co.edu.kanumovie.likes.vo.LikesVO;
+import co.edu.kanumovie.user.vo.UserVO;
 
 public class LikesServiceImpl implements LikesService {
 	
@@ -29,5 +30,9 @@ public class LikesServiceImpl implements LikesService {
 		return map.likesDelete(vo);
 	}
 
+	@Override
+	public List<LikesVO> userLikesSelectList(UserVO vo) {
+		return map.userLikesSelectList(vo);
+	}
 
 }

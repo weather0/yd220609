@@ -9,6 +9,7 @@ import co.edu.kanumovie.admin.service.AdminService;
 import co.edu.kanumovie.admin.vo.BannerVO;
 import co.edu.kanumovie.admin.vo.PreferredGenreVO;
 import co.edu.kanumovie.common.DataSource;
+import co.edu.kanumovie.report.vo.ReportVO;
 import co.edu.kanumovie.user.vo.UserVO;
 
 public class AdminServiceImpl implements AdminService {
@@ -92,10 +93,42 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int deleteBanner(BannerVO vo) {
-		
-		return map.deleteBanner(vo);
+	public int deleteBanner(int id) {
+
+		return map.deleteBanner(id);
 	}
+
+	@Override
+	public List<BannerVO> selectAllBannerList() {
+		
+		return map.selectAllBannerList();
+	}
+
+	@Override
+	public BannerVO selectBanner(int id) {
+		
+		return map.selectBanner(id);
+	}
+
+	@Override
+	public List<ReportVO> selectAllReportList() {
+		
+		return map.selectAllReportList();
+	}
+
+	@Override
+	public int deleteReport(String email) {
+		
+		return map.deleteReport(email);
+	}
+
+	@Override
+	public int deleteAllComment(String email) {
+		
+		return map.deleteAllComment(email);
+	}
+
+
 
 	
 

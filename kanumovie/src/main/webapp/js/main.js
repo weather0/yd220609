@@ -36,7 +36,8 @@
     --------------------*/
     $('.set-bg').each(function () {
         var bg = $(this).data('setbg');
-        $(this).css('background-image', 'url(' + bg + ')');
+        console.log('bg가 뭘까?'+bg);
+        $(this).css('background-image', '(' + bg + ')');
     });
 
     // Search model

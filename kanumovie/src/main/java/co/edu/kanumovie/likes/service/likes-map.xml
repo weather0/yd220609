@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.edu.kanumovie.likes.service.LikesMapper">
+	<select id="userLikesSelectList" parameterType="co.edu.kanumovie.user.vo.UserVO" resultType="co.edu.kanumovie.likes.vo.LikesVO">
+		SELECT * FROM K_LIKES
+		WHERE EMAIL = #{email}
+	</select>
 	<select id="likesSelectList" resultType="co.edu.kanumovie.likes.vo.LikesVO">
 		SELECT * FROM K_LIKES WHERE ID = #{id} AND EMAIL = #{email}
 	</select>
@@ -8,7 +12,15 @@
 		INSERT INTO K_LIKES VALUES (L_ID_SEQ.nextval, #{id}, #{email})
 	</insert>
 	<delete id="likesDelete" parameterType="co.edu.kanumovie.likes.vo.LikesVO">
+<<<<<<< HEAD
 		DELETE FROM K_LIKES WHERE LIKES_ID = #{likes_Id}
+=======
+		DELETE FROM K_LIKES 
+		WHERE 
+		<choose>
+			<when test="likes_Id != 0">LIKES_ID = #{likes_Id}</when>
+			<when test="id != null and email != null">ID = #{id} AND EMAIL = #{email}</when>
+		</choose>
+>>>>>>> refs/remotes/origin/dev
 	</delete>
-
 </mapper>

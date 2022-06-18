@@ -6,10 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BannerVO {
-	private int bid;
 	private String genrename;
 	private String btitle;
 	private String bcontent;
 	private String bimgsrc;
-	
+	private int bid;
+	private String bdirname;
 }

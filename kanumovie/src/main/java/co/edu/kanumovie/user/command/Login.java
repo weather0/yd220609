@@ -40,7 +40,7 @@ public class Login implements Command {
 			request.setAttribute("message", "login2");
 		}
 		
-		return "home/home";
+		return "home.do";
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,7 +78,7 @@ h1 {
 	transition: 0.5s;
 	cursor: selector;
 	border-radius: 10px;
-	z-index: 50; 
+	z-index: 50;
 }
 
 .item:hover h2 {
@@ -121,49 +122,39 @@ h1 {
 <script src="js/movie.js"></script>
 </head>
 <body>
-	<div id="banner">
+
+<!-- banner start -->
+<div id="banner">
 		<div class="hero__slider owl-carousel">
-			<div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="hero__text">
-							<div class="label">Adventure</div>
-							<h2>Fate / Stay Night: Unlimited Blade Works</h2>
-							<p>After 30 days of travel across the world...</p>
-							<a href="#"><span>Watch Now</span> <i
-								class="fa fa-angle-right"></i></a>
+			<c:forEach items="${blist}" var="b">
+				<div id="bdirname" class="hero__items set-bg" style="background-image: url('img/banner/${b.bdirname}')">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="hero__text">
+								<div class="label" id="genrename">${b.genrename}</div>
+								<h2 id="btitle">${b.btitle}</h2>
+								<p id="bcontent">${b.bcontent}</p>
+								<a href="#"><span>Watch Now</span> <i
+									class="fa fa-angle-right"></i></a> 
+									<c:if test="${authority eq 'admin'}"> <!-- 관리자일 경우만 보이게 -->
+									<a href="bannerupdateform.do?bid=${b.bid}" class="btn btn-sm btn-primary"
+									style="margin-top: 20px; color: white; background-color: #E53637"
+									>수정</a>
+									<a href="deletebanner.do?bid=${b.bid}" class="btn btn-sm btn-primary" 
+									style="margin-top: 20px; color: white; background-color: #E53637">삭제</a>
+									</c:if>
+									
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="hero__text">
-							<div class="label">Adventure</div>
-							<h2>Fate / Stay Night: Unlimited Blade Works</h2>
-							<p>After 30 days of travel across the world...</p>
-							<a href="#"><span>Watch Now</span> <i
-								class="fa fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="hero__text">
-							<div class="label">Adventure</div>
-							<h2>Fate / Stay Night: Unlimited Blade Works</h2>
-							<p>After 30 days of travel across the world...</p>
-							<a href="#"><span>Watch Now</span> <i
-								class="fa fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
+			
 		</div>
 	</div>
+	
+	<!-- banner end -->
+	
 	<div id="showcontainer">
 		<div class="row">
 			<div>
@@ -223,8 +214,9 @@ h1 {
 				</div>
 				<script type="text/javascript">
 				</script>
-				  <script>  
-					let name = "<%=request.getAttribute("message")%>";
+				<script>  
+					let name = "<%=request.getAttribute("message")%>
+					";
 					if (name == 'login') {
 						alert('로그인되었습니다.')
 					} else if (name == 'logout') {
@@ -238,5 +230,7 @@ h1 {
 			</div>
 		</div>
 	</div>
+
+	<script src="js/banner.js?ver=1"></script>
 </body>
 </html>
