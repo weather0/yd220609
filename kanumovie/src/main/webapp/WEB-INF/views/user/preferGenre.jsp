@@ -30,6 +30,7 @@
 <style>
     #n {
         color:red;
+        margin-top: 30px;
     }
     #ff {
     	display:none;
@@ -39,7 +40,7 @@
 <body>
     <div align="center">
         <div>
-            <div><p id="n"></p></div>
+            <div><h1 id="n">선호하는 영화를 고르세요!!!</h1></div>
         </div>
     </div>
     
@@ -89,7 +90,7 @@
         let totalpage;
         let currentpage;
         let totalgenre= new Array();
-          let cnt = 1;
+        let cnt = 1;
 
         let movieSearch = function (pageNum) {
           
@@ -111,18 +112,14 @@
                 card.addEventListener('click', addGenre); 
                 function addGenre() {
                     totalgenre = totalgenre.concat(elem.genre_ids);
-                    console.log(elem.genre_ids);
-                    console.log(totalgenre);
-                    console.log('카운팅'+cnt);
                     cnt++;
                     document.getElementById('count').value = cnt;
-                    console.log('카운트 인풋값'+document.getElementById('count').value);
                     if(document.getElementById('count').value == 2) {
                     	let removeclass = document.getElementsByClassName('movie-card');
                     	while (removeclass.length > 0) { 
                     		removeclass[0].remove()
                     		};
-                        movieSearch(2);        	
+                        movieSearch(2);
                         }
                     if(document.getElementById('count').value == 3) {
                     	let removeclass = document.getElementsByClassName('movie-card');
@@ -133,7 +130,6 @@
                         }
                     if(document.getElementById('count').value == 4) {
                     	saveGenreId()
-                    	/* 3가지 선호 영화 골랐으니 alert 같은걸로 끝났음을 알리고 강제로 나가게 하기 */
                     }
                 }
                 let img = document.createElement('img');
@@ -162,8 +158,6 @@
         }
 
         function saveGenreId() {
-        	console.log('저장할 장르 아이디들 : '+totalgenre);
-        	console.log(totalgenre);
         	
         	// 선호 장르 배열에서 중복값 걸러내서 선호 장르 아이디값 구하기.
         	const result = {};
@@ -180,9 +174,6 @@
 			}
 			// 장르 : 중복횟수 > 형태의 맵으로 저장해서 value 비교 후 소팅.
 			bubbleSort(a);
-			console.log(a);
-			console.log(a[0][1]);
-			console.log(a[1][1]);
 			
 			
 			// 정렬한 a 배열 k_user 선호 열에 보내기.
