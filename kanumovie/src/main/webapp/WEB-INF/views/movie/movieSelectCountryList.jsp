@@ -26,7 +26,6 @@
 	</div>
 </div>
 <script src="js/rating.js"></script>
-<script src="js/genre-movie.js"></script>
 <script src="js/country-movie.js"></script>
 <script>
 let page = 0;

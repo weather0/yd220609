@@ -1,7 +1,5 @@
-document.addEventListener('DOMContentLoaded', mainFnc)
-
-function mainFnc() {
-
+	document.addEventListener('DOMContentLoaded', mainFnc);
+	function mainFnc() {
 	let owl = $('.owl-carousel');
 	owl.owlCarousel({
 /*		margin: 20,*/
@@ -65,8 +63,9 @@ function mainFnc() {
 	API_URL = BASE_URL + '/trending/tv/week?' + API_KEY + "&language=ko";
 	
 	getTrendingContent(API_URL);
-	
-	
-	
+}
 
-} 
+
+	
+	
+	 

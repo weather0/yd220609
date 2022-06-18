@@ -45,6 +45,36 @@ function getCountryData(url, num) {
 		})
 }
 
+function makeCard(obj) {
+	let card = document.createElement('div');
+	card.setAttribute('class', 'movie-card');
+	card.setAttribute('onclick', "location.href='movieInfo.do?id=" + obj.id + "'");
+	let img = document.createElement('img');
+	img.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + obj.poster_path);
+	card.append(img);
+	let info = document.createElement('div');
+	let title = document.createElement('p');
+	title.innerHTML = obj.title;
+	info.append(title);
+	let rate = document.createElement('div');
+	rate.setAttribute('class', 'star-rate');
+	rate.setAttribute('data-rate', obj.vote_average);
+	for (let i = 0; i < 5; i++) {
+		let star = document.createElement('span');
+		star.setAttribute('class', 'fa fa-star');
+		rate.append(star);
+	}
+	let button = makeButton(obj);
+	let input = document.createElement('input');
+	input.setAttribute('type', 'hidden');
+	input.setAttribute('value', obj.id);
+	card.append(input);
+	card.append(button);
+	info.append(rate);
+	card.append(info);
+	return card;
+}
+
 function makeButton(obj) {
 	let div = document.createElement('div');
 	let button = document.createElement('button');
@@ -89,6 +119,7 @@ function makeButton(obj) {
 	button.setAttribute('style', 'background:none;z-index:999;')
 	let icon = document.createElement('i');
 	icon.setAttribute('class', 'fa fa-heart');
+	icon.setAttribute('style', 'color:grey');
 	icon.setAttribute('id', 'movie-' + obj.id);
 	button.append(icon);
 	div.append(button);
@@ -96,7 +127,7 @@ function makeButton(obj) {
 }
 
 
-let c_param = {email: c_sessionId };
+let c_param = {email: c_sessionId};
 function getLikes() {
 	if (c_sessionId) {
 		fetch('userLikesSelectList.do', {

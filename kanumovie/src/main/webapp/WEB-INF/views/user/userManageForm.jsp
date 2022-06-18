@@ -56,7 +56,6 @@
 	width: 100%;
 	height: 100%;
 	position: relative;
-	border: 1px solid red;
 }
 
 .user-information-section div {
@@ -71,7 +70,6 @@
 	height: 200px;
 	margin: 0 auto;
 	color: #fff;
-	border: 1px solid #fff;
 	background: rbga(0, 0, 0, 0.5);
 }
 
@@ -121,14 +119,10 @@
 
 	<div class="menutab">
 		<ul>
-			<li><button type="button" class="btnCnt" id="button1"
-					onclick="location.href='#tab1'">비밀번호</button></li>
-			<li><button type="button" class="btnCnt" id="button2"
-					onclick="location.href='#tab2'">프로필</button></li>
-			<li><button type="button" class="btnCnt" id="button3"
-					onclick="location.href='#tab3'">닉네임</button></li>
-			<li><button type="button" class="btnCnt" id="button4"
-					onclick="location.href='#tab4'">보고싶어요</button></li>
+			<li><button type="button" class="btnCnt" id="button1">비밀번호</button></li>
+			<li><button type="button" class="btnCnt" id="button2">프로필</button></li>
+			<li><button type="button" class="btnCnt" id="button3">닉네임</button></li>
+			<li><button type="button" class="btnCnt" id="button4">보고싶어요</button></li>
 		</ul>
 	</div>
 	<script>
