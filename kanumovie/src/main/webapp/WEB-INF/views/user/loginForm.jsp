@@ -6,6 +6,13 @@
  <meta charset="UTF-8">
   
 <title>loginForm</title>
+
+<style>
+	#forget_pass{
+	
+	}
+</style>
+
 </head>
 <body>
     <!-- Page Preloder -->
@@ -46,11 +53,12 @@
                             </div>
                             <button type="submit" class="site-btn">Login Now</button>
                         </form>
-                        <a href="findPwForm.do" class="forget_pass">Forgot Your Password?</a>
+                        <br><br>
+                        <a href="findPwForm.do" class="forget_pass" id="forget_pass" >Forgot Your Password?</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="login__register">
+                    <div class="login__register" id="login__register">
                         <h3>Dont’t Have An Account?</h3>
                         <a href="signUpForm.do" class="primary-btn">Register Now</a>
                     </div>
