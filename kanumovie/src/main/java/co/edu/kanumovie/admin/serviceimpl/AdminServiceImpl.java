@@ -86,9 +86,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int updateBanner(int id) {
+	public int updateBanner(BannerVO vo) {
 		
-		return map.updateBanner(id);
+		return map.updateBanner(vo);
 	}
 
 	@Override

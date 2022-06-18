@@ -165,7 +165,8 @@ input[type="file"] {
 						type="file">
 					</div>
 					<a class="btn btn-sm btn-primary" href="home.do">메인으로</a>
-					<input type="hidden" name="bid" id="bid" value="{$banner.bid}">
+					<input type="hidden" name="bid" id="bid" value="${banner.bid}">
+					<input type="hidden" name="bdirname" id="bdirname" value="${banner.bdirname}">					
 					<input type="submit" class="btn btn-sm btn-primary" value="수정">
 					<input type="reset" class="btn btn-sm btn-primary" value="취소">
 				</div>

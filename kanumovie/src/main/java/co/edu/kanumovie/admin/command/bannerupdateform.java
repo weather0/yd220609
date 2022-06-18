@@ -12,13 +12,11 @@ public class bannerupdateform implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String bid = request.getParameter("bid");
+		int bid = Integer.parseInt(request.getParameter("bid")); 
 
 		AdminService dao = new AdminServiceImpl();
 		BannerVO vo = new BannerVO();
-		vo.setBid(Integer.parseInt(bid));
-		vo = dao.selectBanner(vo.getBid());
-
+		vo = dao.selectBanner(bid);
 		request.setAttribute("banner", vo);
 	
 		return "admin/bannerupdateform";
