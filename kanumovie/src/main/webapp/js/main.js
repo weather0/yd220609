@@ -34,11 +34,11 @@
     /*------------------
         Background Set
     --------------------*/
-/*    $('.set-bg').each(function () {
+    $('.set-bg').each(function () {
         var bg = $(this).data('setbg');
         console.log('bg가 뭘까?'+bg);
         $(this).css('background-image', '(' + bg + ')');
-    });*/
+    });
 
     // Search model
     $('.search-switch').on('click', function () {

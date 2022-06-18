@@ -127,8 +127,7 @@ h1 {
 <div id="banner">
 		<div class="hero__slider owl-carousel">
 			<c:forEach items="${blist}" var="b">
-				<div id="bdirname" class="hero__items set-bg"
-					data-setbg="img/banner/${b.bdirname}">
+				<div id="bdirname" class="hero__items set-bg" style="background-image: url('img/banner/${b.bdirname}')">
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="hero__text">
@@ -141,7 +140,7 @@ h1 {
 									<a href="bannerupdateform.do?bid=${b.bid}" class="btn btn-sm btn-primary"
 									style="margin-top: 20px; color: white; background-color: #E53637"
 									>수정</a>
-									<a class="btn btn-sm btn-primary" onclick="deletebanner(${b})"
+									<a href="deletebanner.do?bid=${b.bid}" class="btn btn-sm btn-primary" 
 									style="margin-top: 20px; color: white; background-color: #E53637">삭제</a>
 									</c:if>
 									

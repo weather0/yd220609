@@ -54,7 +54,7 @@ public class Insertbanner implements Command {
 			System.out.println("====인설트실패===");
 		}
 			
-		return "home/admin";
+		return "home.do";
 	}
 
 }

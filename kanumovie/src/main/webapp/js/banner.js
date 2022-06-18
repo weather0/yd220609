@@ -38,10 +38,9 @@ function deletebanner(id) {
 		type: "POST",
 		url: "deletebanner.do",
 		data: {
-			checkBoxArr: checkBoxArr,
+			"bid": id,
 		},
 		success: function(result) {
-			refreshpage();
 			console.log(result);
 		},
 		error: function(xhr, status, error) {
@@ -50,11 +49,11 @@ function deletebanner(id) {
 	});
 	
 }
-
+/*
 //옵션값 선택 
 let select = document.getElementById('floatingSelect');
 let len = select.length;
 console.log(len);
 
-
+*/
 

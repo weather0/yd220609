@@ -96,7 +96,7 @@ bcontent = #{bcontent}, bimgsrc = #{bimgsrc}, bdirname = #{bdirname}
 </update>
 
 <delete id="deleteBanner">
-DELETE FROM 
+DELETE FROM k_banner WHERE bid = #{bid}
 </delete>
 
 <select id="selectAllBannerList" resultType="co.edu.kanumovie.admin.vo.BannerVO">

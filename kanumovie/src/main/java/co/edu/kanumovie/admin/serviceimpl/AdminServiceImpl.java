@@ -92,9 +92,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int deleteBanner(BannerVO vo) {
-		
-		return map.deleteBanner(vo);
+	public int deleteBanner(int id) {
+
+		return map.deleteBanner(id);
 	}
 
 	@Override
@@ -108,6 +108,8 @@ public class AdminServiceImpl implements AdminService {
 		
 		return map.selectBanner(id);
 	}
+
+
 
 	
 
