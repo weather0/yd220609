@@ -6,11 +6,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.col-lg-8 {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.col-lg-2 {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.header__right a {
+	margin-right: 10px;
+}
+
+</style>
 </head>
 <body>
   <header class="header">
         <div class="container">
-            <div class="salesrow">	
+            <div class="row">	
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="home.do">
@@ -39,17 +55,14 @@
                 </div>
                 <div class="col-lg-2">
                     <div class="header__right">
-                    <div width="34%">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                    </div>  
                       <!--  <a href="loginForm.do"><span class="icon_profile"></span></a> -->
-                      <div width="34%">
                       <c:if test="${not empty email}">
-                        <a href="userManageForm.do"><span><div class="anime__review__item__pic"><img alt="${fileName}" src="img/profile/${fileName}"></div></span></a>
+                        <a href="userManageForm.do">
+                        <img style="width:41px; height:37px;" alt="${fileName}" src="img/profile/${fileName}">
+                        </a>
                       </c:if>
-                      </div>
                         <!--  임시 프로필 확인용 -->
-                        <div width="34%">
                                 <c:choose>
 	                                <c:when test="${not empty email}">
 	                                <a href="logout.do">Logout</a>
@@ -59,14 +72,14 @@
                                         <a href="loginForm.do">Login</a>
 	                                </c:otherwise>
 	                            </c:choose>
-	                      </div>
+                      </div>
+	                      
                         </div> 
                       </div>
                     </div>
-                </div>
-            </div>
+         
             <div id="mobile-menu-wrap"></div>
-        </div>
+        
     </header>
 </body>
 </html>

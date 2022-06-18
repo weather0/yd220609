@@ -426,7 +426,7 @@ ol {
 	display: inline-block;
 	font-size: 18px;
 	color: #ffffff;
-	margin-right: 30px;
+	/* margin-right: 30px; */
 }
 
 .header__right a:last-child {

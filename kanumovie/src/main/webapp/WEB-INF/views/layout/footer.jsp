@@ -12,7 +12,7 @@
         <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
     </div>
     <div class="container">
-        <div class="salesrow">
+        <div class="row">
             <div class="col-lg-3">
                 <div class="footer__logo">
                     <a href="./index.html"><img src="img/kanumovielogo.png" alt=""></a>
