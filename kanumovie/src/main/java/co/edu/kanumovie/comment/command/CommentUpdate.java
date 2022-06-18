@@ -30,7 +30,7 @@ public class CommentUpdate implements Command {
 		
 		dao.commentUpdate(vo);
 		
-		return "movie/movieInfoghtest";
+		return "movie/movieInfo";
 	}
 
 }
