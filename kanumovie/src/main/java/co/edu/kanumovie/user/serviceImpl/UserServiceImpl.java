@@ -65,4 +65,9 @@ public class UserServiceImpl implements UserService {
 		return map.userUpdateProfile(vo);
 	}
 
+	@Override
+	public UserVO userSelectEmail(UserVO vo) {
+		return map.userSelectEmail(vo);
+	}
+
 }

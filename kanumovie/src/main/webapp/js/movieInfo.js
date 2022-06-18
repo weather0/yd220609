@@ -15,7 +15,7 @@ let recomAPI = BASE_URL + MOVIE_URL + '/recommendations?' + API_KEY + '&language
 let creditAPI = BASE_URL + MOVIE_URL + '/credits?' + API_KEY + '&language=ko-KR';
 let ratingAPI = BASE_URL + MOVIE_URL + '/rating?' + API_KEY + '&guest_session_id=5667cdad051a40c848b9b34da163b4dc';
 
-
+console.log(movieInfoAPI);
 // 영화정보 섹션
 fetch(movieInfoAPI)
   .then(response => response.json())

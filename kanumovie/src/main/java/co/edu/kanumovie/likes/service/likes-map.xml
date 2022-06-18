@@ -12,6 +12,11 @@
 		INSERT INTO K_LIKES VALUES (L_ID_SEQ.nextval, #{id}, #{email})
 	</insert>
 	<delete id="likesDelete" parameterType="co.edu.kanumovie.likes.vo.LikesVO">
-		DELETE FROM K_LIKES WHERE LIKES_ID = #{likes_Id}
+		DELETE FROM K_LIKES 
+		WHERE 
+		<choose>
+			<when test="likes_Id != 0">LIKES_ID = #{likes_Id}</when>
+			<when test="id != null and email != null">ID = #{id} AND EMAIL = #{email}</when>
+		</choose>
 	</delete>
 </mapper>

@@ -1,35 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% String email=(String) session.getAttribute("email"); %>
+<% String nick = (String) session.getAttribute("nick"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <style>
 #banner {
 	margin: 0 auto;
-	width: 90%;
+	width: 80%;
 }
 
 #showcontainer {
 	width: 90%;
 	padding-left: 5%;
-	height: 2500px;
+	height: 1800px;
 	position: relative;
 }
 
 #showcontainer .row {
+	box-sizing: border-box;
+	display: block;
 	width: 100%;
-	margin: 0;
+	margin: 5% 0% 5% 0%;
 	padding: 0;
-	max-width: 100%;
 	height: 600px;
+	max-width: 100%;
+	max-height: 600px;
+	
 }
 
 #showcontainer .large-16 {
 	width: 100%;
-	height: 700px;
+	height: 500px;
+	max-height: 500px;
 	padding: 0%;
-	margin: 0 auto;
+	margin: 0%;
 }
 
 #showcontainer .owl-carousel {
@@ -42,6 +49,7 @@
 	height: 100%;
 	width: 100%;
 	padding: 2% 2% 2% 2%;
+
 }
 
 #showcontainer .owl-stage .active {
@@ -52,6 +60,7 @@
 #showcontainer .owl-stage {
 	width: 100%;
 	height: 100%;
+	
 }
 
 #showcontainer .owl-item {
@@ -68,7 +77,7 @@ h1 {
 	position: relative;
 	width: 95%;
 	height: 100%;
-	background-size: cover;
+	background-size: 100% 100%;
 	border-radius: 10px;
 	margin: 0%;
 }
@@ -103,6 +112,7 @@ h1 {
 #showcontainer h3 {
 	color: white;
 	margin:3% 0% 0% 3%;
+	width: 100%;
 }
 
 #showcontainer p {
@@ -115,11 +125,14 @@ h1 {
 	line-height: 140%;
 	overflow: visible;
 }
+
+#bdirname {
+	background-size: 100% 100%;
+}
 </style>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/movie.js"></script>
 </head>
 <body>
 
@@ -215,8 +228,7 @@ h1 {
 				<script type="text/javascript">
 				</script>
 				<script>  
-					let name = "<%=request.getAttribute("message")%>
-					";
+					let name = "<%=request.getAttribute("message")%>";
 					if (name == 'login') {
 						alert('로그인되었습니다.')
 					} else if (name == 'logout') {
@@ -229,8 +241,68 @@ h1 {
 				</script>
 			</div>
 		</div>
+		<c:if test="${email != null}">
+		<div class="prefer row">
+			<div>
+				<input type="hidden" id="sessionId" value="${email}">
+				<h3>${nick}님의 찜 목록</h3>
+			</div>
+			<div class="large-16 columns">
+				<div class="owl-carousel owl-theme movie">
+					<div class="item" id="movie1"></div>
+					<div class="item" id="movie2"></div>
+					<div class="item" id="movie3"></div>
+					<div class="item" id="movie4"></div>
+					<div class="item" id="movie5"></div>
+					<div class="item" id="movie6"></div>
+					<div class="item" id="movie7"></div>
+					<div class="item" id="movie8"></div>
+					<div class="item" id="movie9"></div>
+					<div class="item" id="movie10"></div>
+					<div class="item" id="movie11"></div>
+					<div class="item" id="movie12"></div>
+					<div class="item" id="movie13"></div>
+					<div class="item" id="movie14"></div>
+					<div class="item" id="movie15"></div>
+					<div class="item" id="movie16"></div>
+					<div class="item" id="movie17"></div>
+					<div class="item" id="movie18"></div>
+					<div class="item" id="movie19"></div>
+					<div class="item" id="movie20"></div>
+				</div>
+			</div>
+		</div>
+		</c:if>
 	</div>
+	<script src="js/movie.js"></script>
+	<script>
+	const posterpath = "https://image.tmdb.org/t/p/w500"
+	let param = {"email":'<%=email%>'};
+	if ('<%=email%>' != null) {
+		fetch('userLikesSelectList.do', {
+			method:'POST',
+			headers:{'Content-Type':'application/json'},
+			body:JSON.stringify(param)
+		})
+			.then(response => response.json())
+			.then(data => {
+				data.forEach((elem, idx) => {
+					if (idx <= 20) {
+					fetch('https://api.themoviedb.org/3/movie/' + elem.id + '?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko-KR')
+						.then(response => response.json())
+						.then(data => {
+							let moviecard = document.querySelector('.prefer #movie' + (idx+1));				
+							let title = document.createElement('p');
+							title.innerHTML = data.title;
+							moviecard.append(title);
+							moviecard.setAttribute('style', 'background-image:url(' + posterpath + data.poster_path + ')');
+						})
+					}
+				})
+			})
+	}
 
+	</script>
 	<script src="js/banner.js?ver=1"></script>
 </body>
 </html>

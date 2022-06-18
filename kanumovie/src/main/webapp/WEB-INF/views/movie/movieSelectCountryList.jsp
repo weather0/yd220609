@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<% String email=(String) session.getAttribute("email"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +19,13 @@
 </div>
 <div class="infinite">
 	<input type="hidden" value="${id}">
+	<input type="hidden" id = "c_sessionId" value="${email}">
 	<div class="movie-card-container" data-value='1'>
 	</div>
 	<div class="movie-card-container" data-value='2'>
 	</div>
 </div>
 <script src="js/rating.js"></script>
-<script src="js/genre-movie.js"></script>
 <script src="js/country-movie.js"></script>
 <script>
 let page = 0;
@@ -32,8 +33,8 @@ window.onscroll = function() {
 	let container = document.querySelector('div.infinite');
 	if (page < 5) {
 		if (window.scrollY > window.innerHeight && (window.scrollY) >= (container.offsetHeight-400)) {
-			countryMovieList(count);
-			count++;
+			countryMovieList(c_count);
+			c_count++;
 			page++;
 		} 
 	}

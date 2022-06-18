@@ -69,6 +69,7 @@ section.panel {
   clear: both;
   background: #0b0c2a;
   border: none;
+  width: 1000px
   /* margin-top: 1.25rem; */
 
 }

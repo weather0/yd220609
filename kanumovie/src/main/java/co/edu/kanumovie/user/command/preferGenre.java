@@ -1,62 +1,51 @@
 package co.edu.kanumovie.user.command;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.user.service.UserService;
 import co.edu.kanumovie.user.serviceImpl.UserServiceImpl;
 import co.edu.kanumovie.user.vo.UserVO;
 
-public class ProfileChange implements Command {
+public class preferGenre implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// file 변경
+		// 선호영화장르 바꾸기 > preferGenreForm에서 ajax로 받아옴. 바꾸고 유저관리창으로 돌아가기.
 		UserService dao = new UserServiceImpl();
 		UserVO vo = new UserVO();
-		
-		// saveDir의 경로는 img/profile
-		String saveDir = request.getServletContext().getRealPath("img\\profile");
-		System.out.println(request.getServletContext().getRealPath("img\\profile"));
-		
-//		String saveDir = "C:\\Users\\admin\\git\\Kanumovie\\kanumovie\\src\\main\\webapp\\img\\profile\\";
-		
-		int size = 1024*1024*1024; // 파일 최대 사이즈
-		String originalFile = "";
-		String dirFile = "";
-		String e2 = "";
-		String p2 = "";
-		try {
-			MultipartRequest multi = new MultipartRequest(request, saveDir, size, "utf-8", new DefaultFileRenamePolicy());
-			dirFile = multi.getFilesystemName("file"); // 물리공간에 저장될 파일명.
-			originalFile = multi.getOriginalFileName("file"); // 실제 파일명.
-			vo.setEmail(multi.getParameter("email"));
-			e2 = multi.getParameter("email");
-			p2 = multi.getParameter("pw");
-			vo.setFileName(originalFile);
-			vo.setDirectoryFileName(dirFile);
-			
-		
-		} catch(IOException e) {
-			e.printStackTrace();
+		vo.setEmail(request.getParameter("email"));
+		vo.setPw(request.getParameter("pw"));
+		if(request.getParameter("preference1")!= null) {
+			vo.setPreference1(Integer.parseInt(request.getParameter("preference1")));
+		} else {
+			vo.setPreference1(0);
 		}
 		
-		dao.userUpdateProfile(vo);
+		if(request.getParameter("preference2")!= null) {
+			vo.setPreference2(Integer.parseInt(request.getParameter("preference2")));
+		} else {
+			vo.setPreference2(0);
+		}
+		
+		if(request.getParameter("preference2")!= null) {
+			vo.setPreference3(Integer.parseInt(request.getParameter("preference3")));
+		} else {
+			vo.setPreference3(0);
+		}
+		// 선호 장르 선택 중 장르 선택이 안되어 null이 넘어오면 0으로 기본값 설정.
+		
+		dao.userUpdatePrefer(vo);
 		
 		// 세션 변경
 		HttpSession session = request.getSession();
 		session.invalidate();
 		HttpSession session2 = request.getSession();
 		UserVO vo2 = new UserVO();
-		vo2.setEmail(e2);
-		vo2.setPw(p2);
+		vo2.setEmail(request.getParameter("email"));
+		vo2.setPw(request.getParameter("pw"));
 		
 		vo2 = dao.userSelect(vo2);
 		
@@ -76,8 +65,7 @@ public class ProfileChange implements Command {
 			session2.setAttribute("directoryfileName", vo2.getDirectoryFileName());
 		}
 		
-		
-		return "user/userManageForm";
+		return "ajax:";
 	}
 
 }

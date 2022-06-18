@@ -17,7 +17,7 @@
         <div>
             <form id="frm" action="findPw.do" method="post">
 	            <div>
-	                <input type="text" id="email" name="email" placeholder="비밀번호를 찾을 계정을 입력!!!" required>
+	                <input type="text" id="email" name="email" placeholder="비밀번호를 전달받을 Gmail을 입력!!!" required>
 	            </div>
 	            <div>
 	               <button type="submit" class="site-btn">비밀번호 찾기</button>

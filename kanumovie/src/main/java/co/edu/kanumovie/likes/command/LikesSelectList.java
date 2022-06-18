@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.google.gson.Gson;
@@ -18,26 +17,21 @@ import co.edu.kanumovie.likes.vo.LikesVO;
 
 public class LikesSelectList implements Command {
 	
-	private ObjectMapper map = new ObjectMapper(); 
-
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		LikesService dao = new LikesServiceImpl();
+
 		LikesService dao = new LikesServiceImpl();
 		List<LikesVO> list = new ArrayList<LikesVO>();
 		LikesVO vo = new LikesVO();
-		
-		List<LikesVO> list = new ArrayList<LikesVO>();
+		vo.setId(Integer.parseInt(request.getParameter("id")));
+		vo.setEmail(request.getParameter("email"));
 		list = dao.likesSelectList(vo);
+
 		// 장르별 영화 페이지 좋아요 리스트 조회
 		if (request.getParameter("genre") != null) {
 			request.setAttribute("likelist", list);
 			return "movie/movieSelectGenreList";
 		}
-		for(int i = 0; i<list.size(); i++){
-			// 작업 진행중
-		}
-		
 
 		// 요청 넘어오는지 확인
 //		System.out.println(Integer.parseInt(request.getParameter("id")));

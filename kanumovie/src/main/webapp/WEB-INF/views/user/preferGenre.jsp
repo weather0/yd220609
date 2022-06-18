@@ -30,18 +30,33 @@
 <style>
     #n {
         color:red;
+        margin-top: 30px;
+    }
+    #ff {
+    	display:none;
+    }
+    #move {
+    	display:none;
     }
 </style>
 </head>
 <body>
+	<div id="move"></div>
     <div align="center">
         <div>
-            <div><p id="n"></p></div>
+            <div><h1 id="n">선호하는 영화를 고르세요!!!</h1></div>
         </div>
     </div>
     
     <div class="infinite" id="re"></div>
 
+
+	<div><input type="hidden" value="1" id="count"></div>
+	
+	<div id="ff">
+		<input type="hidden" id="email1" name="email1" value="${email}">
+		<input type="hidden" id="pw1" name="pw1" value="${pw }">
+	</div>
 
     <!-- Search model Begin -->
     <div class="search-model">
@@ -79,7 +94,7 @@
         let totalpage;
         let currentpage;
         let totalgenre= new Array();
-          let cnt = 0;
+        let cnt = 1;
 
         let movieSearch = function (pageNum) {
           
@@ -100,11 +115,38 @@
                 card.setAttribute('class', 'movie-card');
                 card.addEventListener('click', addGenre); 
                 function addGenre() {
-                    totalgenre = totalgenre.concat(elem.genre_ids);
-                    console.log(elem.genre_ids);
-                    console.log(totalgenre);
-                    console.log('카운팅'+cnt);
+                    
+                	let location = document.querySelector("#move").offsetTop;
+                    window.scrollTo({top:location, behavior:'smooth'});
+                	
+                	totalgenre = totalgenre.concat(elem.genre_ids);
                     cnt++;
+                    document.getElementById('count').value = cnt;
+                    
+                    
+                    if(document.getElementById('count').value == 2) {
+                    	let removeclass = document.getElementsByClassName('movie-card');
+                    	while (removeclass.length > 0) { 
+                    		removeclass[0].remove()
+                    		};
+                        movieSearch(2);
+                        let location = document.querySelector("#move").offsetTop;
+                        window.scrollTo({top:location, behavior:'smooth'});
+                    }
+                    
+                    if(document.getElementById('count').value == 3) {
+                    	let removeclass = document.getElementsByClassName('movie-card');
+                    	while (removeclass.length > 0) { 
+                    		removeclass[0].remove()
+                    		};
+                        movieSearch(3);
+                        let location = document.querySelector("#move").offsetTop;
+                        window.scrollTo({top:location, behavior:'smooth'});
+                    }
+                    
+                    if(document.getElementById('count').value == 4) {
+                    	saveGenreId()
+                    }
                 }
                 let img = document.createElement('img');
                 if (elem.poster_path == null) {
@@ -131,19 +173,59 @@
             
         }
 
+        function saveGenreId() {
+        	
+        	// 선호 장르 배열에서 중복값 걸러내서 선호 장르 아이디값 구하기.
+        	const result = {};
+        	totalgenre.forEach((x) => { 
+        	  result[x] = (result[x] || 0)+1; 
+        	});
+        	console.log(result)
+			
+        	const a = [];
+        	
+        	for (let key in result) {
+			  const value = result[key]
+			  a.push([value,key])
+			}
+			// 장르 : 중복횟수 > 형태의 맵으로 저장해서 value 비교 후 소팅.
+			bubbleSort(a);
+			
+			
+			// 정렬한 a 배열 k_user 선호 열에 보내기.
+			$.ajax({
+			    url: 'preferGenre.do',
+			    type: 'post',
+			    data: {"email": document.getElementById('email1').value,
+			    	"pw": document.getElementById('pw1').value,
+			    	"preference1": a[0][1],
+			        "preference2": a[1][1],
+			        "preference3": a[2][1] },
+			    success: function (data) {
+			            alert("선호 영화 선택 완료");
+			            window.location.reload();
+			        }
+			}); 
+			// 대부 사이코 이창
+        }
         
         // 최초실행
         movieSearch(1);
-        console.log('카운팅'+cnt);
-        if(cnt==1) {
-        movieSearch(2);        	
-        }
-        console.log('카운팅'+cnt);
-        if(cnt==2) {
-        movieSearch(3);
-        }
         
-
+        function bubbleSort (array) { 
+        	for (let i = 0; i < array.length; i++) { 
+        		let swap;    
+        		for (let j = 0; j < array.length - 1 - i; j++) {   
+        			if (array[j][0] < array[j + 1][0]) {     
+        				swap = array[j];     
+        				array[j] = array[j + 1];     
+        				array[j + 1] = swap;    
+        				}   
+        			}    
+        		if (!swap) {     
+        			break;    }
+        		}  
+        	}
         
     </script>
 </html>

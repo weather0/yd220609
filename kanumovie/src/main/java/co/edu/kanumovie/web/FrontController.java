@@ -36,6 +36,7 @@ import co.edu.kanumovie.home.command.Home;
 import co.edu.kanumovie.likes.command.Likes;
 import co.edu.kanumovie.likes.command.LikesDelete;
 import co.edu.kanumovie.likes.command.LikesSelectList;
+import co.edu.kanumovie.likes.command.UserLikesSelectList;
 import co.edu.kanumovie.movie.command.MovieInfo;
 import co.edu.kanumovie.movie.command.MovieInfoghtest;
 import co.edu.kanumovie.movie.command.MoviePlay;
@@ -58,6 +59,7 @@ import co.edu.kanumovie.user.command.SignUp;
 import co.edu.kanumovie.user.command.SignUpForm;
 import co.edu.kanumovie.user.command.UserManage;
 import co.edu.kanumovie.user.command.UserManageForm;
+import co.edu.kanumovie.user.command.preferGenre;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -93,6 +95,7 @@ public class FrontController extends HttpServlet {
 		map.put("/profileChange.do", new ProfileChange());
 		map.put("/pwChange.do", new PwChange());
 		map.put("/preferGenreForm.do", new PreferGenreForm());
+		map.put("/preferGenre.do", new preferGenre()); // 선호 영화 장르.
 		map.put("/signUpForm.do", new SignUpForm());
 		map.put("/signUp.do", new SignUp());
 		map.put("/findPwForm.do", new FindPwForm());
@@ -113,7 +116,7 @@ public class FrontController extends HttpServlet {
 		map.put("/commentUpdate.do", new CommentUpdate());  // comment 수정
 		map.put("/reportUpdate.do", new ReportUpdate());  // 신고 후 user table update
 		map.put("/likes.do", new Likes());
-		//map.put("/userLikesSelectList.do", new UserLikesSelectList());
+		map.put("/userLikesSelectList.do", new UserLikesSelectList());
 		map.put("/likesSelectList.do", new LikesSelectList());
 		map.put("/likesDelete.do", new LikesDelete());
 	}
