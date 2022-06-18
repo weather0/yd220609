@@ -45,18 +45,18 @@
         </div>
 
         <!-- Breadcrumb Begin -->
-        <div class="breadcrumb-option">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="breadcrumb__links">
-                  <a href="./index.html"><i class="fa fa-home"></i> Home</a> <a href="./categories.html">Categories</a>
-                  <span>Romance</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<!--         <div class="breadcrumb-option"> -->
+<!--           <div class="container"> -->
+<!--             <div class="row"> -->
+<!--               <div class="col-lg-12"> -->
+<!--                 <div class="breadcrumb__links"> -->
+<!--                   <a href="./index.html"><i class="fa fa-home"></i> Home</a> <a href="./categories.html">Categories</a> -->
+<!--                   <span>Romance</span> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--         </div> -->
         <!-- Breadcrumb End -->
 
         <!-- Anime Section Begin -->
@@ -281,83 +281,324 @@
 
               </div>
             </div>
+            
+            
+            <!-- comment -->
 
 
 
-            <div class="row">
-              <div class="col-lg-8 col-md-8 reviews">
-                <div class="anime__details__review">
-                  <div class="section-title">
-                    <h5>Reviews</h5>
-                  </div>
-                  <div class="anime__review__item">
-                    <div class="anime__review__item__pic">
-                      <img src="img/anime/review-1.jpg" alt="">
-                    </div>
-                    <div class="anime__review__item__text">
-                      <h6>
-                        Chris Curry - <span>1 Hour ago</span>
-                      </h6>
-                      <p>whachikan Just noticed that someone categorized this as belonging to the genre "demons" LOL</p>
-                    </div>
-                  </div>
-                  <div class="anime__review__item">
-                    <div class="anime__review__item__pic">
-                      <img src="img/anime/review-2.jpg" alt="">
-                    </div>
-                    <div class="anime__review__item__text">
-                      <h6>
-                        Lewis Mann - <span>5 Hour ago</span>
-                      </h6>
-                      <p>Finally it came out ages ago</p>
-                    </div>
-                  </div>
-                  <div class="anime__review__item">
-                    <div class="anime__review__item__pic">
-                      <img src="img/anime/review-3.jpg" alt="">
-                    </div>
-                    <div class="anime__review__item__text">
-                      <h6>
-                        Louis Tyler - <span>20 Hour ago</span>
-                      </h6>
-                      <p>Where is the episode 15 ? Slow update! Tch</p>
-                    </div>
-                  </div>
-                  <div class="anime__review__item">
-                    <div class="anime__review__item__pic">
-                      <img src="img/anime/review-4.jpg" alt="">
-                    </div>
-                    <div class="anime__review__item__text">
-                      <h6>
-                        Chris Curry - <span>1 Hour ago</span>
-                      </h6>
-                      <p>whachikan Just noticed that someone categorized this as belonging to the genre "demons" LOL</p>
-                    </div>
-                  </div>
-                  <div class="anime__review__item">
-                    <div class="anime__review__item__pic">
-                      <img src="img/anime/review-5.jpg" alt="">
-                    </div>
-                    <div class="anime__review__item__text">
-                      <h6>
-                        Lewis Mann - <span>5 Hour ago</span>
-                      </h6>
-                      <p>Finally it came out ages ago</p>
-                    </div>
-                  </div>
-                  <div class="anime__review__item">
-                    <div class="anime__review__item__pic">
-                      <img src="img/anime/review-6.jpg" alt="">
-                    </div>
-                    <div class="anime__review__item__text">
-                      <h6>
-                        Louis Tyler - <span>20 Hour ago</span>
-                      </h6>
-                      <p>Where is the episode 15 ? Slow update! Tch</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+           <!-- comment 시작 -->
+			<div class="row">
+				<div class="col-lg-8 col-md-8">
+					<div class="anime__details__review">
+						<div class="section-title">
+							<h5>Reviews</h5>
+						</div>
+						<div id="test">
+							<c:forEach items="${comments }" var="comments">
+
+								<div class="anime__review__item" id="${comments.cid }">
+									<div class="anime__review__item__pic">
+										<img src="img/profile/${comments.fileName }" alt="">
+									</div>
+									<div class="anime__review__item__text">
+										<h6>
+											<span id="commentnick">${comments.nick }</span> - <span>${comments.wdate }</span>
+											<c:if test="${comments.email == email }">
+												<!-- 수정 삭제시 댓글의 번호 값을 넘겨줌 -->
+												<input type="button"
+													onclick="commentUpdate(${comments.cid})"
+													class="btn btn-sm btn-success" value="수정" />
+												<button onclick="commentDelete(${comments.cid})"
+													class="btn btn-sm btn-success">삭제</button>
+
+											</c:if>
+											<button class="btn btn-sm btn-success"
+												onclick="report('${comments.email}')" data-toggle="modal"
+												data-target="#myModal">신고</button>
+
+										</h6>
+										<div>
+											<p id="p_${comments.cid}">${comments.comments }</p>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+						</div>
+
+
+
+						<c:if test="${email != null }">
+							<div class="anime__details__form">
+								<div class="section-title">
+									<h5>Your Comment</h5>
+								</div>
+								<div class="anime__review__item__text">
+								<textarea id="comments" name="comments"
+									placeholder="Your Comment"></textarea>
+								<input type="hidden" id="id" name="id" value="${movieid}">
+								</div>
+								<br>
+								<button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
+							</div>
+						</c:if>
+					</div>
+
+
+
+					<!-- 신고하기 modal 화면 -->
+					<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<h2 class="modal-title">신고</h2>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+
+								<div class="modal-body">
+									<div id="container">
+										<section>
+											<hr>
+											<form id="form" action="reportInsert.do" method="post">
+												<input type="hidden" class="form-control"	id="reported_name" name="reported_name">
+												<h4>신고 사유를 선택하세요.</h4>
+												<hr>
+												<ul>
+													<li><label><input type="radio" name="report"
+															value="스팸홍보/도배글입니다."> 스팸홍보/도배글입니다.</label>
+													<li><label><input type="radio" name="report"
+															value="음란물입니다."> 음란물입니다.</label>
+													<li><label><input type="radio" name="report"
+															value="욕설/생명경시/혐오/차별적 표현입니다."> 욕설/생명경시/혐오/차별적
+															표현입니다.</label>
+													<li><label><input type="radio" name="report"
+															value="개인정보 노출 게시물입니다."> 개인정보 노출 게시물입니다.</label>
+												</ul>
+												<h4>신고내용</h4>
+												<hr>
+												<textarea id="content" name="content" cols="70" rows="5"></textarea>
+												<br> <input type="submit" value="신고"> <input
+													type="reset" value="다시입력">
+											</form>
+										</section>
+									</div>
+
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<script>
+
+
+
+	function report(cnick) {
+		let nick = cnick;
+		console.log(nick);
+		
+		$('#myModal').on('show.bs.modal', function () {
+			 $(".modal-body #reported_name").val(cnick);
+		})
+		
+		
+		
+		
+	}
+					
+					
+					
+	// 댓글 수정 창
+	function commentUpdate(cid) {
+		let ww = document.querySelectorAll('#test textarea'); 
+		
+		ww.forEach(x => {
+			if(x == null){
+				console.log('ss');
+			} else {
+				document.getElementById('zzz').remove();
+				//document.querySelector('#zzz').remove();
+			}
+		})
+			
+				
+		let br = document.createElement('br');
+		let div = document.createElement('div');
+		div.setAttribute('id','zzz')
+		let p = document.getElementById('p_'+cid);
+		let textarea = document.createElement('textarea');
+		textarea.setAttribute('id','comments2');
+		textarea.setAttribute('cols', 55);
+		textarea.setAttribute('rows' , 3);
+		textarea.setAttribute('placeholder', '수정할 값을 입력하세요');
+		/* p.append(br);
+		p.append(textarea); */
+		p.append(div);
+		div.append(textarea);
+		
+		let input = document.createElement('input');
+		input.setAttribute('type', 'hidden');
+		input.setAttribute('id' , 'ids');
+		input.setAttribute('value',cid);
+		/* p.append(input); */
+		div.append(input);
+		
+		
+		
+		let br2 = document.createElement('br');
+		let input2 = document.createElement('input');
+// 		div.append(br2);
+		
+		input2.setAttribute('value', '수정');
+		input2.setAttribute('type', 'button');
+		input2.setAttribute('class', 'btn btn-sm btn-success');
+		input2.setAttribute('id','changeBtn');
+		
+		/* p.append(br2);
+		p.append(input2); */
+		
+		div.append(input2);
+		
+		let button2 = document.createElement('button');
+		button2.setAttribute('class', 'btn btn-sm btn-success');
+		button2.setAttribute('id','changeBtn2');
+		button2.innerText = '취소';
+		/* p.append(button2); */
+		div.append(button2);
+		
+		let UpdateBtn = document.getElementById("changeBtn");
+		let UpdateBtn2 = document.getElementById("changeBtn2");
+		
+		// 수정버튼을 클릭하면 실행
+		UpdateBtn.addEventListener("click", function(e) {
+			e.preventDefault();
+			console.log(document.getElementById("ids"));
+			console.log(document.getElementById("ids").value);
+			console.log(document.getElementById("comments2").value);
+			
+			
+
+			  $.ajax({
+					url:"commentUpdate.do",
+					method:"post",
+					data : {
+						// 글의 번호
+						"cid" : document.getElementById("ids").value ,
+						"comments" : document.getElementById("comments2").value
+					},
+					success:function(result) {
+						console.log(result);
+						location.reload();
+					}
+				})
+		});
+		
+		
+		
+		//취소버튼을 클릭하면 실행
+		UpdateBtn2.addEventListener("click", function() {
+			document.getElementById("comments2").remove();
+			document.getElementById("changeBtn").remove();
+			document.getElementById("changeBtn2").remove();
+			
+		});
+	}
+	
+
+	
+/*  	function replyUpdate() {
+			$.ajax({
+				url:"commentUpdate.do",
+				method:"post",
+				data : {
+					// 수정할 텍스트의 값
+					"uid" : document.getElementById("uid").value
+					
+				},
+				success:function(result) {
+					location.reload();
+				}
+			})
+		});   */
+
+	
+	
+	// 댓글 추가
+	function replyInsert(){
+		$.ajax({
+			url:"commentInsert.do",
+			method:"post",
+			data : {
+				"id" : document.getElementById("id").value,
+				"comments" : document.getElementById("comments").value
+			},
+			success:function(result){
+				location.reload();
+			}
+		})
+	}
+	
+	 var httpRequest = null;
+	  // httpRequest 객체 생성
+	function getXMLHttpRequest(){
+		  var httpRequest = null;
+		  if(window.ActiveXObject){
+				 try{
+					 httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+				 } catch(e) {
+			     try{
+			         httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				 } catch (e2) { httpRequest = null;
+			 }          
+		   }      
+		    }      
+		     else if(window.XMLHttpRequest){ 
+		           httpRequest = new window.XMLHttpRequest(); 
+		        }          
+		 return httpRequest;   
+	}
+	
+	
+	//댓글 삭제창
+	function commentDelete(cid) {
+		var msg = confirm("댓글을 삭제합니다.");
+		if(msg == true) {
+			deleteCmt(cid);
+		}
+		else {
+			return false;
+		}
+	}
+	
+	 //댓글 삭제
+	function deleteCmt(cid) {
+		document.getElementById(cid).remove();
+		var param="cid="+cid;
+		httpRequest = getXMLHttpRequest();
+		httpRequest.onreadystatechange = checkFunc;
+		httpRequest.open("POST", "commentDelete.do", true); 
+		httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');  
+		httpRequest.send(param);
+	} 
+	
+	
+	function checkFunc(){
+		  if(httpRequest.readyState == 4){
+			// 결과값을 가져온다.   
+	      var resultText = httpRequest.responseText;
+		  if(resultText == 1) { 
+			    document.location.reload(); // 상세보기 창 새로고침 
+	     }   
+	  }   
+	}
+</script>
 
 
 
@@ -379,23 +620,6 @@
                 <h5><a href="#">Boruto: Naruto next generations</a></h5>
               </div> -->
 
-                </div>
-              </div>
-
-
-
-
-              <div class="col-lg-8 col-md-8 comment">
-                <div class="anime__details__form">
-                  <div class="section-title">
-                    <h5>Your Comment</h5>
-                  </div>
-                  <form action="#">
-                    <textarea placeholder="Your Comment"></textarea>
-                    <button type="submit">
-                      <i class="fa fa-location-arrow"></i> Review
-                    </button>
-                  </form>
                 </div>
               </div>
 

@@ -42,7 +42,7 @@ public class CommentInsert implements Command {
 		// 리스트를 처리한것을 싦어서 보내야함.
 		request.setAttribute("comments", comments);
 		
-		return "movie/movieInfoghtest";
+		return "movie/movieInfo";
 	}
 
 }

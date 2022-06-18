@@ -14,7 +14,6 @@ public class LikesDelete implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 
 		LikesService dao = new LikesServiceImpl();
-
 		LikesVO vo = new LikesVO();
 		String cmd = request.getParameter("cmd");
 		if (cmd != null) {
