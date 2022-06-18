@@ -14,6 +14,7 @@ $(function() {
 			data.forEach((ele) => {
 				PreferredGenreName.push(ele.name);
 				PreferredGenreCount.push(ele.genreCount);
+				createChart2(PreferredGenreName,PreferredGenreCount);
 			})
 
 		},
@@ -36,6 +37,29 @@ $(function() {
 			str.forEach((elem) => {
 				usercount.push(elem);
 			})
+			
+			
+/* 날짜 객체 받아서 문자열로 리턴하는 함수 */
+function getDateStr(myDate) {
+	return (
+		// myDate.getFullYear() +
+		// "-" +
+		myDate.getMonth() + 1 + "/" + myDate.getDate()
+	);
+}
+//오늘 날짜 받아서 일주일전 날짜구하는 함수
+function lastWeek(i) {
+	var d = new Date();
+	var dayOfMonth = d.getDate();
+	d.setDate(dayOfMonth - i);
+	return getDateStr(d);
+}
+
+let weeks = [];
+for (let i = 6; i >= 0; i--) {
+	weeks.push(lastWeek(i));
+}
+			createChart(usercount,weeks);			
 		},
 		error: function(err) {
 			console.log(err)
@@ -47,7 +71,7 @@ $(function() {
 
 
 
-
+function createChart2(PreferredGenreName,PreferredGenreCount) {
 const ctx = document.getElementById("myChart").getContext("2d");
 const myChart = new Chart(ctx, {
 	type: "bar",
@@ -115,30 +139,10 @@ const myChart = new Chart(ctx, {
 	},
 });
 
-
+};
 
 //회원가입 현황 차트 
-
-/* 날짜 객체 받아서 문자열로 리턴하는 함수 */
-function getDateStr(myDate) {
-	return (
-		// myDate.getFullYear() +
-		// "-" +
-		myDate.getMonth() + 1 + "/" + myDate.getDate()
-	);
-}
-//오늘 날짜 받아서 일주일전 날짜구하는 함수
-function lastWeek(i) {
-	var d = new Date();
-	var dayOfMonth = d.getDate();
-	d.setDate(dayOfMonth - i);
-	return getDateStr(d);
-}
-
-let weeks = [];
-for (let i = 6; i >= 0; i--) {
-	weeks.push(lastWeek(i));
-}
+function createChart(usercount,weeks) {
 
 const ctx2 = document.getElementById("myChart2").getContext("2d");
 const myChart2 = new Chart(ctx2, {
@@ -206,3 +210,5 @@ const myChart2 = new Chart(ctx2, {
 		},
 	},
 });
+
+}

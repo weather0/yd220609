@@ -41,6 +41,16 @@
 .mb-2:hover {
 	color: white;
 }
+
+.pageul {
+font-size: 20px;
+}
+.pageul li{
+list-style-type: none;
+display: inline;
+}
+ 
+
 </style>
 
 </head>
@@ -148,9 +158,12 @@
 
 									</tr>
 								</c:forEach>
-
+								
 							</tbody>
 						</table>
+					
+						
+						<a class="btn btn-sm btn-primary" href="adminmessage.do?p=${startNum+5}&t=&q=">다음</a>
 						<a class="btn btn-sm btn-primary" onclick="updateblockcheck()"
 							style="margin-top: 20px; color: white">access</a> <a
 							class="btn btn-sm btn-primary" onclick="updatereportcheck()"

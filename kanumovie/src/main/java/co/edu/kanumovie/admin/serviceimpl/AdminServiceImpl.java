@@ -18,8 +18,8 @@ public class AdminServiceImpl implements AdminService {
 	
 	
 	@Override
-	public List<UserVO> selectAllUserList() {
-		return map.selectAllUserList();
+	public List<UserVO> selectAllUserList(int startPage,int endPage) {
+		return map.selectAllUserList(startPage,endPage);
 	}
 
 	@Override
