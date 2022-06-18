@@ -64,13 +64,25 @@
 .genre-card:hover h3, .country-card:hover h3 {
 	text-decoration: underline;
 }
+
+#schbox {
+    width: 40%;
+    height: 50px;
+    margin: 0 auto 13px;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    background: #B7B8CE;
+    font-size: 25px;
+}
+
 </style>
 </head>
 <body>
 	<div>
 		<form>
-			<input type="text" placeholder="Search Your Show"> <input
-				type="submit" value="Search">
+			<input type="text" placeholder="Search Your Show" onkeyup="searching()" id="schbox">
+      <!-- <input type="submit" value="Search"> -->
 		</form>
 	</div>
 	<div id="category-container">
@@ -168,6 +180,22 @@
 						}
 					})
 			}
+
+      // 검색 기능
+      function searching(){
+        let schbox, name, item;
+        schbox = document.getElementById("schbox").value.toUpperCase();
+        item = document.querySelectorAll(".genre-card,.country-card");
+
+        for(let i = 0; i < item.length; i++){
+          name = item[i].querySelectorAll("h3")
+          if(name[0].innerHTML.toUpperCase().indexOf(schbox) > -1){
+            item[i].style.display = "flex";
+          }else{
+            item[i].style.display = "none";
+          }
+        }
+      }
 			
 		</script>
 	</div>
