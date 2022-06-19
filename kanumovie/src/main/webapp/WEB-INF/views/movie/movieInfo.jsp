@@ -35,6 +35,74 @@
         <!-- movieInfo스크립트 -->
         <script src="js/movieInfo.js"></script>
 
+
+        <style>
+          /* 플레이어 관련 */
+          .video-js .vjs-dock-text,
+          .vjs-current-time-display,
+          .vjs-duration-display,
+          .vjs-time-divider {
+            font-size: 1.5em;
+          }
+
+          .vjs-pip-container,
+          .youtube iframe {
+            margin-bottom: 10px;
+          }
+
+          #myPlayerID {
+            border-radius: 10px;
+            border: 2px solid rgb(41, 41, 41);
+          }
+
+
+          /* 모달창 */
+          .modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            background-color: rgba(0, 0, 0, 0.7);
+
+          }
+
+          .modal.show {
+            display: block;
+          }
+
+          .modal_body {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 960px;
+            height: 540px;
+            /* padding: 40px; */
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+            transform: translateX(-50%) translateY(-50%);
+            transition: all .4s;
+          }
+
+
+          .modalbox {
+            width: 960px;
+            text-align: right;
+            margin-bottom: 20px;
+          }
+
+          .modalbtn {
+            border-radius: 10px;
+            width: 120px;
+            height: 35px;
+            padding: 0px;
+            background-color: #1d1e39;
+          }
+        </style>
+
       </head>
 
 
@@ -44,26 +112,73 @@
           <div class="loader"></div>
         </div>
 
-        <!-- Breadcrumb Begin -->
-<!--         <div class="breadcrumb-option"> -->
-<!--           <div class="container"> -->
-<!--             <div class="row"> -->
-<!--               <div class="col-lg-12"> -->
-<!--                 <div class="breadcrumb__links"> -->
-<!--                   <a href="./index.html"><i class="fa fa-home"></i> Home</a> <a href="./categories.html">Categories</a> -->
-<!--                   <span>Romance</span> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--         </div> -->
-        <!-- Breadcrumb End -->
+
+
+
 
         <!-- Anime Section Begin -->
         <section class="anime-details spad">
           <div class="container">
             <div class="anime__details__content">
               <div class="row">
+
+                <!-- brightcove player -->
+                <div class="moviePlayer">
+                  <div class="vjs-pip-container">
+                    <video-js id="myPlayerID" data-account="6310593610001" data-player="mM7pq2WtL" data-embed="default"
+                      controls="" data-video-id="" data-playlist-id="" data-application-id="" width="960" height="540">
+                    </video-js>
+                    </video-js>
+                  </div>
+                </div>
+
+                <!-- youtube player -->
+                <div class="youtube">
+                  <iframe width="960" height="540" src="" title="YouTube video player" frameborder="3"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                </div>
+
+                <p>
+                </p>
+
+
+                <!-- 모달창 -->
+                <div class="modal">
+                  <div class="modal_body">Modal
+                    <p>
+                      jwe;fjwofjwefi
+                    </p>
+                  </div>
+                </div>
+                <div class="modalbox">
+                  <!-- <button class="modalbtn">부가영상</button> -->
+                </div>
+                <script>
+                  const modal = document.querySelector('.modal');
+                  const btnOpenPopup = document.querySelector('.modalbtn');
+
+                  btnOpenPopup.addEventListener('click', () => {
+                    modal.classList.toggle('show');
+
+                    if (modal.classList.contains('show')) {
+                      body.style.overflow = 'hidden';
+                    }
+                  });
+
+                  modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                      modal.classList.toggle('show');
+
+                      if (!modal.classList.contains('show')) {
+                        body.style.overflow = 'auto';
+                      }
+                    }
+                  });
+                </script>
+
+
+
                 <div class="col-lg-4 poster">
                   <img class="posterImg">
                   <!-- <div class="anime__details__pic"> -->
@@ -281,324 +396,317 @@
 
               </div>
             </div>
-            
-            
+
+
             <!-- comment -->
 
 
 
-           <!-- comment 시작 -->
-			<div class="row">
-				<div class="col-lg-8 col-md-8">
-					<div class="anime__details__review">
-						<div class="section-title">
-							<h5>Reviews</h5>
-						</div>
-						<div id="test">
-							<c:forEach items="${comments }" var="comments">
+            <!-- comment 시작 -->
+            <div class="row">
+              <div class="col-lg-8 col-md-8">
+                <div class="anime__details__review">
+                  <div class="section-title">
+                    <h5>Reviews</h5>
+                  </div>
+                  <div id="test">
+                    <c:forEach items="${comments }" var="comments">
 
-								<div class="anime__review__item" id="${comments.cid }">
-									<div class="anime__review__item__pic">
-										<img src="img/profile/${comments.fileName }" alt="">
-									</div>
-									<div class="anime__review__item__text">
-										<h6>
-											<span id="commentnick">${comments.nick }</span> - <span>${comments.wdate }</span>
-											<c:if test="${comments.email == email }">
-												<!-- 수정 삭제시 댓글의 번호 값을 넘겨줌 -->
-												<input type="button"
-													onclick="commentUpdate(${comments.cid})"
-													class="btn btn-sm btn-success" value="수정" />
-												<button onclick="commentDelete(${comments.cid})"
-													class="btn btn-sm btn-success">삭제</button>
+                      <div class="anime__review__item" id="${comments.cid }">
+                        <div class="anime__review__item__pic">
+                          <img src="img/profile/${comments.fileName }" alt="">
+                        </div>
+                        <div class="anime__review__item__text">
+                          <h6>
+                            <span id="commentnick">${comments.nick }</span> - <span>${comments.wdate }</span>
+                            <c:if test="${comments.email == email }">
+                              <!-- 수정 삭제시 댓글의 번호 값을 넘겨줌 -->
+                              <input type="button" onclick="commentUpdate(${comments.cid})"
+                                class="btn btn-sm btn-success" value="수정" />
+                              <button onclick="commentDelete(${comments.cid})"
+                                class="btn btn-sm btn-success">삭제</button>
 
-											</c:if>
-											<button class="btn btn-sm btn-success"
-												onclick="report('${comments.email}')" data-toggle="modal"
-												data-target="#myModal">신고</button>
+                            </c:if>
+                            <button class="btn btn-sm btn-success" onclick="report('${comments.email}')"
+                              data-toggle="modal" data-target="#myModal">신고</button>
 
-										</h6>
-										<div>
-											<p id="p_${comments.cid}">${comments.comments }</p>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
-						</div>
+                          </h6>
+                          <div>
+                            <p id="p_${comments.cid}">${comments.comments }</p>
+                          </div>
+                        </div>
+                      </div>
+                    </c:forEach>
+                  </div>
+                </div>
 
 
 
-						<c:if test="${email != null }">
-							<div class="anime__details__form">
-								<div class="section-title">
-									<h5>Your Comment</h5>
-								</div>
-								<div class="anime__review__item__text">
-								<textarea id="comments" name="comments"
-									placeholder="Your Comment"></textarea>
-								<input type="hidden" id="id" name="id" value="${movieid}">
-								</div>
-								<br>
-								<button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
-							</div>
-						</c:if>
-					</div>
+                <c:if test="${email != null }">
+                  <div class="anime__details__form">
+                    <div class="section-title">
+                      <h5>Your Comment</h5>
+                    </div>
+                    <div class="anime__review__item__text">
+                      <textarea id="comments" name="comments" placeholder="Your Comment"></textarea>
+                      <input type="hidden" id="id" name="id" value="${movieid}">
+                    </div>
+                    <br>
+                    <button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
+                  </div>
+                </c:if>
+              </div>
 
 
 
-					<!-- 신고하기 modal 화면 -->
-					<div class="modal fade" id="myModal" role="dialog">
-						<div class="modal-dialog">
+              <!-- 신고하기 modal 화면 -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
 
-							<!-- Modal content-->
-							<div class="modal-content">
-								<div class="modal-header">
-									<h2 class="modal-title">신고</h2>
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-								</div>
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2 class="modal-title">신고</h2>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
 
-								<div class="modal-body">
-									<div id="container">
-										<section>
-											<hr>
-											<form id="form" action="reportInsert.do" method="post">
-												<input type="hidden" class="form-control"	id="reported_name" name="reported_name">
-												<h4>신고 사유를 선택하세요.</h4>
-												<hr>
-												<ul>
-													<li><label><input type="radio" name="report"
-															value="스팸홍보/도배글입니다."> 스팸홍보/도배글입니다.</label>
-													<li><label><input type="radio" name="report"
-															value="음란물입니다."> 음란물입니다.</label>
-													<li><label><input type="radio" name="report"
-															value="욕설/생명경시/혐오/차별적 표현입니다."> 욕설/생명경시/혐오/차별적
-															표현입니다.</label>
-													<li><label><input type="radio" name="report"
-															value="개인정보 노출 게시물입니다."> 개인정보 노출 게시물입니다.</label>
-												</ul>
-												<h4>신고내용</h4>
-												<hr>
-												<textarea id="content" name="content" cols="70" rows="5"></textarea>
-												<br> <input type="submit" value="신고"> <input
-													type="reset" value="다시입력">
-											</form>
-										</section>
-									</div>
+                    <div class="modal-body">
+                      <div id="container">
+                        <section>
+                          <hr>
+                          <form id="form" action="reportInsert.do" method="post">
+                            <input type="hidden" class="form-control" id="reported_name" name="reported_name">
+                            <h4>신고 사유를 선택하세요.</h4>
+                            <hr>
+                            <ul>
+                              <li><label><input type="radio" name="report" value="스팸홍보/도배글입니다."> 스팸홍보/도배글입니다.</label>
+                              <li><label><input type="radio" name="report" value="음란물입니다."> 음란물입니다.</label>
+                              <li><label><input type="radio" name="report" value="욕설/생명경시/혐오/차별적 표현입니다."> 욕설/생명경시/혐오/차별적
+                                  표현입니다.</label>
+                              <li><label><input type="radio" name="report" value="개인정보 노출 게시물입니다."> 개인정보 노출
+                                  게시물입니다.</label>
+                            </ul>
+                            <h4>신고내용</h4>
+                            <hr>
+                            <textarea id="content" name="content" cols="70" rows="5"></textarea>
+                            <br> <input type="submit" value="신고"> <input type="reset" value="다시입력">
+                          </form>
+                        </section>
+                      </div>
 
-								</div>
+                    </div>
 
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Close</button>
-								</div>
-							</div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
 
-						</div>
-					</div>
-					<script>
+                </div>
+              </div>
+              <script>
 
 
 
-	function report(cnick) {
-		let nick = cnick;
-		console.log(nick);
-		
-		$('#myModal').on('show.bs.modal', function () {
-			 $(".modal-body #reported_name").val(cnick);
-		})
-		
-		
-		
-		
-	}
-					
-					
-					
-	// 댓글 수정 창
-	function commentUpdate(cid) {
-		let ww = document.querySelectorAll('#test textarea'); 
-		
-		ww.forEach(x => {
-			if(x == null){
-				console.log('ss');
-			} else {
-				document.getElementById('zzz').remove();
-				//document.querySelector('#zzz').remove();
-			}
-		})
-			
-				
-		let br = document.createElement('br');
-		let div = document.createElement('div');
-		div.setAttribute('id','zzz')
-		let p = document.getElementById('p_'+cid);
-		let textarea = document.createElement('textarea');
-		textarea.setAttribute('id','comments2');
-		textarea.setAttribute('cols', 55);
-		textarea.setAttribute('rows' , 3);
-		textarea.setAttribute('placeholder', '수정할 값을 입력하세요');
-		/* p.append(br);
-		p.append(textarea); */
-		p.append(div);
-		div.append(textarea);
-		
-		let input = document.createElement('input');
-		input.setAttribute('type', 'hidden');
-		input.setAttribute('id' , 'ids');
-		input.setAttribute('value',cid);
-		/* p.append(input); */
-		div.append(input);
-		
-		
-		
-		let br2 = document.createElement('br');
-		let input2 = document.createElement('input');
-// 		div.append(br2);
-		
-		input2.setAttribute('value', '수정');
-		input2.setAttribute('type', 'button');
-		input2.setAttribute('class', 'btn btn-sm btn-success');
-		input2.setAttribute('id','changeBtn');
-		
-		/* p.append(br2);
-		p.append(input2); */
-		
-		div.append(input2);
-		
-		let button2 = document.createElement('button');
-		button2.setAttribute('class', 'btn btn-sm btn-success');
-		button2.setAttribute('id','changeBtn2');
-		button2.innerText = '취소';
-		/* p.append(button2); */
-		div.append(button2);
-		
-		let UpdateBtn = document.getElementById("changeBtn");
-		let UpdateBtn2 = document.getElementById("changeBtn2");
-		
-		// 수정버튼을 클릭하면 실행
-		UpdateBtn.addEventListener("click", function(e) {
-			e.preventDefault();
-			console.log(document.getElementById("ids"));
-			console.log(document.getElementById("ids").value);
-			console.log(document.getElementById("comments2").value);
-			
-			
+                function report(cnick) {
+                  let nick = cnick;
+                  console.log(nick);
 
-			  $.ajax({
-					url:"commentUpdate.do",
-					method:"post",
-					data : {
-						// 글의 번호
-						"cid" : document.getElementById("ids").value ,
-						"comments" : document.getElementById("comments2").value
-					},
-					success:function(result) {
-						console.log(result);
-						location.reload();
-					}
-				})
-		});
-		
-		
-		
-		//취소버튼을 클릭하면 실행
-		UpdateBtn2.addEventListener("click", function() {
-			document.getElementById("comments2").remove();
-			document.getElementById("changeBtn").remove();
-			document.getElementById("changeBtn2").remove();
-			
-		});
-	}
-	
+                  $('#myModal').on('show.bs.modal', function () {
+                    $(".modal-body #reported_name").val(cnick);
+                  })
 
-	
-/*  	function replyUpdate() {
-			$.ajax({
-				url:"commentUpdate.do",
-				method:"post",
-				data : {
-					// 수정할 텍스트의 값
-					"uid" : document.getElementById("uid").value
-					
-				},
-				success:function(result) {
-					location.reload();
-				}
-			})
-		});   */
 
-	
-	
-	// 댓글 추가
-	function replyInsert(){
-		$.ajax({
-			url:"commentInsert.do",
-			method:"post",
-			data : {
-				"id" : document.getElementById("id").value,
-				"comments" : document.getElementById("comments").value
-			},
-			success:function(result){
-				location.reload();
-			}
-		})
-	}
-	
-	 var httpRequest = null;
-	  // httpRequest 객체 생성
-	function getXMLHttpRequest(){
-		  var httpRequest = null;
-		  if(window.ActiveXObject){
-				 try{
-					 httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-				 } catch(e) {
-			     try{
-			         httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-				 } catch (e2) { httpRequest = null;
-			 }          
-		   }      
-		    }      
-		     else if(window.XMLHttpRequest){ 
-		           httpRequest = new window.XMLHttpRequest(); 
-		        }          
-		 return httpRequest;   
-	}
-	
-	
-	//댓글 삭제창
-	function commentDelete(cid) {
-		var msg = confirm("댓글을 삭제합니다.");
-		if(msg == true) {
-			deleteCmt(cid);
-		}
-		else {
-			return false;
-		}
-	}
-	
-	 //댓글 삭제
-	function deleteCmt(cid) {
-		document.getElementById(cid).remove();
-		var param="cid="+cid;
-		httpRequest = getXMLHttpRequest();
-		httpRequest.onreadystatechange = checkFunc;
-		httpRequest.open("POST", "commentDelete.do", true); 
-		httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');  
-		httpRequest.send(param);
-	} 
-	
-	
-	function checkFunc(){
-		  if(httpRequest.readyState == 4){
-			// 결과값을 가져온다.   
-	      var resultText = httpRequest.responseText;
-		  if(resultText == 1) { 
-			    document.location.reload(); // 상세보기 창 새로고침 
-	     }   
-	  }   
-	}
-</script>
+
+
+                }
+
+
+
+                // 댓글 수정 창
+                function commentUpdate(cid) {
+                  let ww = document.querySelectorAll('#test textarea');
+
+                  ww.forEach(x => {
+                    if (x == null) {
+                      console.log('ss');
+                    } else {
+                      document.getElementById('zzz').remove();
+                      //document.querySelector('#zzz').remove();
+                    }
+                  })
+
+
+                  let br = document.createElement('br');
+                  let div = document.createElement('div');
+                  div.setAttribute('id', 'zzz')
+                  let p = document.getElementById('p_' + cid);
+                  let textarea = document.createElement('textarea');
+                  textarea.setAttribute('id', 'comments2');
+                  textarea.setAttribute('cols', 55);
+                  textarea.setAttribute('rows', 3);
+                  textarea.setAttribute('placeholder', '수정할 값을 입력하세요');
+                  /* p.append(br);
+                  p.append(textarea); */
+                  p.append(div);
+                  div.append(textarea);
+
+                  let input = document.createElement('input');
+                  input.setAttribute('type', 'hidden');
+                  input.setAttribute('id', 'ids');
+                  input.setAttribute('value', cid);
+                  /* p.append(input); */
+                  div.append(input);
+
+
+
+                  let br2 = document.createElement('br');
+                  let input2 = document.createElement('input');
+                  // 		div.append(br2);
+
+                  input2.setAttribute('value', '수정');
+                  input2.setAttribute('type', 'button');
+                  input2.setAttribute('class', 'btn btn-sm btn-success');
+                  input2.setAttribute('id', 'changeBtn');
+
+                  /* p.append(br2);
+                  p.append(input2); */
+
+                  div.append(input2);
+
+                  let button2 = document.createElement('button');
+                  button2.setAttribute('class', 'btn btn-sm btn-success');
+                  button2.setAttribute('id', 'changeBtn2');
+                  button2.innerText = '취소';
+                  /* p.append(button2); */
+                  div.append(button2);
+
+                  let UpdateBtn = document.getElementById("changeBtn");
+                  let UpdateBtn2 = document.getElementById("changeBtn2");
+
+                  // 수정버튼을 클릭하면 실행
+                  UpdateBtn.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    console.log(document.getElementById("ids"));
+                    console.log(document.getElementById("ids").value);
+                    console.log(document.getElementById("comments2").value);
+
+
+
+                    $.ajax({
+                      url: "commentUpdate.do",
+                      method: "post",
+                      data: {
+                        // 글의 번호
+                        "cid": document.getElementById("ids").value,
+                        "comments": document.getElementById("comments2").value
+                      },
+                      success: function (result) {
+                        console.log(result);
+                        location.reload();
+                      }
+                    })
+                  });
+
+
+
+                  //취소버튼을 클릭하면 실행
+                  UpdateBtn2.addEventListener("click", function () {
+                    document.getElementById("comments2").remove();
+                    document.getElementById("changeBtn").remove();
+                    document.getElementById("changeBtn2").remove();
+
+                  });
+                }
+
+
+
+                /*  	function replyUpdate() {
+                      $.ajax({
+                        url:"commentUpdate.do",
+                        method:"post",
+                        data : {
+                          // 수정할 텍스트의 값
+                          "uid" : document.getElementById("uid").value
+                        	
+                        },
+                        success:function(result) {
+                          location.reload();
+                        }
+                      })
+                    });   */
+
+
+
+                // 댓글 추가
+                function replyInsert() {
+                  $.ajax({
+                    url: "commentInsert.do",
+                    method: "post",
+                    data: {
+                      "id": document.getElementById("id").value,
+                      "comments": document.getElementById("comments").value
+                    },
+                    success: function (result) {
+                      location.reload();
+                    }
+                  })
+                }
+
+                var httpRequest = null;
+                // httpRequest 객체 생성
+                function getXMLHttpRequest() {
+                  var httpRequest = null;
+                  if (window.ActiveXObject) {
+                    try {
+                      httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                      try {
+                        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                      } catch (e2) {
+                        httpRequest = null;
+                      }
+                    }
+                  }
+                  else if (window.XMLHttpRequest) {
+                    httpRequest = new window.XMLHttpRequest();
+                  }
+                  return httpRequest;
+                }
+
+
+                //댓글 삭제창
+                function commentDelete(cid) {
+                  var msg = confirm("댓글을 삭제합니다.");
+                  if (msg == true) {
+                    deleteCmt(cid);
+                  }
+                  else {
+                    return false;
+                  }
+                }
+
+                //댓글 삭제
+                function deleteCmt(cid) {
+                  document.getElementById(cid).remove();
+                  var param = "cid=" + cid;
+                  httpRequest = getXMLHttpRequest();
+                  httpRequest.onreadystatechange = checkFunc;
+                  httpRequest.open("POST", "commentDelete.do", true);
+                  httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+                  httpRequest.send(param);
+                }
+
+
+                function checkFunc() {
+                  if (httpRequest.readyState == 4) {
+                    // 결과값을 가져온다.   
+                    var resultText = httpRequest.responseText;
+                    if (resultText == 1) {
+                      document.location.reload(); // 상세보기 창 새로고침 
+                    }
+                  }
+                }
+              </script>
 
 
 
@@ -675,6 +783,38 @@
           })
 
         </script>
+
+
+
+
+        <!-- 플레이어 관련 -->
+        <script>
+          if (getParameter('id') == '479718') {
+            let vjs = document.querySelector('#myPlayerID');
+            vjs.setAttribute('data-video-id', '6308170123112')
+            document.querySelector('.youtube').style.display = 'none';
+          } else {
+            document.querySelector('.moviePlayer').style.display = 'none';
+          }
+        </script>
+        <!-- <script>
+          let vjscon = document.getElementsByClassName('vjs-pip-container')
+          console.log(vjscon);
+          let vjs = document.createElement('vedeo-js')
+          vjs.setAttribute('id', 'myPlayerID')
+          vjs.setAttribute('data-account', '6310593610001')
+          vjs.setAttribute('data-player', 'mM7pq2WtL')
+          vjs.setAttribute('data-embed', 'default')
+          vjs.setAttribute('controls', 'a')
+          vjs.setAttribute('data-video-id', '6308170123112')
+          vjs.setAttribute('width', '960')
+          vjs.setAttribute('height', '540')
+          vjs.setAttribute('data-playlist-id', 'a')
+          vjs.setAttribute('data-application-id', 'a')
+          console.log(vjs)
+          vjscon[0].append(vjs)
+        </script> -->
+        <script src="https://players.brightcove.net/6310593610001/mM7pq2WtL_default/index.min.js"></script>
 
 
       </body>

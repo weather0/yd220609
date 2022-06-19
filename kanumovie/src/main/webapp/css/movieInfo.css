@@ -27,6 +27,7 @@ html {
 
 
 
+
 /* 포스터 */
 div.poster {
   float: left;
@@ -70,7 +71,7 @@ section.panel {
   background: #0b0c2a;
   border: none;
   width: 1000px
-  /* margin-top: 1.25rem; */
+    /* margin-top: 1.25rem; */
 
 }
 

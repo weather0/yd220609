@@ -11,11 +11,12 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const MOVIE_URL = '/movie/' + getParameter('id');
 const IMG_URL = "https://image.tmdb.org/t/p/w300";
 let movieInfoAPI = BASE_URL + MOVIE_URL + '?' + API_KEY + '&language=ko-KR';
+let videoAPI = BASE_URL + MOVIE_URL + '/videos?' + API_KEY + '&language=ko-KR';
 let recomAPI = BASE_URL + MOVIE_URL + '/recommendations?' + API_KEY + '&language=ko-KR';
 let creditAPI = BASE_URL + MOVIE_URL + '/credits?' + API_KEY + '&language=ko-KR';
 let ratingAPI = BASE_URL + MOVIE_URL + '/rating?' + API_KEY + '&guest_session_id=5667cdad051a40c848b9b34da163b4dc';
 
-console.log(movieInfoAPI);
+console.log(movieInfoAPI + 'ddd');
 // 영화정보 섹션
 fetch(movieInfoAPI)
   .then(response => response.json())
@@ -243,6 +244,21 @@ fetch(recomAPI)
 //   }
 // })
 
+
+fetch(videoAPI)
+  .then(response => response.json())
+  .then(videos => {
+    console.log('예고영상API요청주소:' + videoAPI);
+    let iframe = document.querySelector('.youtube iframe');
+    let yturl;
+    videos.results.forEach(obj => {
+      if (obj.type == "Trailer") {
+        yturl = obj.key;
+      }
+    })
+    iframe.setAttribute('src', 'https://www.youtube.com/embed/' + yturl);
+  })
+  .catch(err => console.log(err));
 
 
 
