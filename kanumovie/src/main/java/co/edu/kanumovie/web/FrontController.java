@@ -57,6 +57,7 @@ import co.edu.kanumovie.user.command.ProfileChange;
 import co.edu.kanumovie.user.command.PwChange;
 import co.edu.kanumovie.user.command.SignUp;
 import co.edu.kanumovie.user.command.SignUpForm;
+import co.edu.kanumovie.user.command.UserDelete;
 import co.edu.kanumovie.user.command.UserManage;
 import co.edu.kanumovie.user.command.UserManageForm;
 import co.edu.kanumovie.user.command.preferGenre;
@@ -94,6 +95,7 @@ public class FrontController extends HttpServlet {
 		map.put("/userManage.do", new UserManage());
 		map.put("/profileChange.do", new ProfileChange());
 		map.put("/pwChange.do", new PwChange());
+		map.put("/userDelete.do", new UserDelete());
 		map.put("/preferGenreForm.do", new PreferGenreForm());
 		map.put("/preferGenre.do", new preferGenre()); // 선호 영화 장르.
 		map.put("/signUpForm.do", new SignUpForm());

@@ -225,20 +225,6 @@ h1 {
 					<div class="item" id="show19"></div>
 					<div class="item" id="show20"></div>
 				</div>
-				<script type="text/javascript">
-				</script>
-				<script>  
-					let name = "<%=request.getAttribute("message")%>";
-					if (name == 'login') {
-						alert('로그인되었습니다.')
-					} else if (name == 'logout') {
-						alert('로그아웃되었습니다')
-					} else if (name == 'login2') {
-						alert('로그인 실패!!')
-					} else if (name == 'signup') {
-						alert('회원가입 완료!!')
-					}
-				</script>
 			</div>
 		</div>
 		<c:if test="${email != null}">
@@ -274,6 +260,18 @@ h1 {
 		</div>
 		</c:if>
 	</div>
+	<script type="text/javascript">  
+		let name = "<%=request.getAttribute("message")%>";
+		if (name == 'login') {
+			alert('로그인되었습니다.')
+		} else if (name == 'logout') {
+			alert('로그아웃되었습니다')
+		} else if (name == 'login2') {
+			alert('로그인 실패!!')
+		} else if (name == 'signup') {
+			alert('회원가입 완료!!')
+		}
+	</script>
 	<script src="js/movie.js"></script>
 	<script>
 	const posterpath = "https://image.tmdb.org/t/p/w500"
