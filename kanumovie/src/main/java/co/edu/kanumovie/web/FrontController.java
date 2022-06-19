@@ -39,6 +39,7 @@ import co.edu.kanumovie.likes.command.LikesSelectList;
 import co.edu.kanumovie.likes.command.UserLikesSelectList;
 import co.edu.kanumovie.movie.command.MovieInfo;
 import co.edu.kanumovie.movie.command.MovieInfoghtest;
+import co.edu.kanumovie.movie.command.MovieInsert;
 import co.edu.kanumovie.movie.command.MoviePlay;
 import co.edu.kanumovie.movie.command.MovieSearch;
 import co.edu.kanumovie.movie.command.MovieSelectCountryList;
@@ -119,6 +120,7 @@ public class FrontController extends HttpServlet {
 		map.put("/userLikesSelectList.do", new UserLikesSelectList());
 		map.put("/likesSelectList.do", new LikesSelectList());
 		map.put("/likesDelete.do", new LikesDelete());
+		map.put("/movieInsert.do", new MovieInsert());
 	}
 
 	@Override
