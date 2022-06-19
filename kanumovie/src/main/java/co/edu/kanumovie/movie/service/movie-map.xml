@@ -21,11 +21,13 @@
 		<result column="vote_count" property="voteCount"/>
 	</resultMap>
 	<insert id="movieInsert" parameterType="movie">
-		INSERT INTO K_MOVIES VALUES (${movie.adult}, ${movie.backdropPath}, 
-		${movie.genreIds}, ${movie.originalLanguage}, 
-		${movie.originalTitle}, ${movie.popularity},
-		${movie.releaseDate}, ${movie.title} , ${movie.video}, 
-		${movie.voteAverage}, ${movie.voteCount})
+		MERGE INTO K_MOVIES USING DUAL ON (ID=#{id}) WHEN NOT MATCHED THEN INSERT 
+		(ID, ADULT, BACKDROP_PATH, GENRE_IDS, ORIGINAL_LANGUAGE, ORIGINAL_TITLE,
+		OVERVIEW, POPULARITY, POSTER_PATH, RELEASE_DATE, TITLE, VIDEO, VOTE_AVERAGE, VOTE_COUNT)
+		VALUES
+		(#{id}, #{adult}, #{backdropPath}, #{genreIds}, #{originalLanguage}, #{originalTitle},
+		#{overview}, #{popularity}, #{posterPath}, #{releaseDate}, #{title}, #{video},
+		#{voteAverage}, #{voteCount})
 	</insert>
 	<select id="movieSelectGenreList" parameterType="genre" resultMap="movieMap">
 		SELECT * FROM K_MOVIES 

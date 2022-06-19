@@ -9,6 +9,11 @@
 	<listener>
 		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
 	</listener>
+	
+	<listener>
+		<listener-class>co.edu.kanumovie.common.SessionListener</listener-class>
+	</listener>
+	
 	<servlet>
     <servlet-name>Tiles</servlet-name>
     <servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>

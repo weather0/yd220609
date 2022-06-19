@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import co.edu.kanumovie.admin.vo.BannerVO;
 import co.edu.kanumovie.admin.vo.PreferredGenreVO;
+import co.edu.kanumovie.admin.vo.VisitVO;
 import co.edu.kanumovie.report.vo.ReportVO;
 import co.edu.kanumovie.user.vo.UserVO;
 
@@ -30,4 +31,7 @@ public interface AdminMapper {
 	public List<ReportVO> selectAllReportList(); //리포트 전체 조회
 	public int deleteReport(String email);//리포트 삭제
 	public int deleteAllComment(String email);// 커맨트 전체 삭제
+	public int insertVisit();//방문자수 증가
+	public int selectTodaysVisit(); //오늘 방문자수 조회 
+	public String selectCountWeeklyVisit(String weeks);//일주일별 방문자 수 조회
 }

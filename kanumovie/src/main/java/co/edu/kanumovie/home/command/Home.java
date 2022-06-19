@@ -22,6 +22,7 @@ public class Home implements Command {
 		blist = dao.selectAllBannerList();
 		
 		request.setAttribute("blist", blist);
+		request.setAttribute("message", request.getAttribute("message"));
 		
 
 		return "home/home";

@@ -26,6 +26,7 @@
 	</div>
 </div>
 <script src="js/rating.js"></script>
+<script src="js/makeMovieCard.js"></script>
 <script src="js/scroll.js"></script>
 <script src="js/genre-movie.js"></script>
 </body>

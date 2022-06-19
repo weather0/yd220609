@@ -55,6 +55,18 @@
 				<div class="col-lg-2">
 					<div class="header__right">
 						<a href="#" class="search-switch"><span class="icon_search"></span></a>
+						<div class="search-model">
+							<div
+								class="h-100 d-flex align-items-center justify-content-center">
+								<div class="search-close-switch">
+									<i class="icon_close"></i>
+								</div>
+								<form class="search-model-form" name="searchFn" action="movieSearch.do" method="GET">
+									<input type="text" id="search-input" name="query" placeholder="Search here.....">
+								</form>
+							</div>
+						</div>
+
 						<!--  <a href="loginForm.do"><span class="icon_profile"></span></a> -->
 						<c:if test="${not empty email}">
 							<a href="userManageForm.do"> <img
@@ -81,5 +93,6 @@
 		<div id="mobile-menu-wrap"></div>
 
 	</header>
+
 </body>
 </html>

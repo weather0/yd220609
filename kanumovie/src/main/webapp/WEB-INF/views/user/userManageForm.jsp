@@ -104,6 +104,15 @@
 	marin: 2% auto;
 	text-align: center;
 }
+
+.fileupload {
+	display : none;
+}
+
+.filelabel {
+	margin : 5% auto 5% auto;
+	display : inline-block;
+}
 </style>
 </head>
 <body id="userManage">
@@ -123,10 +132,11 @@
 			<li><button type="button" class="btnCnt" id="button2">프로필</button></li>
 			<li><button type="button" class="btnCnt" id="button3">닉네임</button></li>
 			<li><button type="button" class="btnCnt" id="button4">보고싶어요</button></li>
+			<li><button type="button" class="btnCnt" id="button5">회원탈퇴</button></li>
 		</ul>
 	</div>
 	<script>
-		for (let i = 1; i < 5; i++) {
+		for (let i = 1; i < 6; i++) {
 			let btn = document.querySelector('#button' + i);
 			btn.addEventListener('click', function() {
 				document.querySelectorAll('.tabContent').forEach(elem => {
@@ -178,25 +188,20 @@
 	<form action="profileChange.do" method="post"
 							enctype="multipart/form-data">
 							<div class="anime__review__item__pic">
-								<br> <img alt="${fileName}" src="img/profile/${fileName}">
-								<br>
+								<img alt="${fileName}" src="img/profile/${fileName}">
 							</div>
+							<br>
 							<div class="input__item">
 								<input type="hidden" id="email" name="email" value="${email}">
-								<input type="hidden" id="pw" name="pw" value="${pw}"> <input
-									type="file" id="file" name="file" required>
+								<input type="hidden" id="pw" name="pw" value="${pw}">
+								<label for="file" id="filelabel" ><h3>새 프로필 업로드</h3></label>
+								<input type="file" id="file" name="file" class="fileupload" required>
 							</div>
+							<br>
 							<button type="submit" class="site-btn">프로필 사진 수정</button>
 						</form>
-	<form action="#" method="post">
-							<div class="input__item">
-								<input type="hidden" id="email" name="email" value="${email}">
-							</div>
-							<button type="button" class="site-btn" onclick="deleteUser()">회원
-								탈퇴</button>
-						</form>
-				
 	</article>
+	
 	<article class="tabContent user-information-section" id="tab3">
 	<form action="userManage.do" method="post">
 							<div>
@@ -226,6 +231,16 @@
 							<button type="submit" class="site-btn">선호 영화 수정</button>
 						</form>
 	</article>
+	
+	<article class="tabContent user-information-section" id="tab5">
+			<form action="#" method="post">
+				<div class="input__item">
+					<input type="hidden" id="email5" name="email5" value="${email}">
+				</div>
+				<button type="button" class="site-btn" onclick="deleteUser()">회원탈퇴</button>
+			</form>
+	</article>
+	
 	<!-- Signup Section End -->
 	<script src="js/rating.js"></script>
 	<script type="text/javascript">
@@ -245,12 +260,30 @@
 		}
 
 		function deleteUser() {
-			if (confirm("이 버튼에 대한 동작을 수행합니다. 계속합니까?")) {
+			if (confirm("정말로 회원 데이터를 삭제하시겠습니까?")) {
 				// 확인 버튼 클릭 시 동작
-				alert("동작을 시작합니다.");
+				alert("회원 데이터를 삭제합니다.");
+				// 회원 탈퇴하고 회원 탈퇴 완료 페이지 보여주기.
+				let email = '<%=(String) session.getAttribute("email")%>';
+				console.log(email);
+				$.ajax({
+					type: 'POST',
+					url : 'userDelete.do',
+					data: { 'email' : email },
+					dataType : 'text',
+					success: function(data){
+						//작업이 성공적으로  발생했을 경우
+						alert('회원탈퇴가 완료되었습니다!');
+						location.replace('/kanumovie/home.do');
+					},
+					error:function(){  
+			            //에러가 났을 경우 실행시킬 코드
+			            alert('error 발생!');
+					}
+				})
 			} else {
 				// 취소 버튼 클릭 시 동작
-				alert("동작을 취소했습니다.");
+				alert("회원탈퇴를 취소했습니다.");
 			}
 		}
 		

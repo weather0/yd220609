@@ -162,8 +162,6 @@ display: inline;
 							</tbody>
 						</table>
 					
-						
-						<a class="btn btn-sm btn-primary" href="adminmessage.do?p=${startNum+5}&t=&q=">다음</a>
 						<a class="btn btn-sm btn-primary" onclick="updateblockcheck()"
 							style="margin-top: 20px; color: white">access</a> <a
 							class="btn btn-sm btn-primary" onclick="updatereportcheck()"
@@ -204,7 +202,7 @@ display: inline;
 									<th scope="col">Email</th>
 									<th scope="col">Nick</th>
 									<th scope="col">SignDate</th>
-									<th scope="col">block</th>
+									<!-- <th scope="col">block</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -218,7 +216,7 @@ display: inline;
                                     <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
                                 </tr> -->
 								<tr>
-									<td colspan="5" align="center">차단된 유저가 없습니다.</td>
+									<td colspan="4" align="center">차단된 유저가 없습니다.</td>
 								</tr>
 
 							</tbody>
@@ -271,7 +269,7 @@ display: inline;
 										<td>${l.nick}</td>
 										<td><fmt:formatDate value="${l.signdate}"
 												pattern="yyyy년 MM월 dd일 hh시mm분" /></td>
-										<td>욕설/비방</td>
+										<!-- <td>욕설/비방</td> -->
 										<!-- <td><button class="btn btn-sm btn-primary" align="center">access</button></td> -->
 
 									</tr>

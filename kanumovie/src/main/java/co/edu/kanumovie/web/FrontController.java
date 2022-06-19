@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.edu.kanumovie.admin.command.Admin;
 import co.edu.kanumovie.admin.command.AdminMessage;
 import co.edu.kanumovie.admin.command.Analytics;
+import co.edu.kanumovie.admin.command.AnalyticsWeeklyVisit;
 import co.edu.kanumovie.admin.command.Analyticssignupdata;
 import co.edu.kanumovie.admin.command.Deletebanner;
 import co.edu.kanumovie.admin.command.Insertbanner;
@@ -39,6 +40,7 @@ import co.edu.kanumovie.likes.command.LikesSelectList;
 import co.edu.kanumovie.likes.command.UserLikesSelectList;
 import co.edu.kanumovie.movie.command.MovieInfo;
 import co.edu.kanumovie.movie.command.MovieInfoghtest;
+import co.edu.kanumovie.movie.command.MovieInsert;
 import co.edu.kanumovie.movie.command.MoviePlay;
 import co.edu.kanumovie.movie.command.MovieSearch;
 import co.edu.kanumovie.movie.command.MovieSelectCountryList;
@@ -57,6 +59,7 @@ import co.edu.kanumovie.user.command.ProfileChange;
 import co.edu.kanumovie.user.command.PwChange;
 import co.edu.kanumovie.user.command.SignUp;
 import co.edu.kanumovie.user.command.SignUpForm;
+import co.edu.kanumovie.user.command.UserDelete;
 import co.edu.kanumovie.user.command.UserManage;
 import co.edu.kanumovie.user.command.UserManageForm;
 import co.edu.kanumovie.user.command.preferGenre;
@@ -87,6 +90,7 @@ public class FrontController extends HttpServlet {
 		map.put("/updatebanner.do", new Updatebanner());//배너 업데이트
 		map.put("/deletebanner.do", new Deletebanner());//배너 딜리트
 		map.put("/insertbanner.do", new Insertbanner());//배너 등록
+		map.put("/analyticsWeeklyVisit.do", new AnalyticsWeeklyVisit());//주간 방문자 수 데이터 처리
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
 		map.put("/logout.do", new Logout());
@@ -94,6 +98,7 @@ public class FrontController extends HttpServlet {
 		map.put("/userManage.do", new UserManage());
 		map.put("/profileChange.do", new ProfileChange());
 		map.put("/pwChange.do", new PwChange());
+		map.put("/userDelete.do", new UserDelete());
 		map.put("/preferGenreForm.do", new PreferGenreForm());
 		map.put("/preferGenre.do", new preferGenre()); // 선호 영화 장르.
 		map.put("/signUpForm.do", new SignUpForm());
@@ -119,6 +124,7 @@ public class FrontController extends HttpServlet {
 		map.put("/userLikesSelectList.do", new UserLikesSelectList());
 		map.put("/likesSelectList.do", new LikesSelectList());
 		map.put("/likesDelete.do", new LikesDelete());
+		map.put("/movieInsert.do", new MovieInsert());
 	}
 
 	@Override
