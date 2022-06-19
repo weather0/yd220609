@@ -11,7 +11,11 @@
 		ORDER BY CID desc
 		
 	</select>
-	
+	<select id="commentSelectList" parameterType="co.edu.kanumovie.comment.vo.CommentVO" resultType="movie">
+		SELECT * FROM K_MOVIES
+		WHERE ID IN (SELECT ID FROM K_LIKES
+		WHERE EMAIL=#{email})
+	</select> 
 	<select id="commentSelect" parameterType="int" resultType="String">
 		select C_COMMENT from K_comment where C_ID = #{cid}
 	</select>
