@@ -17,6 +17,7 @@ public class MovieInfo implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
+		System.out.println(id);
 		request.setAttribute("movieid", id);
 		
 		HttpSession session = request.getSession();
