@@ -55,6 +55,18 @@ list-style-type: none;
 display: inline;
 }
  
+.pt-4 {
+display: flex;
+justify-content: space-evenly;
+}
+
+.bg-secondary {
+	width:83%;
+}
+
+.ms-3 {
+	text-align: center;
+}
 </style>
 
 </head>
@@ -95,8 +107,8 @@ display: inline;
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Today's Count</p>
+                                <h6 class="mb-0">${sessionScope.todayCount}</h6>
                             </div>
                         </div>
                     </div>
@@ -118,13 +130,10 @@ display: inline;
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                  
                                     <th scope="col">Email</th>
                                     <th scope="col">Nick</th>
-                                    <th scope="col">SignDate</th>
-                                    <th scope="col">preference1</th>
-                                    <th scope="col">preference2</th>
-                                    <th scope="col">preference3</th>
+                                    <th scope="col">SignDate</th>                               
                                 </tr>
                             </thead>
                             <tbody>
@@ -139,18 +148,13 @@ display: inline;
                                 </tr> -->
                                
                                <c:forEach items="${list}" var="l">
-                               <tr>
-                               	<td>
-                               	<input class="form-check-input" type="checkbox">
-                               	</td>
+                               <tr>                               	
                                	<td>${l.email } </td>
                                	<td>${l.nick } </td>
                                	<td> <fmt:formatDate value="${l.signdate}" 
         							pattern="yyyy년 MM월 dd일" /> 
         						</td>
-                               	<td>${l.preference1} </td>
-                               	<td>${l.preference2} </td>
-                               	<td>${l.preference3} </td>
+                             
                                </tr> 
                                </c:forEach>
                              
@@ -186,80 +190,6 @@ display: inline;
             </div>
 
 <!--  table end -->
-
-
-<!--  table start -->
- <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Salse</h6>
-                        <a href="">Show All</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-white">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-<!-- table end -->
 
 
      <!-- JavaScript Libraries -->

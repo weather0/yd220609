@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 .chartlist {
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 	margin-top: 30px;
 	display: flex;
@@ -15,12 +15,12 @@
 
 .chart1 {
 	width: 50%;
-	height: 600px;
+	height: 700px;
 }
 
 .chart2 {
 	width: 50%;
-	height: 600px;
+	height: 700px;
 }
 </style>
 

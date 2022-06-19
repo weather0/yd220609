@@ -24,7 +24,7 @@ public class SelectUsersPreferredGenre implements Command {
 		list = dao.selectUsersPreferredGenre();
 
 		String json = new Gson().toJson(list);
-		System.out.println("제이슨 결과2 = " + json);
+		//System.out.println("제이슨 결과2 = " + json);
 		
 		return "ajax:" + json;
 	}

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <!-- CSS -->
- <link rel="stylesheet" href="css/sidebarstyles.css">
+ <link rel="stylesheet" href="css/sidebarstyles.css?ver=1">
   <!-- IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js" ></script>
 </head>
@@ -63,9 +63,9 @@
                         </ul>
                     </div>
 
-                    <a href="#" class="nav__link">
+                    <a href="bannerinputform.do" class="nav__link">
                         <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">Settings</span>
+                        <span class="nav_name">InsertBanner</span>
                     </a>
                 </div>
                 <a href="#" class="nav__link">

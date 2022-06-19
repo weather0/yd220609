@@ -8,6 +8,7 @@ import co.edu.kanumovie.admin.service.AdminMapper;
 import co.edu.kanumovie.admin.service.AdminService;
 import co.edu.kanumovie.admin.vo.BannerVO;
 import co.edu.kanumovie.admin.vo.PreferredGenreVO;
+import co.edu.kanumovie.admin.vo.VisitVO;
 import co.edu.kanumovie.common.DataSource;
 import co.edu.kanumovie.report.vo.ReportVO;
 import co.edu.kanumovie.user.vo.UserVO;
@@ -126,6 +127,24 @@ public class AdminServiceImpl implements AdminService {
 	public int deleteAllComment(String email) {
 		
 		return map.deleteAllComment(email);
+	}
+
+	@Override
+	public int insertVisit() {
+		
+		return map.insertVisit();
+	}
+
+	@Override
+	public int selectTodaysVisit() {
+		
+		return map.selectTodaysVisit();
+	}
+
+	@Override
+	public String selectCountWeeklyVisit(String weeks) {
+		
+		return map.selectCountWeeklyVisit(weeks);
 	}
 
 

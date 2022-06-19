@@ -54,6 +54,8 @@ public class Updateblockcheck implements Command {
 				System.out.println("리포트데이터 삭제 싪");
 			}
 			
+			
+			
 		}
 		
 		

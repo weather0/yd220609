@@ -131,4 +131,18 @@ DELETE FROM k_comment WHERE email = #{email}
 </delete>
 
 
+<insert id="insertVisit">
+INSERT INTO visit (vdate) values (CURRENT_TIMESTAMP)
+</insert>
+
+<select id="selectTodaysVisit" resultType="int">
+SELECT COUNT(*) FROM visit WHERE to_char(vdate,'yy/MM/dd') = to_char(CURRENT_TIMESTAMP,'yy/MM/dd')
+
+</select>
+
+<select id="selectCountWeeklyVisit" resultType="String">
+SELECT COUNT(*) FROM visit WHERE to_char(vdate,'yy/MM/dd') = #{days}
+</select>
+
+
 </mapper>
