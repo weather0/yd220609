@@ -4,10 +4,10 @@
 <html>
 <head>
  <meta charset="UTF-8">
- <!-- google content에 자신의 OAuth2.0 클라이언트ID를 넣습니다. -->
- <meta name ="google-signin-client_id" content="75317610609-40uu6j3mr5jvg3neuo8b3dtidrrkrbd4.apps.googleusercontent.com">
   
 <title>loginForm</title>
+
+
 
 <style>
 	.logincontainer {
@@ -112,18 +112,48 @@
             </div>
         </div>
         <a href="javascript:kakaoLogin();"><img src="./kakao_login.png" alt="카카오계정 로그인" style="height: 100px;"/></a>
-        <div>
-            <ul>
-			 <li id="GgCustomLogin">
-			  <a href="javascript:void(0)">
-			   <span>Login with Google</span>
-			  </a>
-			 </li>
-			</ul>
-        </div>
-         <a href="#" onclick="signOut();">Sign out</a>
+        <div id="buttonDiv"></div>
+        <div class="g_id_signout">Sign Out</div>
     </section>
     <!-- Login Section End -->
+    
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+     <script>
+     
+        function handleCredentialResponse(response) {
+        	const responsePayload = parseJwt(response.credential);
+        	console.log("ID: " + responsePayload.sub);
+            console.log('Full Name: ' + responsePayload.name);
+            console.log('Given Name: ' + responsePayload.given_name);
+            console.log('Family Name: ' + responsePayload.family_name);
+            console.log("Image URL: " + responsePayload.picture);
+            console.log("Email: " + responsePayload.email);
+        }
+        function parseJwt (token) {
+            var base64Url = token.split('.')[1];
+            var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+
+            return JSON.parse(jsonPayload);
+        };
+        window.onload = function () {
+          google.accounts.id.initialize({
+            client_id: "75317610609-40uu6j3mr5jvg3neuo8b3dtidrrkrbd4.apps.googleusercontent.com",
+            callback: handleCredentialResponse
+          });
+          google.accounts.id.renderButton(
+            document.getElementById("buttonDiv"),
+            { theme: "outline", size: "large" }  // customization attributes
+          );
+          google.accounts.id.prompt(); // also display the One Tap dialog
+        }
+    </script>
+    
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
         window.Kakao.init('f86288f6262962cf240ad63764712370');
@@ -168,53 +198,5 @@
             });
         }
     </script>
-    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-    <script>
-	  //처음 실행하는 함수
-	    function init() {
-	        gapi.load('auth2', function() {
-	            gapi.auth2.init();
-	            options = new gapi.auth2.SigninOptionsBuilder();
-	            options.setPrompt('select_account');
-	            // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
-	            options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
-	            // 인스턴스의 함수 호출 - element에 로그인 기능 추가
-	            // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
-	            gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
-	            
-	        })
-	    }
-	
-	    function onSignIn(googleUser) {
-	        var access_token = googleUser.getAuthResponse().access_token
-	        $.ajax({
-	            // people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
-	            url: 'https://people.googleapis.com/v1/people/me'
-	            // key에 자신의 API 키를 넣습니다.
-	            , data: {personFields:'birthdays', key:'AIzaSyAYziY6VgIsaaqZncsp4KfUhoNRmI3IvcM', 'access_token': access_token}
-	            , method:'GET'
-	        })
-	        .done(function(e){
-	            //프로필을 가져온다.
-	            var profile = googleUser.getBasicProfile();
-	            console.log(profile)
-	        })
-	        .fail(function(e){
-	            console.log(e);
-	        })
-	    }
-	    function onSignInFailure(t){        
-	        console.log(t);
-	    }
-    </script>
-	<script>
-	  function signOut() {
-	    var auth2 = gapi.auth2.getAuthInstance();
-	    auth2.signOut().then(function () {
-	      console.log('User signed out.');
-	    });
-	  }
-	</script>
-
 </body>
 </html>
