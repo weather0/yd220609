@@ -12,14 +12,7 @@
 }
 
 .footer {
-    width: 100%;
-    margin-top: 250px;
-    background: #070720;
-    padding-top: 60px;
-    padding-bottom: 40px;
-    position: absolute;
-    z-index: 0;
-    bottom: -1500px;
+ bottom = -2000px;
 }
 
 
