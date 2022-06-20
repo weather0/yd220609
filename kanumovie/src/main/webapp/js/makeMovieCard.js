@@ -71,16 +71,41 @@ function makeButton(obj) {
 		} else if (!sessionId) {
 			alert("로그인이 필요한 기능입니다.");
 		}
+		
 		let param = 'cmd=' + cmd + '&id=' + this.children[0].getAttribute('id').substring(6) + '&email=' + sessionId;
 		if (cmd == 'insert') {
-			fetch('likes.do', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-				body: param
-			})
+			fetch('https://api.themoviedb.org/3/movie/' + obj.id + '?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko-KR')
 				.then(response => response.json())
-				.then(message => console.log(message))
-				.catch(err => console.log(err))
+				.then(data => {
+					let arr = [];
+					data.genres.forEach((elem) => {
+						arr.push(elem.id);
+					})
+					arr = arr.toString(); 
+					let dataStr = {"adult":data.adult, "backdrop_path":data.backdrop_path, "genre_ids":arr,
+					"id":data.id, "original_language":data.original_language, "original_title":data.original_title,
+					"overview":data.overview, "popularity":data.popularity, "poster_path":data.poster_path, 
+					"release_date":data.release_date, "title":data.title, "video":data.video, "vote_average":data.vote_average,
+					"vote_count":data.vote_count}
+					fetch('movieInsert.do', {
+						method: 'POST',
+						headers: {'Content-Type':'application/json'},
+						body:JSON.stringify(dataStr)
+					})
+						.then(response => response.json())
+						.then(message => {
+							if (message.id != null) {
+								fetch('likes.do', {
+									method: 'POST',
+									headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+									body: param
+								})
+								.then(response => response.json())
+								.then(message => console.log(message))
+								.catch(err => console.log(err))
+							}
+						})
+				})
 		} else if (cmd == 'delete') {
 			fetch('likesDelete.do', {
 				method: 'POST',
@@ -115,11 +140,11 @@ function makePlayButton() {
 
 function insertMovie(obj) {
 	console.log(obj);
-  let param = {"adult":obj.adult, "backdropPath":obj.backdrop_path, "genreIds":'\'' + obj.genre_ids + '\'',
-	"id":obj.id, "originalLanguage":obj.original_language, "originalTitle":obj.original_title,
-	"overview":obj.overview, 'popularity':obj.popularity, 'posterPath':obj.poster_path, 
-	'releaseDate':obj.release_date, 'title':obj.title, 'video':obj.video, 'voteAverage':obj.vote_average,
-	'voteCount':obj.vote_count}
+  let param = {"adult":obj.adult, "backdrop_path":obj.backdrop_path, "genre_ids":'\'' + obj.genre_ids + '\'',
+	"id":obj.id, "original_language":obj.original_language, "original_title":obj.original_title,
+	"overview":obj.overview, 'popularity':obj.popularity, 'poster_path':obj.poster_path, 
+	'release_date':obj.release_date, 'title':obj.title, 'video':obj.video, 'vote_average':obj.vote_average,
+	'vote_count':obj.vote_count}
 	fetch('movieInsert.do', {
 		method:'POST',
 		headers:{'Content-Type':'application/json'},
