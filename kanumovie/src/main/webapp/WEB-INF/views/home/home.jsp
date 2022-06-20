@@ -7,6 +7,10 @@
 <html>
 <head>
 <style>
+
+	body {
+		height: 2rem;
+	}
 #banner {
 	margin: 0 auto;
 	width: 80%;
@@ -16,7 +20,7 @@
 	float: left;
 	width: 70%;
 	padding-left: 5%;
-	height: 1800px;
+	height: 2100px;
 	position: relative;
 }
 
@@ -138,6 +142,11 @@ h1 {
 
 .btn {
 border: 1px solid #E53637;
+}
+
+footer {
+	height: 200px;
+	opacity: 0;
 }
 </style>
 <link rel="stylesheet" href="css/project-movie.css">
@@ -274,6 +283,9 @@ border: 1px solid #E53637;
 		</aside>
 	</div>
 	<script type="text/javascript">  
+	console.log(window.innerHeight);
+	console.log(window.scrollY);
+	console.log(document.)
 		let name = "<%=request.getAttribute("message")%>";
 		if (name == 'login') {
 			alert('로그인되었습니다.')
@@ -343,7 +355,7 @@ border: 1px solid #E53637;
         </div>
     </div>
 	<script src="js/makeMovieCard.js"></script>
->>>>>>> branch 'dev' of https://github.com/Tessa1217/Kanumovie.git
+
 	<script src="js/movie.js"></script>
 	<script>
 	const posterpath = "https://image.tmdb.org/t/p/w500"

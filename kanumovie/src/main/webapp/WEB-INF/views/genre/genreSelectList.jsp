@@ -76,12 +76,16 @@
     font-size: 25px;
 }
 
+form {
+	margin: 3%;
+}
+
 </style>
 </head>
 <body>
 	<div>
 		<form>
-			<input type="text" placeholder="Search Your Show" onkeyup="searching()" id="schbox">
+			<input type="text" placeholder="Search Your Category" onkeyup="searching()" id="schbox">
       <!-- <input type="submit" value="Search"> 일단 안지웠어 -->
 		</form>
 	</div>

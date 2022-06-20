@@ -13,6 +13,9 @@ String email = (String) session.getAttribute("email");
 <script src='js/rating.js'></script>
 <script src='js/makeMovieCard.js'></script>
 <style>
+	body {
+		height: 7400px;
+	}
 	.none {
 		text-align: center;
 	}
@@ -38,6 +41,7 @@ String email = (String) session.getAttribute("email");
 		</div>
 	</div>
 </body>
+
 
 <script>
 let sessionId = document.querySelector('#sessionId').value;
