@@ -18,7 +18,9 @@ public class CommentSelectList implements Command {
 		CommentVO vo = new CommentVO(); 
 		String email = request.getParameter("email");
 		vo.setEmail(email);
+		System.out.println(vo.getEmail());
 		List<MovieVO> commentedlist = dao.commentSelectList(vo);
+		System.out.println(commentedlist.size());
 		request.setAttribute("commentlist", commentedlist);
 		return "comment/commentSelectList";
 	}

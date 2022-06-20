@@ -13,7 +13,7 @@
 	</select>
 	<select id="commentSelectList" parameterType="co.edu.kanumovie.comment.vo.CommentVO" resultMap="movieMap">
 		SELECT * FROM K_MOVIES
-		WHERE ID IN (SELECT ID FROM K_LIKES
+		WHERE ID IN (SELECT ID FROM K_COMMENT
 		WHERE EMAIL=#{email})
 	</select> 
 	<resultMap type="movie" id="movieMap">
@@ -40,7 +40,11 @@
 		insert into k_comment values(COMMENT_ID_SEQ.nextval, #{comments}, SYSDATE, #{id} , #{email})
 	</insert>
 
-
+	<select id="commentSelectTopFiveList" resultMap="movieMap">
+		SELECT * FROM K_MOVIES WHERE ID IN 
+		(SELECT ID FROM K_COMMENT ORDER BY C_DATE DESC 
+		FETCH NEXT 5 ROW ONLY)
+	</select>
 	<update id="commentUpdate" parameterType="co.edu.kanumovie.comment.vo.CommentVO">
 		update k_comment set c_comment = #{comments} where C_ID = #{cid} 
 	</update>

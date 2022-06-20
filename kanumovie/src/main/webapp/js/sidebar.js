@@ -49,8 +49,8 @@ showMenu('nav-toggle', 'navbar', 'body-pd')
 /* LINK ACTIVE */
 const linkColor = document.querySelectorAll('.nav__link')
 function colorLink() {
-    linkColor.forEach(l=> l.classList.remove('active'))
-    this.classList.add('active')
+    linkColor.forEach(l=> l.classList.remove('bactive'))
+    this.classList.add('bactive')
 }
 linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
@@ -74,13 +74,13 @@ let navlist = document.querySelector('.nav__list');
 
 if(pathname == 'admin.do') {
 console.log(navlist)
-navlist.children[0].className += ' active';	
+navlist.children[0].className += ' bactive';	
 	
 } else if(pathname == 'adminmessage.do') {
-	navlist.children[1].className += ' active';	
+	navlist.children[1].className += ' bactive';	
 } else if(pathname == 'analytics.do') {
 	console.log('analytics')
-	navlist.children[3].className += ' active';
+	navlist.children[3].className += ' bactive';
 }
 
 

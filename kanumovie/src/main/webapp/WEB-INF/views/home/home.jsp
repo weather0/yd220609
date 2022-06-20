@@ -7,6 +7,10 @@
 <html>
 <head>
 <style>
+
+	body {
+		height: 2rem;
+	}
 #banner {
 	margin: 0 auto;
 	width: 80%;
@@ -16,7 +20,7 @@
 	float: left;
 	width: 70%;
 	padding-left: 5%;
-	height: 1800px;
+	height: 2100px;
 	position: relative;
 }
 
@@ -134,12 +138,48 @@ h1 {
 .product__sidebar__comment {
 	width: 25%;
 	float:right;
+	margin-top: 6%;
 }
 
 .btn {
 border: 1px solid #E53637;
 }
+
+footer {
+	height: 200px;
+	opacity: 0;
+}
+
+.product__sidebar__comment__item {
+	padding: 2%;
+	margin: 2%;
+}
+
+.product__sidebar__comment__item:hover {
+	cursor:pointer;
+	transform:scale(1.1);
+	transition: 0.3s;
+	
+}
+
+.product__sidebar__comment__item img {
+	width: 50%;
+	height: 20%;
+}
+.product__sidebar__comment__item__text h5 {
+	color: white;
+	margin: 0%;
+}
+
+.product__sidebar__comment__item__text span {
+ 	font-size: 8%;
+}
+
+.product__sidebar__comment__item__text i {
+	font-size: 8%;
+}
 </style>
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="css/project-movie.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -289,63 +329,21 @@ border: 1px solid #E53637;
 	</script>
 	 <div class="product__sidebar__comment">
         <div class="section-title">
-            <h5>New Comment</h5>
+            <h5>Latest Comment</h5>
         </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-1.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-2.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">Shirogane Tamashii hen Kouhan sen</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-3.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">Kizumonogatari III: Reiket su-hen</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-4.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">Monogatari Series: Second Season</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-    </div>
+        <c:forEach items="${latestclist}" var="comment">
+        	<div class="product__sidebar__comment__item">
+        		<img src="https://image.tmdb.org/t/p/w500${comment.posterPath}" 
+        		onclick="location.href=movieInfo.do?id=${comment.id}">
+        	</div>
+        	<div class="product__sidebar__comment__item__text">
+        		<h5>${comment.title}</h5>
+        		<span><i class="fa fa-check"></i>${comment.voteCount} votes</span>
+        	</div>
+        </c:forEach>
+  </div>
 	<script src="js/makeMovieCard.js"></script>
->>>>>>> branch 'dev' of https://github.com/Tessa1217/Kanumovie.git
+
 	<script src="js/movie.js"></script>
 	<script>
 	const posterpath = "https://image.tmdb.org/t/p/w500"

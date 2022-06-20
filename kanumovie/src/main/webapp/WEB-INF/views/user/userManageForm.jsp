@@ -14,7 +14,6 @@
 
 #userManage .userHeader {
 	width: 100%;
-	border: 1px solid #fff;
 	padding: 5%;
 }
 

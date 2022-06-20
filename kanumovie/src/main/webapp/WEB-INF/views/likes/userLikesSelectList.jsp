@@ -13,6 +13,9 @@ String email = (String) session.getAttribute("email");
 <script src='js/rating.js'></script>
 <script src='js/makeMovieCard.js'></script>
 <style>
+	body {
+		height: 7400px;
+	}
 	.none {
 		text-align: center;
 	}
@@ -26,7 +29,14 @@ String email = (String) session.getAttribute("email");
 		transform: scale(1.1);
 		transition: 0.3s;
 	}
+	
+	#paginationNum li {
+		background: #fff;
+		color: #000;
+	}
+	
 </style>
+
 </head>
 <body>
 	<input type="hidden" id="sessionId" value="${email}">
@@ -38,6 +48,7 @@ String email = (String) session.getAttribute("email");
 		</div>
 	</div>
 </body>
+
 
 <script>
 let sessionId = document.querySelector('#sessionId').value;
@@ -77,7 +88,6 @@ document.querySelectorAll('.likemovie').forEach((elem) => {
 	div.append(button);
 	container.append(div);
 }
-
 
 </script>
 </html>
