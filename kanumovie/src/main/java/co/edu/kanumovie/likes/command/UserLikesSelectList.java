@@ -45,9 +45,8 @@ public class UserLikesSelectList implements Command {
 		} catch(JsonProcessingException e) {
 			e.printStackTrace();
 		}      
-		
-		System.out.println("ajax:" + jsonData);
-		return "ajax:"+jsonData;    
+		request.setAttribute("likeslist", likes);
+		return "likes/userLikesSelectList";    
 	}
 
 

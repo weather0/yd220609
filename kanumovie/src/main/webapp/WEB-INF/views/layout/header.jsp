@@ -38,16 +38,11 @@
 						<nav class="header__menu mobile-menu">
 							<ul>
 								<li class="active"><a href="home.do">Homepage</a></li>
-								<li><a href="genreSelectList.do">Categories <span
-										class="arrow_carrot-down"></span></a>
-									<ul class="dropdown">
-										<li><a href="genreSelectList.do">Categories</a></li>
-										<li><a href="./anime-details.html">Anime Details</a></li>
-										<li><a href="./anime-watching.html">Anime Watching</a></li>
-										<li><a href="./blog-details.html">Blog Details</a></li>
-									</ul></li>
-								<li><a href="./blog.html">Our Blog</a></li>
-								<li><a href="#">Contacts</a></li>
+								<li><a href="genreSelectList.do">Categories</a></li>
+								<c:if test="${not empty email}">
+								<li><a href="userLikesSelectList.do?email=${email}">보고싶어요</a>
+								<li><a href="commentSelectList.do?email=${email}">리뷰한 작품</a>
+								</c:if>
 							</ul>
 						</nav>
 					</div>
