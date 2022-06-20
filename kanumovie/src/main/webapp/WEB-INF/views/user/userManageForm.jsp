@@ -125,10 +125,26 @@
 	text-align: center;
 }
 
-#tab1 h5 {
+#tab1 h5, #tab4 h5 {
 	color: #fff;
 	text-align: left;
 	margin: 3%;
+}
+
+.userGenre {
+	margin: 5%;
+	padding: 5%;
+}
+
+.userGenre button {
+	margin: 3%;
+	background: none;
+	border: 1px solid #E53637;
+	border-radius: 10px;
+}
+
+#tab4 h5 {
+	text-align: center;
 }
 
 #tab1 button {
@@ -137,7 +153,7 @@
 	border-radius: 10px;
 }
 
-#tab1 button:hover {
+#tab1 button:hover, .userGenre button:hover {
 	margin: 3%;
 	transform: scale(1.1);
 	font-weight: bold;
@@ -257,7 +273,7 @@
 		</form>
 	</article>
 	<article class="tabContent user-information-section" id="tab4">
-		<form action="preferGenreForm.do" method="post">
+		<form id="preferFrm" action="preferGenreForm.do" method="post">
 			<div class="input__item">
 				<input type="hidden" id="email" name="email" value="${email}">
 			</div>
@@ -277,6 +293,47 @@
 	<!-- Signup Section End -->
 	<script src="js/rating.js"></script>
 	<script type="text/javascript">
+	let param = {email:document.querySelector('#preferFrm .input__item #email').value};
+	let div = document.createElement('div');
+	div.setAttribute('class', 'userGenre');
+	fetch('userPreference.do', {
+		method:'POST',
+		headers: {'Content-Type':'application/json'},
+		body: JSON.stringify(param)
+	})
+		.then(response => response.json())
+		.then(data => {
+			if (data.length > 0) {
+			data.forEach((elem, idx) => {
+				if (idx == 0) {
+					let h3 = document.createElement('h3');
+					h3.innerHTML = "나의 선호 장르";
+					div.append(h3);
+					let h5 = document.createElement('h5');
+					h5.innerHTML = "선호 장르 영화 보러가기 "
+					let i = document.createElement('i');
+					i.setAttribute('class', 'fa fa-arrow-down');
+					h5.append(i);
+					div.append(h5);
+				}
+				let button = document.createElement('button');
+				button.innerHTML = elem.name;
+				button.addEventListener('click', function() {
+					location.href="movieSelectGenreList.do?id=" + elem.id + "&name=" + elem.name;
+				})	
+				div.append(button);
+			})
+			} else if (data.length == 0) {
+				let h5 = document.createElement('h5');
+				let i = document.createElement('i');
+				i.setAttribute('class', 'fa fa-times');
+				i.setAttribute('style', 'color: red');
+				h5.innerHTML = "아직 선호 장르가 없으시네요. 장르를 선택해보세요. ";
+				h5.append(i);
+				div.append(h5);
+			}
+			document.querySelector('#tab4').append(div);
+		})
 				function getShow(){
             document.getElementById("pwCheck2").style.display = "block";
             document.getElementById("pwCheck1").style.display = "none";
