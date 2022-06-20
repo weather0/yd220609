@@ -23,6 +23,15 @@
 </style>
 </head>
 <body>
+<!-- <script>
+		let lilist = document.querySelector('.headerMenuList');
+		console.log(lilist);
+		lilist.forEach(elem => {
+			elem.addEventListener('click', function() {
+				elem.setAttribute('class', 'active');
+			})
+		})
+	</script> -->
 
 	<header class="header">
 		<div class="container">
@@ -36,7 +45,7 @@
 				<div class="col-lg-8">
 					<div class="header__nav">
 						<nav class="header__menu mobile-menu">
-							<ul>
+							<ul class="headerMenuList">
 								<li class="active"><a href="home.do">Homepage</a></li>
 								<li><a href="genreSelectList.do">Categories</a></li>
 								<c:if test="${not empty email}">
@@ -88,6 +97,7 @@
 		<div id="mobile-menu-wrap"></div>
 
 	</header>
+	
 
 </body>
 </html>

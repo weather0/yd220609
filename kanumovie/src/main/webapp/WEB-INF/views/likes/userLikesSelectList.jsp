@@ -40,6 +40,7 @@ String email = (String) session.getAttribute("email");
 </body>
 
 <script>
+let sessionId = document.querySelector('#sessionId').value;
 let container = document.querySelector('.infinite');
 if (document.querySelectorAll('.likemovie').length > 0) {
 let div = document.createElement('div');
@@ -53,9 +54,15 @@ document.querySelectorAll('.likemovie').forEach((elem) => {
 		.then(data => {
 			let card = makeCard(data);
 			document.querySelector('.movie-card-container').append(card);
-			rating(); 
-		})
-})
+			rating();
+			console.log(document.querySelector('.fa-heart'));
+			let heart = document.querySelector('#movie-'+data.id);
+			heart.setAttribute('style', 'color:red');
+			heart.addEventListener('click', function(e) {
+				heart.parentElement.parentElement.parentElement.remove(); 
+			})
+			})
+			})		
 } else if (document.querySelectorAll('.likemovie').length == 0) {
 	console.log("hi");
 	let container = document.querySelector('.infinite');
@@ -70,5 +77,7 @@ document.querySelectorAll('.likemovie').forEach((elem) => {
 	div.append(button);
 	container.append(div);
 }
+
+
 </script>
 </html>
