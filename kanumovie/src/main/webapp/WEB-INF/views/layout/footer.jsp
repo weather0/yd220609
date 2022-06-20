@@ -11,14 +11,28 @@
 	max-width: 80rem;
 }
 
+.footer {
+	position:absolute;
+	bottom:-2670px;
+	width:100%;
+}
+
 </style>
 </head>
 <body>
+
+<!-- <footer>
+
+<h1>푸터영역</h1>
+</footer>
+ -->
+
+ 
 <footer class="footer">
+    <div class="container">
     <div class="page-up">
         <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
     </div>
-    <div class="container">
         <div class="row footerrow">
             <div class="col-lg-3">
                 <div class="footer__logo">
@@ -39,12 +53,11 @@
             <p>
               (주)예담직업전문학교 대구광역시 중구 중앙대로 403 (남일동 135-1, 5층)
             </p>
-            <p>
+          <!--   <p>
               대표자:서강중 / 사업자번호:504-86-00471 /
                Tel:053-421-2460 / Fax:053-356-3939
-            </p>
+            </p> -->
             <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
               Copyright &copy;
               <script>
@@ -57,5 +70,7 @@
           </div>
       </div>
   </footer>
-</body>
+ 
+ 
+ </body>
 </html>
