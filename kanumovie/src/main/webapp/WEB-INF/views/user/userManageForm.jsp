@@ -300,6 +300,7 @@
 		            //callback(); //연결끊기(탈퇴)성공시 서버에서 처리할 함수
 		        },
 		        fail: function(error) {
+		        	alert('탈퇴 미완료');
 		            console.log('탈퇴 미완료')
 		            console.log(error);
 		        },
