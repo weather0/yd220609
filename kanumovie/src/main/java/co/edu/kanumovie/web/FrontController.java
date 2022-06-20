@@ -64,6 +64,7 @@ import co.edu.kanumovie.user.command.SignUpForm;
 import co.edu.kanumovie.user.command.UserDelete;
 import co.edu.kanumovie.user.command.UserManage;
 import co.edu.kanumovie.user.command.UserManageForm;
+import co.edu.kanumovie.user.command.UserPreference;
 import co.edu.kanumovie.user.command.preferGenre;
 
 @WebServlet("*.do")
@@ -129,6 +130,7 @@ public class FrontController extends HttpServlet {
 		map.put("/likesDelete.do", new LikesDelete());
 		map.put("/movieInsert.do", new MovieInsert());
 		map.put("/commentSelectList.do", new CommentSelectList());
+		map.put("/userPreference.do", new UserPreference());
 	}
 
 	@Override
