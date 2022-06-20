@@ -6,19 +6,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
 .footerrow {
 	max-width: 80rem;
 }
 
 .footer {
+		display: block;
     width: 100%;
     margin-top: 250px;
     background: #070720;
     padding-top: 60px;
     padding-bottom: 40px;
     position: absolute;
-    z-index: 0;
+    z-index: 999;
     bottom: -1500px;
 }
 
