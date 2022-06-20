@@ -85,7 +85,7 @@ let addPage = function () {
       // 참고 velog.io/@sa02045/Scroll-%EC%A0%95%EB%A6%AC
 
       // offsetHeigt는 태그의 높이(코드라인)
-      if (val >= container.offsetHeight + 1000) {
+      if (val >= container.offsetHeight) {
         pageNum++;
         SEARCH_URL = '/search/movie?query=' + getParameter('query') + '&page=' + pageNum;
         searchAPI = BASE_URL + SEARCH_URL + '&' + API_KEY + '&language=ko-KR';
