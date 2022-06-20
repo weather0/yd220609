@@ -127,7 +127,7 @@ a {
 
 /* Active links menu */
 .active {
-    background-color: var(--first-color);
+    background-color: #EB1616;
 }
 
 /* COLLAPSE */

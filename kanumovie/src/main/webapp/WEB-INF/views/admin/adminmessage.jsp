@@ -72,7 +72,7 @@ display: inline;
 				<div class="bg-secondary text-center rounded p-4">
 					<div class="d-flex align-items-center justify-content-between mb-4">
 						<h6 class="mb-0">Users List</h6>
-						<a href="">Show All</a>
+						<!-- <a href="">Show All</a> -->
 					</div>
 					<div class="table-responsive table1">
 						<table
@@ -117,7 +117,7 @@ display: inline;
 					<div class="d-flex align-items-center justify-content-between mb-4">
 						<h6 class="mb-0">Users List</h6>
 
-						<a href="">Show All</a>
+						<!-- <a href="">Show All</a> -->
 					</div>
 					<div class="table-responsive table1">
 						<table
@@ -178,7 +178,7 @@ display: inline;
 
 
 	<div>
-		<h1 align="center">차단된 유저 ${blacklistsize}명</h1>
+		<h1 align="center" style="margin-top:60px;">차단된 유저 ${blacklistsize}명</h1>
 
 	</div>
 
@@ -190,7 +190,7 @@ display: inline;
 				<div class="bg-secondary text-center rounded p-4">
 					<div class="d-flex align-items-center justify-content-between mb-4">
 						<h6 class="mb-0">Users List</h6>
-						<a href="">Show All</a>
+						<!-- <a href="">Show All</a> -->
 					</div>
 					<div class="table-responsive table2">
 						<table
@@ -235,7 +235,7 @@ display: inline;
 				<div class="bg-secondary text-center rounded p-4">
 					<div class="d-flex align-items-center justify-content-between mb-4">
 						<h6 class="mb-0">Users List</h6>
-						<a href="">Show All</a>
+						<!-- <a href="">Show All</a> -->
 					</div>
 					<div class="table-responsive table2">
 						<table
@@ -247,7 +247,7 @@ display: inline;
 									<th scope="col">Email</th>
 									<th scope="col">Nick</th>
 									<th scope="col">SignDate</th>
-									<th scope="col">block</th>
+									<!-- <th scope="col">block</th> -->
 								</tr>
 							</thead>
 							<tbody>

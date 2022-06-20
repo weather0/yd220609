@@ -103,9 +103,9 @@ function makeButton(obj) {
 }
 
 function makePlayButton() {
-	let playdiv = document.createElement('div');
+	let playdiv = document.createElement('p');
 	playdiv.setAttribute('class', 'playButtonContainer');
-	playdiv.setAttribute('style', 'position: absolute;top:50%;text-align:center;background:none;');
+	playdiv.setAttribute('style', 'position: absolute;top:50%;left:50%;text-align:center;background:none;');
 	let playicon = document.createElement('i');
 	playicon.setAttribute('class', 'fa fa-solid fa-play');
 	playicon.setAttribute('style', 'color:#fff');

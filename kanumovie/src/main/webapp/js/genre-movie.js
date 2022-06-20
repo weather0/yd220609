@@ -55,7 +55,7 @@ function getLikes() {
 		})
 			.then(response => response.json())
 			.then(data => {
-				
+				console.log(data);
 				let movieData = document.querySelectorAll('.movie-card input');
 				console.log(movieData);
 				movieData.forEach((elem) => {

@@ -17,7 +17,9 @@ public class MovieInfo implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
+		
 		System.out.println(id);
+		
 		request.setAttribute("movieid", id);
 		
 		HttpSession session = request.getSession();
@@ -25,6 +27,8 @@ public class MovieInfo implements Command {
 		List<CommentVO> comments = new ArrayList<CommentVO>();
 		CommentVO vo = new CommentVO();
 		String email = (String) session.getAttribute("email");
+		String block = (String) session.getAttribute("blockCheck");
+		request.setAttribute("blockCheck", block);
 		vo.setEmail(email);
 		vo.setId(id);	
 		comments = dao.commentAllList(vo);

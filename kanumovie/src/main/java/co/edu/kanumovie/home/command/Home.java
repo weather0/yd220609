@@ -10,6 +10,7 @@ import co.edu.kanumovie.admin.service.AdminService;
 import co.edu.kanumovie.admin.serviceimpl.AdminServiceImpl;
 import co.edu.kanumovie.admin.vo.BannerVO;
 import co.edu.kanumovie.common.Command;
+import co.edu.kanumovie.report.vo.ReportVO;
 
 public class Home implements Command {
 
@@ -24,6 +25,11 @@ public class Home implements Command {
 		request.setAttribute("blist", blist);
 		request.setAttribute("message", request.getAttribute("message"));
 		
+		
+		//신고 받은 유저 수
+		List<ReportVO> list = new ArrayList<ReportVO>();
+		list = dao.selectAllReportList();
+		request.setAttribute("reportuserlistsize", list.size());
 
 		return "home/home";
 	}

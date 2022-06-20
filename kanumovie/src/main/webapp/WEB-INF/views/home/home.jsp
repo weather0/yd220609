@@ -135,6 +135,10 @@ h1 {
 	width: 25%;
 	float:right;
 }
+
+.btn {
+border: 1px solid #E53637;
+}
 </style>
 <link rel="stylesheet" href="css/project-movie.css">
 <meta charset="UTF-8">

@@ -98,6 +98,29 @@ button .fa.fa-heart {
 	background: none;
 }
 
-.playButtonContainer .fa-play {
-	font-size: x-large;
+.playButtonContainer {
+	visibility:hidden;
 }
+
+.movie-card:hover .playButtonContainer, .show-card:hover .playButtonContainer {
+	visibility: visible;
+}
+
+.playButtonContainer .fa-play {
+	font-size: xx-large;
+	opacity: 0.5;
+	
+}
+
+.playButtonContainer:hover {
+	transform: scale(1.2);
+	transition: 0.3s;
+}
+
+.playButtonContainer:hover .fa-play {
+	transition-property: opacity;
+	transition-duration: 0.3s;
+	opacity: 1.0;
+}
+
+
