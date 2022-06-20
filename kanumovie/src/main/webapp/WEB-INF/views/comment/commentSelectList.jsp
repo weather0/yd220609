@@ -44,7 +44,39 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
+	<script src="js/pagination.min.js"></script>
 	<script>
+	/* //기본 페이지 값 
+	int page = 1;
+	//유저가 요청한 페이지가 널이 아니라면 받은 페이지값 저장
+	if(request.getParameter("page") != null) {
+		page = Integer.parseInt(request.getParameter("page"));			
+	}
+	Paging paging = new Paging();
+	paging.setPage(page);
+	int totalCount = dao.selectAllUserCount();
+	paging.setTotalCount(totalCount);
+	
+	int startNum = (page-1)*10+1;
+	int endNum = page*10;
+	
+	list = dao.selectAllUserList(startNum,endNum);
+	
+	request.setAttribute("list", list);
+	request.setAttribute("paging", paging);
+	
+	 */
+	 
+	 $('#demo').pagination({
+		 dataSource: document.querySelectorAll('.movie-card-container'),
+		 pageSize: 25,
+		 showPrevious: false,
+		 showNext; false,
+		 callback: function(data, pagination) {
+			 let html = template(data);
+			 dataContainer.html(html);
+		 }
+	 })
 		let cards = document.querySelectorAll('.movie-card');
 		console.log(cards);
 		cards.forEach((elem) => {

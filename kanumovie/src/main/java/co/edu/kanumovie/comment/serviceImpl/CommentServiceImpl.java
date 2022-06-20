@@ -49,6 +49,11 @@ public class CommentServiceImpl implements CommentService {
 	public List<MovieVO> commentSelectList(CommentVO vo) {
 		return map.commentSelectList(vo);
 	}
+
+	@Override
+	public List<MovieVO> commentSelectTopFiveList() {
+		return map.commentSelectTopFiveList();
+	}
 	
 
 }
