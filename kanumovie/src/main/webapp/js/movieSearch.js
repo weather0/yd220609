@@ -32,7 +32,10 @@ let movieSearch = function () {
       searched.results.forEach((elem) => {
         let card = document.createElement('div');
         card.setAttribute('class', 'movie-card');
-        card.setAttribute('onclick', "location.href='movieInfo.do?id=" + elem.id + "'");
+        card.addEventListener('click', () => {
+					insertMovie(elem);
+				})
+        //card.setAttribute('onclick', "location.href='movieInfo.do?id=" + elem.id + "'");
         let img = document.createElement('img');
         if (elem.poster_path == null) {
           img.src = 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg';

@@ -38,10 +38,14 @@
 					divlist = document.querySelectorAll('.show .item');
 				}
 				arr.forEach((obj, idx) => {
+					console.log(obj);
 					let rank = document.createElement('h2');
 					rank.innerHTML = (idx+1);
 					let title = document.createElement('p');
 					divlist.forEach((div, dividx) => {
+						div.addEventListener('click', () => {
+							insertMovie(obj);
+						})
 						if (dividx == idx) {
 							if (url.includes('/movie/')) {
 								title.innerHTML = obj.title;

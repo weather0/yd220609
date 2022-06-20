@@ -6,11 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 <style>
 
-	body {
-		height: 2rem;
-	}
 #banner {
 	margin: 0 auto;
 	width: 80%;
@@ -90,17 +90,17 @@ h1 {
 .item:hover {
 	transform: scale(1.1);
 	transition: 0.5s;
-	cursor: selector;
+	cursor: pointer;
 	border-radius: 10px;
 	z-index: 50;
 }
 
 .item:hover h2 {
-	visibility: hidden;
+	opacity: 0;
 }
 
 .item:hover p {
-	display: none;
+	opacity: 0;
 }
 
 .item h2 {
@@ -110,7 +110,7 @@ h1 {
 	color: #fff;
 	font-weight: bold;
 	z-index: 100;
-	
+	font-family: 'Black Han Sans', sans-serif;
 	
 }
 
@@ -118,6 +118,7 @@ h1 {
 	color: white;
 	margin:3% 0% 0% 3%;
 	width: 100%;
+	font-family: "Oswald", sans-serif;
 }
 
 #showcontainer p {
@@ -126,9 +127,10 @@ h1 {
 	display: flex;
 	top: 70%;
 	left: 5%;
-	font-size: xx-large;
+	font-size: x-large;
 	line-height: 140%;
 	overflow: visible;
+	font-family: 'Black Han Sans', sans-serif;
 }
 
 #bdirname {
@@ -163,10 +165,12 @@ footer {
 }
 
 .product__sidebar__comment__item img {
-	width: 50%;
-	height: 20%;
+	width: 60%;
+	height: 200px;
+	border-radius: 10px;
 }
 .product__sidebar__comment__item__text h5 {
+	font-family: 'Black Han Sans', sans-serif;
 	color: white;
 	margin: 0%;
 }
@@ -277,7 +281,7 @@ footer {
 				</div>
 			</div>
 		</div>
-		<c:if test="${email != null}">
+		<c:if test="${not empty email}">
 		<div class="prefer row">
 			<div>
 				<input type="hidden" id="sessionId" value="${email}">
@@ -333,8 +337,7 @@ footer {
         </div>
         <c:forEach items="${latestclist}" var="comment">
         	<div class="product__sidebar__comment__item">
-        		<img src="https://image.tmdb.org/t/p/w500${comment.posterPath}" 
-        		onclick="location.href=movieInfo.do?id=${comment.id}">
+        		<img src="https://image.tmdb.org/t/p/w500${comment.posterPath}" onclick="location.href='movieInfo.do?id=${comment.id}'">
         	</div>
         	<div class="product__sidebar__comment__item__text">
         		<h5>${comment.title}</h5>
@@ -361,7 +364,10 @@ footer {
 					fetch('https://api.themoviedb.org/3/movie/' + elem.id + '?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko-KR')
 						.then(response => response.json())
 						.then(data => {
-							let moviecard = document.querySelector('.prefer #movie' + (idx+1));				
+							let moviecard = document.querySelector('.prefer #movie' + (idx+1));		
+							moviecard.addEventListener('click', function() {
+								insertMovie(data);
+							});
 							let title = document.createElement('p');
 							title.innerHTML = data.title;
 							moviecard.append(title);
