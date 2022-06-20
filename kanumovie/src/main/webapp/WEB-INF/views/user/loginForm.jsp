@@ -138,7 +138,6 @@
 			                    dataType : 'text',
 			                    success: function(data){
 			                        //작업이 성공적으로  발생했을 경우
-			                        alert('회원탈퇴가 완료되었습니다!');
 			                        location.replace('/kanumovie/home.do');
 			                    },
 			                    error:function(){  
