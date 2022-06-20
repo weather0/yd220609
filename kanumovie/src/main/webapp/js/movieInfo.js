@@ -11,7 +11,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const MOVIE_URL = '/movie/' + getParameter('id');
 const IMG_URL = "https://image.tmdb.org/t/p/w300";
 let movieInfoAPI = BASE_URL + MOVIE_URL + '?' + API_KEY + '&language=ko-KR';
-let videoAPI = BASE_URL + MOVIE_URL + '/videos?' + API_KEY + '&language=ko-KR';
+let videoAPI = BASE_URL + MOVIE_URL + '/videos?' + API_KEY;
 let recomAPI = BASE_URL + MOVIE_URL + '/recommendations?' + API_KEY + '&language=ko-KR';
 let creditAPI = BASE_URL + MOVIE_URL + '/credits?' + API_KEY + '&language=ko-KR';
 let ratingAPI = BASE_URL + MOVIE_URL + '/rating?' + API_KEY + '&guest_session_id=5667cdad051a40c848b9b34da163b4dc';
@@ -245,20 +245,49 @@ fetch(recomAPI)
 // })
 
 
-fetch(videoAPI)
+
+
+
+// fetch는 비동기방식(코드순서 안 기다리고 지혼자 따로 구동)
+// 전역변수 선언하고 fetch안에서 재정의한 변수는 일반적인 방식으로는 밖으로 끄집어낼 수 없음
+// 콜백함수(표현식,클로져)를 이용하든 꾸역꾸역 깊이깊이 들어가든 어쨌든 fetch 안에서 놀아야 함
+// 최초 변수 선언도 fetch then문 안 (또는 콜백함수 안)에서 해야 함!
+
+// 예고 영상 유무 요청
+fetch(videoAPI + '&language=ko-KR')
   .then(response => response.json())
   .then(videos => {
-    console.log('예고영상API요청주소:' + videoAPI);
-    let iframe = document.querySelector('.youtube iframe');
-    let yturl;
-    videos.results.forEach(obj => {
-      if (obj.type == "Trailer") {
-        yturl = obj.key;
-      }
-    })
-    iframe.setAttribute('src', 'https://www.youtube.com/embed/' + yturl);
+    // 한국어 예고편 없으면
+    if (videos.results.length == 0) { // 빈 배열 여부 확인 방법
+      fetch(videoAPI)
+        .then(response => response.json())
+        .then(videos => {
+          console.log('예고영상API요청주소:' + videoAPI);
+          setvideo(videos); // 콜백함수
+        })
+        .catch(err => console.log(err));
+      // 한국어 예고편 존재 시
+    } else {
+      console.log('예고영상API요청주소:' + videoAPI + '&language=ko-KR');
+      setvideo(videos); // 콜백함수
+    }
   })
   .catch(err => console.log(err));
+
+// iframe태그에 영상 주소값 세팅 함수
+let setvideo = function (videos) {
+  let iframe = document.querySelector('.youtube iframe');
+  let yturl;
+  videos.results.forEach(obj => {
+    if (obj.type == "Trailer") {
+      yturl = obj.key;
+      console.log(yturl)
+      iframe.setAttribute('src', 'https://www.youtube.com/embed/' + yturl);
+    }
+  })
+}
+
+
 
 
 
