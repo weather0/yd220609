@@ -181,6 +181,7 @@
 	            // 인스턴스의 함수 호출 - element에 로그인 기능 추가
 	            // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
 	            gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
+	            
 	        })
 	    }
 	
