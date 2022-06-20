@@ -18,7 +18,7 @@
 	<h3 id="genreTitle">Categories > Genre > ${genre}</h3>
 </div>
 <div class="infinite">
-	<input type="hidden" value="${id}">
+	<input type="hidden" id="genreId" value="${id}">
 	<input type="hidden" id = "sessionId" value="${email}">
 	<div class="movie-card-container" data-value='1'>
 	</div>

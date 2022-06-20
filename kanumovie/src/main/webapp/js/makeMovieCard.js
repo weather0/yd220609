@@ -32,16 +32,22 @@ function makeCard(obj) {
 	}
 	//찜하기 버튼 
 	let button = makeButton(obj);
-	let input = document.createElement('input');
+	
 	// 영화 아이디 저장
+	let input = document.createElement('input');
 	input.setAttribute('type', 'hidden');
 	input.setAttribute('value', obj.id);
+	
+	// 영화 플레이 버튼
+	let play = makePlayButton();
+	
 	card.append(input);
 	card.append(img);
 	card.append(button);
 	info.append(rate);
 	card.append(info);
 	card.append(view);
+	card.append(play);
 	return card;
 }
 
@@ -95,6 +101,17 @@ function makeButton(obj) {
 	div.append(button);
 	return div;
 }
+
+function makePlayButton() {
+	let playdiv = document.createElement('div');
+	playdiv.setAttribute('class', 'playButtonContainer');
+	playdiv.setAttribute('style', 'position: absolute;top:50%;text-align:center;background:none;');
+	let playicon = document.createElement('i');
+	playicon.setAttribute('class', 'fa fa-solid fa-play');
+	playicon.setAttribute('style', 'color:#fff');
+	playdiv.append(playicon);
+	return playdiv;
+} 
 
 function insertMovie(obj) {
 	console.log(obj);

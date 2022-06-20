@@ -8,6 +8,7 @@ import co.edu.kanumovie.comment.service.CommentMapper;
 import co.edu.kanumovie.comment.service.CommentService;
 import co.edu.kanumovie.comment.vo.CommentVO;
 import co.edu.kanumovie.common.DataSource;
+import co.edu.kanumovie.movie.vo.MovieVO;
 
 public class CommentServiceImpl implements CommentService {
 	// db와의 연결을 위해 선언 openSession = true 자동 커밋
@@ -42,6 +43,11 @@ public class CommentServiceImpl implements CommentService {
 	public String commentSelect(int num) {
 		// TODO Auto-generated method stub
 		return map.commentSelect(num);
+	}
+
+	@Override
+	public List<MovieVO> commentSelectList(CommentVO vo) {
+		return map.commentSelectList(vo);
 	}
 	
 

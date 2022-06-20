@@ -1,5 +1,5 @@
 const BASE_URL = "https://api.themoviedb.org/3/discover/movie?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko-KO&with_genres="
-let genreId = parseInt(document.querySelector('input').getAttribute('value'));
+let genreId = parseInt(document.querySelector('#genreId').getAttribute('value'));
 let genreURL = genreId + "&page=";
 let sessionId = document.querySelector('#sessionId').value;
 
@@ -29,6 +29,7 @@ function getData(url, num) {
 		.then(response => response.json())
 		.then(data => data.results)
 		.then(arr => {
+			console.log(arr);
 			let pageCnt = num;
 			arr.forEach((elem) => {
 				let card = makeCard(elem);
