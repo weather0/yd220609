@@ -11,11 +11,6 @@
 	max-width: 80rem;
 }
 
-.footer {
- bottom = -2000px;
-}
-
-
 </style>
 </head>
 <body>
