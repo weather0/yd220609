@@ -31,8 +31,11 @@ public class FindPw implements Command {
 		// 비밀번호 찾아서 돌려주기.
 		UserService dao = new UserServiceImpl();
 		UserVO vo = new UserVO();
+		System.out.println(request.getParameter("email"));
 		vo.setEmail(request.getParameter("email"));
 		vo = dao.userSelectEmail(vo);
+		System.out.println(vo.getPw());
+		System.out.println(vo.getEmail());
 		
 		sendMail(vo.getPw(), vo.getEmail());
 		
