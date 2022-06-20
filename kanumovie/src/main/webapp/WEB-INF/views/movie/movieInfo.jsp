@@ -150,20 +150,13 @@ String uid = (String) session.getAttribute("email");
 modal-title {
 	text-align: center;
 }
-</style>
 
-</head>
+.moviePlayer, .youtube {
+	margin: 0 auto;
+}
 
-          .moviePlayer,
-          .youtube {
-            margin: 0 auto;
-
-
-          }
-
-
-          /* 모달창(폐기) */
-          /* .modal2 {
+/* 모달창(폐기) */
+/* .modal2 {
             position: absolute;
             top: 0;
             left: 0;
@@ -192,73 +185,67 @@ modal-title {
             transition: all .4s;
           } */
 
+/* 비디오모달 스타일 */
+.modalbox {
+	width: 100%;
+	text-align: right;
+	margin-bottom: 20px;
+}
 
-          /* 비디오모달 스타일 */
-          .modalbox {
-            width: 100%;
-            text-align: right;
-            margin-bottom: 20px;
-          }
+.cmtdiv .btn {
+	background-color: #e53637;
+	border: none;
+	font-weight: bold;
+}
 
+.cmtdiv .btn:hover {
+	transform: scale(1.2);
+	transition: 0.2s;
+}
 
-          .cmtdiv .btn {
-            background-color: #e53637;
-            border: none;
-            font-weight: bold;
-          }
+.btn-success:active, .btn-success:focus, .btn:active, .btn:focus, .btn:hover
+	{
+	background-color: #e53637;
+	/* border: 1px solid #e53637; */
+	box-shadow: none;
+}
 
-          .cmtdiv .btn:hover {
-            transform: scale(1.2);
-            transition: 0.2s;
-          }
+.btn-success {
+	background-color: #1d1e39;
+}
 
-          .btn-success:active,
-          .btn-success:focus,
-          .btn:active,
-          .btn:focus,
-          .btn:hover {
-            background-color: #e53637;
-            /* border: 1px solid #e53637; */
-            box-shadow: none;
-          }
+.modalbtn {
+	border: 0px;
+	border-radius: 10px;
+	width: 130px;
+	height: 40px;
+	padding: 0px;
+	background-color: #1d1e39;
+	font-weight: bold;
+	font-size: large;
+}
 
-          .btn-success {
-            background-color: #1d1e39;
-          }
+.vModaldialog {
+	max-width: 960px;
+	/* height: 540px; */
+	/* margin: 30px 100px; */
+}
 
+.vModalbody {
+	width: 960px;
+	height: 540px;
+	margin: 0;
+}
+</style>
 
-          .modalbtn {
-            border: 0px;
-            border-radius: 10px;
-            width: 130px;
-            height: 40px;
-            padding: 0px;
-            background-color: #1d1e39;
-            font-weight: bold;
-            font-size: large;
-          }
-
-          .vModaldialog {
-            max-width: 960px;
-            /* height: 540px; */
-            /* margin: 30px 100px; */
-          }
-
-          .vModalbody {
-            width: 960px;
-            height: 540px;
-            margin: 0;
-          }
-        </style>
-
-      </head>
+</head>
 
 
-      <body>
-        <!-- Page Preloder -->
-        <div id="preloder">
-          <div class="loader"></div>
-        </div>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 
 
 
@@ -292,8 +279,8 @@ modal-title {
 					<p></p>
 
 
-                <!-- 모달창1 -->
-                <script>
+					<!-- 모달창1 -->
+					<script>
                   function extras(cnick) {
                     let nick = cnick;
                     console.log(nick);
@@ -306,27 +293,28 @@ modal-title {
                 </script>
 
 
-                <div class="modalbox">
-                  <button class="btn btn-sm btn-success modalbtn" onclick="extras('${aaaaaa}')" data-toggle="modal"
-                    data-target="#vModal">부가영상</button>
-                </div>
+					<div class="modalbox">
+						<button class="btn btn-sm btn-success modalbtn"
+							onclick="extras('${aaaaaa}')" data-toggle="modal"
+							data-target="#vModal">부가영상</button>
+					</div>
 
 
-                <div class="modal fade" id="vModal" role="dialog">
-                  <div class="modal-dialog vModaldialog">
+					<div class="modal fade" id="vModal" role="dialog">
+						<div class="modal-dialog vModaldialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content vModalbody">
-                      <div class="modal-header">
-                        <!-- <h2 class="modal-title">신고</h2>
+							<!-- Modal content-->
+							<div class="modal-content vModalbody">
+								<div class="modal-header">
+									<!-- <h2 class="modal-title">신고</h2>
                         <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                      </div>
+								</div>
 
-                      <div class="modal-body">
-                        <div id="container">
-                          <section>
-                            <hr>
-                            <!-- <form id="form" action="reportInsert.do" method="post">
+								<div class="modal-body">
+									<div id="container">
+										<section>
+											<hr>
+											<!-- <form id="form" action="reportInsert.do" method="post">
                               <input type="hidden" class="form-control" id="reported_name" name="reported_name">
                               <h4>신고 사유를 선택하세요.</h4>
                               <hr>
@@ -343,25 +331,26 @@ modal-title {
                               <textarea id="content" name="content" cols="70" rows="5"></textarea>
                               <br> <input type="submit" value="신고"> <input type="reset" value="다시입력">
                             </form> -->
-                          </section>
-                        </div>
+										</section>
+									</div>
 
-                      </div>
+								</div>
 
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
 
-                  </div>
-                </div>
-
-
-
+						</div>
+					</div>
 
 
-                <!-- 모달창2 -->
-                <!-- <div class="modal2">
+
+
+
+					<!-- 모달창2 -->
+					<!-- <div class="modal2">
                   <div class="modal fade show">Modal
                     <p>
                       jwe;fjwofjwefi
@@ -395,20 +384,20 @@ modal-title {
                 </script> -->
 
 
-                <!-- 포스터 -->
-                <div class="col-lg-4 poster">
-                  <img class="posterImg">
-                  <!-- <div class="anime__details__pic"> -->
-                  <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
-                  <!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
-                  <!-- </div> -->
-                </div>
-                <div class="col-lg-8 details">
-                  <div class="anime__details__text">
-                    <div class="anime__details__title">
-                      <h3></h3>
-                      <span class="subInfo"></span>
-                    </div>
+					<!-- 포스터 -->
+					<div class="col-lg-4 poster">
+						<img class="posterImg">
+						<!-- <div class="anime__details__pic"> -->
+						<!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
+						<!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
+						<!-- </div> -->
+					</div>
+					<div class="col-lg-8 details">
+						<div class="anime__details__text">
+							<div class="anime__details__title">
+								<h3></h3>
+								<span class="subInfo"></span>
+							</div>
 
 
 
@@ -586,13 +575,14 @@ modal-title {
 					</div>
 
 
-                <!-- Cast & Crew 카드 섹션 -->
-                <section class="panel top_billed scroller">
-                  <div class="cast-title">
-                    <h3 dir="auto">Cast & Crew</h3>
-                  </div>
-                  <div id="cast_scroller" class="scroller_wrap should_fade is_fading">
-                    <ol class="people scroller">
+					<!-- Cast & Crew 카드 섹션 -->
+					<section class="panel top_billed scroller">
+						<div class="cast-title">
+							<h3 dir="auto">Cast & Crew</h3>
+						</div>
+						<div id="cast_scroller"
+							class="scroller_wrap should_fade is_fading">
+							<ol class="people scroller">
 
 								<!-- <li class="card">
                       <a href="https://www.themoviedb.org/person/6384-keanu-reeves?language=ko">

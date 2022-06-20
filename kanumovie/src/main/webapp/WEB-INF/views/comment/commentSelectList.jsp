@@ -67,7 +67,7 @@
 	
 	 */
 	 
-	 $('#demo').pagination({
+/* 	 $('#demo').pagination({
 		 dataSource: document.querySelectorAll('.movie-card-container'),
 		 pageSize: 25,
 		 showPrevious: false,
@@ -76,7 +76,10 @@
 			 let html = template(data);
 			 dataContainer.html(html);
 		 }
-	 })
+	 }) */
+	 
+	console.log(document.querySelector('.infinite').getBoundingClientRect().height);
+	 console.log(document.querySelector('.footer'));
 		let cards = document.querySelectorAll('.movie-card');
 		console.log(cards);
 		cards.forEach((elem) => {
