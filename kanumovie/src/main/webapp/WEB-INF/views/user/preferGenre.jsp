@@ -28,23 +28,30 @@
     
 <title>preferGenreForm.do</title>
 <style>
-    #n {
-        color:red;
-        margin-top: 30px;
-    }
-    #ff {
-    	display:none;
-    }
-    #move {
-    	display:none;
-    }
+#ff {
+	display:none;
+}
+#move {
+	display:none;
+}
+.preferMovieHeader {
+    width: 100%;
+    border: none;
+    padding: 5%;
+}
+
+.preferMovieHeader h2, p {
+    color: #fff;
+    text-align: center;
+}
 </style>
 </head>
 <body>
 	<div id="move"></div>
     <div align="center">
-        <div>
-            <div><h1 id="n">선호하는 영화를 고르세요!!!</h1></div>
+        <div class="preferMovieHeader" id="choiceCnt">
+            <h2>선호하는 영화를 고르세요!!!</h2>
+            <br>
         </div>
     </div>
     
@@ -109,6 +116,16 @@
 
               currentpage = searched.page;
               totalpage = searched.total_pages;
+              
+              if(document.getElementById('count').value == 1) {
+                choiceCnt();
+              } else if(document.getElementById('count').value == 2) {
+            	  document.getElementById('newP').remove();
+            	  choiceCnt();
+              } else if(document.getElementById('count').value == 3) {
+                  document.getElementById('newP').remove();
+                  choiceCnt();
+              }
 
               searched.results.forEach((elem) => {
                 let card = document.createElement('div');
@@ -227,5 +244,16 @@
         		}  
         	}
         
+        function choiceCnt() {
+        	
+            // create a new div element
+			var newP = document.createElement("p");
+			newP.id = 'newP';
+			// and give it some content
+			newP.innerText = document.getElementById('count').value + '번째로 선호하는 영화를 선택해주세요!' ;
+			// add the text node to the newly created div
+        	
+        	document.getElementById('choiceCnt').appendChild(newP);
+        }
     </script>
 </html>

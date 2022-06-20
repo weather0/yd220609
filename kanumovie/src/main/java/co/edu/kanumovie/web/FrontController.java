@@ -54,6 +54,7 @@ import co.edu.kanumovie.user.command.FindPw;
 import co.edu.kanumovie.user.command.FindPwForm;
 import co.edu.kanumovie.user.command.Login;
 import co.edu.kanumovie.user.command.LoginForm;
+import co.edu.kanumovie.user.command.LoginKakao;
 import co.edu.kanumovie.user.command.Logout;
 import co.edu.kanumovie.user.command.PreferGenreForm;
 import co.edu.kanumovie.user.command.ProfileChange;
@@ -94,6 +95,7 @@ public class FrontController extends HttpServlet {
 		map.put("/analyticsWeeklyVisit.do", new AnalyticsWeeklyVisit());//주간 방문자 수 데이터 처리
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
+		map.put("/loginKakao.do", new LoginKakao());
 		map.put("/logout.do", new Logout());
 		map.put("/userManageForm.do", new UserManageForm());
 		map.put("/userManage.do", new UserManage());
