@@ -55,9 +55,15 @@
             border: 2px solid rgb(41, 41, 41);
           }
 
+          .moviePlayer,
+          .youtube {
+            margin: 0 auto;
 
-          /* 모달창 */
-          .modal {
+          }
+
+
+          /* 모달창(폐기) */
+          /* .modal2 {
             position: absolute;
             top: 0;
             left: 0;
@@ -68,7 +74,7 @@
 
           }
 
-          .modal.show {
+          .modal2.show {
             display: block;
           }
 
@@ -78,28 +84,70 @@
             left: 50%;
             width: 960px;
             height: 540px;
-            /* padding: 40px; */
             text-align: center;
             background-color: rgb(255, 255, 255);
             border-radius: 10px;
             box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
             transform: translateX(-50%) translateY(-50%);
             transition: all .4s;
-          }
+          } */
 
 
+          /* 비디오모달 스타일 */
           .modalbox {
-            width: 960px;
+            width: 100%;
             text-align: right;
             margin-bottom: 20px;
           }
 
+
+          .cmtdiv .btn {
+            background-color: #e53637;
+            border: none;
+            font-weight: bold;
+          }
+
+          .cmtdiv .btn:hover {
+            transform: scale(1.2);
+            transition: 0.2s;
+          }
+
+          .btn-success:active,
+          .btn-success:focus,
+          .btn:active,
+          .btn:focus,
+          .btn:hover {
+            background-color: #e53637;
+            /* border: 1px solid #e53637; */
+            box-shadow: none;
+          }
+
+          .btn-success {
+            background-color: #1d1e39;
+          }
+
+
           .modalbtn {
+            border: 0px;
             border-radius: 10px;
-            width: 120px;
-            height: 35px;
+            width: 130px;
+            height: 40px;
             padding: 0px;
             background-color: #1d1e39;
+            font-weight: bold;
+            font-size: large;
+          }
+
+          .vModaldialog {
+            max-width: 960px;
+            /* height: 540px; */
+            /* margin: 30px 100px; */
+          }
+
+          .vModalbody {
+            width: 960px;
+            height: 540px;
+            margin: 0;
           }
         </style>
 
@@ -143,19 +191,89 @@
                 </p>
 
 
-                <!-- 모달창 -->
-                <div class="modal">
-                  <div class="modal_body">Modal
+
+
+                <!-- 모달창1 -->
+                <script>
+                  function extras(cnick) {
+                    let nick = cnick;
+                    console.log(nick);
+
+                    $('#vModal').on('show.bs.modal', function () {
+                      // $(".modal-body #reported_name").val(cnick);
+                    })
+                  }
+
+                </script>
+
+
+                <div class="modalbox">
+                  <button class="btn btn-sm btn-success modalbtn" onclick="extras('${aaaaaa}')" data-toggle="modal"
+                    data-target="#vModal">부가영상</button>
+                </div>
+
+
+                <div class="modal fade" id="vModal" role="dialog">
+                  <div class="modal-dialog vModaldialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content vModalbody">
+                      <div class="modal-header">
+                        <!-- <h2 class="modal-title">신고</h2>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                      </div>
+
+                      <div class="modal-body">
+                        <div id="container">
+                          <section>
+                            <hr>
+                            <!-- <form id="form" action="reportInsert.do" method="post">
+                              <input type="hidden" class="form-control" id="reported_name" name="reported_name">
+                              <h4>신고 사유를 선택하세요.</h4>
+                              <hr>
+                              <ul>
+                                <li><label><input type="radio" name="report" value="스팸홍보/도배글입니다."> 스팸홍보/도배글입니다.</label>
+                                <li><label><input type="radio" name="report" value="음란물입니다."> 음란물입니다.</label>
+                                <li><label><input type="radio" name="report" value="욕설/생명경시/혐오/차별적 표현입니다."> 욕설/생명경시/혐오/차별적
+                                    표현입니다.</label>
+                                <li><label><input type="radio" name="report" value="개인정보 노출 게시물입니다."> 개인정보 노출
+                                    게시물입니다.</label>
+                              </ul>
+                              <h4>신고내용</h4>
+                              <hr>
+                              <textarea id="content" name="content" cols="70" rows="5"></textarea>
+                              <br> <input type="submit" value="신고"> <input type="reset" value="다시입력">
+                            </form> -->
+                          </section>
+                        </div>
+
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+
+
+                <!-- 모달창2 -->
+                <!-- <div class="modal2">
+                  <div class="modal fade show">Modal
                     <p>
                       jwe;fjwofjwefi
                     </p>
                   </div>
                 </div>
                 <div class="modalbox">
-                  <!-- <button class="modalbtn">부가영상</button> -->
+                  <button class="modalbtn">부가영상</button>
                 </div>
                 <script>
-                  const modal = document.querySelector('.modal');
+                  const modal = document.querySelector('.modal fade show');
                   const btnOpenPopup = document.querySelector('.modalbtn');
 
                   btnOpenPopup.addEventListener('click', () => {
@@ -175,10 +293,11 @@
                       }
                     }
                   });
-                </script>
+                </script> -->
 
 
 
+                <!-- 포스터 -->
                 <div class="col-lg-4 poster">
                   <img class="posterImg">
                   <!-- <div class="anime__details__pic"> -->
@@ -369,7 +488,9 @@
 
                 <!-- Cast & Crew 카드 섹션 -->
                 <section class="panel top_billed scroller">
-                  <h3 dir="auto">Cast & Crew</h3>
+                  <div class="cast-title">
+                    <h3 dir="auto">Cast & Crew</h3>
+                  </div>
                   <div id="cast_scroller" class="scroller_wrap should_fade is_fading">
                     <ol class="people scroller">
 
@@ -403,7 +524,7 @@
 
 
             <!-- comment 시작 -->
-            <div class="row">
+            <div class="row cmtdiv">
               <div class="col-lg-8 col-md-8">
                 <div class="anime__details__review">
                   <div class="section-title">
@@ -741,7 +862,7 @@
 
 
         <!-- Search model Begin -->
-        <div class="search-model">
+        <!-- <div class="search-model">
           <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">
               <i class="icon_close"></i>
@@ -750,7 +871,7 @@
               <input type="text" id="search-input" name="query" placeholder="Search here.....">
             </form>
           </div>
-        </div>
+        </div> -->
         <!-- Search model end -->
 
 
