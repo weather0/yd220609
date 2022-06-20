@@ -114,6 +114,40 @@
 	margin: 5% auto 5% auto;
 	display: inline-block;
 }
+
+#tab1 > div {
+	height: 400px;
+	background: rgba(0, 0, 0, 0.5);
+	padding: 4%;
+}
+#tab1 > h3 {
+	font-weight: bold;
+	text-align: center;
+}
+
+#tab1 h5 {
+	color: #fff;
+	text-align: left;
+	margin: 3%;
+}
+
+#tab1 button {
+	background: none;
+	border: 1px solid #E53637;
+	border-radius: 10px;
+}
+
+#tab1 button:hover {
+	margin: 3%;
+	transform: scale(1.1);
+	font-weight: bold;
+	background-color: #E53637;
+	border: none;
+	border-radius: 10px;
+	transition-property: transform, font-weight, background-color, border;
+	transition-duration: 0.3s;
+}
+
 </style>
 </head>
 <body id="userManage">
@@ -160,7 +194,7 @@
 		<div id="pwCheck1">
 			<form id="pwCheck1" method="post" action="#">
 				<h3>비밀번호 수정</h3>
-				<h3>기존 비밀번호 확인</h3>
+				<h5>기존 비밀번호 확인</h5>
 				<div class="input__item">
 					<input type="hidden" id="email" name="email" value="${email}">
 				</div>

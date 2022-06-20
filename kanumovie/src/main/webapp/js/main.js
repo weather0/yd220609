@@ -17,7 +17,7 @@ let sessionID = document.getElementById('sessionId');
 console.log(sessionID)
 let footer = document.querySelector('.footer')
 
-	if(sessionId == null) {
+	if(sessionID == null) {
 		footer.setAttribute("style", "bottom: -1500px;")
 	} else {
 		footer.setAttribute("style", "bottom: -2000px;")
