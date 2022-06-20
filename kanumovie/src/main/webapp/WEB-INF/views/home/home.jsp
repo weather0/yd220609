@@ -146,11 +146,11 @@ h1 {
 .btn {
 border: 1px solid #E53637;
 }
-
+/* 
 footer {
 	height: 200px;
 	opacity: 0;
-}
+} */
 
 .product__sidebar__comment__item {
 	padding: 2%;

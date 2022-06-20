@@ -25,26 +25,29 @@ html {
   --maxPrimaryPageWidth: 1400px;
 }
 
-
+div.row {
+  max-width: 100%
+}
 
 
 /* 포스터 */
 div.poster {
-  float: left;
+  /* float: left;
   width: 300px;
   height: 430px;
-  padding: 0;
-  margin-bottom: 30px;
+  padding: 0; */
+  margin-bottom: 10px;
 }
 
 .posterImg {
   border-radius: 8px;
+  width: 100%;
 }
 
 
 /* 영화 스펙 */
 div.details {
-  float: right;
+  /* float: right; */
 }
 
 
@@ -58,26 +61,42 @@ div.rightbar {
   float: right;
 }
 
-/* 배우 섹션 start */
-div.product__sidebar__view__item {
-  height: 170px;
-  position: relative;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
 
+
+
+/* 배우 섹션 start */
 section.panel {
   clear: both;
   background: #0b0c2a;
   border: none;
-  width: 1000px
+  width: 100%
     /* margin-top: 1.25rem; */
-
 }
 
-section.panel h3 {
+
+.cast-title>h3 {
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 21px;
+  text-transform: uppercase;
+  padding-left: 20px;
+  /* position: relative; */
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 20px;
+}
+
+div.product__sidebar__view__item {
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  margin: 1% auto;
+}
+
+
+
+/* section.panel h3 {
   color: white;
-}
+} */
 
 
 ol.people.scroller::-webkit-scrollbar {
@@ -168,6 +187,9 @@ ol.people li p a {
   color: #fff;
 }
 
+
+
+
 /* 배우 섹션 스크롤 */
 div.scroller_wrap {
   position: relative;
@@ -201,6 +223,16 @@ div.scroller_wrap.should_fade:after {
   color: #ffffff;
   font-weight: 700;
   line-height: 26px;
+}
+
+.recombg {
+  width: 100%;
+}
+
+.product__sidebar__view__item:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+  margin: 5% auto;
 }
 
 
