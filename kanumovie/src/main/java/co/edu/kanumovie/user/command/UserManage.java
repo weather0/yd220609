@@ -49,7 +49,7 @@ public class UserManage implements Command {
 			session2.setAttribute("directoryfileName", vo2.getDirectoryFileName());
 		}
 		
-		return "home/home";
+		return "user/userManageForm";
 	}
 
 }
