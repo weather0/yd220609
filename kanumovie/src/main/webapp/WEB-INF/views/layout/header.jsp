@@ -23,6 +23,15 @@
 </style>
 </head>
 <body>
+<!-- <script>
+		let lilist = document.querySelector('.headerMenuList');
+		console.log(lilist);
+		lilist.forEach(elem => {
+			elem.addEventListener('click', function() {
+				elem.setAttribute('class', 'active');
+			})
+		})
+	</script> -->
 
 	<header class="header">
 		<div class="container">
@@ -36,18 +45,13 @@
 				<div class="col-lg-8">
 					<div class="header__nav">
 						<nav class="header__menu mobile-menu">
-							<ul>
+							<ul class="headerMenuList">
 								<li class="active"><a href="home.do">Homepage</a></li>
-								<li><a href="genreSelectList.do">Categories <span
-										class="arrow_carrot-down"></span></a>
-									<ul class="dropdown">
-										<li><a href="genreSelectList.do">Categories</a></li>
-										<li><a href="./anime-details.html">Anime Details</a></li>
-										<li><a href="./anime-watching.html">Anime Watching</a></li>
-										<li><a href="./blog-details.html">Blog Details</a></li>
-									</ul></li>
-								<li><a href="./blog.html">Our Blog</a></li>
-								<li><a href="#">Contacts</a></li>
+								<li><a href="genreSelectList.do">Categories</a></li>
+								<c:if test="${not empty email}">
+								<li><a href="userLikesSelectList.do?email=${email}">보고싶어요</a>
+								<li><a href="commentSelectList.do?email=${email}">리뷰한 작품</a>
+								</c:if>
 							</ul>
 						</nav>
 					</div>
@@ -77,7 +81,7 @@
 						<!--  임시 프로필 확인용 -->
 						<c:choose>
 							<c:when test="${not empty email}">
-								<a href="logout.do">Logout</a>
+								<a onclick="logout()" >Logout</a>
 							</c:when>
 							<c:otherwise>
 								<a href="signUpForm.do">Sign Up</a>
@@ -91,8 +95,29 @@
 		</div>
 
 		<div id="mobile-menu-wrap"></div>
-
+        
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script>
+            
+            function logout() {
+            	kakaoLogout();
+            	location.href='logout.do';
+            }
+        
+            // 카카오 로그아웃 
+	        window.Kakao.init('f86288f6262962cf240ad63764712370');
+	        function kakaoLogout() {
+		            if (!Kakao.Auth.getAccessToken()) {
+		                console.log('Not logged in.');
+		                return;
+		            }
+		            Kakao.Auth.logout(function(response) {
+		                window.location.href='home.do'
+		            });
+		    };
+        </script>
 	</header>
+	
 
 </body>
 </html>

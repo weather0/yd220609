@@ -14,7 +14,6 @@
 
 #userManage .userHeader {
 	width: 100%;
-	border: 1px solid #fff;
 	padding: 5%;
 }
 
@@ -61,6 +60,7 @@
 .user-information-section div {
 	width: 100%;
 }
+
 .user-information-section h3 {
 	color: #fff;
 }
@@ -82,7 +82,7 @@
 }
 
 .btnCnt:target .tabContent.user-information-section {
-	display:block;
+	display: block;
 }
 
 .tabContent {
@@ -90,6 +90,7 @@
 	height: 100%;
 	text-align: center;
 }
+
 .tabContent h3 {
 	display: block;
 	text-align: center;
@@ -106,13 +107,47 @@
 }
 
 .fileupload {
-	display : none;
+	display: none;
 }
 
 .filelabel {
-	margin : 5% auto 5% auto;
-	display : inline-block;
+	margin: 5% auto 5% auto;
+	display: inline-block;
 }
+
+#tab1 > div {
+	height: 400px;
+	background: rgba(0, 0, 0, 0.5);
+	padding: 4%;
+}
+#tab1 > h3 {
+	font-weight: bold;
+	text-align: center;
+}
+
+#tab1 h5 {
+	color: #fff;
+	text-align: left;
+	margin: 3%;
+}
+
+#tab1 button {
+	background: none;
+	border: 1px solid #E53637;
+	border-radius: 10px;
+}
+
+#tab1 button:hover {
+	margin: 3%;
+	transform: scale(1.1);
+	font-weight: bold;
+	background-color: #E53637;
+	border: none;
+	border-radius: 10px;
+	transition-property: transform, font-weight, background-color, border;
+	transition-duration: 0.3s;
+}
+
 </style>
 </head>
 <body id="userManage">
@@ -131,7 +166,8 @@
 			<li><button type="button" class="btnCnt" id="button1">비밀번호</button></li>
 			<li><button type="button" class="btnCnt" id="button2">프로필</button></li>
 			<li><button type="button" class="btnCnt" id="button3">닉네임</button></li>
-			<li><button type="button" class="btnCnt" id="button4">보고싶어요</button></li>
+			<li><button type="button" class="btnCnt" id="button4">선호
+					장르</button></li>
 			<li><button type="button" class="btnCnt" id="button5">회원탈퇴</button></li>
 		</ul>
 	</div>
@@ -155,92 +191,89 @@
 	</script>
 
 	<article class="tabContent user-information-section" id="tab1">
-	<div id="pwCheck1">
-		<form id="pwCheck1" method="post" action="#">
-			<h3>비밀번호 수정</h3>
-			<h3>기존 비밀번호 확인</h3>
-			<div class="input__item">
-				<input type="hidden" id="email" name="email" value="${email}">
-			</div>
-			<div class="input__item">
-				<input type="password" id="check" name="check"
-					placeholder="기존 패스워드를 입력" required> <span
-					class="icon_profile"></span>
-			</div>
-			<button type="button" onclick="getCheck()">비밀번호 확인</button>
-		</form>
+		<div id="pwCheck1">
+			<form id="pwCheck1" method="post" action="#">
+				<h3>비밀번호 수정</h3>
+				<h5>기존 비밀번호 확인</h5>
+				<div class="input__item">
+					<input type="hidden" id="email" name="email" value="${email}">
+				</div>
+				<div class="input__item">
+					<input type="password" id="check" name="check"
+						placeholder="기존 패스워드를 입력" required> <span
+						class="icon_profile"></span>
+				</div>
+				<button type="button" onclick="getCheck()">비밀번호 확인</button>
+			</form>
 		</div>
 		<div id="pwCheck2">
-		<form action="pwChange.do" method="post">
+			<form action="pwChange.do" method="post">
 				<h3>비밀번호 수정</h3>
-			<div class="input__item">
-				<input type="hidden" id="email" name="email" value="${email}">
-			</div>
-			<div class="input__item">
-				<input type="password" id="pw" name="pw" required> <span
-					class="icon_profile"></span>
-			</div>
-			<button type="submit" class="site-btn">비밀번호 수정</button>
-		</form>
+				<div class="input__item">
+					<input type="hidden" id="email" name="email" value="${email}">
+				</div>
+				<div class="input__item">
+					<input type="password" id="pw" name="pw" required> <span
+						class="icon_profile"></span>
+				</div>
+				<button type="submit" class="site-btn">비밀번호 수정</button>
+			</form>
 		</div>
 	</article>
 	<article class="tabContent user-information-section" id="tab2">
-	<form action="profileChange.do" method="post"
-							enctype="multipart/form-data">
-							<div class="anime__review__item__pic">
-								<img alt="${fileName}" src="img/profile/${fileName}">
-							</div>
-							<br>
-							<div class="input__item">
-								<input type="hidden" id="email" name="email" value="${email}">
-								<input type="hidden" id="pw" name="pw" value="${pw}">
-								<label for="file" id="filelabel" ><h3>새 프로필 업로드</h3></label>
-								<input type="file" id="file" name="file" class="fileupload" required>
-							</div>
-							<br>
-							<button type="submit" class="site-btn">프로필 사진 수정</button>
-						</form>
+		<form action="profileChange.do" method="post"
+			enctype="multipart/form-data">
+			<div class="anime__review__item__pic">
+				<img alt="${fileName}" src="img/profile/${fileName}">
+			</div>
+			<br>
+			<div class="input__item">
+				<input type="hidden" id="email" name="email" value="${email}">
+				<input type="hidden" id="pw" name="pw" value="${pw}"> <label
+					for="file" id="filelabel"><h3>새 프로필 업로드</h3></label> <input
+					type="file" id="file" name="file" class="fileupload" required>
+			</div>
+			<br>
+			<button type="submit" class="site-btn">프로필 사진 수정</button>
+		</form>
 	</article>
-	
-	<article class="tabContent user-information-section" id="tab3">
-	<form action="userManage.do" method="post">
-							<div>
-								<br> <br>
-								<h3>Change Nickname</h3>
-							</div>
-							<div class="input__item">
-								<input type="hidden" id="email" name="email" value="${email}">
-								<input type="hidden" id="pw" name="pw" value="${pw}">
-							</div>
-							<div class="input__item">
-								<input type="text" id="nick" name="nick" placeholder="${nick}"
-									required> <span class="icon_profile"></span>
-							</div>
 
-							<button type="submit" class="site-btn">Change</button>
-						</form>
+	<article class="tabContent user-information-section" id="tab3">
+		<form action="userManage.do" method="post">
+			<div>
+				<br> <br>
+				<h3>Change Nickname</h3>
+			</div>
+			<div class="input__item">
+				<input type="hidden" id="email" name="email" value="${email}">
+				<input type="hidden" id="pw" name="pw" value="${pw}">
+			</div>
+			<div class="input__item">
+				<input type="text" id="nick" name="nick" placeholder="${nick}"
+					required> <span class="icon_profile"></span>
+			</div>
+
+			<button type="submit" class="site-btn">Change</button>
+		</form>
 	</article>
 	<article class="tabContent user-information-section" id="tab4">
-	<div class="movie-card-container">
-		<input type="hidden" id="sessionId" value="${email}">
-	</div>
-	<form action="preferGenreForm.do" method="post">
-							<div class="input__item">
-								<input type="hidden" id="email" name="email" value="${email}">
-							</div>
-							<button type="submit" class="site-btn">선호 영화 수정</button>
-						</form>
+		<form action="preferGenreForm.do" method="post">
+			<div class="input__item">
+				<input type="hidden" id="email" name="email" value="${email}">
+			</div>
+			<button type="submit" class="site-btn">선호 영화 수정</button>
+		</form>
 	</article>
-	
+
 	<article class="tabContent user-information-section" id="tab5">
-			<form action="#" method="post">
-				<div class="input__item">
-					<input type="hidden" id="email5" name="email5" value="${email}">
-				</div>
-				<button type="button" class="site-btn" onclick="deleteUser()">회원탈퇴</button>
-			</form>
+		<form action="#" method="post">
+			<div class="input__item">
+				<input type="hidden" id="email5" name="email5" value="${email}">
+			</div>
+			<button type="button" class="site-btn" onclick="deleteUser()">회원탈퇴</button>
+		</form>
 	</article>
-	
+
 	<!-- Signup Section End -->
 	<script src="js/rating.js"></script>
 	<script type="text/javascript">
@@ -264,6 +297,7 @@
 				// 확인 버튼 클릭 시 동작
 				alert("회원 데이터를 삭제합니다.");
 				// 회원 탈퇴하고 회원 탈퇴 완료 페이지 보여주기.
+				secession();
 				let email = '<%=(String) session.getAttribute("email")%>';
 				console.log(email);
 				$.ajax({
@@ -286,110 +320,26 @@
 				alert("회원탈퇴를 취소했습니다.");
 			}
 		}
-		
-		let email = document.querySelector('#email').value;
-		let param = {'email':email}
-		function getMyMovie() {
-			let container = document.querySelector('.movie-card-container');
-			fetch('userLikesSelectList.do',{
-				method:'post',
-				headers:{'Content-Type':'application/json'},
-				body: JSON.stringify(param)
-			})
-				.then(response => response.json())
-				.then(data => {
-					data.forEach(elem => {
-						let param = 
-						fetch('https://api.themoviedb.org/3/movie/' + elem.id + '?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko-KR')
-							.then(response => response.json())
-							.then(data => {
-								let card = makeCard(data);
-								container.append(card);
-								rating(); 
-							})
-					})
-				})
-		}
-		
-		getMyMovie();
-		
-		function makeCard(obj) {
-			let card = document.createElement('div');
-			card.setAttribute('class', 'movie-card');
-			card.setAttribute('onclick', "location.href='movieInfo.do?id=" + obj.id + "'");
-			let img = document.createElement('img');
-			img.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + obj.poster_path);
-			card.append(img);
-			let info = document.createElement('div');
-			let title = document.createElement('p');
-			title.innerHTML = obj.title;
-			info.append(title);
-			let rate = document.createElement('div');
-			rate.setAttribute('class', 'star-rate');
-			rate.setAttribute('data-rate', obj.vote_average);
-			for (let i = 0; i < 5; i++) {
-				let star = document.createElement('span');
-				star.setAttribute('class', 'fa fa-star');
-				rate.append(star);
-			}
-			let button = makeButton(obj);
-			let input = document.createElement('input');
-			input.setAttribute('type', 'hidden');
-			input.setAttribute('value', obj.id);
-			card.append(input);
-			card.append(button);
-			info.append(rate);
-			card.append(info);
-			return card;
-		}
-		
-		function makeButton(obj) {
-			let div = document.createElement('div');
-			let button = document.createElement('button');
-			button.setAttribute('type', 'button');
-			button.setAttribute('class', 'w3-button w3-black w3-round');
-			button.addEventListener('click', function(e) {
-				console.log("heart");
-				e.stopPropagation();
-				let heart = this.firstChild;
-				let cmd = "";
-				if (!!sessionId) {
-					if (heart.style.color == 'red') {
-						heart.setAttribute('style', 'color:grey');
-						cmd = "delete";
-					} else if (heart.style.color == 'grey') {
-						heart.setAttribute('style', 'color:red');
-						cmd = "insert";
-					}
-				} else if (!sessionId) {
-					alert("로그인이 필요한 기능입니다.");	
-				}
-				console.log(this.children[0].getAttribute('id').substring(6));
-				let param = 'cmd=' + cmd + '&id=' + this.children[0].getAttribute('id').substring(6) + '&email=' + email;
-				if (cmd == 'delete') {
-					fetch('likesDelete.do', {
-						method:'POST',
-						headers:{'Content-Type':'application/x-www-form-urlencoded'},
-						body: param
-					})
-						.then(response => response.json())
-						.then(message => {
-							if (message.message = "deletesuccess") {
-								this.parentElement.parentElement.remove(); 
-							}
-						})
-						.catch(err => console.log(err))
-				}
-			})
-			button.setAttribute('style', 'background:none;z-index:999;')
-			let icon = document.createElement('i');
-			icon.setAttribute('class', 'fa fa-heart');
-			icon.setAttribute('style', 'color:red');
-			icon.setAttribute('id', 'movie-' + obj.id);
-			button.append(icon);
-			div.append(button);
-			return div;
-		}
 	</script>
+	 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	 <script>
+	   // 카카오 회원탈퇴
+	   window.Kakao.init('f86288f6262962cf240ad63764712370');
+	   function secession() {
+		    Kakao.API.request({
+		        url: '/v1/user/unlink',
+		        success: function(response) {
+		            console.log(response);
+		            //callback(); //연결끊기(탈퇴)성공시 서버에서 처리할 함수
+		        },
+		        fail: function(error) {
+		        	alert('탈퇴 미완료');
+		            console.log('탈퇴 미완료')
+		            console.log(error);
+		        },
+		    });
+		};
+	 </script>
+	 
 </body>
 </html>

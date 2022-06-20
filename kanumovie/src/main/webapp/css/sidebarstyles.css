@@ -126,8 +126,8 @@ a {
 }
 
 /* Active links menu */
-.active {
-    background-color: var(--first-color);
+.bactive {
+    background-color: #EB1616;
 }
 
 /* COLLAPSE */

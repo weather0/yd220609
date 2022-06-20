@@ -19,35 +19,37 @@ import co.edu.kanumovie.likes.serviceImpl.LikesServiceImpl;
 import co.edu.kanumovie.likes.vo.LikesVO;
 import co.edu.kanumovie.user.vo.UserVO;
 
-public class UserLikesSelectList implements Command {
+public class UserLikesSelectList implements Command {	
 	private ObjectMapper mapper = new ObjectMapper(); 
 	private InputStream input;
+	 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		LikesService dao = new LikesServiceImpl(); 
-		Map<String, String> map = new HashMap<String, String>();
-		try {
-		input = request.getInputStream();
-			map = mapper.readValue(input, new TypeReference<Map<String, String>>() {});
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		UserVO vo = new UserVO(); 
-		System.out.println(map.get("email"));
-		vo.setEmail(map.get("email"));
+		UserVO vo = new UserVO();
+		vo.setEmail(request.getParameter("email"));
+		if(request.getParameter("email") == null) {
+			Map<String, String> map = new HashMap<String, String>();
+			try {
+				input = request.getInputStream(); 
+				map = mapper.readValue(input, new TypeReference<Map<String, String>>() {});
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			vo = new UserVO(); 
+			vo.setEmail(map.get("email"));
+			List<LikesVO> likes = dao.userLikesSelectList(vo);
+			String jsonData = "";
+			try {
+				jsonData = mapper.writeValueAsString(likes);
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+			}
+			return "ajax:"+jsonData;		
+			}
 		List<LikesVO> likes = dao.userLikesSelectList(vo);
-		for (int i = 0; i < likes.size(); i++) {
-			System.out.println(likes.get(i).getId());
-		}
-		String jsonData = "";
-		try {
-			jsonData = mapper.writeValueAsString(likes);
-		} catch(JsonProcessingException e) {
-			e.printStackTrace();
-		}      
-		
-		System.out.println("ajax:" + jsonData);
-		return "ajax:"+jsonData;    
+		request.setAttribute("likeslist", likes);
+		return "likes/userLikesSelectList";    
 	}
 
 

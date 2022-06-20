@@ -39,7 +39,7 @@ public class Analyticssignupdata implements Command {
 			}
 			
 			for(int i = 0; i < arr.length; i++) {
-				//System.out.print("날짜 > "+arr[i] + " ");
+				
 				int result = dao.selectCountWeeklySignUpUsersCount(arr[i]);
 				if(result >= 1) {
 					if(i == arr.length-1) {
@@ -61,7 +61,7 @@ public class Analyticssignupdata implements Command {
 			
 			writer.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

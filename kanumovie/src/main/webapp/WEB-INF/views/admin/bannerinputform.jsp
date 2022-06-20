@@ -161,6 +161,10 @@ input[type="file"] {
 	border-color: #e53637;
 }
 
+.btn:active {
+background-color: #e53637;
+}
+
 </style>
 </head>
 <body id="custominputform">

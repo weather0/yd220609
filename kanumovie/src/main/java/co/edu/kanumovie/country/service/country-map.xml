@@ -5,7 +5,7 @@
 		SELECT * FROM K_COUNTRIES 
 		ORDER BY ORDERIDX
 	</select>
-	<resultMap id="countryMap" type="country">
+	<resultMap id="countryMap" type="co.edu.kanumovie.country.vo.CountryVO">
 		<result column="id" property="id"/>
 		<result column="eng_name" property="engName"/>
 		<result column="orderidx" property="orderIdx"/>

@@ -1,5 +1,5 @@
 const BASE_URL_C = "https://api.themoviedb.org/3/discover/movie?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko&&with_origin_country=";
-let countryId = document.querySelector('input').getAttribute('value');
+let countryId = document.querySelector('#countryId').getAttribute('value');
 let countryURL = countryId + "&page=";
 let sorting = "&sort_by=vote_count.desc"
 let sessionId = document.querySelector("#c_sessionId").value;

@@ -1,6 +1,8 @@
 package co.edu.kanumovie.user.command;
 
 
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,17 +20,18 @@ public class SignUp implements Command {
 		UserVO vo = new UserVO();
 		
 	
-			vo.setEmail(request.getParameter("email"));
-			vo.setNick(request.getParameter("nick"));
-			vo.setPw(request.getParameter("pw"));
-			vo.setPreference1(0);
-			vo.setPreference2(0);
-			vo.setPreference3(0);
-			// 가입할때 무조건 디폴트 이미지를 프로필로.
-			vo.setFileName("default.jpeg");
-			vo.setDirectoryFileName("default.jpeg");
-			System.out.println(vo.getEmail());
-		dao.userInsert(vo);
+		vo.setEmail(request.getParameter("email"));
+		vo.setNick(request.getParameter("nick"));
+		vo.setPw(request.getParameter("pw"));
+		// 가입할때 무조건 디폴트 이미지를 프로필로.
+		vo.setFileName("default.jpeg");
+		vo.setDirectoryFileName("default.jpeg");
+		try {
+			dao.userInsert(vo);
+		} catch (Exception e) {
+			System.out.println("signUp 커맨드 오류 : 무결성 오류");
+			request.setAttribute("message", "signupfail");
+		}
 		request.setAttribute("message", "signup");
 		return "home.do";
 	}

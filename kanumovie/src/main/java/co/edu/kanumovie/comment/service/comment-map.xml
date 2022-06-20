@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.edu.kanumovie.comment.service.CommentMapper">
 	<select id="commentAllList"	parameterType="co.edu.kanumovie.comment.vo.CommentVO" resultType="co.edu.kanumovie.comment.vo.CommentVO">
-		SELECT c.c_id as cid , c.c_comment as comments , c.c_date as wdate, c.id, c.email, u.nick,u.fileName
+		SELECT c.c_id as cid , c.c_comment as comments , c.c_date as wdate, c.id, c.email, u.nick,u.fileName,u.report
 		FROM k_movies m
 			INNER JOIN k_comment c
 		ON ((c.id = m.id) and c.id = #{id})
@@ -11,7 +11,27 @@
 		ORDER BY CID desc
 		
 	</select>
-	
+	<select id="commentSelectList" parameterType="co.edu.kanumovie.comment.vo.CommentVO" resultMap="movieMap">
+		SELECT * FROM K_MOVIES
+		WHERE ID IN (SELECT ID FROM K_COMMENT
+		WHERE EMAIL=#{email})
+	</select> 
+	<resultMap type="movie" id="movieMap">
+		<result column="adult" property="adult"/>
+		<result column="backdrop_path" property="backdropPath"/>
+		<result column="genre_ids" property="genreIds"/>
+		<result column="id" property="id"/>
+		<result column="original_language" property="originalLanguage"/>
+		<result column="original_title" property="originalTitle"/>
+		<result column="overview" property="overview"/>
+		<result column="popularity" property="popularity"/>
+		<result column="poster_path" property="posterPath"/>
+		<result column="release_date" property="releaseDate"/>
+		<result column="title" property="title"/>
+		<result column="video" property="video"/>
+		<result column="vote_average" property="voteAverage"/>
+		<result column="vote_count" property="voteCount"/>
+	</resultMap>
 	<select id="commentSelect" parameterType="int" resultType="String">
 		select C_COMMENT from K_comment where C_ID = #{cid}
 	</select>
@@ -20,7 +40,11 @@
 		insert into k_comment values(COMMENT_ID_SEQ.nextval, #{comments}, SYSDATE, #{id} , #{email})
 	</insert>
 
-
+	<select id="commentSelectTopFiveList" resultMap="movieMap">
+		SELECT * FROM K_MOVIES WHERE ID IN 
+		(SELECT ID FROM K_COMMENT ORDER BY C_DATE DESC 
+		FETCH NEXT 5 ROW ONLY)
+	</select>
 	<update id="commentUpdate" parameterType="co.edu.kanumovie.comment.vo.CommentVO">
 		update k_comment set c_comment = #{comments} where C_ID = #{cid} 
 	</update>
