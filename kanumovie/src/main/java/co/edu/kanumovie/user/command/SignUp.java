@@ -1,6 +1,8 @@
 package co.edu.kanumovie.user.command;
 
 
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,7 +26,12 @@ public class SignUp implements Command {
 		// 가입할때 무조건 디폴트 이미지를 프로필로.
 		vo.setFileName("default.jpeg");
 		vo.setDirectoryFileName("default.jpeg");
-		dao.userInsert(vo);
+		try {
+			dao.userInsert(vo);
+		} catch (Exception e) {
+			System.out.println("signUp 커맨드 오류 : 무결성 오류");
+			request.setAttribute("message", "signupfail");
+		}
 		request.setAttribute("message", "signup");
 		return "home.do";
 	}
