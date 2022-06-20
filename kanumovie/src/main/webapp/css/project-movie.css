@@ -97,3 +97,7 @@ button .fa.fa-heart {
 	font-size: 30px;
 	background: none;
 }
+
+.playButtonContainer .fa-play {
+	font-size: x-large;
+}

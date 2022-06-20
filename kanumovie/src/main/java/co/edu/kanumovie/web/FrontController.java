@@ -29,6 +29,7 @@ import co.edu.kanumovie.admin.command.bannerupdateform;
 //import co.edu.kanumovie.comment.command.Comment;
 import co.edu.kanumovie.comment.command.CommentDelete;
 import co.edu.kanumovie.comment.command.CommentInsert;
+import co.edu.kanumovie.comment.command.CommentSelectList;
 import co.edu.kanumovie.comment.command.CommentUpdate;
 import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.country.command.CountrySelectList;
@@ -125,6 +126,7 @@ public class FrontController extends HttpServlet {
 		map.put("/likesSelectList.do", new LikesSelectList());
 		map.put("/likesDelete.do", new LikesDelete());
 		map.put("/movieInsert.do", new MovieInsert());
+		map.put("/commentSelectList.do", new CommentSelectList());
 	}
 
 	@Override
