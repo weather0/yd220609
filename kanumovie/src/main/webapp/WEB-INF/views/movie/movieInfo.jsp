@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<% String uid=(String) session.getAttribute("email"); %>
+<%
+String uid = (String) session.getAttribute("email");
+%>
 <!-- 로그인세션id호출 -->
 
 <!DOCTYPE html>
@@ -121,40 +123,33 @@
        transform: scale(1.1);
        transition: 0.3s;
     } */
-    
-    
-    
-    
- /* comment box */
- #comments { 
+
+/* comment box */
+#comments {
 	overflow: hidden;
 	background-color: #b7b7b7;
 	border: none;
 	border-radius: 10px;
 	font-size: 18px;
 	line-height: 30px;
-	
 }
-
 
 /* 신고 모달 */
 #reportul {
 	list-style: none;
 }
 
-#modalbutton{
-	text-align : center;
+#modalbutton {
+	text-align: center;
 }
 
 #modal-header {
-	text-align : center;
+	text-align: center;
 }
 
 modal-title {
-text-align : center;
+	text-align: center;
 }
-
- 
 </style>
 
 </head>
@@ -486,9 +481,18 @@ text-align : center;
 													class="btn btn-sm btn-success">삭제</button>
 
 											</c:if>
-											<button class="btn btn-sm btn-success"
-												onclick="report('${comments.email}','${movieid}')"
-												data-toggle="modal" data-target="#myModal">신고</button>
+											<!-- 댓글이 한번 신고 되었던 사용자 -->
+											<c:if test="${comments.report == 'y' }">
+												<button class="btn btn-sm btn-success" onclick="noreport()">신고</button>
+											</c:if>
+
+											<!-- 댓글이 한번 신고 안되었던 사용자 -->
+											<c:if test="${comments.report != 'y' }">
+												<button class="btn btn-sm btn-success"
+													data-backdrop="static" data-keyboard="false"
+													onclick="report('${comments.email}','${movieid}','${comments.report }')"
+													data-toggle="modal" data-target="#myModal">신고</button>
+											</c:if>
 
 										</h6>
 										<div>
@@ -525,8 +529,7 @@ text-align : center;
 								<h5>Your Comment</h5>
 							</div>
 							<div class="anime__review__item__text">
-								<textarea id="comments" name="comments"
-									cols="120" rows="3"
+								<textarea id="comments" name="comments" cols="120" rows="3"
 									placeholder="해당 계정은 차단된 상태입니다.&#10;해당 관련 문제에 대해서는 관리자에게 문의하세요."
 									readonly></textarea>
 								<input type="hidden" id="id" name="id" value="${movieid}">
@@ -578,10 +581,11 @@ text-align : center;
 											<h4>신고내용</h4>
 											<hr>
 											<textarea id="content" name="content" cols="70" rows="5"></textarea>
-											<br> 
-											<div id = "modalbutton">
-											<input type="submit" class="btn btn-sm btn-success" value="신고"> 
-											<!-- <input type="reset" class="btn btn-sm btn-success" value="다시입력"> -->
+											<br>
+											<div id="modalbutton">
+												<input type="submit" class="btn btn-sm btn-success"
+													width="130" value="신고">
+												<!-- <input type="reset" class="btn btn-sm btn-success" value="다시입력"> -->
 											</div>
 										</form>
 									</section>
@@ -600,22 +604,30 @@ text-align : center;
 				<script>
 
 
-
-                function report(cnick , movieid) {
-                  let nick = cnick;
+				// 댓글 신고
+				// id : 영화 id  email : 신고당한사람 email  report : 신고당한여부
+                function report(cnick , movieid, report) {
+                  
+				  let report2 = report;
+				  console.log(report);
+				  let nick = cnick;
                   let mid = movieid; 
                   console.log(mid);
                   console.log(nick);
-                  //report name, movie_id 가 넘어가야함.
-                  $('#myModal').on('show.bs.modal', function () {
-                    $(".modal-body #reported_name").val(cnick);
-                    $(".modal-body #movie_id").val(movieid);
-                  })
-
-
-
-
+                  
+  
+              
+	                  //modal open시 report name, movie_id 값 전송
+	                        $('#myModal').on('show.bs.modal', function () {
+	                    $(".modal-body #reported_name").val(cnick);
+	                    $(".modal-body #movie_id").val(movieid);
+	                  })
+				}
+				
+                function noreport() {
+                	alert('이미 신고된 사용자입니다.');
                 }
+                
 
 
 
