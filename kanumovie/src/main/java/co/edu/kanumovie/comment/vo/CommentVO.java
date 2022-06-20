@@ -16,5 +16,6 @@ public class CommentVO {
 	private String id; // movies 테이블 영화아이디
 	private String email; // user 테이블 email
 	private String fileName; // 파일 경로 이름.
+	private String report; // 
 	
 }
