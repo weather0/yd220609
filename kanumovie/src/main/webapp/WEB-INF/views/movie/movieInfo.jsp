@@ -676,8 +676,14 @@ modal-title {
 								<input type="hidden" id="id" name="id" value="${movieid}">
 							</div>
 							<br>
+							<c:if test="${email != null }">
 							<button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
-							<input type="reset" class="btn btn-sm btn-success" value="취소">
+							<!-- <input type="reset" class="btn btn-sm btn-success" value="취소"> -->
+							</c:if>
+							
+							<c:if test="${email == null }">
+							<button onclick="replyInsert2()" class="btn btn-sm btn-success">등록</button>
+							</c:if>
 						</div>
 					</c:if>
 
@@ -944,6 +950,12 @@ modal-title {
                     httpRequest = new window.XMLHttpRequest();
                   }
                   return httpRequest;
+                }
+                
+                function replyInsert2() {
+                	alert("로그인이 필요합니다.");
+                	location.href = "loginForm.do";
+                	
                 }
 
 
