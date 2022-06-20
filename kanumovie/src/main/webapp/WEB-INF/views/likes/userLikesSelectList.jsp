@@ -29,7 +29,7 @@ String email = (String) session.getAttribute("email");
 </style>
 </head>
 <body>
-	<input type="hidden" id="email" value="${email}">
+	<input type="hidden" id="sessionId" value="${email}">
 	<div class="infinite">
 		<div class="movie-card-container">
 			<c:forEach items="${likeslist}" var="movie">
@@ -40,8 +40,6 @@ String email = (String) session.getAttribute("email");
 </body>
 
 <script>
-console.log(document.querySelectorAll('.likemovie'));
-console.log(typeof document.querySelectorAll('.likemovie').length);
 let container = document.querySelector('.infinite');
 if (document.querySelectorAll('.likemovie').length > 0) {
 let div = document.createElement('div');
