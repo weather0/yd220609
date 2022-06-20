@@ -81,7 +81,7 @@
 						<!--  임시 프로필 확인용 -->
 						<c:choose>
 							<c:when test="${not empty email}">
-								<a href="logout.do">Logout</a>
+								<a onclick="logout()" >Logout</a>
 							</c:when>
 							<c:otherwise>
 								<a href="signUpForm.do">Sign Up</a>
@@ -95,7 +95,27 @@
 		</div>
 
 		<div id="mobile-menu-wrap"></div>
-
+        
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script>
+            
+            function logout() {
+            	kakaoLogout();
+            	location.href='logout.do';
+            }
+        
+            // 카카오 로그아웃 
+	        window.Kakao.init('f86288f6262962cf240ad63764712370');
+	        function kakaoLogout() {
+		            if (!Kakao.Auth.getAccessToken()) {
+		                console.log('Not logged in.');
+		                return;
+		            }
+		            Kakao.Auth.logout(function(response) {
+		                window.location.href='home.do'
+		            });
+		    };
+        </script>
 	</header>
 	
 

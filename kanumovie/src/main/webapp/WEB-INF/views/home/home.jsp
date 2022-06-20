@@ -323,6 +323,8 @@ footer {
 			alert('로그인 실패!!')
 		} else if (name == 'signup') {
 			alert('회원가입 완료!!')
+		} else if (name == 'signupfail') {
+			alert('회원가입 실패!!')
 		}
 	</script>
 	 <div class="product__sidebar__comment">

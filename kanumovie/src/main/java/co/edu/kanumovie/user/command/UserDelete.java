@@ -2,6 +2,7 @@ package co.edu.kanumovie.user.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.edu.kanumovie.common.Command;
 import co.edu.kanumovie.user.service.UserService;
@@ -19,7 +20,8 @@ public class UserDelete implements Command {
 		vo.setEmail(email);
 		dao.userDelete(vo);
 		// 세션 초기화
-		
+		HttpSession session = request.getSession();
+		session.invalidate(); // 세션객체를 완전히 삭제.
 		return "ajax:";
 	}
 

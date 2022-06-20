@@ -263,6 +263,7 @@
 				// 확인 버튼 클릭 시 동작
 				alert("회원 데이터를 삭제합니다.");
 				// 회원 탈퇴하고 회원 탈퇴 완료 페이지 보여주기.
+				secession();
 				let email = '<%=(String) session.getAttribute("email")%>';
 				console.log(email);
 				$.ajax({
@@ -286,5 +287,25 @@
 			}
 		}
 	</script>
+	 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	 <script>
+	   // 카카오 회원탈퇴
+	   window.Kakao.init('f86288f6262962cf240ad63764712370');
+	   function secession() {
+		    Kakao.API.request({
+		        url: '/v1/user/unlink',
+		        success: function(response) {
+		            console.log(response);
+		            //callback(); //연결끊기(탈퇴)성공시 서버에서 처리할 함수
+		        },
+		        fail: function(error) {
+		        	alert('탈퇴 미완료');
+		            console.log('탈퇴 미완료')
+		            console.log(error);
+		        },
+		    });
+		};
+	 </script>
+	 
 </body>
 </html>
