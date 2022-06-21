@@ -36,7 +36,6 @@ String email = (String) session.getAttribute("email");
 	}
 	
 </style>
-
 </head>
 <body>
 	<input type="hidden" id="sessionId" value="${email}">
@@ -48,32 +47,37 @@ String email = (String) session.getAttribute("email");
 		</div>
 	</div>
 </body>
-
-
 <script>
+// 사용자가 보고싶어요 한 영화 출력
 let sessionId = document.querySelector('#sessionId').value;
 let container = document.querySelector('.infinite');
+// 사용자가 보고싶어한 영화가 1개 이상 있는 경우
 if (document.querySelectorAll('.likemovie').length > 0) {
 let div = document.createElement('div');
 let header = document.createElement('h1');
 header.innerHTML = "보고싶은 영화 리스트";
 div.append(header);
 container.append(div);
+// DB에서 아이디 받아와서 fetch로 호출
 document.querySelectorAll('.likemovie').forEach((elem) => {
 	fetch('https://api.themoviedb.org/3/movie/' + elem.value + '?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko-KR')
 		.then(response => response.json())
 		.then(data => {
 			let card = makeCard(data);
 			document.querySelector('.movie-card-container').append(card);
+			// 별점 평가 함수 실행
 			rating();
+			// 좋아요 하트 버튼 추가 (보고싶어요한 영화이기 때문에 Default color = red로 지정)
 			console.log(document.querySelector('.fa-heart'));
 			let heart = document.querySelector('#movie-'+data.id);
 			heart.setAttribute('style', 'color:red');
+			// 좋아요 풀 경우 해당 영화 카드 삭제
 			heart.addEventListener('click', function(e) {
 				heart.parentElement.parentElement.parentElement.remove(); 
 			})
 			})
 			})		
+// 사용자가 보고싶어한 영화가 0개인 경우
 } else if (document.querySelectorAll('.likemovie').length == 0) {
 	console.log("hi");
 	let container = document.querySelector('.infinite');
@@ -88,6 +92,5 @@ document.querySelectorAll('.likemovie').forEach((elem) => {
 	div.append(button);
 	container.append(div);
 }
-
 </script>
 </html>

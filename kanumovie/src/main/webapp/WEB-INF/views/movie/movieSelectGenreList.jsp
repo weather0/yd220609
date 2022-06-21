@@ -18,8 +18,11 @@
 	<h3 id="genreTitle">Categories > Genre > ${genre}</h3>
 </div>
 <div class="infinite">
+	<!-- 장르 아이디 저장 -->
 	<input type="hidden" id="genreId" value="${id}">
+	<!-- 유저 이메일 저장 -->
 	<input type="hidden" id = "sessionId" value="${email}">
+	<!-- 무한 스크롤 실행 전 2 페이지 구현 -->
 	<div class="movie-card-container" data-value='1'>
 	</div>
 	<div class="movie-card-container" data-value='2'>
