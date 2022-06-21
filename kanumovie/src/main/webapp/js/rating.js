@@ -1,3 +1,4 @@
+// 별점 매기기 함수 (jQuery)
 function rating() {
 	let rating = $('.star-rate');
 	console.log(rating);
