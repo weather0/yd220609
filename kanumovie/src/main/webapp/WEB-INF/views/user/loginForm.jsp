@@ -99,7 +99,7 @@
                         <div class="login__social__links">
                             <span>or</span>
 					        <div>
-					           <a href="javascript:kakaoLogin();"><img src="img/kakao_login.png" alt="카카오계정 로그인" style="width: 360px; height: 40px;"/></a>
+					           <a href="javascript:kakaoLogin();"><img src="img/kakao_login.png" alt="카카오계정 로그인" style="width: 360px;"/></a>
 					        </div>
 					        <br>
 					        <div id="buttonDiv"></div>

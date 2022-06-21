@@ -12,11 +12,11 @@
 </head>
 <body>
 	<!-- 사용자가 코멘트를 하나도 남기지 않은 경우 -->
+	<!-- 사용자가 코멘트를 한 개이상의 영화에 남긴 경우 -->
 	<c:choose>
 		<c:when test="${fn:length(commentlist) == 0}">
 			<h1>아직 코멘트를 남기지 않으셨네요? 영화를 보고 코멘트를 남겨주세요!</h1>
 		</c:when>
-		<!-- 사용자가 코멘트를 한 개이상의 영화에 남긴 경우 -->
 		<c:otherwise>
 			<div class="infinite">
 				<div class="movie-card-container">
