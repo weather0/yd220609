@@ -40,7 +40,6 @@
 		padding-left: 30%;
 		margin-bottom: 5%;
 	}
-	
 </style>
 </head>
 <body>
@@ -99,21 +98,16 @@
                     <div class="col-lg-6">
                         <div class="login__social__links">
                             <span>or</span>
-                            <ul>
-                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> Sign in With
-                                Facebook</a></li>
-                                <li><a href="#" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> Sign in With Twitter</a>
-                                </li>
-                            </ul>
+					        <div>
+					           <a href="javascript:kakaoLogin();"><img src="img/kakao_login.png" alt="카카오계정 로그인" style="width: 360px; height: 40px;"/></a>
+					        </div>
+					        <br>
+					        <div id="buttonDiv"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <a href="javascript:kakaoLogin();"><img src="./kakao_login.png" alt="카카오계정 로그인" style="height: 100px;"/></a>
-        <div id="buttonDiv"></div>
-        <div class="g_id_signout">Sign Out</div>
     </section>
     <!-- Login Section End -->
     
@@ -132,6 +126,26 @@
             console.log('Family Name: ' + responsePayload.family_name);
             console.log("Image URL: " + responsePayload.picture);
             console.log("Email: " + responsePayload.email);
+            
+            let googleEmail = responsePayload.email;
+            let googleNick = responsePayload.name;
+            
+            // loginGoogle.do
+            $.ajax({
+                type: 'POST',
+                url : 'loginGoogle.do',
+                data: { 'googleEmail' : googleEmail,
+                        'googleNick' : googleNick,},
+                dataType : 'text',
+                success: function(data){
+                    //작업이 성공적으로  발생했을 경우
+                    location.replace('/kanumovie/home.do');
+                },
+                error:function(){  
+                    //에러가 났을 경우 실행시킬 코드
+                    alert('구글 로그인 error 발생!');
+                }
+            })
         }
         function parseJwt (token) {
             var base64Url = token.split('.')[1];
@@ -149,7 +163,10 @@
           });
           google.accounts.id.renderButton(
             document.getElementById("buttonDiv"),
-            { theme: "outline", size: "large" }  // customization attributes
+            { theme: "filled_black", 
+              size: "large",
+              width: 360,
+              display: "inline"}  // customization attributes
           );
           google.accounts.id.prompt(); // also display the One Tap dialog
         }
@@ -186,7 +203,7 @@
 			                    },
 			                    error:function(){  
 			                        //에러가 났을 경우 실행시킬 코드
-			                        alert('error 발생!');
+			                        alert('카카오 로그인 error 발생!');
 			                    }
 			                })
                         }

@@ -112,7 +112,6 @@
 		                return;
 		            }
 		            Kakao.Auth.logout(function(response) {
-		                window.location.href='home.do'
 		            });
 		    };
         </script>
