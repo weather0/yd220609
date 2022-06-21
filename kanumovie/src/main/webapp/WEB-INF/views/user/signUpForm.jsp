@@ -49,17 +49,18 @@
                             <div class="input__item">
                                 <input type="text" id="email" name="email" placeholder="Email address" required>
                                 <span class="icon_mail"></span>
-                                <button type="button" onclick="idCheck()" class="site-btn">중복 확인</button>
+                                <button type="button" onclick="idCheck()" class="site-btn">Email Check</button>
+                            </div>
+                            <div class="input__item">
+                                <input type="password" id="pw" name="pw" placeholder="Password" required>
+                                <span class="icon_lock"></span>
+                                <button type="button" onclick="pwCheck()" class="site-btn">PW Check</button>
                             </div>
                             <div class="input__item">
                                 <input type="text" id="nick" name="nick" placeholder="Your NickName" required>
                                 <span class="icon_profile"></span>
                             </div>
-                            <div class="input__item">
-                                <input type="password" id="pw" name="pw" placeholder="Password" required>
-                                <span class="icon_lock"></span>
-                            </div>
-                            	<button type="submit" class="site-btn" id="regiBtn">Register Now</button>
+                            	<button type="submit" class="site-btn" id="regiBtn" style="margin-left: 70px;">Register Now</button>
                         </form>
                         <h5>Already have an account? <a href="loginForm.do">Log In!</a></h5>
                     </div>
@@ -69,7 +70,7 @@
                         <h3>Login With:</h3>
                         <ul>
                             <li><a href="loginForm.do" class="google"><i class="fa fa-google"></i> Sign in With Google</a></li>
-                            <li><a href="loginForm.do" class="twitter"><i class="fa fa-twitter"></i> Sign in With KaKao</a></li>
+                            <li><a href="loginForm.do" class="twitter" style="background: yellow; color: black;"><i class="fa fa-twitter"></i> Sign in With KaKao</a></li>
                         </ul>
                     </div>
                 </div>
@@ -77,6 +78,7 @@
         </div>
     </section>
     <div><input type="hidden" value="no" id="cango"></div>
+    <div><input type="hidden" value="no" id="cangoPw"></div>
     <!-- Signup Section End -->
 
 	<script>
@@ -99,6 +101,9 @@
                     } else {
                     	document.getElementById('cango').value = 'yes';
                     	verifyEmail()
+                    	if(document.getElementById('cango').value == 'yes') {
+                    		alert('가입 가능한 이메일입니다!')
+                    	}
                     }
                     cangoCheck();
                 },
@@ -117,9 +122,8 @@
 		})
 		// 중복체크 확인 여부 > 버튼 보여줌
 		function cangoCheck() {
-			if(document.getElementById('cango').value == 'yes') {
+			if(document.getElementById('cango').value == 'yes' && document.getElementById('cangoPw').value == 'yes') {
 				document.getElementById('regiBtn').style.display = "block";
-				alert('가입 가능한 이메일입니다!')
 			} else {
 				document.getElementById('regiBtn').style.display = "none";
 			}
@@ -142,6 +146,23 @@
 		    alert('이메일 형식이 잘못되었습니다!')
 		    document.getElementById('cango').value = 'no'
 		  }
+		}
+		
+		// 비밀번호 체크
+		// 8 ~ 20자 영문, 숫자, 특수문자를 최소 한가지씩 조합
+		function pwCheck() {
+			var regExp = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+		 
+			let pwCheck = regExp.test(document.getElementById('pw').value); // 형식에 맞는 경우 true 리턴
+			console.log('패스워드 체크'+pwCheck);
+			if(pwCheck==true) {
+				alert('사용가능한 비밀번호입니다!');
+				document.getElementById('cangoPw').value = 'yes';
+				cangoCheck();
+			} else {
+				alert('유효하지 않는 비밀번호입니다 ( 8 ~ 20자의 영문, 숫자, 특수문자를 섞은 암호여야합니다 )')
+			}
+			
 		}
 	</script>
 </body>
