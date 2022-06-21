@@ -12,9 +12,28 @@
 	color: #fff;
 }
 
+#check {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#pwCheck2 form h3 {
+    margin-bottom: 30px;
+}
+
+#pw {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #userManage .userHeader {
 	width: 100%;
 	padding: 5%;
+	background-image: url("./img/user4.jpg");
+	background-repeat: no-repeat;
+	background-size : cover;
 }
 
 #userManage .userHeader h2, p {
@@ -65,16 +84,17 @@
 	color: #fff;
 }
 
-#pwCheck1 {
+#pwCheck1Div {
 	width: 80%;
 	height: 200px;
 	margin: 0 auto;
 	color: #fff;
 	background: rbga(0, 0, 0, 0.5);
+	border-radius: 30px;
 }
 
 #pwCheck1 h3 {
-	padding: 5% 5% 5% 0%;
+	padding: 1% 1% 0% 0%;
 }
 
 .tabContent {
@@ -97,7 +117,7 @@
 }
 
 .tabContent input[type=text] {
-	width: 80%;
+	width: 20%;
 	margin: 2% auto;
 }
 
@@ -161,7 +181,14 @@
 	border: none;
 	border-radius: 10px;
 	transition-property: transform, font-weight, background-color, border;
-	transition-duration: 0.3s;
+	transition-duration: 0.7s;
+}
+
+.userGenre {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-55%, -15%);
 }
 
 </style>
@@ -207,16 +234,16 @@
 	</script>
 
 	<article class="tabContent user-information-section" id="tab1">
-		<div id="pwCheck1">
+		<div id="pwCheck1Div">
 			<form id="pwCheck1" method="post" action="#">
 				<h3>비밀번호 수정</h3>
-				<h5>기존 비밀번호 확인</h5>
+				<h5 style="text-align: center;">기존 비밀번호 확인</h5>
 				<div class="input__item">
 					<input type="hidden" id="email" name="email" value="${email}">
 				</div>
 				<div class="input__item">
 					<input type="password" id="check" name="check"
-						placeholder="기존 패스워드를 입력" required> <span
+						placeholder="기존 패스워드를 입력" required size="10"> <span
 						class="icon_profile"></span>
 				</div>
 				<button type="button" onclick="getCheck()">비밀번호 확인</button>
@@ -239,15 +266,19 @@
 	<article class="tabContent user-information-section" id="tab2">
 		<form action="profileChange.do" method="post"
 			enctype="multipart/form-data">
-			<div class="anime__review__item__pic">
+			<div class="anime__review__item__pic" style="
+    margin-bottom: 25px;
+">
 				<img alt="${fileName}" src="img/profile/${fileName}">
 			</div>
 			<br>
 			<div class="input__item">
 				<input type="hidden" id="email" name="email" value="${email}">
-				<input type="hidden" id="pw" name="pw" value="${pw}"> <label
-					for="file" id="filelabel"><h3>새 프로필 업로드</h3></label> <input
-					type="file" id="file" name="file" class="fileupload" required>
+				<input type="hidden" id="pw" name="pw" value="${pw}"> 
+				<div>
+					<label for="file" id="filelabel"><h3>새 프로필 업로드</h3></label>
+				</div>
+			    <input type="file" id="file" name="file" class="fileupload" required>
 			</div>
 			<br>
 			<button type="submit" class="site-btn">프로필 사진 수정</button>
@@ -289,6 +320,8 @@
 			<button type="button" class="site-btn" onclick="deleteUser()">회원탈퇴</button>
 		</form>
 	</article>
+	
+	<!-- <div id="userGenre" ></div> -->
 
 	<!-- Signup Section End -->
 	<script src="js/rating.js"></script>
@@ -332,11 +365,13 @@
 				h5.append(i);
 				div.append(h5);
 			}
+			
 			document.querySelector('#tab4').append(div);
 		})
 				function getShow(){
             document.getElementById("pwCheck2").style.display = "block";
             document.getElementById("pwCheck1").style.display = "none";
+            document.getElementById("pwCheck1Div").style.display = "none";
         }
         
         function getCheck(){
@@ -390,7 +425,6 @@
 		            //callback(); //연결끊기(탈퇴)성공시 서버에서 처리할 함수
 		        },
 		        fail: function(error) {
-		        	alert('탈퇴 미완료');
 		            console.log('탈퇴 미완료')
 		            console.log(error);
 		        },

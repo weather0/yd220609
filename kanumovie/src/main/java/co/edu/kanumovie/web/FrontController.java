@@ -54,6 +54,7 @@ import co.edu.kanumovie.user.command.FindPw;
 import co.edu.kanumovie.user.command.FindPwForm;
 import co.edu.kanumovie.user.command.Login;
 import co.edu.kanumovie.user.command.LoginForm;
+import co.edu.kanumovie.user.command.LoginGoogle;
 import co.edu.kanumovie.user.command.LoginKakao;
 import co.edu.kanumovie.user.command.Logout;
 import co.edu.kanumovie.user.command.PreferGenreForm;
@@ -97,6 +98,7 @@ public class FrontController extends HttpServlet {
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
 		map.put("/loginKakao.do", new LoginKakao());
+		map.put("/loginGoogle.do", new LoginGoogle());
 		map.put("/logout.do", new Logout());
 		map.put("/userManageForm.do", new UserManageForm());
 		map.put("/userManage.do", new UserManage());
