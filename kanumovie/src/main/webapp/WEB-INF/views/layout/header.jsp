@@ -112,6 +112,7 @@
 		                return;
 		            }
 		            Kakao.Auth.logout(function(response) {
+		            	console.log('kakao logout!');
 		            });
 		    };
         </script>
