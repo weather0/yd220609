@@ -36,7 +36,7 @@
         <script src="js/movieInfo.js"></script>
 
 
-        <style>
+  <style>
           /* 차단 Comment box */
           /*   #formContainer {
                                     width: 80%;
@@ -218,20 +218,21 @@
                                                               </script> -->
 
 
-                <!-- 포스터 -->
-                <div class="col-lg-4 poster">
-                  <img class="posterImg">
-                  <!-- <div class="anime__details__pic"> -->
-                  <!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
-                  <!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
-                  <!-- </div> -->
-                </div>
-                <div class="col-lg-8 details">
-                  <div class="anime__details__text">
-                    <div class="anime__details__title">
-                      <h3></h3>
-                      <span class="subInfo"></span>
-                    </div>
+
+					<!-- 포스터 -->
+					<div class="col-lg-4 poster">
+						<img class="posterImg">
+						<!-- <div class="anime__details__pic"> -->
+						<!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
+						<!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
+						<!-- </div> -->
+					</div>
+					<div class="col-lg-8 details">
+						<div class="anime__details__text">
+							<div class="anime__details__title">
+								<h3></h3>
+								<span class="subInfo"></span>
+							</div>
 
 
 
@@ -406,13 +407,14 @@
                 </div>
 
 
-                <!-- Cast & Crew 카드 섹션 -->
-                <section class="panel top_billed scroller">
-                  <div class="cast-title">
-                    <h3 dir="auto">Cast & Crew</h3>
-                  </div>
-                  <div id="cast_scroller" class="scroller_wrap should_fade is_fading">
-                    <ol class="people scroller">
+					<!-- Cast & Crew 카드 섹션 -->
+					<section class="panel top_billed scroller">
+						<div class="cast-title">
+							<h3 dir="auto">Cast & Crew</h3>
+						</div>
+						<div id="cast_scroller"
+							class="scroller_wrap should_fade is_fading">
+							<ol class="people scroller">
 
                       <!-- <li class="card">
                       <a href="https://www.themoviedb.org/person/6384-keanu-reeves?language=ko">
@@ -492,22 +494,29 @@
                 </div>
 
 
-                <!-- 차단 되지않은 계정의 comment창 -->
-                <c:if test="${blockCheck != 'y'}">
-                  <div class="anime__details__form">
-                    <div class="section-title">
-                      <h5>Your Comment</h5>
-                    </div>
-                    <div class="anime__review__item__text">
-                      <textarea id="comments" name="comments" cols="120" rows="3"
-                        placeholder="Your Comment.."></textarea>
-                      <input type="hidden" id="id" name="id" value="${movieid}">
-                    </div>
-                    <br>
-                    <button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
-                    <input type="reset" class="btn btn-sm btn-success" value="취소">
-                  </div>
-                </c:if>
+					<!-- 차단 되지않은 계정의 comment창 -->
+					<c:if test="${blockCheck != 'y'}">
+						<div class="anime__details__form">
+							<div class="section-title">
+								<h5>Your Comment</h5>
+							</div>
+							<div class="anime__review__item__text">
+								<textarea id="comments" name="comments" cols="120" rows="3"
+									placeholder="Your Comment.."></textarea>
+								<input type="hidden" id="id" name="id" value="${movieid}">
+							</div>
+							<br>
+							<c:if test="${email != null }">
+							<button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
+							<!-- <input type="reset" class="btn btn-sm btn-success" value="취소"> -->
+							</c:if>
+							
+							<c:if test="${email == null }">
+							<button onclick="replyInsert2()" class="btn btn-sm btn-success">등록</button>
+							</c:if>
+						</div>
+					</c:if>
+
 
                 <!-- 차단 된 계정의 comment창 -->
                 <c:if test="${blockCheck == 'y'}">
@@ -764,6 +773,12 @@
                     httpRequest = new window.XMLHttpRequest();
                   }
                   return httpRequest;
+                }
+                
+                function replyInsert2() {
+                	alert("로그인이 필요합니다.");
+                	location.href = "loginForm.do";
+                	
                 }
 
 

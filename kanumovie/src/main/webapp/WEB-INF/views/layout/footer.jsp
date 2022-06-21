@@ -57,5 +57,11 @@
           </div>
       </div>
   </footer>
+<!--   <script>
+  	console.log(document.querySelector('.footer'));
+  	console.log(document.querySelector('.infinite').getBoundingClientRect().height);
+  	 document.querySelector('.footer').setAttribute('style', 'margin-top: 0%;position:absolute;top:-' + document.querySelector('.infinite').getBoundingClientRect().height + ";");
+  	console.log(document.querySelector('.footer').getAttribute('style'));
+  </script> -->
 </body>
 </html>

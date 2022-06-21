@@ -43,4 +43,19 @@
     <select id="userSelectEmail" resultType="co.edu.kanumovie.user.vo.UserVO">
         SELECT * FROM K_USERS WHERE EMAIL = #{email}
     </select>
+    <select id="userPreference" parameterType="co.edu.kanumovie.user.vo.UserVO" resultType="co.edu.kanumovie.genre.vo.GenreVO">
+    	SELECT *
+			FROM K_GENRES
+			WHERE ID IN (SELECT PREFERENCE1
+			FROM K_USERS
+			WHERE EMAIL = #{email}
+			UNION
+			SELECT PREFERENCE2
+			FROM K_USERS
+			WHERE EMAIL = #{email}
+			UNION
+			SELECT PREFERENCE3
+			FROM K_USERS
+			WHERE EMAIL= #{email})
+    </select>
 </mapper>

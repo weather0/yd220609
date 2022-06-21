@@ -2,6 +2,7 @@ package co.edu.kanumovie.user.service;
 
 import java.util.List;
 
+import co.edu.kanumovie.genre.vo.GenreVO;
 import co.edu.kanumovie.user.vo.PreferVO;
 import co.edu.kanumovie.user.vo.UserVO;
 
@@ -18,4 +19,5 @@ public interface UserService {
 	
 	public List<PreferVO> perferList(); // 선호 영화 선택용 영화들 리스트.
 	public UserVO userSelectEmail(UserVO vo); // 한 개 유저 정보 이메일로 가져오기.
+	List<GenreVO> userPreference(UserVO vo); // 유저의 선호 장르 가져오기 
 }
