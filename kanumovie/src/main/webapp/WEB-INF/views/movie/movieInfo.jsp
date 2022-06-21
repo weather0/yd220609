@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <% String uid=(String) session.getAttribute("email"); %>
-<!-- 로그인세션id호출 -->
+<!-- 로그인세션id호출  -->
 
 <!DOCTYPE html>
 <html>
@@ -40,9 +40,9 @@
 <script src="js/movieInfo.js"></script>
 
 
-<style>
-/* 차단 Comment box */
-/*   #formContainer {
+        <style>
+          /* 차단 Comment box */
+          /*   #formContainer {
                                     width: 80%;
                                     margin: 5% auto;
                                     background: rgba(0, 0, 0, 0.5);
@@ -185,76 +185,35 @@ modal-title {
 					</div>
 
 
-
-					<!-- 모달창2(폐기) -->
-					<!-- <div class="modal2">
-                                                                <div class="modal fade show">Modal
-                                                                  <p>
-                                                                    jwe;fjwofjwefi
-                                                                  </p>
-                                                                </div>
-                                                              </div>
-                                                              <div class="modalbox">
-                                                                <button class="modalbtn">부가영상</button>
-                                                              </div>
-                                                              <script>
-                                                                const modal = document.querySelector('.modal fade show');
-                                                                const btnOpenPopup = document.querySelector('.modalbtn');
-
-                                                                btnOpenPopup.addEventListener('click', () => {
-                                                                  modal.classList.toggle('show');
-
-                                                                  if (modal.classList.contains('show')) {
-                                                                    body.style.overflow = 'hidden';
-                                                                  }
-                                                                });
-
-                                                                modal.addEventListener('click', (event) => {
-                                                                  if (event.target === modal) {
-                                                                    modal.classList.toggle('show');
-
-                                                                    if (!modal.classList.contains('show')) {
-                                                                      body.style.overflow = 'auto';
-                                                                    }
-                                                                  }
-                                                                });
-                                                              </script> -->
+                <!-- 포스터 -->
+                <div class="col-lg-4 poster">
+                  <img class="posterImg">
+                </div>
+                <div class="col-lg-8 details">
+                  <div class="anime__details__text">
+                    <div class="anime__details__title">
+                      <h3></h3>
+                      <span class="subInfo"></span>
+                    </div>
 
 
+                    <!-- 좋아요 버튼 -->
+                    <div class="like-container">
+                      <div class="like-cnt unchecked" id="like-cnt">
+                        <i class="like-btn material-icons">thumb_up</i>
+                      </div>
+                    </div>
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+                    <script src='https://cdn.jsdelivr.net/mojs/latest/mo.min.js'></script>
+                    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/DrawSVGPlugin.min.js'></script>
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
 
-					<!-- 포스터 -->
-					<div class="col-lg-4 poster">
-						<img class="posterImg">
-						<!-- <div class="anime__details__pic"> -->
-						<!-- <div class="comment"><i class="fa fa-comments"></i> 11</div> -->
-						<!-- <div class="view"><i class="fa fa-eye"></i> 9141</div> -->
-						<!-- </div> -->
-					</div>
-					<div class="col-lg-8 details">
-						<div class="anime__details__text">
-							<div class="anime__details__title">
-								<h3></h3>
-								<span class="subInfo"></span>
-							</div>
+                    <!-- <input type="hidden" id="uid" value="<%=uid%>"> -->
+                    <!-- 스크립트를 외부소스로 읽어들일 경우 꺽%=uid%꺽 값을 직접 못 불러온다! (한 페이지에 다 쓸 때에는 가능) -->
+                    <!-- 이렇게 히든태그로 세팅하고 넘겨줘야 함 -->
+                    <!-- <script src='js/movieLikes.js' id="rendered-js"></script> -->
 
-
-
-
-							<!-- 좋아요 버튼 start -->
-							<div class="like-container">
-								<div class="like-cnt unchecked" id="like-cnt">
-									<i class="like-btn material-icons">thumb_up</i>
-								</div>
-							</div>
-
-							<script
-								src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-							<script src='https://cdn.jsdelivr.net/mojs/latest/mo.min.js'></script>
-							<script
-								src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/DrawSVGPlugin.min.js'></script>
-							<script
-								src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
-							<script id="rendered-js">
+                    <script>
                       let likesId = 0;
                       let check_status = false;
                       var like_cnt = $("#like-cnt");
@@ -328,7 +287,7 @@ modal-title {
 
 
                       // 좋아요 종합
-                      // console.log('<%=uid%>');
+                      console.log('<%=uid%>');
                       if ('<%=uid%>' != 'null') {
                         fetch('likesSelectList.do', {
                           method: 'post',
@@ -339,27 +298,26 @@ modal-title {
                           .then(result => {
                             likesId = result.likes_Id;
                             if (result.likes_Id == 0) {
-                              console.log('로그인O 좋아요X');
+                              console.log('현재상태: 로그인O 좋아요X');
                               checkOff();
                               likeFn();
-
                             } else {
-                              console.log(' 로그인O 좋아요O');
+                              console.log('현재상태: 로그인O 좋아요O');
                               checkOn();
                               likeFn();
                             }
                           })
                           .catch(err => console.log(err));
                       } else {
-                        console.log('로그인X')
+                        console.log('현재상태: 로그인X')
                         checkOff();
                         $("#like-cnt").click(function () {
                           alert('로그인을 해주세요');
                         })
                       }
 
+
                     </script>
-							<!-- 좋아요 버튼 end -->
 
 
 
@@ -373,81 +331,39 @@ modal-title {
 							<!-- 줄거리 -->
 							<p class="overview"></p>
 
-							<!-- 부가정보 -->
-							<div class="anime__details__widget">
-								<div class="row">
-									<div class="col-lg-12 col-md-6">
-										<ul>
-											<!-- <li><span>Type:</span> TV Series</li> -->
-											<li class="genre"></li>
-											<li class="releaseDate"></li>
-											<li class="countries"></li>
-											<li class="companies"></li>
-										</ul>
-									</div>
-									<!-- <div class="col-lg-6 col-md-6">
-                      <ul>
-                        <li><span>Scores:</span> 7.31 / 1,515</li>
-                        <li><span>Rating:</span> 8.5 / 161 times</li>
-                        <li><span>Duration:</span> 24 min/ep</li>
-                        <li><span>Quality:</span> HD</li>
-                        <li><span>Views:</span> 131,541</li>
-                      </ul>
-                    </div> -->
-								</div>
-							</div>
 
-						</div>
+                    <!-- 부가정보 -->
+                    <div class="anime__details__widget">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-6">
+                          <ul>
+                            <li class="genre"></li>
+                            <li class="releaseDate"></li>
+                            <li class="countries"></li>
+                            <li class="companies"></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
 
 
-
-
-
-
-
-						<!-- <div class="anime__details__btn">
-                  <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                  <a href="#" class="watch-btn"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                </div> -->
-
-					</div>
-
-
-					<!-- Cast & Crew 카드 섹션 -->
-					<section class="panel top_billed scroller">
-						<div class="cast-title">
-							<h3 dir="auto">Cast & Crew</h3>
-						</div>
-						<div id="cast_scroller"
-							class="scroller_wrap should_fade is_fading">
-							<ol class="people scroller">
-
-								<!-- <li class="card">
-                      <a href="https://www.themoviedb.org/person/6384-keanu-reeves?language=ko">
-                        <img loading="lazy" class="profile"
-                          src="https://www.themoviedb.org/t/p/w138_and_h175_face/4D0PpNI0kmP58hgrwGC3wCjxhnm.jpg"
-                          srcset="https://www.themoviedb.org/t/p/w138_and_h175_face/4D0PpNI0kmP58hgrwGC3wCjxhnm.jpg 1x, https://www.themoviedb.org/t/p/w276_and_h350_face/4D0PpNI0kmP58hgrwGC3wCjxhnm.jpg 2x"
-                          alt="Keanu Reeves">
-                      </a>
-                      <p><a href="https://www.themoviedb.org/person/6384-keanu-reeves?language=ko">Keanu Reeves</a>
-                      </p>
-                      <p class="character">Thomas A. Anderson / Neo</p>
-                    </li>
-  
-                    <li class="filler view_more">
-                      <p><a href="/movie/603-the-matrix/cast?language=ko">더 보기 <span
-                            class="glyphicons_v2 arrow-thin-right"></span></a></p>
-                    </li> -->
-
-							</ol>
-						</div>
-					</section>
+                <!-- Cast & Crew 카드 섹션 -->
+                <section class="panel top_billed scroller">
+                  <div class="cast-title">
+                    <h3 dir="auto">Cast & Crew</h3>
+                  </div>
+                  <div id="cast_scroller" class="scroller_wrap should_fade is_fading">
+                    <ol class="people scroller">
+                    </ol>
+                  </div>
+                </section>
 
 				</div>
 			</div>
 
-
-			<!-- comment -->
 
 
 
@@ -516,32 +432,28 @@ modal-title {
 					</div>
 
 
-					<!-- 차단 되지않은 계정의 comment창 -->
-					<c:if test="${blockCheck != 'y'}">
-						<div class="anime__details__form">
-							<div class="section-title">
-								<h5>Your Comment</h5>
-							</div>
-							<div class="anime__review__item__text">
-								<textarea id="comments" name="comments" cols="120" rows="3"
-									placeholder="Your Comment.." required></textarea>
-								<input type="hidden" id="id" name="id" value="${movieid}">
-							</div>
-							<br>
-							<!-- 로그인 한 상태 -->
-							<c:if test="${email != null }">
-								<button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
-								<!-- <input type="reset" class="btn btn-sm btn-success" value="취소"> -->
-							</c:if>
-							
-							<!-- 비 로그인 상태 -->
-							<c:if test="${email == null }">
-								<button onclick="needLogin()" class="btn btn-sm btn-success">등록</button>
-							</c:if>
-							
-							
-						</div>
-					</c:if>
+                <!-- 차단 되지않은 계정의 comment창 -->
+                <c:if test="${blockCheck != 'y'}">
+                  <div class="anime__details__form">
+                    <div class="section-title">
+                      <h5>Your Comment</h5>
+                    </div>
+                    <div class="anime__review__item__text">
+                      <textarea id="comments" name="comments" cols="120" rows="3"
+                        placeholder="Your Comment.."></textarea>
+                      <input type="hidden" id="id" name="id" value="${movieid}">
+                    </div>
+                    <br>
+                    <c:if test="${email != null }">
+                      <button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
+                      <!-- <input type="reset" class="btn btn-sm btn-success" value="취소"> -->
+                    </c:if>
+
+                    <c:if test="${email == null }">
+                      <button onclick="replyInsert2()" class="btn btn-sm btn-success">등록</button>
+                    </c:if>
+                  </div>
+                </c:if>
 
 					<!-- 차단 된 계정의 comment창 -->
 					<c:if test="${blockCheck == 'y'}">
@@ -827,11 +739,11 @@ modal-title {
                   }
                   return httpRequest;
                 }
-                
-                function needLogin() {
-                	alert("로그인이 필요합니다.");
-                	location.href = "loginForm.do";
-                	
+
+                function replyInsert2() {
+                  alert("로그인이 필요합니다.");
+                  location.href = "loginForm.do";
+
                 }
 
 
