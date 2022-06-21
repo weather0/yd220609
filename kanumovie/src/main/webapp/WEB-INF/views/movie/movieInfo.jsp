@@ -633,24 +633,37 @@ modal-title {
 											<span id="commentnick">${comments.nick }</span> - <span>${comments.wdate }</span>
 											<c:if test="${comments.email == email }">
 												<!-- 수정 삭제시 댓글의 번호 값을 넘겨줌 -->
+												<c:if test="${blockCheck != 'y'}">
 												<input type="button"
 													onclick="commentUpdate(${comments.cid})"
 													class="btn btn-sm btn-success" value="수정" />
 												<button onclick="commentDelete(${comments.cid})"
 													class="btn btn-sm btn-success">삭제</button>
-
+												</c:if>
+												
+												<c:if test="${blockCheck == 'y'}">
+												<input type="button"
+													onclick="blockreport()"
+													class="btn btn-sm btn-success" value="수정" />
+												<button onclick="blockreport()"
+													class="btn btn-sm btn-success">삭제</button>
+												</c:if>
 											</c:if>
 											<!-- 댓글이 한번 신고 되었던 사용자 -->
-											<c:if test="${comments.report == 'y' }">
+											<%-- <c:if test="${comments.report == 'y' }">
 												<button class="btn btn-sm btn-success" onclick="noreport()">신고</button>
-											</c:if>
+											</c:if> --%>
 
-											<!-- 댓글이 한번 신고 안되었던 사용자 -->
-											<c:if test="${comments.report != 'y' }">
+											<!-- 차단된 계정은 신고 불가 -->
+											<c:if test="${blockCheck != 'y'}">
 												<button class="btn btn-sm btn-success"
 													data-backdrop="static" data-keyboard="false"
 													onclick="report('${comments.email}','${movieid}','${comments.report }')"
 													data-toggle="modal" data-target="#myModal">신고</button>
+											</c:if>
+											
+											<c:if test="${blockCheck == 'y' }">
+												<input type="button" onclick="blockreport()" value="신고" class="btn btn-sm btn-success">
 											</c:if>
 
 										</h6>
@@ -700,7 +713,7 @@ modal-title {
 								<input type="hidden" id="id" name="id" value="${movieid}">
 							</div>
 							<br>
-							<button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
+							<button onclick="blockreport()" class="btn btn-sm btn-success">등록</button>
 						</div>
 					</c:if>
 				</div>
@@ -789,8 +802,14 @@ modal-title {
 	                  })
 				}
 				
+				
+				// 차단된 사용자 기능 불가 멘트
                 function noreport() {
                 	alert('이미 신고된 사용자입니다.');
+                }
+                
+                function blockreport() {
+                	alert('관리자에 의해 차단된 사용자입니다.');
                 }
                 
 
