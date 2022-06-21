@@ -485,18 +485,26 @@ modal-title {
 														class="btn btn-sm btn-success">삭제</button>
 												</c:if>
 											</c:if>
-											<!-- 댓글이 한번 신고 되었던 사용자 -->
-											<%-- <c:if test="${comments.report == 'y' }">
-												<button class="btn btn-sm btn-success" onclick="noreport()">신고</button>
-											</c:if> --%>
-											<!-- 댓글이 한번 신고 안되었던 사용자 -->
-														<c:if test="${comments.report != 'y' }">
+											
+											  <!-- 비로그인상태 신고 기능 사용 불가 -->
+												<c:if test="${email == null }">
+													<input type="button" value="신고" onclick="needLogin()" class="btn btn-sm btn-success">
+												</c:if>
+												
+												<!-- 로그인 상태 신고 -->
+												<c:if test="${email != null }">
+												<!-- 차단 상태가 아니면 신고가능  -->
+														<c:if test="${blockCheck != 'y' }">
 															<button class="btn btn-sm btn-success"
 																data-backdrop="static" data-keyboard="false"
 																onclick="report('${comments.email}','${movieid}','${comments.report }')"
 																data-toggle="modal" data-target="#myModal">신고</button>
 														</c:if>
-
+														<!-- 차단 상태면 신고기능 불가능 -->
+														<c:if test="${blockCheck == 'y' }">
+														<input type="button" value="신고" onclick="blockreport()" class="btn btn-sm btn-success">
+														</c:if>
+													</c:if>
 													</h6>
 													<div>
 														<p id="p_${comments.cid}">${comments.comments }</p>
@@ -520,13 +528,14 @@ modal-title {
 								<input type="hidden" id="id" name="id" value="${movieid}">
 							</div>
 							<br>
+							<!-- 로그인 한 상태 -->
 							<c:if test="${email != null }">
 								<button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
 								<!-- <input type="reset" class="btn btn-sm btn-success" value="취소"> -->
 							</c:if>
-
+							<!-- 비 로그인 상태 -->
 							<c:if test="${email == null }">
-								<button onclick="replyInsert2()" class="btn btn-sm btn-success">등록</button>
+								<button onclick="needLogin()" class="btn btn-sm btn-success">등록</button>
 							</c:if>
 						</div>
 					</c:if>
@@ -547,23 +556,6 @@ modal-title {
 							<button onclick="blockreport()" class="btn btn-sm btn-success">등록</button>
 						</div>
 					</c:if>
-
-				<!-- 차단 된 계정의 comment창 -->
-				<c:if test="${blockCheck == 'y'}">
-					<div class="anime__details__form">
-						<div class="section-title">
-							<h5>Your Comment</h5>
-						</div>
-						<div class="anime__review__item__text">
-							<textarea id="comments" name="comments" cols="120" rows="3"
-								placeholder="해당 계정은 차단된 상태입니다.&#10;해당 관련 문제에 대해서는 관리자에게 문의하세요."
-								readonly></textarea>
-							<input type="hidden" id="id" name="id" value="${movieid}">
-						</div>
-						<br>
-						<button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
-					</div>
-				</c:if>
 			</div>
 
 
@@ -832,7 +824,7 @@ modal-title {
                   return httpRequest;
                 }
                 
-                function replyInsert2() {
+                function needLogin() {
                 	alert("로그인이 필요합니다.");
                 	location.href = "loginForm.do";
                 	
