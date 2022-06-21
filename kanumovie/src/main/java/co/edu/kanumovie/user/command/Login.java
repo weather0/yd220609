@@ -49,9 +49,8 @@ public class Login implements Command {
 			} else {
 				session.setAttribute("directoryfileName", vo.getDirectoryFileName());
 			}
-			request.setAttribute("message", "login");
 		} else {
-			request.setAttribute("message", "login2");
+			return "loginForm.do";
 		}
 		
 		return "home.do";
