@@ -42,7 +42,6 @@ import co.edu.kanumovie.likes.command.UserLikesSelectList;
 import co.edu.kanumovie.movie.command.MovieInfo;
 import co.edu.kanumovie.movie.command.MovieInfoghtest;
 import co.edu.kanumovie.movie.command.MovieInsert;
-import co.edu.kanumovie.movie.command.MoviePlay;
 import co.edu.kanumovie.movie.command.MovieSearch;
 import co.edu.kanumovie.movie.command.MovieSelectCountryList;
 import co.edu.kanumovie.movie.command.MovieSelectGenreList;
@@ -52,8 +51,11 @@ import co.edu.kanumovie.report.command.ReportInsert;
 import co.edu.kanumovie.report.command.ReportUpdate;
 import co.edu.kanumovie.user.command.FindPw;
 import co.edu.kanumovie.user.command.FindPwForm;
+import co.edu.kanumovie.user.command.IdCheck;
 import co.edu.kanumovie.user.command.Login;
 import co.edu.kanumovie.user.command.LoginForm;
+import co.edu.kanumovie.user.command.LoginGoogle;
+import co.edu.kanumovie.user.command.LoginKakao;
 import co.edu.kanumovie.user.command.Logout;
 import co.edu.kanumovie.user.command.PreferGenreForm;
 import co.edu.kanumovie.user.command.ProfileChange;
@@ -63,6 +65,7 @@ import co.edu.kanumovie.user.command.SignUpForm;
 import co.edu.kanumovie.user.command.UserDelete;
 import co.edu.kanumovie.user.command.UserManage;
 import co.edu.kanumovie.user.command.UserManageForm;
+import co.edu.kanumovie.user.command.UserPreference;
 import co.edu.kanumovie.user.command.preferGenre;
 
 @WebServlet("*.do")
@@ -76,8 +79,7 @@ public class FrontController extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		map.put("/home.do", new Home());
-		map.put("/movieSelectList.do", new MovieSelectList());
+		map.put("/home.do", new Home()); // 홈페이지
 		map.put("/admin.do", new Admin());//관리자 페이지 이동
 		map.put("/adminmessage.do", new AdminMessage()); //신고관리페이지이동
 		map.put("/updateblockcheck.do", new Updateblockcheck()); //차단 처리
@@ -94,6 +96,8 @@ public class FrontController extends HttpServlet {
 		map.put("/analyticsWeeklyVisit.do", new AnalyticsWeeklyVisit());//주간 방문자 수 데이터 처리
 		map.put("/loginForm.do", new LoginForm());
 		map.put("/login.do", new Login());
+		map.put("/loginKakao.do", new LoginKakao());
+		map.put("/loginGoogle.do", new LoginGoogle());
 		map.put("/logout.do", new Logout());
 		map.put("/userManageForm.do", new UserManageForm());
 		map.put("/userManage.do", new UserManage());
@@ -111,22 +115,23 @@ public class FrontController extends HttpServlet {
 		map.put("/movieInfo.do", new MovieInfo());
 		map.put("/commentInsert.do", new CommentInsert());
 		map.put("/genreSelectList.do", new GenreSelectList());
-		map.put("/movieSelectGenreList.do", new MovieSelectGenreList());
+		map.put("/movieSelectGenreList.do", new MovieSelectGenreList()); // 장르별 영화 페이지
 		map.put("/commentDelete.do", new CommentDelete());
 		map.put("/movieInfoghtest.do", new MovieInfoghtest());
-		map.put("/moviePlay.do", new MoviePlay());
 		map.put("/movieSearch.do", new MovieSearch());
-		map.put("/countrySelectList.do", new CountrySelectList());
-		map.put("/movieSelectCountryList.do", new MovieSelectCountryList());
+		map.put("/countrySelectList.do", new CountrySelectList()); // 국가 리스트 
+		map.put("/movieSelectCountryList.do", new MovieSelectCountryList()); // 국가별 영화 페이지
 		map.put("/reportInsert.do", new ReportInsert());   // 신고 등록
 		map.put("/commentUpdate.do", new CommentUpdate());  // comment 수정
 		map.put("/reportUpdate.do", new ReportUpdate());  // 신고 후 user table update
-		map.put("/likes.do", new Likes());
-		map.put("/userLikesSelectList.do", new UserLikesSelectList());
-		map.put("/likesSelectList.do", new LikesSelectList());
-		map.put("/likesDelete.do", new LikesDelete());
-		map.put("/movieInsert.do", new MovieInsert());
-		map.put("/commentSelectList.do", new CommentSelectList());
+		map.put("/likes.do", new Likes()); // 좋아요 삽입
+		map.put("/userLikesSelectList.do", new UserLikesSelectList()); // 유저의 좋아요 영화 목록
+		map.put("/likesSelectList.do", new LikesSelectList()); // 좋아요 전체 목록 
+		map.put("/likesDelete.do", new LikesDelete()); // 좋아요 삭제
+		map.put("/movieInsert.do", new MovieInsert()); // 영화 정보 삽입
+		map.put("/commentSelectList.do", new CommentSelectList()); // 유저가 코멘트 남긴 영화 리스트
+		map.put("/userPreference.do", new UserPreference()); // 유저의 선호 장르 리스트
+		map.put("/idCheck.do", new IdCheck()); // 아이디 중복 여부 체크)
 	}
 
 	@Override
@@ -142,19 +147,23 @@ public class FrontController extends HttpServlet {
 		String viewPage = command.exec(request, response);
 		System.out.println(viewPage);
 		
+		// .do 호출이 아닐 경우
 		if(!viewPage.endsWith(".do")) {
+			// ajax 호출일 경우
 			if (viewPage.startsWith("ajax:")) {
 				response.setContentType("text/html; charset=UTF-8");
 				viewPage = viewPage.substring(5);
 				response.getWriter().append(viewPage);
 				return;
 			} else {
+				// ajax 호출이 아닐 경우
 				viewPage = viewPage + ".tiles";
 			}
 	
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
-		}else {
+		} else {
+			// .do 호출일 경우 리다이렉션
 			response.sendRedirect(viewPage);
 		}
 	}

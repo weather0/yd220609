@@ -32,7 +32,10 @@ let movieSearch = function () {
       searched.results.forEach((elem) => {
         let card = document.createElement('div');
         card.setAttribute('class', 'movie-card');
-        card.setAttribute('onclick', "location.href='movieInfo.do?id=" + elem.id + "'");
+        card.addEventListener('click', () => {
+					insertMovie(elem);
+				})
+        //card.setAttribute('onclick', "location.href='movieInfo.do?id=" + elem.id + "'");
         let img = document.createElement('img');
         if (elem.poster_path == null) {
           img.src = 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg';
@@ -85,7 +88,7 @@ let addPage = function () {
       // 참고 velog.io/@sa02045/Scroll-%EC%A0%95%EB%A6%AC
 
       // offsetHeigt는 태그의 높이(코드라인)
-      if (val >= container.offsetHeight + 1000) {
+      if (val >= container.offsetHeight + 500) {
         pageNum++;
         SEARCH_URL = '/search/movie?query=' + getParameter('query') + '&page=' + pageNum;
         searchAPI = BASE_URL + SEARCH_URL + '&' + API_KEY + '&language=ko-KR';

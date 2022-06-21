@@ -15,6 +15,6 @@ public class ReportVO {
 	private Date reportDate;  // 신고날짜
 	private String reportSubject; // 신고사유
 	private String reportContent; // 신고내용\
-	private String movieid; // 영화 id
+	private String reportMovieId; // 영화 id
 	
 }

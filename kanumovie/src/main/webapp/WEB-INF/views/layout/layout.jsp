@@ -32,7 +32,7 @@
 
 
 <!-- javascript -->
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- <script src="assets/vendors/jquery.min.js"></script>
 <script src="assets/owlcarousel/owl.carousel.js"></script>  -->
 </head>
@@ -41,10 +41,12 @@
 	<c:if test="${authority eq 'admin'}">
 	<tiles:insertAttribute name="sidebar" />
 	</c:if>
-	
+	<div>
 	<tiles:insertAttribute name="body" />
+	</div>
+	<div style="clear:both;">
 	<tiles:insertAttribute name="footer" />
-
+	</div>
 
 	<!-- Js Plugins -->
 	<script src="assets/vendors/highlight.js"></script>

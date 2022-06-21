@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <% String email=(String) session.getAttribute("email"); %>
 <% String nick = (String) session.getAttribute("nick"); %>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 <style>
+
 #banner {
 	margin: 0 auto;
 	width: 80%;
@@ -16,7 +21,7 @@
 	float: left;
 	width: 70%;
 	padding-left: 5%;
-	height: 1800px;
+	height: 1600px;
 	position: relative;
 }
 
@@ -80,23 +85,24 @@ h1 {
 	height: 100%;
 	background-size: 100% 100%;
 	border-radius: 10px;
+	background-image: url('img/theater.jpg');
 	margin: 0%;
 }
 
 .item:hover {
 	transform: scale(1.1);
 	transition: 0.5s;
-	cursor: selector;
+	cursor: pointer;
 	border-radius: 10px;
 	z-index: 50;
 }
 
 .item:hover h2 {
-	visibility: hidden;
+	opacity: 0;
 }
 
 .item:hover p {
-	display: none;
+	opacity: 0;
 }
 
 .item h2 {
@@ -106,7 +112,7 @@ h1 {
 	color: #fff;
 	font-weight: bold;
 	z-index: 100;
-	
+	font-family: 'Black Han Sans', sans-serif;
 	
 }
 
@@ -114,6 +120,7 @@ h1 {
 	color: white;
 	margin:3% 0% 0% 3%;
 	width: 100%;
+	font-family: "Oswald", sans-serif;
 }
 
 #showcontainer p {
@@ -122,9 +129,10 @@ h1 {
 	display: flex;
 	top: 70%;
 	left: 5%;
-	font-size: xx-large;
+	font-size: x-large;
 	line-height: 140%;
 	overflow: visible;
+	font-family: 'Black Han Sans', sans-serif;
 }
 
 #bdirname {
@@ -134,12 +142,50 @@ h1 {
 .product__sidebar__comment {
 	width: 25%;
 	float:right;
+	margin-top: 6%;
 }
 
 .btn {
 border: 1px solid #E53637;
 }
+/* 
+footer {
+	height: 200px;
+	opacity: 0;
+} */
+
+.product__sidebar__comment__item {
+	padding: 2%;
+	margin: 2%;
+}
+
+.product__sidebar__comment__item:hover {
+	cursor:pointer;
+	transform:scale(1.1);
+	transition: 0.3s;
+	
+}
+
+.product__sidebar__comment__item img {
+	width: 60%;
+	height: 200px;
+	border-radius: 10px;
+}
+.product__sidebar__comment__item__text h5 {
+	font-family: 'Black Han Sans', sans-serif;
+	color: white;
+	margin: 0%;
+}
+
+.product__sidebar__comment__item__text span {
+ 	font-size: 8%;
+}
+
+.product__sidebar__comment__item__text i {
+	font-size: 8%;
+}
 </style>
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="css/project-movie.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -177,7 +223,7 @@ border: 1px solid #E53637;
 	</div>
 	
 	<!-- banner end -->
-	
+	<!-- TOP 20 영화 슬라이더 -->
 	<div id="showcontainer">
 		<div class="row">
 			<div>
@@ -208,6 +254,7 @@ border: 1px solid #E53637;
 				</div>
 			</div>
 		</div>
+		<!-- TOP 20 쇼 슬라이더 -->
 		<div class="row">
 			<div>
 				<h3>Now Trending Show</h3>
@@ -237,7 +284,8 @@ border: 1px solid #E53637;
 				</div>
 			</div>
 		</div>
-		<c:if test="${email != null}">
+		<!-- 유저 찜영화 슬라이더 -->
+		<c:if test="${not empty email}">
 		<div class="prefer row">
 			<div>
 				<input type="hidden" id="sessionId" value="${email}">
@@ -283,69 +331,29 @@ border: 1px solid #E53637;
 			alert('로그인 실패!!')
 		} else if (name == 'signup') {
 			alert('회원가입 완료!!')
+		} else if (name == 'signupfail') {
+			alert('회원가입 실패!!')
 		}
 	</script>
+	<!-- 유저들이 최근에 코멘트 남긴 영화 5개 출력 -->
 	 <div class="product__sidebar__comment">
         <div class="section-title">
-            <h5>New Comment</h5>
+            <h5>Latest Comment</h5>
         </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-1.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-2.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">Shirogane Tamashii hen Kouhan sen</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-3.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">Kizumonogatari III: Reiket su-hen</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-        <div class="product__sidebar__comment__item">
-            <div class="product__sidebar__comment__item__pic">
-                <img src="img/sidebar/comment-4.jpg" alt="">
-            </div>
-            <div class="product__sidebar__comment__item__text">
-                <ul>
-                    <li>Active</li>
-                    <li>Movie</li>
-                </ul>
-                <h5><a href="#">Monogatari Series: Second Season</a></h5>
-                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-            </div>
-        </div>
-    </div>
+        <c:forEach items="${latestclist}" var="comment">
+        	<div class="product__sidebar__comment__item">
+        		<img src="https://image.tmdb.org/t/p/w500${comment.posterPath}" onerror="this.src='img/theater.jpg';" onclick="location.href='movieInfo.do?id=${comment.id}'">
+        	</div>
+        	<div class="product__sidebar__comment__item__text">
+        		<h5>${comment.title}</h5>
+        		<span><i class="fa fa-check"></i>${comment.voteCount} votes</span>
+        	</div>
+        </c:forEach>
+  </div>
 	<script src="js/makeMovieCard.js"></script>
->>>>>>> branch 'dev' of https://github.com/Tessa1217/Kanumovie.git
 	<script src="js/movie.js"></script>
 	<script>
+	// 유저가 좋아요한 영화 20개 이하로 호출
 	const posterpath = "https://image.tmdb.org/t/p/w500"
 	let param = {"email":'<%=email%>'};
 	if ('<%=email%>' != null) {
@@ -356,12 +364,24 @@ border: 1px solid #E53637;
 		})
 			.then(response => response.json())
 			.then(data => {
+				if (data.length == "0") {
+					console.log(document.querySelector('.prefer'));
+					document.querySelector('.prefer').remove(); 
+					return;
+				} else if (data.length != "0") {
+				// 컨테이너 박스에 높이 더해주기
+				let showContainer = document.querySelector('#showcontainer');
+				showContainer.setAttribute('style', 'height:2100px');
+				// Fetch 사용할 필요 없으므로 데이터베이스 수정 필요
 				data.forEach((elem, idx) => {
 					if (idx < 20) {
 					fetch('https://api.themoviedb.org/3/movie/' + elem.id + '?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko-KR')
 						.then(response => response.json())
 						.then(data => {
-							let moviecard = document.querySelector('.prefer #movie' + (idx+1));				
+							let moviecard = document.querySelector('.prefer #movie' + (idx+1));		
+							moviecard.addEventListener('click', function() {
+								insertMovie(data);
+							});
 							let title = document.createElement('p');
 							title.innerHTML = data.title;
 							moviecard.append(title);
@@ -369,10 +389,9 @@ border: 1px solid #E53637;
 						})
 					}
 				})
+				}
 			})
 	}
-	
-	
 	</script>
 	<script src="js/banner.js?ver=1"></script>
 </body>

@@ -1,8 +1,8 @@
 
-function refreshpage(){
-		location.reload();
-	}
-	
+function refreshpage() {
+	location.reload();
+}
+
 let allbtn2 = document.querySelector('.table2 input[type="checkbox"]');
 allbtn2.addEventListener('click', allcheckbtn2);
 
@@ -41,7 +41,15 @@ function allcheckbtn() {
 
 
 function updateblockcheck() {
-	console.log('펑션들어옴')
+/*	console.log('펑션들어옴')
+
+swal({
+  buttons: ["cancel", "approve"],
+  closeOnClickOutSIde: false //background클릭해도 안 꺼짐
+}).then(function(result) {
+	//background 클릭 //null
+	//확인 버튼 클릭 => ture 
+});*/
 	var checkBoxArr = [];
 	let allcheckbtn = document.querySelectorAll('.table-responsive input[type="checkbox"]');
 	allcheckbtn.forEach((chk, index) => {
@@ -64,7 +72,10 @@ function updateblockcheck() {
 			console.log(result);
 		},
 		error: function(xhr, status, error) {
-			alert(error);
+			swal({
+				title: "차단할 유저를 선택하세요",
+				icon: "info" //"info,success,warning,error" 중 택1
+			});
 		}
 	});
 
@@ -95,14 +106,18 @@ function updatereportcheck() {
 		type: "POST",
 		url: "updatereportcheck.do",
 		data: {
-			checkBoxArr: checkBoxArr       
+			checkBoxArr: checkBoxArr
 		},
 		success: function(result) {
 			refreshpage();
-			console.log(result);
+
+			/*console.log(result);*/
 		},
 		error: function(xhr, status, error) {
-			alert(error);
+			swal({
+				title: "차단할 유저를 선택하세요",
+				icon: "info" //"info,success,warning,error" 중 택1
+			});
 		}
 	});
 
@@ -132,14 +147,17 @@ function updateunblockcheck() {
 		type: "POST",
 		url: "updateunblockcheck.do",
 		data: {
-			checkBoxArr: checkBoxArr        
+			checkBoxArr: checkBoxArr
 		},
 		success: function(result) {
 			refreshpage();
 			console.log(result);
 		},
 		error: function(xhr, status, error) {
-			alert(error);
+			swal({
+				title: "차단을 해제 할 유저를 선택하세요",
+				icon: "info" //"info,success,warning,error" 중 택1
+			});
 		}
 	});
 

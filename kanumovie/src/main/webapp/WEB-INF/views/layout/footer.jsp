@@ -5,6 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+.footerrow {
+	max-width: 80rem;
+}
+
+footer.footer {
+	margin-top: 100px;
+} 
+
+</style>
 </head>
 <body>
 <footer class="footer">
@@ -12,7 +23,7 @@
         <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row footerrow">
             <div class="col-lg-3">
                 <div class="footer__logo">
                     <a href="./index.html"><img src="img/kanumovielogo.png" alt=""></a>
@@ -28,14 +39,33 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+              <div class="col-lg-3">
+            <p>
+              (주)예담직업전문학교 대구광역시 중구 중앙대로 403 (남일동 135-1, 5층)
+            </p>
+            <p>
+              대표자:서강중 / 사업자번호:504-86-00471 /
+               Tel:053-421-2460 / Fax:053-356-3939
+            </p>
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
-              </div>
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+
+              All rights reserved
+            </p>
+          </div>
           </div>
       </div>
   </footer>
+<!--   <script>
+  	console.log(document.querySelector('.footer'));
+  	console.log(document.querySelector('.infinite').getBoundingClientRect().height);
+  	 document.querySelector('.footer').setAttribute('style', 'margin-top: 0%;position:absolute;top:-' + document.querySelector('.infinite').getBoundingClientRect().height + ";");
+  	console.log(document.querySelector('.footer').getAttribute('style'));
+  </script> -->
 </body>
 </html>

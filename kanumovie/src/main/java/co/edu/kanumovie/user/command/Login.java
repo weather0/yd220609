@@ -35,7 +35,8 @@ public class Login implements Command {
 			session.setAttribute("authority", vo.getAuthority());
 			session.setAttribute("blockCheck", vo.getBlockCheck());
 			session.setAttribute("report", vo.getReport());
-			
+			session.setAttribute("fileName", vo.getFileName());
+			session.setAttribute("directoryfileName", vo.getDirectoryFileName());
 			
 			if(vo.getFileName()==null) {
 				session.setAttribute("fileName", "default.jpeg");
@@ -48,9 +49,8 @@ public class Login implements Command {
 			} else {
 				session.setAttribute("directoryfileName", vo.getDirectoryFileName());
 			}
-			request.setAttribute("message", "login");
 		} else {
-			request.setAttribute("message", "login2");
+			return "loginForm.do";
 		}
 		
 		return "home.do";

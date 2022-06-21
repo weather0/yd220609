@@ -25,7 +25,16 @@ public class UpdateReportCheck implements Command {
 			} else {
 				System.out.println("=========업데이트 실패=========");
 			}
+
+			int delete = dao.deleteReport(email);
+
+			if (delete >= 1) {
+				System.out.println("=======딜리트 성공=======");
+			} else {
+				System.out.println("=========딜리트 실패=========");
+			}
 		}
+
 		return "admin/adminmessage";
 	}
 

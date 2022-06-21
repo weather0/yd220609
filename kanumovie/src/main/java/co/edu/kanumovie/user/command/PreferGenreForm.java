@@ -16,10 +16,6 @@ public class PreferGenreForm implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 선호 영화 선택 페이지.
-		UserService dao = new UserServiceImpl();
-		List<PreferVO> list = new ArrayList<PreferVO>();
-		list = dao.perferList();
-		request.setAttribute("list", list);
 		
 		return "user/preferGenre";
 	}

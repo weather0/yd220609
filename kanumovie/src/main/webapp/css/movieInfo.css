@@ -25,26 +25,29 @@ html {
   --maxPrimaryPageWidth: 1400px;
 }
 
-
+div.row {
+  max-width: 100%
+}
 
 
 /* 포스터 */
 div.poster {
-  float: left;
+  /* float: left;
   width: 300px;
   height: 430px;
-  padding: 0;
-  margin-bottom: 30px;
+  padding: 0; */
+  margin-bottom: 10px;
 }
 
 .posterImg {
   border-radius: 8px;
+  width: 100%;
 }
 
 
 /* 영화 스펙 */
 div.details {
-  float: right;
+  /* float: right; */
 }
 
 
@@ -58,27 +61,88 @@ div.rightbar {
   float: right;
 }
 
-/* 배우 섹션 start */
-div.product__sidebar__view__item {
-  height: 170px;
-  position: relative;
-  border-radius: 5px;
+/* 별점 */
+.anime__details__rating .rating i {
+  font-size: 24px;
+  color: #e53637;
+  display: inline-block;
+}
+
+
+
+/* 플레이어 관련 start */
+.video-js .vjs-dock-text,
+.vjs-current-time-display,
+.vjs-duration-display,
+.vjs-time-divider {
+  font-size: 1.5em;
+}
+
+.vjs-pip-container,
+.youtube iframe {
   margin-bottom: 10px;
 }
 
+#myPlayerID {
+  border-radius: 10px;
+  border: 2px solid rgb(41, 41, 41);
+}
+
+.moviePlayer,
+.youtube {
+  margin: 0 auto;
+}
+
+.bc-iframe .vjs-playlist-sidebar .vjs-playlist-show-hide button:hover,
+.bc-player-mM7pq2WtL_default .vjs-big-play-button:active,
+.bc-player-mM7pq2WtL_default .vjs-big-play-button:focus,
+.bc-player-mM7pq2WtL_default .vjs-menu-button-popup .vjs-menu .vjs-menu-item.vjs-selected,
+.bc-player-mM7pq2WtL_default .vjs-play-progress,
+.bc-player-mM7pq2WtL_default .vjs-volume-level,
+.bc-player-mM7pq2WtL_default:active .vjs-big-play-button,
+.bc-player-mM7pq2WtL_default:hover .vjs-big-play-button {
+  background-color: #e53637;
+}
+
+/* 플레이어 관련 end*/
+
+
+
+
+
+
+
+/* 배우 섹션 start */
 section.panel {
   clear: both;
   background: #0b0c2a;
   border: none;
-  width: 1000px
+  width: 100%
     /* margin-top: 1.25rem; */
-
 }
 
-section.panel h3 {
+
+.cast-title>h3 {
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 21px;
+  text-transform: uppercase;
+  padding-left: 20px;
+  /* position: relative; */
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 20px;
+}
+
+div.product__sidebar__view__item {
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  margin: 1% auto;
+}
+
+/* section.panel h3 {
   color: white;
-}
-
+} */
 
 ol.people.scroller::-webkit-scrollbar {
   height: 8px;
@@ -195,6 +259,11 @@ div.scroller_wrap.should_fade:after {
 
 /* 배우 섹션 end */
 
+
+
+
+
+
 /* 추천영화 */
 .product__sidebar__view__item h5 {
   text-shadow: 2px 2px 3px black;
@@ -203,13 +272,24 @@ div.scroller_wrap.should_fade:after {
   line-height: 26px;
 }
 
+.recombg {
+  width: 100%;
+}
+
+.product__sidebar__view__item:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+  margin: 5% auto;
+}
+
+
+
+
+
+
 
 
 /* 좋아요 버튼 start */
-body {
-  /* background: #333; */
-}
-
 .like-container {
   filter: url('#filter');
   position: absolute;
@@ -248,3 +328,118 @@ body {
 }
 
 /* 좋아요 버튼 end */
+
+
+
+
+
+
+
+
+/* 비디오모달스타일 start */
+/* 버튼 */
+.modalbox {
+  width: 960px;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.modalbtn {
+  border-radius: 10px;
+  width: 120px;
+  height: 35px;
+  padding: 0px;
+  background-color: #1d1e39;
+}
+
+/* 비디오모달 */
+.modalbox {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.cmtdiv .btn {
+  background-color: #e53637;
+  border: none;
+  font-weight: bold;
+}
+
+.cmtdiv .btn:hover {
+  transform: scale(1.2);
+  transition: 0.2s;
+}
+
+.btn-success:active,
+.btn-success:focus,
+.btn:active,
+.btn:focus,
+.btn:hover {
+  background-color: #e53637;
+  /* border: 1px solid #e53637; */
+  box-shadow: none;
+}
+
+.btn-success:not(:disabled):not(.disabled):active,
+.show>.btn-success.dropdown-toggle {
+  color: #fff;
+  background-color: #1d1e39;
+}
+
+.modalbtn {
+  border: 0px;
+  border-radius: 10px;
+  width: 130px;
+  height: 40px;
+  padding: 0px;
+  background-color: #1d1e39;
+  font-weight: bold;
+  font-size: large;
+}
+
+.vModaldialog {
+  max-width: 960px;
+  /* height: 540px; */
+  /* margin: 30px 100px; */
+}
+
+.vModalbody {
+  width: 960px;
+  height: 540px;
+  margin: 0;
+}
+
+
+
+
+
+
+/* 모달2(폐기) */
+/* .modal2 {
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: 100%;
+                                            display: none;
+                                            background-color: rgba(0, 0, 0, 0.7);
+
+                                          }
+
+                                          .modal2.show {
+                                            display: block;
+                                          }
+
+                                          .modal_body {
+                                            position: absolute;
+                                            top: 50%;
+                                            left: 50%;
+                                            width: 960px;
+                                            height: 540px;
+                                            text-align: center;
+                                            background-color: rgb(255, 255, 255);
+                                            border-radius: 10px;
+                                            box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+                                            transform: translateX(-50%) translateY(-50%);
+                                            transition: all .4s;
+                                          } */

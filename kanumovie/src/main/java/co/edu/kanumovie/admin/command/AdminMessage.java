@@ -27,6 +27,12 @@ public class AdminMessage implements Command {
 		List<ReportVO> list = new ArrayList<ReportVO>();
 		AdminService dao = new AdminServiceImpl();
 		list = dao.selectAllReportList();
+		
+		/*
+		 * for(int i = 0; i < list.size(); i++ ) {
+		 * System.out.println(list.get(i).getMovieid()); }
+		 */
+		
 		request.setAttribute("reportuserlist", list);
 		request.setAttribute("reportuserlistsize", list.size());
 		

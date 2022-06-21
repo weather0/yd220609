@@ -16,10 +16,8 @@ public class MovieInfo implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		
+		String id = request.getParameter("id"); // 영화 아이디
 		System.out.println(id);
-		
 		request.setAttribute("movieid", id);
 		
 		HttpSession session = request.getSession();
@@ -31,6 +29,7 @@ public class MovieInfo implements Command {
 		request.setAttribute("blockCheck", block);
 		vo.setEmail(email);
 		vo.setId(id);	
+		vo.setBlockcheck(block);
 		comments = dao.commentAllList(vo);
 		
 		// 리스트를 처리한것을 싦어서 보내야함.

@@ -49,8 +49,8 @@
 								<li class="active"><a href="home.do">Homepage</a></li>
 								<li><a href="genreSelectList.do">Categories</a></li>
 								<c:if test="${not empty email}">
-								<li><a href="userLikesSelectList.do?email=${email}">보고싶어요</a>
-								<li><a href="commentSelectList.do?email=${email}">리뷰한 작품</a>
+								<li><a href="userLikesSelectList.do?email=${email}"><i class="fa fa-heart"></i> 보고싶어요</a>
+								<li><a href="commentSelectList.do?email=${email}"><i class="fa fa-pencil"></i> 리뷰한 작품</a>
 								</c:if>
 							</ul>
 						</nav>
@@ -81,7 +81,7 @@
 						<!--  임시 프로필 확인용 -->
 						<c:choose>
 							<c:when test="${not empty email}">
-								<a href="logout.do">Logout</a>
+								<a onclick="logout()" >Logout</a>
 							</c:when>
 							<c:otherwise>
 								<a href="signUpForm.do">Sign Up</a>
@@ -95,7 +95,27 @@
 		</div>
 
 		<div id="mobile-menu-wrap"></div>
-
+        
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script>
+            
+            function logout() {
+            	kakaoLogout();
+            	location.href='logout.do';
+            }
+        
+            // 카카오 로그아웃 
+	        window.Kakao.init('f86288f6262962cf240ad63764712370');
+	        function kakaoLogout() {
+		            if (!Kakao.Auth.getAccessToken()) {
+		                console.log('Not logged in.');
+		                return;
+		            }
+		            Kakao.Auth.logout(function(response) {
+		            	console.log('kakao logout!');
+		            });
+		    };
+        </script>
 	</header>
 	
 

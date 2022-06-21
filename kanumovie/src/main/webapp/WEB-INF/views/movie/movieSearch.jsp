@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/project-movie.css">
 
 
-
+		<script src="js/makeMovieCard.js"></script>
 
   </head>
 
