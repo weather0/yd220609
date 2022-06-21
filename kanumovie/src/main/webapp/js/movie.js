@@ -38,19 +38,21 @@
 					divlist = document.querySelectorAll('.show .item');
 				}
 				arr.forEach((obj, idx) => {
-					console.log(obj);
 					let rank = document.createElement('h2');
 					rank.innerHTML = (idx+1);
 					let title = document.createElement('p');
 					divlist.forEach((div, dividx) => {
-						div.addEventListener('click', () => {
-							insertMovie(obj);
-						})
 						if (dividx == idx) {
 							if (url.includes('/movie/')) {
 								title.innerHTML = obj.title;
+								div.addEventListener('click', () => {
+									insertMovie(obj);
+								})
 							} else if (url.includes('/tv/')) {
 								title.innerHTML = obj.name;
+								div.addEventListener('click', () => {
+									location.href="https://www.themoviedb.org/tv/" + obj.id;
+								})
 							}
 							div.append(rank);
 							div.setAttribute('style', 'background-image:url('+ poster + obj.poster_path + ')');
