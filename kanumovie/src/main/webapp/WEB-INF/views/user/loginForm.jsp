@@ -108,6 +108,7 @@
                 </div>
             </div>
         </div>
+        <div id="move" style="display:none;"></div>
     </section>
     <!-- Login Section End -->
     
@@ -215,6 +216,11 @@
                 }
             });
         }
+        
+        $(document).ready(function(){
+        	window.scrollBy({ top: 300, left: 0, behavior: 'smooth' });
+        })
+        
     </script>
 </body>
 </html>

@@ -61,19 +61,18 @@ function getLikes() {
 		})
 			.then(response => response.json())
 			.then(data => {
-				console.log(data);
-				let movieData = document.querySelectorAll('.movie-card input');
-				console.log(movieData);
+				if (data.length != 0) {
+					let movieData = document.querySelectorAll('.movie-card input');
 				movieData.forEach((elem) => {
 					data.forEach((like) => {
 						if (like.id == elem.getAttribute('value')) {
 							document.querySelector('#movie-' + like.id).setAttribute('style', 'color:red');
-							console.log(document.querySelector('#movie-' + like.id).parentElement);
 						} else {
 							console.log(false);
 						}
 					})
 				})
+				}
 			});
 	}
 }

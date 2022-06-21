@@ -12,10 +12,18 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Project Stylesheet -->
 <link rel="stylesheet" href="css/project-movie.css">
+<style>
+	#countryTitle {
+		margin: 3% 0% 3% 2%;
+	}
+	#countryTitle i {
+		color: #e53637;
+	}
+</style>
 </head>
 <body>
 <div class="category-kind-container">
-	<h3 id="countryTitle">Categories > Country > ${koreanTitle}</h3>
+	<h3 id="countryTitle"><a href="home.do"><i class="fa fa-home"></i></a> > Categories > Country > ${koreanTitle}</h3>
 </div>
 <div class="infinite">
 	<!-- 국가 코드 저장 -->

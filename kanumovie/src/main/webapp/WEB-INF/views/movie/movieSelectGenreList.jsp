@@ -4,6 +4,14 @@
 <% String email=(String) session.getAttribute("email"); %>
 <!DOCTYPE html>
 <html>
+<style>
+	#genreTitle {
+		margin: 3% 0% 3% 2%;
+	}
+	#genreTitle i {
+		color: #e53637;
+	}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -15,7 +23,7 @@
 </head>
 <body>
 <div class="category-kind-container">
-	<h3 id="genreTitle">Categories > Genre > ${genre}</h3>
+	<h3 id="genreTitle"><a href="home.do"><i class="fa fa-home"></i></a> > Categories > Genre > ${genre}</h3>
 </div>
 <div class="infinite">
 	<!-- 장르 아이디 저장 -->

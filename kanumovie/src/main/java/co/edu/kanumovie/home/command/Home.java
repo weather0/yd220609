@@ -36,6 +36,7 @@ public class Home implements Command {
 		
 		CommentService dao2 = new CommentServiceImpl(); 
 		List<MovieVO> movielist = dao2.commentSelectTopFiveList();
+		System.out.println(movielist.size());
 		request.setAttribute("latestclist", movielist);
 		System.out.println(movielist.size());
 

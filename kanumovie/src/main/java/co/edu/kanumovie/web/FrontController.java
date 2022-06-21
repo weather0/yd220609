@@ -51,6 +51,7 @@ import co.edu.kanumovie.report.command.ReportInsert;
 import co.edu.kanumovie.report.command.ReportUpdate;
 import co.edu.kanumovie.user.command.FindPw;
 import co.edu.kanumovie.user.command.FindPwForm;
+import co.edu.kanumovie.user.command.IdCheck;
 import co.edu.kanumovie.user.command.Login;
 import co.edu.kanumovie.user.command.LoginForm;
 import co.edu.kanumovie.user.command.LoginGoogle;
@@ -130,6 +131,7 @@ public class FrontController extends HttpServlet {
 		map.put("/movieInsert.do", new MovieInsert()); // 영화 정보 삽입
 		map.put("/commentSelectList.do", new CommentSelectList()); // 유저가 코멘트 남긴 영화 리스트
 		map.put("/userPreference.do", new UserPreference()); // 유저의 선호 장르 리스트
+		map.put("/idCheck.do", new IdCheck()); // 아이디 중복 여부 체크)
 	}
 
 	@Override

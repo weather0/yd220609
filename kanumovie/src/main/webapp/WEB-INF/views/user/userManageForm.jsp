@@ -175,6 +175,9 @@
 	border-radius: 10px;
 }
 
+#tab4 {
+	height: 600px;
+}
 #tab4 h5 {
 	text-align: center;
 }
@@ -186,7 +189,6 @@
 }
 
 #tab1 button:hover, .userGenre button:hover {
-	margin: 3%;
 	transform: scale(1.1);
 	font-weight: bold;
 	background-color: #E53637;
@@ -199,10 +201,9 @@
 .userGenre {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 20%;
     transform: translate(-55%, -15%);
 }
-
 </style>
 </head>
 <body id="userManage">
