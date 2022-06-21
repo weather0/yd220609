@@ -7,7 +7,7 @@
 			INNER JOIN k_comment c
 		ON ((c.id = m.id) and c.id = #{id})
 			INNER JOIN k_users u
-		ON ((c.email = u.email))
+		ON ((c.email = u.email) and u.blockcheck = 'n')
 		ORDER BY CID desc
 		
 	</select>

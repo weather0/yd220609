@@ -18,8 +18,11 @@
 	<h3 id="countryTitle">Categories > Country > ${koreanTitle}</h3>
 </div>
 <div class="infinite">
+	<!-- 국가 코드 저장 -->
 	<input type="hidden" id="countryId" value="${id}">
+	<!-- 유저의 이메일 저장 -->
 	<input type="hidden" id = "c_sessionId" value="${email}">
+	<!-- 무한 스크롤 구현 전 첫 2페이지 -->
 	<div class="movie-card-container" data-value='1'>
 	</div>
 	<div class="movie-card-container" data-value='2'>

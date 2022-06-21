@@ -51,6 +51,7 @@ function makeCard(obj) {
 	return card;
 }
 
+// 하트 버튼 생성 함수
 function makeButton(obj) {
 	let div = document.createElement('div');
 	let button = document.createElement('button');
@@ -60,6 +61,7 @@ function makeButton(obj) {
 		e.stopPropagation();
 		let heart = this.firstChild;
 		let cmd = "";
+		// 사용자의 이메일이 Null이 아닐 경우
 		if (!!sessionId) {
 			if (heart.style.color == 'red') {
 				heart.setAttribute('style', 'color:grey');
@@ -68,12 +70,14 @@ function makeButton(obj) {
 				heart.setAttribute('style', 'color:red');
 				cmd = "insert";
 			}
+		// 사용자의 이메일이 Null일 경우	
 		} else if (!sessionId) {
 			alert("로그인이 필요한 기능입니다.");
 		}
-		
+		// Insert 또는 Delete command 포함한 파라미터 생성
 		let param = 'cmd=' + cmd + '&id=' + this.children[0].getAttribute('id').substring(6) + '&email=' + sessionId;
 		if (cmd == 'insert') {
+			// 무비 정보 API에서 호출
 			fetch('https://api.themoviedb.org/3/movie/' + obj.id + '?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko-KR')
 				.then(response => response.json())
 				.then(data => {
@@ -87,6 +91,7 @@ function makeButton(obj) {
 					"overview":data.overview, "popularity":data.popularity, "poster_path":data.poster_path, 
 					"release_date":data.release_date, "title":data.title, "video":data.video, "vote_average":data.vote_average,
 					"vote_count":data.vote_count}
+					// 무비 데이터 무비 테이블에 삽입
 					fetch('movieInsert.do', {
 						method: 'POST',
 						headers: {'Content-Type':'application/json'},
@@ -94,7 +99,9 @@ function makeButton(obj) {
 					})
 						.then(response => response.json())
 						.then(message => {
+							// 만약 삽입한 아이디 값이 NULL이 아닐 경우 (성공한 경우)
 							if (message.id != null) {
+								// 사용자의 좋아요 정보 해당 테이블에 저장
 								fetch('likes.do', {
 									method: 'POST',
 									headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -106,6 +113,7 @@ function makeButton(obj) {
 							}
 						})
 				})
+		// 사용자가 좋아요를 푼 경우 		
 		} else if (cmd == 'delete') {
 			fetch('likesDelete.do', {
 				method: 'POST',
@@ -127,6 +135,7 @@ function makeButton(obj) {
 	return div;
 }
 
+// 플레이 버튼 생성
 function makePlayButton() {
 	let playdiv = document.createElement('p');
 	playdiv.setAttribute('class', 'playButtonContainer');
@@ -138,6 +147,7 @@ function makePlayButton() {
 	return playdiv;
 } 
 
+// 클릭할 경우 무비 테이블에 삽입하는 함수 (장르 아이디가 배열값이 아닌 스트링이라서 위 함수와는 파라미터 차이남)
 function insertMovie(obj) {
 	console.log(obj);
   let param = {"adult":obj.adult, "backdrop_path":obj.backdrop_path, "genre_ids":'\'' + obj.genre_ids + '\'',

@@ -1,6 +1,8 @@
 package co.edu.kanumovie.user.command;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,7 +74,8 @@ public class LoginKakao implements Command {
 		} else { // 카카오 계정 연결이 처음일시 db에 정보 넣기.
 			vo.setEmail(kakaoEmail);
 			vo.setNick(kakaoNick);
-			vo.setPw("123");
+			String rand = randPassword(10);
+			vo.setPw(rand);
 			// 가입할때 무조건 디폴트 이미지를 프로필로.
 			vo.setFileName("default.jpeg");
 			vo.setDirectoryFileName("default.jpeg");
@@ -92,6 +95,8 @@ public class LoginKakao implements Command {
 				session.setAttribute("authority", vo.getAuthority());
 				session.setAttribute("blockCheck", vo.getBlockCheck());
 				session.setAttribute("report", vo.getReport());
+				session.setAttribute("fileName", vo.getFileName());
+				session.setAttribute("directoryfileName", vo.getDirectoryFileName());
 				
 				
 				if(vo.getFileName()==null) {
@@ -105,13 +110,31 @@ public class LoginKakao implements Command {
 				} else {
 					session.setAttribute("directoryfileName", vo.getDirectoryFileName());
 				}
-				request.setAttribute("message", "login");
-			} else {
-				request.setAttribute("message", "login2");
-			}
+			} 
 		}
 			
 		return "ajax:";
 	}
+	
+	public static String randPassword(int size) {
+		char[] charSet = new char[] {
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                '!', '@', '#', '$', '%', '^', '&' };
 
+        StringBuffer sb = new StringBuffer();
+        SecureRandom sr = new SecureRandom();
+        sr.setSeed(new Date().getTime());
+
+        int idx = 0;
+        int len = charSet.length;
+        for (int i=0; i<size; i++) {
+            // idx = (int) (len * Math.random());
+            idx = sr.nextInt(len);    // 강력한 난수를 발생시키기 위해 SecureRandom을 사용한다.
+            sb.append(charSet[idx]);
+        }
+
+        return sb.toString();
+	}
 }

@@ -33,7 +33,7 @@ public class ReportInsert implements Command {
 		vo.setReportContent(request.getParameter("content"));  // 내용
 		vo.setReportSubject(request.getParameter("report")); // 신고사유
 		vo.setReportedEmail(request.getParameter("reported_name"));// 신고당한사람 닉네임
-		vo.setMovieid(request.getParameter("movie_id")); // 신고댓글이 있는 영화 id
+		vo.setReportMovieId(request.getParameter("movie_id")); // 신고댓글이 있는 영화 id
 		
 		dao.reportInsert(vo);
 
@@ -41,7 +41,7 @@ public class ReportInsert implements Command {
 		System.out.println(vo.getReportContent());
 		System.out.println(vo.getReportSubject());
 		System.out.println(vo.getReportedEmail());
-		System.out.println(vo.getMovieid());
+		System.out.println(vo.getReportMovieId());
 		
 		// user table update
 		

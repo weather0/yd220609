@@ -84,17 +84,21 @@ form {
 </head>
 <body>
 	<div>
+	<!-- 장르 또는 국가 서치할 키워드 넣는 Input Form -->
 		<form>
 			<input type="text" placeholder="Search Your Category" onkeyup="searching()" id="schbox">
-      <!-- <input type="submit" value="Search"> 일단 안지웠어 -->
 		</form>
 	</div>
+	<!-- 전체 카테고리 컨테이너 -->
 	<div id="category-container">
 		<div id="button-container">
 			<h4>카테고리 둘러보기</h4>
+			<!-- 장르 카테고리 팝업 버튼 -->
 			<button type="button" id = "genreButton" onclick="genreList()">장르</button>
+			<!-- 국가 카테고리 팝업 버튼 -->
 			<button type="button" id = "countryButton" onclick="countryList()">국가</button>
 		</div>
+		<!-- 장르 컨테이너 -->
 		<div class="genre-card-container">
 			<c:forEach items="${genrelist}" var="genre">
 				<div class="genre-card"
@@ -148,21 +152,21 @@ form {
 			document.querySelector('.country-card-container').setAttribute('style', 'display:grid');
 		})
 			
-      // 검색 기능
-      function searching(){
-        let schbox, name, item;
-        schbox = document.getElementById("schbox").value.toUpperCase();
-        item = document.querySelectorAll(".genre-card,.country-card");
+    // 검색 기능
+    function searching(){
+      let schbox, name, item;
+      schbox = document.getElementById("schbox").value.toUpperCase();
+      item = document.querySelectorAll(".genre-card,.country-card");
 
-        for(let i = 0; i < item.length; i++){
-          name = item[i].querySelectorAll("h3")
-          if(name[0].innerHTML.toUpperCase().indexOf(schbox) > -1){
-            item[i].style.display = "flex";
-          }else{
-            item[i].style.display = "none";
-          }
+      for(let i = 0; i < item.length; i++){
+        name = item[i].querySelectorAll("h3")
+        if(name[0].innerHTML.toUpperCase().indexOf(schbox) > -1){
+          item[i].style.display = "flex";
+        }else{
+          item[i].style.display = "none";
         }
       }
+    }
 
 		</script>
 	</div>

@@ -35,7 +35,8 @@ public class Login implements Command {
 			session.setAttribute("authority", vo.getAuthority());
 			session.setAttribute("blockCheck", vo.getBlockCheck());
 			session.setAttribute("report", vo.getReport());
-			
+			session.setAttribute("fileName", vo.getFileName());
+			session.setAttribute("directoryfileName", vo.getDirectoryFileName());
 			
 			if(vo.getFileName()==null) {
 				session.setAttribute("fileName", "default.jpeg");
