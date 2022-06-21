@@ -32,7 +32,7 @@
 
 
 <!-- javascript -->
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- <script src="assets/vendors/jquery.min.js"></script>
 <script src="assets/owlcarousel/owl.carousel.js"></script>  -->
 </head>

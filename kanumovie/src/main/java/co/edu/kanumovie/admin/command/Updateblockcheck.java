@@ -39,13 +39,12 @@ public class Updateblockcheck implements Command {
 			int deleteresult = dao.deleteReport(email);
 			
 			//차단 후 comment 삭제 
-			int commentdeleteresult = dao.deleteAllComment(email);
-			
-			if(commentdeleteresult != 0) {
-				System.out.println("코멘트 전체 삭제 완");
-			} else {
-				System.out.println("코멘트 삭제 실패 ");
-			}
+			/*
+			 * int commentdeleteresult = dao.deleteAllComment(email);
+			 * 
+			 * if(commentdeleteresult != 0) { System.out.println("코멘트 전체 삭제 완"); } else {
+			 * System.out.println("코멘트 삭제 실패 "); }
+			 */
 			
 			
 			if(deleteresult != 0) {
