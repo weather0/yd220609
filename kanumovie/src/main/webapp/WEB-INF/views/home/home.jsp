@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <% String email=(String) session.getAttribute("email"); %>
 <% String nick = (String) session.getAttribute("nick"); %>
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
 	float: left;
 	width: 70%;
 	padding-left: 5%;
-	height: 2100px;
+	height: 1600px;
 	position: relative;
 }
 
@@ -367,7 +368,10 @@ footer {
 					console.log(document.querySelector('.prefer'));
 					document.querySelector('.prefer').remove(); 
 					return;
-				}
+				} else if (data.length != "0") {
+				// 컨테이너 박스에 높이 더해주기
+				let showContainer = document.querySelector('#showcontainer');
+				showContainer.setAttribute('style', 'height:2100px');
 				// Fetch 사용할 필요 없으므로 데이터베이스 수정 필요
 				data.forEach((elem, idx) => {
 					if (idx < 20) {
@@ -385,6 +389,7 @@ footer {
 						})
 					}
 				})
+				}
 			})
 	}
 	</script>

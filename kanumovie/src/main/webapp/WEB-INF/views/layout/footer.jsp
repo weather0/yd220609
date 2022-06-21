@@ -11,6 +11,10 @@
 	max-width: 80rem;
 }
 
+footer.footer {
+	margin-top: 100px;
+} 
+
 </style>
 </head>
 <body>
