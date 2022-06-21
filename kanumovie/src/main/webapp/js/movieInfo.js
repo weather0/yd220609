@@ -31,6 +31,7 @@ fetch(movieInfoAPI)
     // 포스터
     let posterImg = document.querySelector('.posterImg');
     posterImg.src = IMG_URL + movie.poster_path;
+    posterImg.setAttribute('onerror', "this.src='https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg';");
     // let pic = document.querySelector('.anime__details__pic');
     // pic.dataset.setbg = IMG_URL + movie.poster_path;
     // pic.style.setProperty('background-image', 'url(' + IMG_URL + movie.poster_path + ')');
@@ -211,11 +212,14 @@ fetch(recomAPI)
       img.className = 'recombg';
 
       // img.style = 'height:175px';
-
+      // let recomImg = recom.results[i].backdrop_path;
+      // if (recomImg != null) {
+      // }
       img.src = IMG_URL + recom.results[i].backdrop_path;
+      img.alt = recom.results[i].title;
+      img.setAttribute('onerror', "this.src='img/logo.jpg';");
       // img.srcset = 'https://www.themoviedb.org/t/p/w138_and_h175_face' + credit.crew[i].profile_path + ' 1x';
 
-      img.alt = recom.results[i].title;
 
 
       let aimgtag = document.createElement('a');
@@ -281,7 +285,7 @@ let setvideo = function (videos) {
   videos.results.forEach(obj => {
     if (obj.type == "Trailer") {
       yturl = obj.key;
-      console.log(yturl)
+      // console.log(yturl)
       iframe.setAttribute('src', 'https://www.youtube.com/embed/' + yturl);
     }
   })
