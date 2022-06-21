@@ -504,7 +504,7 @@ modal-title {
 														<c:if test="${blockCheck == 'y' }">
 														<input type="button" value="신고" onclick="blockreport()" class="btn btn-sm btn-success">
 														</c:if>
-													</c:if>
+												</c:if>
 													</h6>
 													<div>
 														<p id="p_${comments.cid}">${comments.comments }</p>
@@ -524,7 +524,7 @@ modal-title {
 							</div>
 							<div class="anime__review__item__text">
 								<textarea id="comments" name="comments" cols="120" rows="3"
-									placeholder="Your Comment.."></textarea>
+									placeholder="Your Comment.." required></textarea>
 								<input type="hidden" id="id" name="id" value="${movieid}">
 							</div>
 							<br>
@@ -533,10 +533,13 @@ modal-title {
 								<button onclick="replyInsert()" class="btn btn-sm btn-success">등록</button>
 								<!-- <input type="reset" class="btn btn-sm btn-success" value="취소"> -->
 							</c:if>
+							
 							<!-- 비 로그인 상태 -->
 							<c:if test="${email == null }">
 								<button onclick="needLogin()" class="btn btn-sm btn-success">등록</button>
 							</c:if>
+							
+							
 						</div>
 					</c:if>
 
@@ -789,7 +792,8 @@ modal-title {
 
 
                 // 댓글 추가
-                function replyInsert() {
+                function replyInsert() {	
+                    	
                   $.ajax({
                     url: "commentInsert.do",
                     method: "post",
