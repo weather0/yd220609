@@ -65,7 +65,7 @@
 	color: #fff;
 }
 
-#pwCheck1 {
+#pwCheck1, #pwCheck2, #nickCheck, #tab4 {
 	width: 80%;
 	height: 200px;
 	margin: 0 auto;
@@ -73,8 +73,8 @@
 	background: rbga(0, 0, 0, 0.5);
 }
 
-#pwCheck1 h3 {
-	padding: 5% 5% 5% 0%;
+#pwCheck1 h3, #pwCheck2 h3, #nickCheck h3 {
+	padding: 5%;
 }
 
 .tabContent {
@@ -255,7 +255,7 @@
 	</article>
 
 	<article class="tabContent user-information-section" id="tab3">
-		<form action="userManage.do" method="post">
+		<form id="nickCheck" action="userManage.do" method="post">
 			<div>
 				<br> <br>
 				<h3>Change Nickname</h3>

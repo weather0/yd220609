@@ -84,6 +84,7 @@ h1 {
 	height: 100%;
 	background-size: 100% 100%;
 	border-radius: 10px;
+	background-image: url('img/theater.jpg');
 	margin: 0%;
 }
 
@@ -221,7 +222,7 @@ footer {
 	</div>
 	
 	<!-- banner end -->
-	
+	<!-- TOP 20 영화 슬라이더 -->
 	<div id="showcontainer">
 		<div class="row">
 			<div>
@@ -252,6 +253,7 @@ footer {
 				</div>
 			</div>
 		</div>
+		<!-- TOP 20 쇼 슬라이더 -->
 		<div class="row">
 			<div>
 				<h3>Now Trending Show</h3>
@@ -281,6 +283,7 @@ footer {
 				</div>
 			</div>
 		</div>
+		<!-- 유저 찜영화 슬라이더 -->
 		<c:if test="${not empty email}">
 		<div class="prefer row">
 			<div>
@@ -331,13 +334,14 @@ footer {
 			alert('회원가입 실패!!')
 		}
 	</script>
+	<!-- 유저들이 최근에 코멘트 남긴 영화 5개 출력 -->
 	 <div class="product__sidebar__comment">
         <div class="section-title">
             <h5>Latest Comment</h5>
         </div>
         <c:forEach items="${latestclist}" var="comment">
         	<div class="product__sidebar__comment__item">
-        		<img src="https://image.tmdb.org/t/p/w500${comment.posterPath}" onclick="location.href='movieInfo.do?id=${comment.id}'">
+        		<img src="https://image.tmdb.org/t/p/w500${comment.posterPath}" onerror="this.src='img/theater.jpg';" onclick="location.href='movieInfo.do?id=${comment.id}'">
         	</div>
         	<div class="product__sidebar__comment__item__text">
         		<h5>${comment.title}</h5>
@@ -346,9 +350,9 @@ footer {
         </c:forEach>
   </div>
 	<script src="js/makeMovieCard.js"></script>
-
 	<script src="js/movie.js"></script>
 	<script>
+	// 유저가 좋아요한 영화 20개 이하로 호출
 	const posterpath = "https://image.tmdb.org/t/p/w500"
 	let param = {"email":'<%=email%>'};
 	if ('<%=email%>' != null) {
@@ -359,6 +363,12 @@ footer {
 		})
 			.then(response => response.json())
 			.then(data => {
+				if (data.length == "0") {
+					console.log(document.querySelector('.prefer'));
+					document.querySelector('.prefer').remove(); 
+					return;
+				}
+				// Fetch 사용할 필요 없으므로 데이터베이스 수정 필요
 				data.forEach((elem, idx) => {
 					if (idx < 20) {
 					fetch('https://api.themoviedb.org/3/movie/' + elem.id + '?api_key=e51d70c65b46eb8bd60cafccc9325e8b&language=ko-KR')
@@ -377,8 +387,6 @@ footer {
 				})
 			})
 	}
-	
-	
 	</script>
 	<script src="js/banner.js?ver=1"></script>
 </body>
