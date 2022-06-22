@@ -48,5 +48,19 @@
             </form>
         </div>
     </div>
+    <div><input type="hidden" id="emailCheck" value="${message}"></div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+	  errorCheck();
+  })
+
+  function errorCheck() {
+	console.log(document.getElementById('emailCheck').value);
+	if(document.getElementById('emailCheck').value == 'error') {
+		  alert('잘못된 이메일을 입력하셨습니다');
+	}
+  }
+</script>
 </html>
