@@ -448,6 +448,7 @@
 		// 비밀번호 체크
         // 8 ~ 20자 영문, 숫자, 특수문자를 최소 한가지씩 조합
         function pwCheck() {
+			
             var regExp = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
          
             let pwCheck = regExp.test(document.getElementById('pwChange').value); // 형식에 맞는 경우 true 리턴
