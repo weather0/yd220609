@@ -46,11 +46,11 @@
 					<div class="header__nav">
 						<nav class="header__menu mobile-menu">
 							<ul class="headerMenuList">
-								<li class="active"><a href="home.do">Homepage</a></li>
-								<li><a href="genreSelectList.do">Categories</a></li>
+								<li class="active hnavlink"><a href="home.do">Homepage</a></li>
+								<li class="hnavlink"><a href="genreSelectList.do">Categories</a></li>
 								<c:if test="${not empty email}">
-								<li><a href="userLikesSelectList.do?email=${email}"><i class="fa fa-heart"></i> 보고싶어요</a>
-								<li><a href="commentSelectList.do?email=${email}"><i class="fa fa-pencil"></i> 리뷰한 작품</a>
+								<li class="hnavlink"><a href="userLikesSelectList.do?email=${email}"><i class="fa fa-heart"></i> 보고싶어요</a>
+								<li class="hnavlink"><a href="commentSelectList.do?email=${email}"><i class="fa fa-pencil"></i> 리뷰한 작품</a>
 								</c:if>
 							</ul>
 						</nav>
