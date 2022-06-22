@@ -22,11 +22,12 @@
     margin-bottom: 15px;
 }
 
-#pw {
+#pw, #pwChange {
     width: 30%;
     margin-left: auto;
     margin-right: auto;
 }
+
 
 #userManage .userHeader {
 	width: 100%;
@@ -263,13 +264,13 @@
 			</form>
 		</div>
 		<div id="pwCheck2">
-			<form action="pwChange.do" method="post">
+			<form id="pwCheck2form" action="pwChange.do" method="post" onsubmit="return false" >
 				<h3>비밀번호 수정</h3>
 				<div class="input__item">
 					<input type="hidden" id="email" name="email" value="${email}">
 				</div>
 				<div class="input__item">
-					<input type="password" id="pw" name="pw" required> <span
+					<input type="password" id="pwChange" name="pw" required> <span
 						class="icon_profile"></span>
 				</div>
 				<button type="submit" class="site-btn">비밀번호 수정</button>
@@ -442,6 +443,32 @@
 		        },
 		    });
 		};
+		
+		
+		// 비밀번호 체크
+        // 8 ~ 20자 영문, 숫자, 특수문자를 최소 한가지씩 조합
+        function pwCheck() {
+            var regExp = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+         
+            let pwCheck = regExp.test(document.getElementById('pwChange').value); // 형식에 맞는 경우 true 리턴
+            console.log('패스워드 체크 : '+pwCheck);
+            if(pwCheck==true) {
+                return true;
+            } else {
+                alert('유효하지 않는 비밀번호입니다 ( 8 ~ 20자의 영문, 숫자, 특수문자를 섞은 암호여야합니다 )');
+                return false;
+            }
+            
+        }
+		
+		document.getElementById('pwCheck2form').onsubmit=function(){
+			let check = pwCheck();
+			if(check==true) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	 </script>
 	 
 </body>
