@@ -26,6 +26,7 @@ FROM ( SELECT ROWNUM AS row_num, k_users.*
 FROM k_users)
 WHERE row_num &gt;= #{startPage})
 WHERE row_num &lt;= #{endPage}
+ORDER BY SIGNDATE DESC
  </select>
 
 <select id="todayUsersCount" resultType="int">
