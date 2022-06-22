@@ -48,6 +48,7 @@ public class Login implements Command {
 				session.setAttribute("directoryfileName", vo.getDirectoryFileName());
 			}
 		} else {
+			
 			request.setAttribute("nologin", "no");
 			return "user/loginForm";
 		}
