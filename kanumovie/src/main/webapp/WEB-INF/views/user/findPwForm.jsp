@@ -22,6 +22,7 @@
     	background: #212529; 
     	border: none;
     	border-radius: 10px;
+    	color : white;
     }
     #formContainer #buttonContainer {
     	margin-top: 5%;
