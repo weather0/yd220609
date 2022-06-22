@@ -109,6 +109,7 @@
             </div>
         </div>
         <div id="move" style="display:none;"></div>
+        <div><input type="hidden" value="${nologin}" id="message"></div>
     </section>
     <!-- Login Section End -->
     
@@ -219,7 +220,11 @@
         
         $(document).ready(function(){
         	window.scrollBy({ top: 300, left: 0, behavior: 'smooth' });
+        	if(document.getElementById('message').value =='no') {
+        		alert('아이디 혹은 비밀번호를 다시 입력하세요!');
+        	}
         })
+        
         
     </script>
 </body>
