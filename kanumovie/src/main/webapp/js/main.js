@@ -10,8 +10,9 @@
 /*
 Footer 영역 
 
-
 */
+
+
 $(function() {
 let sessionID = document.getElementById('sessionId');
 console.log(sessionID)
@@ -24,6 +25,11 @@ let footer = document.querySelector('.footer')
 	}
 	
 });
+
+
+
+
+
 
 
 
@@ -118,5 +124,32 @@ let footer = document.querySelector('.footer')
         $("html, body").animate({ scrollTop: 0 }, "slow");
         return false;
      });
+     
+     
+/*
+
+header 영역 
+
+*/
+const pathname = window.location.pathname.substring(11);
+navLinkColor = document.querySelectorAll('.hnavlink');
+headerMenuList = document.querySelector('.headerMenuList'); 
+     if(pathname == 'genreSelectList.do') {
+		navLinkColor.forEach(n => n.classList.remove('active'));
+		headerMenuList.children[1].classList.add('active');
+	
+	}else if(pathname == 'userLikesSelectList.do') {
+	navLinkColor.forEach(n => n.classList.remove('active'));
+		headerMenuList.children[2].classList.add('active');
+	}else if(pathname == 'commentSelectList.do') {
+		navLinkColor.forEach(n => n.classList.remove('active'));
+		headerMenuList.children[3].classList.add('active');
+	}
+	
+ 
+     
+     
+     
+     
 
 })(jQuery);

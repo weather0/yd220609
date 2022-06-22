@@ -10,7 +10,11 @@ function makeCard(obj) {
 	})
 	// 포스터 이미지
 	let img = document.createElement('img');
-	img.setAttribute('src', POSTER_BASE_URL + obj.poster_path);
+	if (!!obj.poster_path) {
+		img.setAttribute('src', POSTER_BASE_URL + obj.poster_path);
+	} else {
+		img.setAttribute('src', 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg');
+	}
 	// 영화 제목
 	let info = document.createElement('div');
 	let title = document.createElement('p');

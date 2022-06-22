@@ -283,7 +283,7 @@ let setvideo = function (videos) {
   let iframe = document.querySelector('.youtube iframe');
   let yturl;
   videos.results.forEach(obj => {
-    if (obj.type == "Trailer") {
+    if (obj.type == "Trailer" || obj.type == "Teaser") {
       yturl = obj.key;
       // console.log(yturl)
       iframe.setAttribute('src', 'https://www.youtube.com/embed/' + yturl);

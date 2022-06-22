@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,16 +27,18 @@ footer.footer {
         <div class="row footerrow">
             <div class="col-lg-3">
                 <div class="footer__logo">
-                    <a href="./index.html"><img src="img/kanumovielogo.png" alt=""></a>
+                    <a href="home.do"><img src="img/kanumovielogo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="footer__nav">
-                    <ul>
-                        <li class="active"><a href="./index.html">Homepage</a></li>
-                        <li><a href="./categories.html">Categories</a></li>
-                        <li><a href="./blog.html">Our Blog</a></li>
-                        <li><a href="#">Contacts</a></li>
+                    <ul class="MenuList">
+                       <li class="hnavlink"><a href="home.do">Homepage</a></li>
+								<li class="hnavlink"><a href="genreSelectList.do">Categories</a></li>
+								<c:if test="${not empty email}">
+								<li class="hnavlink"><a href="userLikesSelectList.do?email=${email}"><i class="fa fa-heart"></i> 보고싶어요</a>
+								<li class="hnavlink"><a href="commentSelectList.do?email=${email}"><i class="fa fa-pencil"></i> 리뷰한 작품</a>
+								</c:if>
                     </ul>
                 </div>
             </div>
@@ -43,10 +46,7 @@ footer.footer {
             <p>
               (주)예담직업전문학교 대구광역시 중구 중앙대로 403 (남일동 135-1, 5층)
             </p>
-            <p>
-              대표자:서강중 / 사업자번호:504-86-00471 /
-               Tel:053-421-2460 / Fax:053-356-3939
-            </p>
+           
             <p>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 

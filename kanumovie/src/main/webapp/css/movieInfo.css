@@ -71,11 +71,9 @@ div.rightbar {
 
 
 /* 플레이어 관련 start */
-.video-js .vjs-dock-text,
-.vjs-current-time-display,
-.vjs-duration-display,
-.vjs-time-divider {
-  font-size: 1.5em;
+.moviePlayer,
+.youtube {
+  margin: 0 auto;
 }
 
 .vjs-pip-container,
@@ -84,24 +82,40 @@ div.rightbar {
 }
 
 #myPlayerID {
+  /* width: 100%;
+  height: 100%; */
   border-radius: 10px;
   border: 2px solid rgb(41, 41, 41);
 }
 
-.moviePlayer,
-.youtube {
-  margin: 0 auto;
+.vjs-mouse.bc-player-mM7pq2WtL_default .vjs-control-bar {
+  font-size: 15px;
+}
+
+.video-js .vjs-dock-text,
+.vjs-current-time-display,
+.vjs-duration-display,
+.vjs-time-divider {
+  font-size: 1.5em;
 }
 
 .bc-iframe .vjs-playlist-sidebar .vjs-playlist-show-hide button:hover,
 .bc-player-mM7pq2WtL_default .vjs-big-play-button:active,
 .bc-player-mM7pq2WtL_default .vjs-big-play-button:focus,
+.vjs-play-control button:hover,
 .bc-player-mM7pq2WtL_default .vjs-menu-button-popup .vjs-menu .vjs-menu-item.vjs-selected,
 .bc-player-mM7pq2WtL_default .vjs-play-progress,
 .bc-player-mM7pq2WtL_default .vjs-volume-level,
 .bc-player-mM7pq2WtL_default:active .vjs-big-play-button,
 .bc-player-mM7pq2WtL_default:hover .vjs-big-play-button {
   background-color: #e53637;
+}
+
+button:hover,
+button:active,
+button:focus {
+  background-color: #e53637;
+
 }
 
 /* 플레이어 관련 end*/
@@ -337,39 +351,30 @@ div.scroller_wrap.should_fade:after {
 
 
 /* 비디오모달스타일 start */
-/* 버튼 */
-.modalbox {
-  width: 960px;
-  text-align: right;
-  margin-bottom: 20px;
-}
 
-.modalbtn {
-  border-radius: 10px;
-  width: 120px;
-  height: 35px;
-  padding: 0px;
-  background-color: #1d1e39;
-}
-
-/* 비디오모달 */
+/* 버튼영역 */
 .modalbox {
   width: 100%;
   text-align: right;
   margin-bottom: 20px;
 }
 
-.cmtdiv .btn {
-  background-color: #e53637;
-  border: none;
+/* 버튼 */
+.modalbtn {
+  border: 0px;
+  border-radius: 10px;
+  width: 130px;
+  height: 40px;
+  padding: 0px;
+  background-color: #1d1e39;
   font-weight: bold;
+  font-size: large;
 }
 
-.cmtdiv .btn:hover {
-  transform: scale(1.2);
-  transition: 0.2s;
-}
 
+
+
+/* 비디오모달 */
 .btn-success:active,
 .btn-success:focus,
 .btn:active,
@@ -386,29 +391,123 @@ div.scroller_wrap.should_fade:after {
   background-color: #1d1e39;
 }
 
-.modalbtn {
-  border: 0px;
-  border-radius: 10px;
-  width: 130px;
-  height: 40px;
-  padding: 0px;
-  background-color: #1d1e39;
-  font-weight: bold;
-  font-size: large;
-}
+
 
 .vModaldialog {
-  max-width: 960px;
-  /* height: 540px; */
+  max-width: 1280px;
+  height: 720px;
   /* margin: 30px 100px; */
+  position: absolute;
+  top: 3%;
+  left: 15%;
+  width: 100%;
 }
 
 .vModalbody {
-  width: 960px;
-  height: 540px;
+  width: 100%;
+  height: 100%;
   margin: 0;
+  background-color: transparent;
+  border: 0;
 }
 
+
+#vModal {
+  padding: 0;
+  padding-right: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+  /* filter: brightness(30%) */
+}
+
+/* 동영상 배경 */
+.jb-box {
+  /* width: 100%; */
+  /* height: 500px; */
+  overflow: hidden;
+  margin: 0px auto;
+  /* position: relative;
+  z-index: -999; */
+}
+
+.modalvideo {
+  /* position: relative;
+  z-index: -999; */
+
+}
+
+.vModalthumb {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 80%;
+  left: 15%;
+  pointer-events: auto;
+}
+
+.vModalth {
+  display: inline-block;
+  position: relative;
+  pointer-events: auto;
+}
+
+.vModalth:hover {
+  border: 3px solid #e53637;
+  pointer-events: auto;
+}
+
+.vModalthumb img {
+  width: 320px;
+  border-radius: 5px;
+  pointer-events: auto;
+}
+
+
+.vModalthumb h5 {
+  position: absolute;
+  left: 0;
+  bottom: 25px;
+  width: 100%;
+  padding: 0 30px 0 20px;
+
+  text-shadow: 2px 2px 3px black;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.vModalclose {
+  position: absolute;
+  top: -10%;
+  left: 118%;
+}
+
+.vModalclose button {
+  text-shadow: 2px 2px 3px black;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+}
+
+.bugaplayer {
+  padding: 0;
+  display: none;
+}
+
+
+
+
+/* 코멘트 버튼 */
+.cmtdiv .btn {
+  background-color: #e53637;
+  border: none;
+  font-weight: bold;
+}
+
+.cmtdiv .btn:hover {
+  transform: scale(1.2);
+  transition: 0.2s;
+}
 
 
 

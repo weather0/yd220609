@@ -33,13 +33,23 @@ public class FindPw implements Command {
 		UserVO vo = new UserVO();
 		System.out.println(request.getParameter("email"));
 		vo.setEmail(request.getParameter("email"));
+		
 		vo = dao.userSelectEmail(vo);
-		System.out.println(vo.getPw());
-		System.out.println(vo.getEmail());
-		
-		sendMail(vo.getPw(), vo.getEmail());
-		
-		return "user/findPw";
+		if(vo != null) {
+			if(vo.getPw()==null) {
+				request.setAttribute("message", "error");
+				return "user/findPwForm";
+			}
+			System.out.println(vo.getPw());
+			System.out.println(vo.getEmail());
+			
+			sendMail(vo.getPw(), vo.getEmail());
+			
+			return "user/findPw";
+		} else {
+			request.setAttribute("message", "error");
+			return "user/findPwForm";
+		}
 	}
 	//  시간없어서 gmail 계정만 가능.
 	public static void sendMail(String pw, String email) {

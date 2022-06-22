@@ -11,6 +11,7 @@
 	#genreTitle i {
 		color: #e53637;
 	}
+	
 </style>
 <head>
 <meta charset="UTF-8">

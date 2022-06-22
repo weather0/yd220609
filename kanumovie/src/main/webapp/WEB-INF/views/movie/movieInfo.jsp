@@ -1,43 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<% String uid=(String) session.getAttribute("email"); %>
-<!-- 로그인세션id호출  -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <% String uid=(String) session.getAttribute("email"); %>
+      <!-- 로그인세션id호출  -->
 
-<!DOCTYPE html>
-<html>
+      <!DOCTYPE html>
+      <html>
 
-<head>
-<meta charset="UTF-8">
-<title>MovieInfo</title>
+      <head>
+        <meta charset="UTF-8">
+        <title>MovieInfo</title>
 
-<!-- 좋아요아이콘 -->
-<link rel='stylesheet'
-	href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+        <!-- 좋아요아이콘 -->
+        <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 
-<!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
-	rel="stylesheet">
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
 
-<!-- Css Styles -->
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-<link rel="stylesheet" href="css/plyr.css" type="text/css">
-<link rel="stylesheet" href="css/nice-select.css" type="text/css">
-<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css">
+        <!-- Css Styles -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+        <link rel="stylesheet" href="css/plyr.css" type="text/css">
+        <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+        <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
 
-<!-- movieInfo스타일 -->
-<link rel="stylesheet" href="css/movieInfo.css">
+        <!-- movieInfo스타일 -->
+        <link rel="stylesheet" href="css/movieInfo.css">
 
-<!-- movieInfo스크립트 -->
-<script src="js/movieInfo.js"></script>
+        <!-- movieInfo스크립트 -->
+        <script src="js/movieInfo.js"></script>
 
 
         <style>
@@ -63,83 +59,77 @@
                                     transition: 0.3s;
                                   } */
 
-/* comment box */
-#comments {
-	overflow: hidden;
-	background-color: #b7b7b7;
-	border: none;
-	border-radius: 10px;
-	font-size: 18px;
-	line-height: 30px;
-}
+          /* comment box */
+          #comments {
+            overflow: hidden;
+            background-color: #b7b7b7;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            line-height: 30px;
+          }
 
-/* 신고 모달 */
-#reportul {
-	list-style: none;
-}
+          /* 신고 모달 */
+          #reportul {
+            list-style: none;
+          }
 
-#modalbutton {
-	text-align: center;
-}
+          #modalbutton {
+            text-align: center;
+          }
 
-#modal-header {
-	text-align: center;
-}
+          #modal-header {
+            text-align: center;
+          }
 
-modal-title {
-	text-align: center;
-}
+          modal-title {
+            text-align: center;
+          }
+        </style>
 
-#vModal {
-	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)),
-		url('img/extras/big1.jpg');
-	/* filter: brightness(30%) */
-}
-</style>
-
-</head>
+      </head>
 
 
-<body>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
+      <body>
+        <!-- Page Preloder -->
+        <div id="preloder">
+          <div class="loader"></div>
+        </div>
 
 
 
 
 
-	<!-- Anime Section Begin -->
-	<section class="anime-details spad">
-		<div class="container">
-			<div class="anime__details__content">
-				<div class="row">
+        <!-- Anime Section Begin -->
+        <section class="anime-details spad">
+          <div class="container">
+            <div class="anime__details__content">
+              <div class="row">
 
-					<!-- brightcove player -->
-					<div class="moviePlayer">
-						<div class="vjs-pip-container">
-							<video-js id="myPlayerID" data-account="6310593610001"
-								data-player="mM7pq2WtL" data-embed="default" controls=""
-								data-video-id="" data-playlist-id="" data-application-id=""
-								width="960" height="540"> </video-js>
-							</video-js>
-						</div>
-					</div>
-
-					<!-- youtube player -->
-					<div class="youtube">
-						<iframe width="960" height="540" src=""
-							title="YouTube video player" frameborder="3"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowfullscreen></iframe>
-					</div>
-
-					<p></p>
+                <!-- brightcove player -->
+                <div class="moviePlayer">
+                  <div class="vjs-pip-container">
+                    <video-js id="myPlayerID" data-account="6310593610001" data-player="mM7pq2WtL" data-embed="default"
+                      controls="" data-video-id="" data-playlist-id="" data-application-id="" width="1120" height="630">
+                    </video-js>
+                  </div>
+                </div>
 
 
-					<!-- 모달창1 -->
-					<script>
+
+                <!-- youtube player -->
+                <div class="youtube">
+                  <iframe width="1120" height="630" src="" title="YouTube video player" frameborder="3"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                </div>
+
+                <p></p>
+
+
+                <!-- 모달창1 -->
+                <script>
+
                   function extras(cnick) {
                     let nick = cnick;
                     console.log(nick);
@@ -152,37 +142,74 @@ modal-title {
                 </script>
 
 
-					<div class="modalbox">
-						<button class="btn btn-sm btn-success modalbtn"
-							onclick="extras('${aaaaaa}')" data-toggle="modal"
-							data-target="#vModal">부가영상</button>
-					</div>
+                <div class="modalbox">
+                  <button class="btn btn-sm btn-success modalbtn" onclick="toggleFullScreen(); extras('${aaaaaa}')"
+                    data-toggle="modal" data-target="#vModal">부가영상</button>
+                </div>
 
 
-					<div class="modal fade" id="vModal" role="dialog">
 
-						<!-- <div class="modal-dialog vModaldialog">
+                <div class="modal fade jb-box" id="vModal" role="dialog" style="padding: 0; padding-right: 0;">
 
 
-                   
+                  <!-- <div class="jb-box"> -->
+                  <video class="modalvideo" muted autoplay loop width="100%">
+                    <source src="img/extras/bigbg.mkv" type="video/mp4">
+                    <strong>Your browser does not support the video tag.</strong>
+                  </video>
+
+
+                  <div class="modal-dialog jb-text vModaldialog">
                     <div class="modal-content vModalbody">
-                      <div class="modal-header">
-                      </div>
 
-                      <div class="modal-body">
-                        <div id="container">
 
+
+                      <div id="container2" class="modal-body bugaplayer">
+                        <div class="vjs-pip-container">
+                          <video-js id="myPlayerID2" data-account="6310593610001" data-player="mM7pq2WtL"
+                            data-embed="default" controls="" data-video-id="6308284049112" data-playlist-id=""
+                            data-application-id="" width="1280" height="720">
+                          </video-js>
                         </div>
-
                       </div>
 
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                      <div class="modal-footer vModalclose">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"
+                          onclick="exitFullScreen();">X</button>
                       </div>
                     </div>
 
-                  </div> -->
-					</div>
+                  </div>
+
+                  <div class="modal-dialog jb-text vModalthumb">
+                    <div class="vModalth th1">
+                      <img src="img/extras/th1.jpg" alt="th1">
+                      <h5>1. 리얼 강력반</h5>
+                    </div>
+                    <div class="vModalth th2">
+                      <img src="img/extras/th2.jpg" alt="th2">
+                      <h5>2. 내가 장첸이야!</h5>
+                    </div>
+                    <div class="vModalth th3">
+                      <img src="img/extras/th3.jpg" alt="th3">
+                      <h5>3. 마석도 VS 장첸</h5>
+                    </div>
+                    <div class="vModalth th4">
+                      <img src="img/extras/th4.jpg" alt="th4">
+                      <h5>4. 제작기</h5>
+                    </div>
+                  </div>
+
+
+
+
+                  <!-- </div> -->
+
+
+
+
+                </div>
 
 
                 <!-- 포스터 -->
@@ -321,15 +348,15 @@ modal-title {
 
 
 
-							<!-- 별점 -->
-							<div class="anime__details__rating">
-								<div class="rating"></div>
-								<span class="votesCnt"></span>
-							</div>
+                    <!-- 별점 -->
+                    <div class="anime__details__rating">
+                      <div class="rating"></div>
+                      <span class="votesCnt"></span>
+                    </div>
 
 
-							<!-- 줄거리 -->
-							<p class="overview"></p>
+                    <!-- 줄거리 -->
+                    <p class="overview"></p>
 
 
                     <!-- 부가정보 -->
@@ -361,75 +388,72 @@ modal-title {
                   </div>
                 </section>
 
-				</div>
-			</div>
+              </div>
+            </div>
 
 
 
 
 
-			<!-- comment 시작 -->
-			<div class="row cmtdiv">
-				<div class="col-lg-8 col-md-8">
-					<div class="anime__details__review">
-						<div class="section-title">
-							<h5>Reviews</h5>
-						</div>
-						<div id="test">
-							<c:forEach items="${comments }" var="comments">
-								<div class="anime__review__item" id="${comments.cid }">
-									<div class="anime__review__item__pic">
-										<img src="img/profile/${comments.fileName }" alt="">
-									</div>
-									<div class="anime__review__item__text">
-										<h6>
-											<span id="commentnick">${comments.nick }</span> - <span>${comments.wdate }</span>
-											<c:if test="${comments.email == email }">
-												<!-- 수정 삭제시 댓글의 번호 값을 넘겨줌 -->
-												<c:if test="${blockCheck != 'y'}">
-													<input type="button"
-														onclick="commentUpdate(${comments.cid})"
-														class="btn btn-sm btn-success" value="수정" />
-													<button onclick="commentDelete(${comments.cid})"
-														class="btn btn-sm btn-success">삭제</button>
-												</c:if>
+            <!-- comment 시작 -->
+            <div class="row cmtdiv">
+              <div class="col-lg-8 col-md-8">
+                <div class="anime__details__review">
+                  <div class="section-title">
+                    <h5>Reviews</h5>
+                  </div>
+                  <div id="test">
+                    <c:forEach items="${comments }" var="comments">
+                      <div class="anime__review__item" id="${comments.cid }">
+                        <div class="anime__review__item__pic">
+                          <img src="img/profile/${comments.fileName }" alt="">
+                        </div>
+                        <div class="anime__review__item__text">
+                          <h6>
+                            <span id="commentnick">${comments.nick }</span> - <span>${comments.wdate }</span>
+                            <c:if test="${comments.email == email }">
+                              <!-- 수정 삭제시 댓글의 번호 값을 넘겨줌 -->
+                              <c:if test="${blockCheck != 'y'}">
+                                <input type="button" onclick="commentUpdate(${comments.cid})"
+                                  class="btn btn-sm btn-success" value="수정" />
+                                <button onclick="commentDelete(${comments.cid})"
+                                  class="btn btn-sm btn-success">삭제</button>
+                              </c:if>
 
-												<c:if test="${blockCheck == 'y'}">
-													<input type="button" onclick="blockreport()"
-														class="btn btn-sm btn-success" value="수정" />
-													<button onclick="blockreport()"
-														class="btn btn-sm btn-success">삭제</button>
-												</c:if>
-											</c:if>
-											
-											  <!-- 비로그인상태 신고 기능 사용 불가 -->
-												<c:if test="${email == null }">
-													<input type="button" value="신고" onclick="needLogin()" class="btn btn-sm btn-success">
-												</c:if>
-												
-												<!-- 로그인 상태 신고 -->
-												<c:if test="${email != null }">
-												<!-- 차단 상태가 아니면 신고가능  -->
-														<c:if test="${blockCheck != 'y' }">
-															<button class="btn btn-sm btn-success"
-																data-backdrop="static" data-keyboard="false"
-																onclick="report('${comments.email}','${movieid}','${comments.report }')"
-																data-toggle="modal" data-target="#myModal">신고</button>
-														</c:if>
-														<!-- 차단 상태면 신고기능 불가능 -->
-														<c:if test="${blockCheck == 'y' }">
-														<input type="button" value="신고" onclick="blockreport()" class="btn btn-sm btn-success">
-														</c:if>
-												</c:if>
-													</h6>
-													<div>
-														<p id="p_${comments.cid}">${comments.comments }</p>
-													</div>
-												</div>
-											</div>
-								</c:forEach>
-						</div>
-					</div>
+                              <c:if test="${blockCheck == 'y'}">
+                                <input type="button" onclick="blockreport()" class="btn btn-sm btn-success"
+                                  value="수정" />
+                                <button onclick="blockreport()" class="btn btn-sm btn-success">삭제</button>
+                              </c:if>
+                            </c:if>
+
+                            <!-- 비로그인상태 신고 기능 사용 불가 -->
+                            <c:if test="${email == null }">
+                              <input type="button" value="신고" onclick="needLogin()" class="btn btn-sm btn-success">
+                            </c:if>
+
+                            <!-- 로그인 상태 신고 -->
+                            <c:if test="${email != null }">
+                              <!-- 차단 상태가 아니면 신고가능  -->
+                              <c:if test="${blockCheck != 'y' }">
+                                <button class="btn btn-sm btn-success" data-backdrop="static" data-keyboard="false"
+                                  onclick="report('${comments.email}','${movieid}','${comments.report }')"
+                                  data-toggle="modal" data-target="#myModal">신고</button>
+                              </c:if>
+                              <!-- 차단 상태면 신고기능 불가능 -->
+                              <c:if test="${blockCheck == 'y' }">
+                                <input type="button" value="신고" onclick="blockreport()" class="btn btn-sm btn-success">
+                              </c:if>
+                            </c:if>
+                          </h6>
+                          <div>
+                            <p id="p_${comments.cid}">${comments.comments }</p>
+                          </div>
+                        </div>
+                      </div>
+                    </c:forEach>
+                  </div>
+                </div>
 
 
                 <!-- 차단 되지않은 계정의 comment창 -->
@@ -455,86 +479,80 @@ modal-title {
                   </div>
                 </c:if>
 
-					<!-- 차단 된 계정의 comment창 -->
-					<c:if test="${blockCheck == 'y'}">
-						<div class="anime__details__form">
-							<div class="section-title">
-								<h5>Your Comment</h5>
-							</div>
-							<div class="anime__review__item__text">
-								<textarea id="comments" name="comments" cols="120" rows="3"
-									placeholder="해당 계정은 차단된 상태입니다.&#10;해당 관련 문제에 대해서는 관리자에게 문의하세요."
-									readonly></textarea>
-								<input type="hidden" id="id" name="id" value="${movieid}">
-							</div>
-							<br>
-							<button onclick="blockreport()" class="btn btn-sm btn-success">등록</button>
-						</div>
-					</c:if>
-			</div>
+                <!-- 차단 된 계정의 comment창 -->
+                <c:if test="${blockCheck == 'y'}">
+                  <div class="anime__details__form">
+                    <div class="section-title">
+                      <h5>Your Comment</h5>
+                    </div>
+                    <div class="anime__review__item__text">
+                      <textarea id="comments" name="comments" cols="120" rows="3"
+                        placeholder="해당 계정은 차단된 상태입니다.&#10;해당 관련 문제에 대해서는 관리자에게 문의하세요." readonly></textarea>
+                      <input type="hidden" id="id" name="id" value="${movieid}">
+                    </div>
+                    <br>
+                    <button onclick="blockreport()" class="btn btn-sm btn-success">등록</button>
+                  </div>
+                </c:if>
+              </div>
 
 
 
-			<!-- 신고하기 modal 화면 -->
-			<div class="modal fade" id="myModal" role="dialog">
-				<div class="modal-dialog">
+              <!-- 신고하기 modal 화면 -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
 
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="modal-title">신고하기</h3>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title">신고하기</h3>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
 
-						<div class="modal-body">
-							<div id="container">
-								<section>
-									<form id="form" action="reportInsert.do" method="post">
-										<input type="hidden" class="form-control" id="reported_name"
-											name="reported_name"> <input type="hidden"
-											class="form-control" id="movie_id" name="movie_id">
-										<h4>신고 사유를 선택하세요.</h4>
-										<hr>
-										<ul id="reportul">
-											<li><label><input type="radio" name="report"
-													value="스팸홍보/도배글입니다."> 스팸홍보/도배글입니다.</label>
-											<li><label><input type="radio" name="report"
-													value="음란물입니다."> 음란물입니다.</label>
-											<li><label><input type="radio" name="report"
-													value="욕설/생명경시/혐오/차별적 표현입니다."> 욕설/생명경시/혐오/차별적
-													표현입니다.</label>
-											<li><label><input type="radio" name="report"
-													value="불법정보를 포함하고 있습니다."> 불법정보를 포함하고 있습니다.</label>
-											<li><label><input type="radio" name="report"
-													value="청소년에게 유해한 내용입니다."> 청소년에게 유해한 내용입니다.</label>
-											<li><label><input type="radio" name="report"
-													value="불쾌한 표현이 있습니다."> 불쾌한 표현이 있습니다.</label>
-										</ul>
-										<hr>
-										<h4>신고내용</h4>
-										<hr>
-										<textarea id="content" name="content" cols="70" rows="5"></textarea>
-										<br>
-										<div id="modalbutton">
-											<input type="submit" class="btn btn-sm btn-success"
-												width="130" value="신고">
-											<!-- <input type="reset" class="btn btn-sm btn-success" value="다시입력"> -->
-										</div>
-									</form>
-								</section>
-							</div>
+                    <div class="modal-body">
+                      <div id="container">
+                        <section>
+                          <form id="form" action="reportInsert.do" method="post">
+                            <input type="hidden" class="form-control" id="reported_name" name="reported_name"> <input
+                              type="hidden" class="form-control" id="movie_id" name="movie_id">
+                            <h4>신고 사유를 선택하세요.</h4>
+                            <hr>
+                            <ul id="reportul">
+                              <li><label><input type="radio" name="report" value="스팸홍보/도배글입니다."> 스팸홍보/도배글입니다.</label>
+                              <li><label><input type="radio" name="report" value="음란물입니다."> 음란물입니다.</label>
+                              <li><label><input type="radio" name="report" value="욕설/생명경시/혐오/차별적 표현입니다.">
+                                  욕설/생명경시/혐오/차별적
+                                  표현입니다.</label>
+                              <li><label><input type="radio" name="report" value="불법정보를 포함하고 있습니다."> 불법정보를 포함하고
+                                  있습니다.</label>
+                              <li><label><input type="radio" name="report" value="청소년에게 유해한 내용입니다."> 청소년에게 유해한
+                                  내용입니다.</label>
+                              <li><label><input type="radio" name="report" value="불쾌한 표현이 있습니다."> 불쾌한 표현이
+                                  있습니다.</label>
+                            </ul>
+                            <hr>
+                            <h4>신고내용</h4>
+                            <hr>
+                            <textarea id="content" name="content" cols="70" rows="5"></textarea>
+                            <br>
+                            <div id="modalbutton">
+                              <input type="submit" class="btn btn-sm btn-success" width="130" value="신고">
+                              <!-- <input type="reset" class="btn btn-sm btn-success" value="다시입력"> -->
+                            </div>
+                          </form>
+                        </section>
+                      </div>
 
-						</div>
+                    </div>
 
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
-						</div>
-					</div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
 
-				</div>
-			</div>
-			<script>
+                </div>
+              </div>
+              <script>
 
 
                 // 댓글 신고
@@ -547,20 +565,6 @@ modal-title {
                   let mid = movieid;
                   console.log(mid);
                   console.log(nick);
-                  
-  
-              
-	                  //modal open시 report name, movie_id 값 전송
-	                        $('#myModal').on('show.bs.modal', function () {
-	                    $(".modal-body #reported_name").val(cnick);
-	                    $(".modal-body #movie_id").val(movieid);
-	                  })
-				}
-				
-				
-				// 차단된 사용자 기능 불가 멘트
-                function noreport() {
-                	alert('이미 신고된 사용자입니다.');
 
 
 
@@ -570,11 +574,25 @@ modal-title {
                     $(".modal-body #movie_id").val(movieid);
                   })
                 }
-                
-                function blockreport() {
-                	alert('관리자에 의해 차단된 사용자입니다.');
+
+
+                // 차단된 사용자 기능 불가 멘트
+                function noreport() {
+                  alert('이미 신고된 사용자입니다.');
+
+
+
+                  //modal open시 report name, movie_id 값 전송
+                  $('#myModal').on('show.bs.modal', function () {
+                    $(".modal-body #reported_name").val(cnick);
+                    $(".modal-body #movie_id").val(movieid);
+                  })
                 }
-                
+
+                function blockreport() {
+                  alert('관리자에 의해 차단된 사용자입니다.');
+                }
+
 
                 function noreport() {
                   alert('이미 신고된 사용자입니다.');
@@ -704,8 +722,8 @@ modal-title {
 
 
                 // 댓글 추가
-                function replyInsert() {	
-                    	
+                function replyInsert() {
+
                   $.ajax({
                     url: "commentInsert.do",
                     method: "post",
@@ -783,48 +801,48 @@ modal-title {
 
 
 
-			<!-- 추천 섹션 -->
-			<div class="col-lg-4 col-md-4 rightbar">
-				<div class="anime__details__sidebar">
-					<div class="section-title">
-						<h5>you might like...</h5>
-					</div>
+              <!-- 추천 섹션 -->
+              <div class="col-lg-4 col-md-4 rightbar">
+                <div class="anime__details__sidebar">
+                  <div class="section-title">
+                    <h5>you might like...</h5>
+                  </div>
 
-					<!-- <div class="product__sidebar__view__item set-bg"
+                  <!-- <div class="product__sidebar__view__item set-bg"
                 data-setbg="https://image.tmdb.org/t/p/w300/YfMEwVRe1c5rhFYmL2P8153T8x.jpg">
                 <h5><a href="#">매트릭스 2: 리로디드</a></h5>
               </div> -->
 
-					<!-- <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-1.jpg">
+                  <!-- <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-1.jpg">
                 <div class="ep">18 / ?</div>
                 <div class="view"><i class="fa fa-eye"></i> 9141</div>
                 <h5><a href="#">Boruto: Naruto next generations</a></h5>
               </div> -->
 
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Anime Section End -->
+                </div>
+              </div>
+            </div>
+        </section>
+        <!-- Anime Section End -->
 
 
 
 
 
 
-	<!-- Js Plugins -->
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/player.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
-	<script src="js/mixitup.min.js"></script>
-	<script src="js/jquery.slicknav.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/main.js"></script>
+        <!-- Js Plugins -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/player.js"></script>
+        <script src="js/jquery.nice-select.min.js"></script>
+        <script src="js/mixitup.min.js"></script>
+        <script src="js/jquery.slicknav.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/main.js"></script>
 
 
 
-	<script>
+        <script>
           // 별점 주기 기능
           // console.log(document.querySelector('.votesCnt'));
           document.querySelector('.votesCnt').addEventListener('click', function () {
@@ -844,17 +862,90 @@ modal-title {
 
 
 
-	<!-- 플레이어 관련 -->
-	<script>
+        <!-- 플레이어 관련 -->
+        <script>
+          // 브라우저 전체화면 전환
+          function toggleFullScreen() {
+            if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+              (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+              if (document.documentElement.requestFullScreen) {
+                document.documentElement.requestFullScreen();
+              } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+              } else if (document.documentElement.webkitRequestFullScreen) {
+                document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+              }
+              // 다시 누르면 끄기(토글기능)
+              // } else {
+              //   if (document.cancelFullScreen) {
+              //     document.cancelFullScreen();
+              //   } else if (document.mozCancelFullScreen) {
+              //     document.mozCancelFullScreen();
+              //   } else if (document.webkitCancelFullScreen) {
+              //     document.webkitCancelFullScreen();
+              //   }
+            }
+          }
+
+          // 브라우저 전체화면 종료
+          function exitFullScreen() {
+            if (document.cancelFullScreen) {
+              document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+              document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+              document.webkitCancelFullScreen();
+            }
+          }
+
+
+          // 샘플비디오(479718)
           if (getParameter('id') == '479718') {
             let vjs = document.querySelector('#myPlayerID');
             vjs.setAttribute('data-video-id', '6308170123112')
             document.querySelector('.youtube').style.display = 'none';
+            // 샘플 외 영화
           } else {
             document.querySelector('.moviePlayer').style.display = 'none';
+            document.querySelector('.modalbox').style.display = 'none';
+            document.querySelector('.youtube').style = 'margin-bottom:30px';
           }
+
+          // 부가영상
+          let bugap = document.querySelector('#myPlayerID2');
+          $('.th1').click(function () {
+            bugap.setAttribute('data-video-id', '6308284049112');
+            document.querySelector('.modalvideo').pause();
+            document.querySelector('.bugaplayer').style.display = 'block';
+          })
+
+          $('.th2').click(function () {
+            let bugapcon = document.querySelector('bugaplayer vjs-pip-container')
+            let bugap = document.createElement('video-js');
+            bugap.setAttribute('id', 'myPlayerID2')
+            bugap.setAttribute('data-account', '6310593610001')
+            bugap.setAttribute('data-player', 'mM7pq2WtL')
+            bugap.setAttribute('data-embed', 'default')
+            bugap.setAttribute('controls', '')
+            bugap.setAttribute('data-video-id', '6308284049112')
+            bugap.setAttribute('data-playlist-id', '')
+            bugap.setAttribute('data-application-id', '')
+            bugap.setAttribute('width', '1280')
+            bugap.setAttribute('height', '720')
+
+            console.log(bugap);
+            bugapcon.append(bugap);
+
+            document.querySelector('.modalvideo').pause();
+            document.querySelector('.bugaplayer').style.display = 'block';
+          })
+
+
+
+
+
         </script>
-	<!-- <script>
+        <!-- <script>
           let vjscon = document.getElementsByClassName('vjs-pip-container')
           console.log(vjscon);
           let vjs = document.createElement('vedeo-js')
@@ -871,10 +962,9 @@ modal-title {
           console.log(vjs)
           vjscon[0].append(vjs)
         </script> -->
-	<script
-		src="https://players.brightcove.net/6310593610001/mM7pq2WtL_default/index.min.js"></script>
+        <script src="https://players.brightcove.net/6310593610001/mM7pq2WtL_default/index.min.js"></script>
 
 
-</body>
+      </body>
 
-</html>
+      </html>
