@@ -32,7 +32,7 @@ footer.footer {
             </div>
             <div class="col-lg-6">
                 <div class="footer__nav">
-                    <ul class="headerMenuList">
+                    <ul class="MenuList">
                        <li class="hnavlink"><a href="home.do">Homepage</a></li>
 								<li class="hnavlink"><a href="genreSelectList.do">Categories</a></li>
 								<c:if test="${not empty email}">
