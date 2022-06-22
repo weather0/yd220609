@@ -5,8 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import co.edu.kanumovie.common.Command;
-import co.edu.kanumovie.likes.service.LikesService;
-import co.edu.kanumovie.likes.serviceImpl.LikesServiceImpl;
 import co.edu.kanumovie.user.service.UserService;
 import co.edu.kanumovie.user.serviceImpl.UserServiceImpl;
 import co.edu.kanumovie.user.vo.UserVO;
@@ -50,7 +48,9 @@ public class Login implements Command {
 				session.setAttribute("directoryfileName", vo.getDirectoryFileName());
 			}
 		} else {
-			return "loginForm.do";
+			
+			request.setAttribute("nologin", "no");
+			return "user/loginForm";
 		}
 		
 		return "home.do";
