@@ -23,16 +23,6 @@
 </style>
 </head>
 <body>
-<!-- <script>
-		let lilist = document.querySelector('.headerMenuList');
-		console.log(lilist);
-		lilist.forEach(elem => {
-			elem.addEventListener('click', function() {
-				elem.setAttribute('class', 'active');
-			})
-		})
-	</script> -->
-
 	<header class="header">
 		<div class="container">
 			<div class="row">
