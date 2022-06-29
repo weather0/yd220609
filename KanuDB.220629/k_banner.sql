@@ -1,0 +1,30 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 수요일-6월-29-2022   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table K_BANNER
+--------------------------------------------------------
+
+  CREATE TABLE "ADMIN"."K_BANNER" 
+   (	"BID" NUMBER(10,0), 
+	"GENRENAME" VARCHAR2(100 BYTE) COLLATE "USING_NLS_COMP", 
+	"BTITLE" VARCHAR2(500 BYTE) COLLATE "USING_NLS_COMP", 
+	"BCONTENT" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+	"BIMGSRC" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+	"BDIRNAME" VARCHAR2(500 BYTE) COLLATE "USING_NLS_COMP"
+   )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 10 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "DATA" ;
+REM INSERTING into ADMIN.K_BANNER
+SET DEFINE OFF;
+Insert into ADMIN.K_BANNER (BID,GENRENAME,BTITLE,BCONTENT,BIMGSRC,BDIRNAME) values (46,'Action','샘플등록','하이','spade.PNG','spade.PNG');
+Insert into ADMIN.K_BANNER (BID,GENRENAME,BTITLE,BCONTENT,BIMGSRC,BDIRNAME) values (33,'Animation','무한열차','오니니 나레! 쿄쥬로!!
+키미모 오니니나룽다!!','무한열차.jpg','무한열차1.jpg');
+Insert into ADMIN.K_BANNER (BID,GENRENAME,BTITLE,BCONTENT,BIMGSRC,BDIRNAME) values (41,'Thriller','범죄도시2','니 내 눈지 아니
+
+','장체이야.jpg','장체이야.jpg');
+Insert into ADMIN.K_BANNER (BID,GENRENAME,BTITLE,BCONTENT,BIMGSRC,BDIRNAME) values (42,'Animation','김인호','나마에와 난난다요!','김인호.jpg','김인호.jpg');
